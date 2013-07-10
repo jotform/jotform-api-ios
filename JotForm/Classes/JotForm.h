@@ -3,7 +3,7 @@
 //  JotForm
 //
 //  Created by Wang YuPing on 7/9/13.
-//  Copyright (c) 2013 Wang YuPing. All rights reserved.
+//  Copyright 2013 Interlogy, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
