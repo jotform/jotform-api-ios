@@ -11,12 +11,7 @@
 #import "ASIFormDataRequest.h"
 #import "SBJsonParser.h"
 
-@protocol JotFormDelegate <NSObject>
-
-- (void) requestFinished : (id) object;
-- (void) requestFailed : (id) object;
-
-@end
+typedef void (^JorFormBlock)(id);
 
 @interface JotForm : NSObject<ASIHTTPRequestDelegate>
 {
@@ -27,9 +22,13 @@
     BOOL             debugMode;
 }
 
+@property (nonatomic, retain) NSOperationQueue  *operationQueue;
+@property (nonatomic, copy) JorFormBlock        didFinishBlock;
+@property (nonatomic, copy) JorFormBlock        didFailBlock;
+
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode;
-- (id) getUser;
-- (id) getUsage;
-- (id) getForms;
+- (void) getUser;
+- (void) getUsage;
+- (void) getForms;
 
 @end

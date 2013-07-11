@@ -9,6 +9,7 @@
 #import "JotForm.h"
 
 @implementation JotForm
+@synthesize operationQueue;
 
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode
 {
@@ -18,6 +19,7 @@
         debugMode = debugmode;
         baseUrl = BASE_URL;
         apiVersion = API_VERSION;
+        operationQueue = [[NSOperationQueue alloc] init];
         
     }
     
@@ -30,10 +32,10 @@
         NSLog(@"\n%@", str);
 }
 
-- (id) executeHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
+- (void) executeHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, path];
-
+    
     if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
         
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
@@ -53,123 +55,182 @@
         [self debugLog:paramstr];
         
         urlStr = [NSString stringWithFormat:@"%@?%@", urlStr, paramstr];
+        
+        [paramarray release];
     }
     
     [self debugLog:urlStr];
     
-    ASIFormDataRequest *request;
-
-    request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
     [request setRequestMethod:method];
     [request setUserAgentString:USER_AGENT];
     [request addRequestHeader:@"apiKey" value:apiKey];
-
+        
     if ( [method isEqualToString:HTTPREQUEST_METHOD_POST] ) {
         
         [self debugLog:@"posting"];
-     
+        
         NSArray *keys = [params allKeys];
         
         for ( NSString *key in keys )
             [request addPostValue:[params objectForKey:key] forKey:key];
     }
     
-    [request startSynchronous];
-
-    NSError *error = [request error];
-    
-    if ( !error ) {
-        
-        NSInteger statuscode = [request responseStatusCode];
-        
-        if ( statuscode != 200 ) {
-            [self debugLog:[request responseStatusMessage]];
-        }
-
-        SBJsonParser *jsonparser = [SBJsonParser new];
-        
-        id result = [jsonparser objectWithString:[request responseString]];
-        
-        return result;
-    }
-    
-    return nil;
+    [request setDelegate:self];
+    [operationQueue addOperation:request];
 }
 
-- (id) executeGetRequest : (NSString *) url params : (NSMutableDictionary *) params
+- (void) executeGetRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];
 }
 
-- (id) executePostRequest : (NSString *) url params : (NSMutableDictionary *) params
+- (void) executePostRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
 }
 
 /**
  * Returns User object
- * @return [type] [description]
  */
 
-- (id) getUser
+- (void) getUser
 {
-    id res = [self executeGetRequest:@"user" params:nil];
-    return res;
+    [self executeGetRequest:@"user" params:nil];
 }
 
 /**
  * [getUserUsage description]
- * @return [type] [description]
  */
 
-- (id) getUsage
+- (void) getUsage
 {
-    id res = [self executeGetRequest:@"user/usage" params:nil];
-    return res;
+    [self executeGetRequest:@"user/usage" params:nil];
 }
 
 /**
  * [getForms description]
- * @return [type] [description]
  */
 
-- (id) getForms
+- (void) getForms
 {
-    id res = [self executeGetRequest:@"user/forms" params:nil];
-    return res;
+    [self executeGetRequest:@"user/forms" params:nil];
 }
 
 /**
  * [getSubmissions description]
- * @return [type] [description]
  */
 
-- (id) getSubmissions
+- (void) getSubmissions
 {
-    id res = [self executeGetRequest:@"user/submissions" params:nil];
-    return res;
+    [self executeGetRequest:@"user/submissions" params:nil];
 }
 
 /**
  * [getUserSubusers description]
- * @return [type] [description]
  */
 
-- (id) getSubusers
+- (void) getSubusers
 {
-    id res = [self executeGetRequest:@"user/subusers" params:nil];
-    return res;
+    [self executeGetRequest:@"user/subusers" params:nil];
 }
 
 /**
  * [getUserFolders description]
- * @return [type] [description]
  */
 
-- (id) getFolders
+- (void) getFolders
 {
-    id res = [self executeGetRequest:@"user/folders" params:nil];
-    return res;
+    [self executeGetRequest:@"user/folders" params:nil];
+}
+
+/**
+ * [getUserReports description]
+ */
+
+- (void) getReports
+{
+    [self executeGetRequest:@"user/reports" params:nil];
+}
+
+- (void) getSettings
+{
+    [self executeGetRequest:@"user/settings" params:nil];
+}
+
+- (void) getHistory
+{
+    [self executeGetRequest:@"user/history" params:nil];
+}
+
+- (void) getForm : (long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld", formID] params:nil];
+}
+
+- (void) getFormQuestions : (long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/questions", formID] params:nil];
+}
+
+- (void) getFormQuestions : (long) formID questionID : (long) qid
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/questions/%ld", formID, qid] params:nil];
+}
+
+- (void) getFormSubmissions : (long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/submissions", formID] params:nil];
+}
+
+- (void) createFormSubmissions : (long) formID submission : (NSMutableDictionary *) submission
+{
+    NSMutableDictionary *parameters = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    NSArray *keys = [submission allKeys];
+    
+    NSString *subkey = @"";
+    
+    for ( NSString *key in keys ) {
+        
+        subkey = [NSString stringWithFormat:@"submission[%@][%@]", [key substringToIndex:[key rangeOfString:@"_"].location], [key substringToIndex:([key rangeOfString:@"_"].location + 1)]];
+        
+        [parameters setObject:[submission objectForKey:key] forKey:subkey];
+        
+    }
+    
+    [self executePostRequest:[NSString stringWithFormat:@"form/%ld/submissions", formID] params:parameters];
+}
+
+#pragma mark - ASIHttpRequest Delegate Method
+
+- (void) requestFinished : (ASIHTTPRequest *) request
+{
+    [self debugLog:[request responseString]];
+    
+    NSInteger statuscode = [request responseStatusCode];
+    
+    if ( statuscode != 200 ) {
+        [self debugLog:[request responseStatusMessage]];
+    }
+    
+    SBJsonParser *jsonparser = [SBJsonParser new];
+    
+    id result = [jsonparser objectWithString:[request responseString]];
+    
+    self.didFinishBlock(result);
+}
+
+- (void) requestFailed : (ASIHTTPRequest *) request
+{
+    self.didFailBlock(nil);
+}
+
+- (void) dealloc
+{
+    [operationQueue release];
+    
+    [super dealloc];
 }
 
 @end
