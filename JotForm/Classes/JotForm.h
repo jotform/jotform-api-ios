@@ -10,6 +10,7 @@
 #import "Common.h"
 #import "ASIFormDataRequest.h"
 #import "SBJsonParser.h"
+#import "SBJsonWriter.h"
 
 typedef void (^JorFormBlock)(id);
 
@@ -30,5 +31,24 @@ typedef void (^JorFormBlock)(id);
 - (void) getUser;
 - (void) getUsage;
 - (void) getForms;
+- (void) getSubmissions;
+- (void) getSubusers;
+- (void) getFolders;
+- (void) getReports;
+- (void) getSettings;
+- (void) getHistory;
+- (void) getForm : (long long) formID;
+- (void) getFormQuestions : (long long) formID;
+- (void) getFormQuestions : (long long) formID questionID : (long long) qid;
+- (void) getFormSubmissions : (long long) formID;
+- (void) createFormSubmissions : (long long) formID submission : (NSMutableDictionary *) submission;
+- (void) getFormFiles : (long long) formID;
+- (void) getFormWebhooks : (long long) formID;
+- (void) createFormWebhooks : (long long) formID hookUrl : (NSString *) webhookURL;
+- (void) getSubmission : (long long) sid;
+- (void) getReport : (long long) reportID;
+- (void) getFolder : (long long) folderID;
+- (void) getFormProperties : (long long) formID;
+- (void) getFormProperty : (long long) formID propertyKey : (NSString *) propertyKey;
 
 @end

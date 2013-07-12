@@ -20,7 +20,7 @@
         baseUrl = BASE_URL;
         apiVersion = API_VERSION;
         operationQueue = [[NSOperationQueue alloc] init];
-        
+        [operationQueue setMaxConcurrentOperationCount:1];
     }
     
     return self;
@@ -36,19 +36,16 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, path];
     
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
     if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
         
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
         
-        NSString *key;
+        NSArray *keys = [params allKeys];
         
-        for ( id param in params ) {
-            
-            key = [param key];
-            
-            [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, [param objectForKey:key]]];
-            
-        }
+        for ( NSString *key in keys )
+            [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
         
         NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
         
@@ -82,7 +79,7 @@
 
 - (void) executeGetRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
-    return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];
+    return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];   
 }
 
 - (void) executePostRequest : (NSString *) url params : (NSMutableDictionary *) params
@@ -90,63 +87,55 @@
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
 }
 
-/**
- * Returns User object
- */
-
 - (void) getUser
 {
     [self executeGetRequest:@"user" params:nil];
 }
-
-/**
- * [getUserUsage description]
- */
 
 - (void) getUsage
 {
     [self executeGetRequest:@"user/usage" params:nil];
 }
 
-/**
- * [getForms description]
- */
-
 - (void) getForms
 {
     [self executeGetRequest:@"user/forms" params:nil];
 }
-
-/**
- * [getSubmissions description]
- */
 
 - (void) getSubmissions
 {
     [self executeGetRequest:@"user/submissions" params:nil];
 }
 
-/**
- * [getUserSubusers description]
- */
+- (void) getSubmissions : (NSInteger) limit orderBy : (NSString *) orderBy filter : (NSMutableDictionary *) filter
+{
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    [params setObject:[NSNumber numberWithInt:limit] forKey:@"limit"];
+
+    if ( orderBy != nil ) {
+        [params setObject:orderBy forKey:@"order_by"];
+    }
+    
+    if ( filter != nil ) {
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        NSString *filterStr = [jsonWriter stringWithObject:filter];
+        
+        [params setObject:filterStr forKey:@"filter"];
+    }
+    
+    [self executeGetRequest:@"user/submissions" params:params];
+}
 
 - (void) getSubusers
 {
     [self executeGetRequest:@"user/subusers" params:nil];
 }
 
-/**
- * [getUserFolders description]
- */
-
 - (void) getFolders
 {
     [self executeGetRequest:@"user/folders" params:nil];
 }
-
-/**
- * [getUserReports description]
- */
 
 - (void) getReports
 {
@@ -163,27 +152,37 @@
     [self executeGetRequest:@"user/history" params:nil];
 }
 
-- (void) getForm : (long) formID
+- (void) getForm : (long long) formID
 {
-    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld", formID] params:nil];
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld", formID] params:nil];
 }
 
-- (void) getFormQuestions : (long) formID
+- (void) getFormQuestions : (long long) formID
 {
-    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/questions", formID] params:nil];
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/questions", formID] params:nil];
 }
 
-- (void) getFormQuestions : (long) formID questionID : (long) qid
+- (void) getFormQuestions : (long long) formID questionID : (long long) qid
 {
-    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/questions/%ld", formID, qid] params:nil];
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/question/%lld", formID, qid] params:nil];
 }
 
-- (void) getFormSubmissions : (long) formID
+- (void) getFormSubmissions : (long long) formID
 {
-    [self executeGetRequest:[NSString stringWithFormat:@"form/%ld/submissions", formID] params:nil];
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    [params setObject:@"true" forKey:@"qid_enabled"];
+    
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params:params];
 }
 
-- (void) createFormSubmissions : (long) formID submission : (NSMutableDictionary *) submission
+- (void) getFormSubmissions : (long long) formID limit : (NSInteger) limit orderBy : (NSString *) orderBy filter : (NSMutableDictionary *) filter
+{
+    [filter setObject:[NSNumber numberWithLongLong:formID] forKey:@"form_id"];
+    
+    [self getSubmissions:limit orderBy:orderBy filter:filter];
+}
+
+- (void) createFormSubmissions : (long long) formID submission : (NSMutableDictionary *) submission
 {
     NSMutableDictionary *parameters = [[[NSMutableDictionary alloc] init] autorelease];
     
@@ -199,7 +198,50 @@
         
     }
     
-    [self executePostRequest:[NSString stringWithFormat:@"form/%ld/submissions", formID] params:parameters];
+    [self executePostRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params:parameters];
+}
+
+- (void) getFormFiles : (long long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/files", formID] params:nil];
+}
+
+- (void) getFormWebhooks : (long long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/webhooks", formID] params:nil];
+}
+
+- (void) createFormWebhooks : (long long) formID hookUrl : (NSString *) webhookURL
+{
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    [params setObject:webhookURL forKey:@"webhookURL"];
+    
+    [self executePostRequest:[NSString stringWithFormat:@"form/%lld/webhooks", formID] params:params];
+}
+
+- (void) getSubmission : (long long) sid
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"submission/%lld", sid] params:nil];
+}
+
+- (void) getReport : (long long) reportID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"report/%lld", reportID] params:nil];
+}
+
+- (void) getFolder : (long long) folderID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"folder/%lld", folderID] params:nil];
+}
+
+- (void) getFormProperties : (long long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/properties", formID] params:nil];
+}
+
+- (void) getFormProperty : (long long) formID propertyKey : (NSString *) propertyKey
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/properties/%@", formID, propertyKey] params:nil];
 }
 
 #pragma mark - ASIHttpRequest Delegate Method
@@ -223,7 +265,7 @@
 
 - (void) requestFailed : (ASIHTTPRequest *) request
 {
-    self.didFailBlock(nil);
+    self.didFailBlock([request error]);
 }
 
 - (void) dealloc
