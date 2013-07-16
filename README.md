@@ -11,7 +11,7 @@ jotform-api-ios
 
       $ cd jotform-api-ios
 
- * Please open the project and build it and select "Products/libJotForm.a" and click mouse-right button and click "Show in Finder"
+ * Please open the project and select target "JotForm-Universal" and build it and select "Products/libJotForm.a" and click mouse-right button and click "Show in Finder"
  * Please look all the files in "Release-iphoneuniversal" directory and copy all the files and add them to you project.
  * All libraries that we use are as following:
       * ASIHTTPRequest
