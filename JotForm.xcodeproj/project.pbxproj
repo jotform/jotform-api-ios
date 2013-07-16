@@ -1,0 +1,772 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		C6CC69C8179444F6004E0DE4 /* JotForm-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C6CC69C9179444F6004E0DE4 /* Build configuration list for PBXAggregateTarget "JotForm-Universal" */;
+			buildPhases = (
+				C6CC69CD17944534004E0DE4 /* Build Static Library */,
+				C6CC69CC179444FC004E0DE4 /* Creating Universal Framework */,
+				C6A2B16F1794535800F1818D /* CopyFiles */,
+				C6A2B171179453A300F1818D /* CopyFiles */,
+				C6A2B17B179453FF00F1818D /* CopyFiles */,
+				C6A2B1881794541300F1818D /* CopyFiles */,
+				C6A2B1961794542500F1818D /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = "JotForm-Universal";
+			productName = "JotForm-Universal";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		C6A2B09D179448DC00F1818D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A2B09C179448DC00F1818D /* Foundation.framework */; };
+		C6A2B09F1794495600F1818D /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CC6979179444CE004E0DE4 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6A2B0A01794495A00F1818D /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CC697B179444CE004E0DE4 /* Common.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C6A2B0A11794497D00F1818D /* ASIAuthenticationDialog.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC697F179444CE004E0DE4 /* ASIAuthenticationDialog.m */; };
+		C6A2B0A21794497D00F1818D /* ASIDataCompressor.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6980179444CE004E0DE4 /* ASIDataCompressor.m */; };
+		C6A2B0A31794497D00F1818D /* ASIDataDecompressor.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6981179444CE004E0DE4 /* ASIDataDecompressor.m */; };
+		C6A2B0A41794497D00F1818D /* ASIDownloadCache.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6982179444CE004E0DE4 /* ASIDownloadCache.m */; };
+		C6A2B0A51794497D00F1818D /* ASIFormDataRequest.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6983179444CE004E0DE4 /* ASIFormDataRequest.m */; };
+		C6A2B0A61794497D00F1818D /* ASIHTTPRequest.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6984179444CE004E0DE4 /* ASIHTTPRequest.m */; };
+		C6A2B0A71794497D00F1818D /* ASIInputStream.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6985179444CE004E0DE4 /* ASIInputStream.m */; };
+		C6A2B0A81794497D00F1818D /* ASINetworkQueue.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6986179444CE004E0DE4 /* ASINetworkQueue.m */; };
+		C6A2B0A91794497D00F1818D /* Reachability.m in Copy Files */ = {isa = PBXBuildFile; fileRef = C6CC6987179444CE004E0DE4 /* Reachability.m */; };
+		C6A2B0AB1794498F00F1818D /* NSObject+SBJson.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6989179444CE004E0DE4 /* NSObject+SBJson.m */; };
+		C6A2B0AC1794498F00F1818D /* SBJsonParser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698A179444CE004E0DE4 /* SBJsonParser.m */; };
+		C6A2B0AD1794498F00F1818D /* SBJsonStreamParser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698B179444CE004E0DE4 /* SBJsonStreamParser.m */; };
+		C6A2B0AE1794498F00F1818D /* SBJsonStreamParserAccumulator.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698C179444CE004E0DE4 /* SBJsonStreamParserAccumulator.m */; };
+		C6A2B0AF1794498F00F1818D /* SBJsonStreamParserAdapter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698D179444CE004E0DE4 /* SBJsonStreamParserAdapter.m */; };
+		C6A2B0B01794498F00F1818D /* SBJsonStreamParserState.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698E179444CE004E0DE4 /* SBJsonStreamParserState.m */; };
+		C6A2B0B11794498F00F1818D /* SBJsonStreamWriter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698F179444CE004E0DE4 /* SBJsonStreamWriter.m */; };
+		C6A2B0B21794498F00F1818D /* SBJsonStreamWriterAccumulator.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6990179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.m */; };
+		C6A2B0B31794498F00F1818D /* SBJsonStreamWriterState.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6991179444CE004E0DE4 /* SBJsonStreamWriterState.m */; };
+		C6A2B0B41794498F00F1818D /* SBJsonTokeniser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6992179444CE004E0DE4 /* SBJsonTokeniser.m */; };
+		C6A2B0B51794498F00F1818D /* SBJsonUTF8Stream.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6993179444CE004E0DE4 /* SBJsonUTF8Stream.m */; };
+		C6A2B0B61794498F00F1818D /* SBJsonWriter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6994179444CE004E0DE4 /* SBJsonWriter.m */; };
+		C6A2B0B8179449A600F1818D /* ASIAuthenticationDialog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6997179444CE004E0DE4 /* ASIAuthenticationDialog.h */; };
+		C6A2B0B9179449A600F1818D /* ASICacheDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6998179444CE004E0DE4 /* ASICacheDelegate.h */; };
+		C6A2B0BA179449A600F1818D /* ASIDataCompressor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6999179444CE004E0DE4 /* ASIDataCompressor.h */; };
+		C6A2B0BB179449A600F1818D /* ASIDataDecompressor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699A179444CE004E0DE4 /* ASIDataDecompressor.h */; };
+		C6A2B0BC179449A600F1818D /* ASIDownloadCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699B179444CE004E0DE4 /* ASIDownloadCache.h */; };
+		C6A2B0BD179449A600F1818D /* ASIFormDataRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699C179444CE004E0DE4 /* ASIFormDataRequest.h */; };
+		C6A2B0BE179449A600F1818D /* ASIHTTPRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699D179444CE004E0DE4 /* ASIHTTPRequest.h */; };
+		C6A2B0BF179449A600F1818D /* ASIHTTPRequestConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699E179444CE004E0DE4 /* ASIHTTPRequestConfig.h */; };
+		C6A2B0C0179449A600F1818D /* ASIHTTPRequestDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699F179444CE004E0DE4 /* ASIHTTPRequestDelegate.h */; };
+		C6A2B0C1179449A600F1818D /* ASIInputStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A0179444CE004E0DE4 /* ASIInputStream.h */; };
+		C6A2B0C2179449A600F1818D /* ASINetworkQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A1179444CE004E0DE4 /* ASINetworkQueue.h */; };
+		C6A2B0C3179449A600F1818D /* ASIProgressDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A2179444CE004E0DE4 /* ASIProgressDelegate.h */; };
+		C6A2B0C4179449A600F1818D /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A3179444CE004E0DE4 /* Reachability.h */; };
+		C6A2B0C6179449BF00F1818D /* NSObject+SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A5179444CE004E0DE4 /* NSObject+SBJson.h */; };
+		C6A2B0C7179449BF00F1818D /* SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A6179444CE004E0DE4 /* SBJson.h */; };
+		C6A2B0C8179449BF00F1818D /* SBJsonParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A7179444CE004E0DE4 /* SBJsonParser.h */; };
+		C6A2B0C9179449BF00F1818D /* SBJsonStreamParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A8179444CE004E0DE4 /* SBJsonStreamParser.h */; };
+		C6A2B0CA179449BF00F1818D /* SBJsonStreamParserAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A9179444CE004E0DE4 /* SBJsonStreamParserAccumulator.h */; };
+		C6A2B0CB179449BF00F1818D /* SBJsonStreamParserAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AA179444CE004E0DE4 /* SBJsonStreamParserAdapter.h */; };
+		C6A2B0CC179449BF00F1818D /* SBJsonStreamParserState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AB179444CE004E0DE4 /* SBJsonStreamParserState.h */; };
+		C6A2B0CD179449BF00F1818D /* SBJsonStreamWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AC179444CE004E0DE4 /* SBJsonStreamWriter.h */; };
+		C6A2B0CE179449BF00F1818D /* SBJsonStreamWriterAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AD179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.h */; };
+		C6A2B0CF179449BF00F1818D /* SBJsonStreamWriterState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AE179444CE004E0DE4 /* SBJsonStreamWriterState.h */; };
+		C6A2B0D0179449BF00F1818D /* SBJsonTokeniser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AF179444CE004E0DE4 /* SBJsonTokeniser.h */; };
+		C6A2B0D1179449BF00F1818D /* SBJsonUTF8Stream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B0179444CE004E0DE4 /* SBJsonUTF8Stream.h */; };
+		C6A2B0D2179449BF00F1818D /* SBJsonWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B1179444CE004E0DE4 /* SBJsonWriter.h */; };
+		C6A2B1701794537C00F1818D /* JotForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6979179444CE004E0DE4 /* JotForm.h */; };
+		C6A2B172179453DB00F1818D /* ASIAuthenticationDialog.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC697F179444CE004E0DE4 /* ASIAuthenticationDialog.m */; };
+		C6A2B173179453DB00F1818D /* ASIDataCompressor.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6980179444CE004E0DE4 /* ASIDataCompressor.m */; };
+		C6A2B174179453DB00F1818D /* ASIDataDecompressor.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6981179444CE004E0DE4 /* ASIDataDecompressor.m */; };
+		C6A2B175179453DB00F1818D /* ASIDownloadCache.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6982179444CE004E0DE4 /* ASIDownloadCache.m */; };
+		C6A2B176179453DB00F1818D /* ASIFormDataRequest.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6983179444CE004E0DE4 /* ASIFormDataRequest.m */; };
+		C6A2B177179453DB00F1818D /* ASIHTTPRequest.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6984179444CE004E0DE4 /* ASIHTTPRequest.m */; };
+		C6A2B178179453DB00F1818D /* ASIInputStream.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6985179444CE004E0DE4 /* ASIInputStream.m */; };
+		C6A2B179179453DB00F1818D /* ASINetworkQueue.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6986179444CE004E0DE4 /* ASINetworkQueue.m */; };
+		C6A2B17A179453DB00F1818D /* Reachability.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6987179444CE004E0DE4 /* Reachability.m */; };
+		C6A2B17C1794540F00F1818D /* NSObject+SBJson.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6989179444CE004E0DE4 /* NSObject+SBJson.m */; };
+		C6A2B17D1794540F00F1818D /* SBJsonParser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698A179444CE004E0DE4 /* SBJsonParser.m */; };
+		C6A2B17E1794540F00F1818D /* SBJsonStreamParser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698B179444CE004E0DE4 /* SBJsonStreamParser.m */; };
+		C6A2B17F1794540F00F1818D /* SBJsonStreamParserAccumulator.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698C179444CE004E0DE4 /* SBJsonStreamParserAccumulator.m */; };
+		C6A2B1801794540F00F1818D /* SBJsonStreamParserAdapter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698D179444CE004E0DE4 /* SBJsonStreamParserAdapter.m */; };
+		C6A2B1811794540F00F1818D /* SBJsonStreamParserState.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698E179444CE004E0DE4 /* SBJsonStreamParserState.m */; };
+		C6A2B1821794540F00F1818D /* SBJsonStreamWriter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC698F179444CE004E0DE4 /* SBJsonStreamWriter.m */; };
+		C6A2B1831794540F00F1818D /* SBJsonStreamWriterAccumulator.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6990179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.m */; };
+		C6A2B1841794540F00F1818D /* SBJsonStreamWriterState.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6991179444CE004E0DE4 /* SBJsonStreamWriterState.m */; };
+		C6A2B1851794540F00F1818D /* SBJsonTokeniser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6992179444CE004E0DE4 /* SBJsonTokeniser.m */; };
+		C6A2B1861794540F00F1818D /* SBJsonUTF8Stream.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6993179444CE004E0DE4 /* SBJsonUTF8Stream.m */; };
+		C6A2B1871794540F00F1818D /* SBJsonWriter.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6994179444CE004E0DE4 /* SBJsonWriter.m */; };
+		C6A2B1891794542300F1818D /* ASIAuthenticationDialog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6997179444CE004E0DE4 /* ASIAuthenticationDialog.h */; };
+		C6A2B18A1794542300F1818D /* ASICacheDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6998179444CE004E0DE4 /* ASICacheDelegate.h */; };
+		C6A2B18B1794542300F1818D /* ASIDataCompressor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC6999179444CE004E0DE4 /* ASIDataCompressor.h */; };
+		C6A2B18C1794542300F1818D /* ASIDataDecompressor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699A179444CE004E0DE4 /* ASIDataDecompressor.h */; };
+		C6A2B18D1794542300F1818D /* ASIDownloadCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699B179444CE004E0DE4 /* ASIDownloadCache.h */; };
+		C6A2B18E1794542300F1818D /* ASIFormDataRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699C179444CE004E0DE4 /* ASIFormDataRequest.h */; };
+		C6A2B18F1794542300F1818D /* ASIHTTPRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699D179444CE004E0DE4 /* ASIHTTPRequest.h */; };
+		C6A2B1901794542300F1818D /* ASIHTTPRequestConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699E179444CE004E0DE4 /* ASIHTTPRequestConfig.h */; };
+		C6A2B1911794542300F1818D /* ASIHTTPRequestDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC699F179444CE004E0DE4 /* ASIHTTPRequestDelegate.h */; };
+		C6A2B1921794542300F1818D /* ASIInputStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A0179444CE004E0DE4 /* ASIInputStream.h */; };
+		C6A2B1931794542300F1818D /* ASINetworkQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A1179444CE004E0DE4 /* ASINetworkQueue.h */; };
+		C6A2B1941794542300F1818D /* ASIProgressDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A2179444CE004E0DE4 /* ASIProgressDelegate.h */; };
+		C6A2B1951794542300F1818D /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A3179444CE004E0DE4 /* Reachability.h */; };
+		C6A2B1971794543800F1818D /* NSObject+SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A5179444CE004E0DE4 /* NSObject+SBJson.h */; };
+		C6A2B1981794543800F1818D /* SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A6179444CE004E0DE4 /* SBJson.h */; };
+		C6A2B1991794543800F1818D /* SBJsonParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A7179444CE004E0DE4 /* SBJsonParser.h */; };
+		C6A2B19A1794543800F1818D /* SBJsonStreamParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A8179444CE004E0DE4 /* SBJsonStreamParser.h */; };
+		C6A2B19B1794543800F1818D /* SBJsonStreamParserAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69A9179444CE004E0DE4 /* SBJsonStreamParserAccumulator.h */; };
+		C6A2B19C1794543800F1818D /* SBJsonStreamParserAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AA179444CE004E0DE4 /* SBJsonStreamParserAdapter.h */; };
+		C6A2B19D1794543800F1818D /* SBJsonStreamParserState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AB179444CE004E0DE4 /* SBJsonStreamParserState.h */; };
+		C6A2B19E1794543800F1818D /* SBJsonStreamWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AC179444CE004E0DE4 /* SBJsonStreamWriter.h */; };
+		C6A2B19F1794543800F1818D /* SBJsonStreamWriterAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AD179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.h */; };
+		C6A2B1A01794543800F1818D /* SBJsonStreamWriterState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AE179444CE004E0DE4 /* SBJsonStreamWriterState.h */; };
+		C6A2B1A11794543800F1818D /* SBJsonTokeniser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69AF179444CE004E0DE4 /* SBJsonTokeniser.h */; };
+		C6A2B1A21794543800F1818D /* SBJsonUTF8Stream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B0179444CE004E0DE4 /* SBJsonUTF8Stream.h */; };
+		C6A2B1A31794543800F1818D /* SBJsonWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B1179444CE004E0DE4 /* SBJsonWriter.h */; };
+		C6CC69B2179444CE004E0DE4 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CC697A179444CE004E0DE4 /* JotForm.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C6A2B0AA1794498000F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ExternalLib/Classes/json;
+			dstSubfolderSpec = 16;
+			files = (
+				C6A2B0AB1794498F00F1818D /* NSObject+SBJson.m in CopyFiles */,
+				C6A2B0AC1794498F00F1818D /* SBJsonParser.m in CopyFiles */,
+				C6A2B0AD1794498F00F1818D /* SBJsonStreamParser.m in CopyFiles */,
+				C6A2B0AE1794498F00F1818D /* SBJsonStreamParserAccumulator.m in CopyFiles */,
+				C6A2B0AF1794498F00F1818D /* SBJsonStreamParserAdapter.m in CopyFiles */,
+				C6A2B0B01794498F00F1818D /* SBJsonStreamParserState.m in CopyFiles */,
+				C6A2B0B11794498F00F1818D /* SBJsonStreamWriter.m in CopyFiles */,
+				C6A2B0B21794498F00F1818D /* SBJsonStreamWriterAccumulator.m in CopyFiles */,
+				C6A2B0B31794498F00F1818D /* SBJsonStreamWriterState.m in CopyFiles */,
+				C6A2B0B41794498F00F1818D /* SBJsonTokeniser.m in CopyFiles */,
+				C6A2B0B51794498F00F1818D /* SBJsonUTF8Stream.m in CopyFiles */,
+				C6A2B0B61794498F00F1818D /* SBJsonWriter.m in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B0B71794499500F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ExternalLib/Header/asi;
+			dstSubfolderSpec = 16;
+			files = (
+				C6A2B0B8179449A600F1818D /* ASIAuthenticationDialog.h in CopyFiles */,
+				C6A2B0B9179449A600F1818D /* ASICacheDelegate.h in CopyFiles */,
+				C6A2B0BA179449A600F1818D /* ASIDataCompressor.h in CopyFiles */,
+				C6A2B0BB179449A600F1818D /* ASIDataDecompressor.h in CopyFiles */,
+				C6A2B0BC179449A600F1818D /* ASIDownloadCache.h in CopyFiles */,
+				C6A2B0BD179449A600F1818D /* ASIFormDataRequest.h in CopyFiles */,
+				C6A2B0BE179449A600F1818D /* ASIHTTPRequest.h in CopyFiles */,
+				C6A2B0BF179449A600F1818D /* ASIHTTPRequestConfig.h in CopyFiles */,
+				C6A2B0C0179449A600F1818D /* ASIHTTPRequestDelegate.h in CopyFiles */,
+				C6A2B0C1179449A600F1818D /* ASIInputStream.h in CopyFiles */,
+				C6A2B0C2179449A600F1818D /* ASINetworkQueue.h in CopyFiles */,
+				C6A2B0C3179449A600F1818D /* ASIProgressDelegate.h in CopyFiles */,
+				C6A2B0C4179449A600F1818D /* Reachability.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B0C5179449AD00F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ExternalLib/Header/json;
+			dstSubfolderSpec = 16;
+			files = (
+				C6A2B0C6179449BF00F1818D /* NSObject+SBJson.h in CopyFiles */,
+				C6A2B0C7179449BF00F1818D /* SBJson.h in CopyFiles */,
+				C6A2B0C8179449BF00F1818D /* SBJsonParser.h in CopyFiles */,
+				C6A2B0C9179449BF00F1818D /* SBJsonStreamParser.h in CopyFiles */,
+				C6A2B0CA179449BF00F1818D /* SBJsonStreamParserAccumulator.h in CopyFiles */,
+				C6A2B0CB179449BF00F1818D /* SBJsonStreamParserAdapter.h in CopyFiles */,
+				C6A2B0CC179449BF00F1818D /* SBJsonStreamParserState.h in CopyFiles */,
+				C6A2B0CD179449BF00F1818D /* SBJsonStreamWriter.h in CopyFiles */,
+				C6A2B0CE179449BF00F1818D /* SBJsonStreamWriterAccumulator.h in CopyFiles */,
+				C6A2B0CF179449BF00F1818D /* SBJsonStreamWriterState.h in CopyFiles */,
+				C6A2B0D0179449BF00F1818D /* SBJsonTokeniser.h in CopyFiles */,
+				C6A2B0D1179449BF00F1818D /* SBJsonUTF8Stream.h in CopyFiles */,
+				C6A2B0D2179449BF00F1818D /* SBJsonWriter.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B16F1794535800F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.framework/Versions/A/Headers/";
+			dstSubfolderSpec = 0;
+			files = (
+				C6A2B1701794537C00F1818D /* JotForm.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B171179453A300F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Classes/asi";
+			dstSubfolderSpec = 0;
+			files = (
+				C6A2B172179453DB00F1818D /* ASIAuthenticationDialog.m in CopyFiles */,
+				C6A2B173179453DB00F1818D /* ASIDataCompressor.m in CopyFiles */,
+				C6A2B174179453DB00F1818D /* ASIDataDecompressor.m in CopyFiles */,
+				C6A2B175179453DB00F1818D /* ASIDownloadCache.m in CopyFiles */,
+				C6A2B176179453DB00F1818D /* ASIFormDataRequest.m in CopyFiles */,
+				C6A2B177179453DB00F1818D /* ASIHTTPRequest.m in CopyFiles */,
+				C6A2B178179453DB00F1818D /* ASIInputStream.m in CopyFiles */,
+				C6A2B179179453DB00F1818D /* ASINetworkQueue.m in CopyFiles */,
+				C6A2B17A179453DB00F1818D /* Reachability.m in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B17B179453FF00F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Classes/json";
+			dstSubfolderSpec = 0;
+			files = (
+				C6A2B17C1794540F00F1818D /* NSObject+SBJson.m in CopyFiles */,
+				C6A2B17D1794540F00F1818D /* SBJsonParser.m in CopyFiles */,
+				C6A2B17E1794540F00F1818D /* SBJsonStreamParser.m in CopyFiles */,
+				C6A2B17F1794540F00F1818D /* SBJsonStreamParserAccumulator.m in CopyFiles */,
+				C6A2B1801794540F00F1818D /* SBJsonStreamParserAdapter.m in CopyFiles */,
+				C6A2B1811794540F00F1818D /* SBJsonStreamParserState.m in CopyFiles */,
+				C6A2B1821794540F00F1818D /* SBJsonStreamWriter.m in CopyFiles */,
+				C6A2B1831794540F00F1818D /* SBJsonStreamWriterAccumulator.m in CopyFiles */,
+				C6A2B1841794540F00F1818D /* SBJsonStreamWriterState.m in CopyFiles */,
+				C6A2B1851794540F00F1818D /* SBJsonTokeniser.m in CopyFiles */,
+				C6A2B1861794540F00F1818D /* SBJsonUTF8Stream.m in CopyFiles */,
+				C6A2B1871794540F00F1818D /* SBJsonWriter.m in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B1881794541300F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Header/asi";
+			dstSubfolderSpec = 0;
+			files = (
+				C6A2B1891794542300F1818D /* ASIAuthenticationDialog.h in CopyFiles */,
+				C6A2B18A1794542300F1818D /* ASICacheDelegate.h in CopyFiles */,
+				C6A2B18B1794542300F1818D /* ASIDataCompressor.h in CopyFiles */,
+				C6A2B18C1794542300F1818D /* ASIDataDecompressor.h in CopyFiles */,
+				C6A2B18D1794542300F1818D /* ASIDownloadCache.h in CopyFiles */,
+				C6A2B18E1794542300F1818D /* ASIFormDataRequest.h in CopyFiles */,
+				C6A2B18F1794542300F1818D /* ASIHTTPRequest.h in CopyFiles */,
+				C6A2B1901794542300F1818D /* ASIHTTPRequestConfig.h in CopyFiles */,
+				C6A2B1911794542300F1818D /* ASIHTTPRequestDelegate.h in CopyFiles */,
+				C6A2B1921794542300F1818D /* ASIInputStream.h in CopyFiles */,
+				C6A2B1931794542300F1818D /* ASINetworkQueue.h in CopyFiles */,
+				C6A2B1941794542300F1818D /* ASIProgressDelegate.h in CopyFiles */,
+				C6A2B1951794542300F1818D /* Reachability.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6A2B1961794542500F1818D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Header/json";
+			dstSubfolderSpec = 0;
+			files = (
+				C6A2B1971794543800F1818D /* NSObject+SBJson.h in CopyFiles */,
+				C6A2B1981794543800F1818D /* SBJson.h in CopyFiles */,
+				C6A2B1991794543800F1818D /* SBJsonParser.h in CopyFiles */,
+				C6A2B19A1794543800F1818D /* SBJsonStreamParser.h in CopyFiles */,
+				C6A2B19B1794543800F1818D /* SBJsonStreamParserAccumulator.h in CopyFiles */,
+				C6A2B19C1794543800F1818D /* SBJsonStreamParserAdapter.h in CopyFiles */,
+				C6A2B19D1794543800F1818D /* SBJsonStreamParserState.h in CopyFiles */,
+				C6A2B19E1794543800F1818D /* SBJsonStreamWriter.h in CopyFiles */,
+				C6A2B19F1794543800F1818D /* SBJsonStreamWriterAccumulator.h in CopyFiles */,
+				C6A2B1A01794543800F1818D /* SBJsonStreamWriterState.h in CopyFiles */,
+				C6A2B1A11794543800F1818D /* SBJsonTokeniser.h in CopyFiles */,
+				C6A2B1A21794543800F1818D /* SBJsonUTF8Stream.h in CopyFiles */,
+				C6A2B1A31794543800F1818D /* SBJsonWriter.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6CC6965179444B8004E0DE4 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ExternalLib/Classes/asi;
+			dstSubfolderSpec = 16;
+			files = (
+				C6A2B0A11794497D00F1818D /* ASIAuthenticationDialog.m in Copy Files */,
+				C6A2B0A21794497D00F1818D /* ASIDataCompressor.m in Copy Files */,
+				C6A2B0A31794497D00F1818D /* ASIDataDecompressor.m in Copy Files */,
+				C6A2B0A41794497D00F1818D /* ASIDownloadCache.m in Copy Files */,
+				C6A2B0A51794497D00F1818D /* ASIFormDataRequest.m in Copy Files */,
+				C6A2B0A61794497D00F1818D /* ASIHTTPRequest.m in Copy Files */,
+				C6A2B0A71794497D00F1818D /* ASIInputStream.m in Copy Files */,
+				C6A2B0A81794497D00F1818D /* ASINetworkQueue.m in Copy Files */,
+				C6A2B0A91794497D00F1818D /* Reachability.m in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C6A2B09C179448DC00F1818D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C6CC6967179444B8004E0DE4 /* libJotForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJotForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CC696E179444B8004E0DE4 /* JotForm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotForm-Prefix.pch"; sourceTree = "<group>"; };
+		C6CC6979179444CE004E0DE4 /* JotForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
+		C6CC697A179444CE004E0DE4 /* JotForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotForm.m; sourceTree = "<group>"; };
+		C6CC697B179444CE004E0DE4 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		C6CC697F179444CE004E0DE4 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		C6CC6980179444CE004E0DE4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		C6CC6981179444CE004E0DE4 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		C6CC6982179444CE004E0DE4 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		C6CC6983179444CE004E0DE4 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		C6CC6984179444CE004E0DE4 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		C6CC6985179444CE004E0DE4 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		C6CC6986179444CE004E0DE4 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		C6CC6987179444CE004E0DE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C6CC6989179444CE004E0DE4 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		C6CC698A179444CE004E0DE4 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		C6CC698B179444CE004E0DE4 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		C6CC698C179444CE004E0DE4 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		C6CC698D179444CE004E0DE4 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		C6CC698E179444CE004E0DE4 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		C6CC698F179444CE004E0DE4 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		C6CC6990179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		C6CC6991179444CE004E0DE4 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		C6CC6992179444CE004E0DE4 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		C6CC6993179444CE004E0DE4 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		C6CC6994179444CE004E0DE4 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		C6CC6997179444CE004E0DE4 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		C6CC6998179444CE004E0DE4 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		C6CC6999179444CE004E0DE4 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		C6CC699A179444CE004E0DE4 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		C6CC699B179444CE004E0DE4 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		C6CC699C179444CE004E0DE4 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		C6CC699D179444CE004E0DE4 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		C6CC699E179444CE004E0DE4 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		C6CC699F179444CE004E0DE4 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		C6CC69A0179444CE004E0DE4 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		C6CC69A1179444CE004E0DE4 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		C6CC69A2179444CE004E0DE4 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		C6CC69A3179444CE004E0DE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C6CC69A5179444CE004E0DE4 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		C6CC69A6179444CE004E0DE4 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		C6CC69A7179444CE004E0DE4 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		C6CC69A8179444CE004E0DE4 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		C6CC69A9179444CE004E0DE4 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		C6CC69AA179444CE004E0DE4 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		C6CC69AB179444CE004E0DE4 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		C6CC69AC179444CE004E0DE4 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		C6CC69AD179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		C6CC69AE179444CE004E0DE4 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		C6CC69AF179444CE004E0DE4 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		C6CC69B0179444CE004E0DE4 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		C6CC69B1179444CE004E0DE4 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6CC6964179444B8004E0DE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A2B09D179448DC00F1818D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C6CC695E179444B8004E0DE4 = {
+			isa = PBXGroup;
+			children = (
+				C6CC696C179444B8004E0DE4 /* JotForm */,
+				C6CC6969179444B8004E0DE4 /* Frameworks */,
+				C6CC6968179444B8004E0DE4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C6CC6968179444B8004E0DE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6967179444B8004E0DE4 /* libJotForm.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6CC6969179444B8004E0DE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6A2B09C179448DC00F1818D /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6CC696C179444B8004E0DE4 /* JotForm */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6978179444CE004E0DE4 /* Classes */,
+				C6CC697B179444CE004E0DE4 /* Common.h */,
+				C6CC697C179444CE004E0DE4 /* ExternalLib */,
+				C6CC696D179444B8004E0DE4 /* Supporting Files */,
+			);
+			path = JotForm;
+			sourceTree = "<group>";
+		};
+		C6CC696D179444B8004E0DE4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC696E179444B8004E0DE4 /* JotForm-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C6CC6978179444CE004E0DE4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6979179444CE004E0DE4 /* JotForm.h */,
+				C6CC697A179444CE004E0DE4 /* JotForm.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C6CC697C179444CE004E0DE4 /* ExternalLib */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC697D179444CE004E0DE4 /* Classes */,
+				C6CC6995179444CE004E0DE4 /* Header */,
+			);
+			path = ExternalLib;
+			sourceTree = "<group>";
+		};
+		C6CC697D179444CE004E0DE4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC697E179444CE004E0DE4 /* asi */,
+				C6CC6988179444CE004E0DE4 /* json */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C6CC697E179444CE004E0DE4 /* asi */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC697F179444CE004E0DE4 /* ASIAuthenticationDialog.m */,
+				C6CC6980179444CE004E0DE4 /* ASIDataCompressor.m */,
+				C6CC6981179444CE004E0DE4 /* ASIDataDecompressor.m */,
+				C6CC6982179444CE004E0DE4 /* ASIDownloadCache.m */,
+				C6CC6983179444CE004E0DE4 /* ASIFormDataRequest.m */,
+				C6CC6984179444CE004E0DE4 /* ASIHTTPRequest.m */,
+				C6CC6985179444CE004E0DE4 /* ASIInputStream.m */,
+				C6CC6986179444CE004E0DE4 /* ASINetworkQueue.m */,
+				C6CC6987179444CE004E0DE4 /* Reachability.m */,
+			);
+			path = asi;
+			sourceTree = "<group>";
+		};
+		C6CC6988179444CE004E0DE4 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6989179444CE004E0DE4 /* NSObject+SBJson.m */,
+				C6CC698A179444CE004E0DE4 /* SBJsonParser.m */,
+				C6CC698B179444CE004E0DE4 /* SBJsonStreamParser.m */,
+				C6CC698C179444CE004E0DE4 /* SBJsonStreamParserAccumulator.m */,
+				C6CC698D179444CE004E0DE4 /* SBJsonStreamParserAdapter.m */,
+				C6CC698E179444CE004E0DE4 /* SBJsonStreamParserState.m */,
+				C6CC698F179444CE004E0DE4 /* SBJsonStreamWriter.m */,
+				C6CC6990179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.m */,
+				C6CC6991179444CE004E0DE4 /* SBJsonStreamWriterState.m */,
+				C6CC6992179444CE004E0DE4 /* SBJsonTokeniser.m */,
+				C6CC6993179444CE004E0DE4 /* SBJsonUTF8Stream.m */,
+				C6CC6994179444CE004E0DE4 /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		C6CC6995179444CE004E0DE4 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6996179444CE004E0DE4 /* asi */,
+				C6CC69A4179444CE004E0DE4 /* json */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		C6CC6996179444CE004E0DE4 /* asi */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC6997179444CE004E0DE4 /* ASIAuthenticationDialog.h */,
+				C6CC6998179444CE004E0DE4 /* ASICacheDelegate.h */,
+				C6CC6999179444CE004E0DE4 /* ASIDataCompressor.h */,
+				C6CC699A179444CE004E0DE4 /* ASIDataDecompressor.h */,
+				C6CC699B179444CE004E0DE4 /* ASIDownloadCache.h */,
+				C6CC699C179444CE004E0DE4 /* ASIFormDataRequest.h */,
+				C6CC699D179444CE004E0DE4 /* ASIHTTPRequest.h */,
+				C6CC699E179444CE004E0DE4 /* ASIHTTPRequestConfig.h */,
+				C6CC699F179444CE004E0DE4 /* ASIHTTPRequestDelegate.h */,
+				C6CC69A0179444CE004E0DE4 /* ASIInputStream.h */,
+				C6CC69A1179444CE004E0DE4 /* ASINetworkQueue.h */,
+				C6CC69A2179444CE004E0DE4 /* ASIProgressDelegate.h */,
+				C6CC69A3179444CE004E0DE4 /* Reachability.h */,
+			);
+			path = asi;
+			sourceTree = "<group>";
+		};
+		C6CC69A4179444CE004E0DE4 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC69A5179444CE004E0DE4 /* NSObject+SBJson.h */,
+				C6CC69A6179444CE004E0DE4 /* SBJson.h */,
+				C6CC69A7179444CE004E0DE4 /* SBJsonParser.h */,
+				C6CC69A8179444CE004E0DE4 /* SBJsonStreamParser.h */,
+				C6CC69A9179444CE004E0DE4 /* SBJsonStreamParserAccumulator.h */,
+				C6CC69AA179444CE004E0DE4 /* SBJsonStreamParserAdapter.h */,
+				C6CC69AB179444CE004E0DE4 /* SBJsonStreamParserState.h */,
+				C6CC69AC179444CE004E0DE4 /* SBJsonStreamWriter.h */,
+				C6CC69AD179444CE004E0DE4 /* SBJsonStreamWriterAccumulator.h */,
+				C6CC69AE179444CE004E0DE4 /* SBJsonStreamWriterState.h */,
+				C6CC69AF179444CE004E0DE4 /* SBJsonTokeniser.h */,
+				C6CC69B0179444CE004E0DE4 /* SBJsonUTF8Stream.h */,
+				C6CC69B1179444CE004E0DE4 /* SBJsonWriter.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C6A2B09E1794494F00F1818D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A2B09F1794495600F1818D /* JotForm.h in Headers */,
+				C6A2B0A01794495A00F1818D /* Common.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C6CC6966179444B8004E0DE4 /* JotForm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6CC6975179444B8004E0DE4 /* Build configuration list for PBXNativeTarget "JotForm" */;
+			buildPhases = (
+				C6CC6963179444B8004E0DE4 /* Sources */,
+				C6CC6964179444B8004E0DE4 /* Frameworks */,
+				C6A2B09E1794494F00F1818D /* Headers */,
+				C6CC6965179444B8004E0DE4 /* Copy Files */,
+				C6A2B0AA1794498000F1818D /* CopyFiles */,
+				C6A2B0B71794499500F1818D /* CopyFiles */,
+				C6A2B0C5179449AD00F1818D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JotForm;
+			productName = JotForm;
+			productReference = C6CC6967179444B8004E0DE4 /* libJotForm.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C6CC695F179444B8004E0DE4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Wang YuPing";
+			};
+			buildConfigurationList = C6CC6962179444B8004E0DE4 /* Build configuration list for PBXProject "JotForm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C6CC695E179444B8004E0DE4;
+			productRefGroup = C6CC6968179444B8004E0DE4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6CC6966179444B8004E0DE4 /* JotForm */,
+				C6CC69C8179444F6004E0DE4 /* JotForm-Universal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6CC69CC179444FC004E0DE4 /* Creating Universal Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Creating Universal Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\" &&\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" &&\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\" &&\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\" &&\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\" &&\n\n# Create framework directory structure.\nrm -rf \"${FRAMEWORK}\" &&\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\" &&\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\" &&\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\" &&\n\n# Generate universal binary for the device and simulator.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\" &&\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\" &&\nln -s \"A\" \"${FRAMEWORK}/Versions/Current\" &&\nln -s \"Versions/Current/Headers\" \"${FRAMEWORK}/Headers\" &&\nln -s \"Versions/Current/Resources\" \"${FRAMEWORK}/Resources\" &&\nln -s \"Versions/Current/${PRODUCT_NAME}\" \"${FRAMEWORK}/${PRODUCT_NAME}\"";
+		};
+		C6CC69CD17944534004E0DE4 /* Build Static Library */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Static Library";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\n\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6CC6963179444B8004E0DE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6CC69B2179444CE004E0DE4 /* JotForm.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C6CC6973179444B8004E0DE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C6CC6974179444B8004E0DE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C6CC6976179444B8004E0DE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					i386,
+				);
+				CODE_SIGN_IDENTITY = "";
+				DSTROOT = /tmp/JotForm.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JotForm/JotForm-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C6CC6977179444B8004E0DE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					i386,
+				);
+				CODE_SIGN_IDENTITY = "";
+				DSTROOT = /tmp/JotForm.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JotForm/JotForm-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C6CC69CA179444F6004E0DE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = JotForm;
+			};
+			name = Debug;
+		};
+		C6CC69CB179444F6004E0DE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = JotForm;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C6CC6962179444B8004E0DE4 /* Build configuration list for PBXProject "JotForm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6CC6973179444B8004E0DE4 /* Debug */,
+				C6CC6974179444B8004E0DE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6CC6975179444B8004E0DE4 /* Build configuration list for PBXNativeTarget "JotForm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6CC6976179444B8004E0DE4 /* Debug */,
+				C6CC6977179444B8004E0DE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6CC69C9179444F6004E0DE4 /* Build configuration list for PBXAggregateTarget "JotForm-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6CC69CA179444F6004E0DE4 /* Debug */,
+				C6CC69CB179444F6004E0DE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C6CC695F179444B8004E0DE4 /* Project object */;
+}
