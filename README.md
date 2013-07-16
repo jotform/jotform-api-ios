@@ -37,7 +37,7 @@ Print all forms of the user
     
     // there was an error getting forms
     jotform.didFailBlock = ^(id error) {
-        NSLog(@"error = %@", result);        
+        NSLog(@"error = %@", error);        
     };
 
     [jotform getForms];
@@ -58,7 +58,7 @@ Get latest submissions of the user
     
     // there was an error getting forms
     jotform.didFailBlock = ^(id error) {
-        NSLog(@"error = %@", result);        
+        NSLog(@"error = %@", error);        
     };
 
     [jotform getSubmissions];
