@@ -63,7 +63,7 @@ Get latest submissions of the user
         NSLog(@"response = %@", result);
     };
     
-    // there was an error getting forms
+    // there was an error getting submissions
     jotform.didFailBlock = ^(id error) {
         NSLog(@"error = %@", error);        
     };
