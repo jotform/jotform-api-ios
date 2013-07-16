@@ -12,7 +12,7 @@
 #define BASE_URL                     @"https://api.jotform.com"
 #define HTTPREQUEST_METHOD_GET       @"GET"
 #define HTTPREQUEST_METHOD_POST      @"POST"
-#define USER_AGENT                   @"JOTFORM_PHP_WRAPPER"
+#define USER_AGENT                   @"JOTFORM_IOS_WRAPPER"
 #define API_VERSION                  @"v1"
 
 #endif
