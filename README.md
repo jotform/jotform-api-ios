@@ -51,7 +51,7 @@ Get latest submissions of the user
 
     jotform = [[JotForm alloc] initWithApiKey:"Your API KEY" debugMode:NO];
 
-    // get successfully forms
+    // get successfully submissions
     jotform.didFinishBlock = ^(id result) {
         NSLog(@"response = %@", result);
     };
