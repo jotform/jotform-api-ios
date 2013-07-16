@@ -8,6 +8,7 @@ jotform-api-ios
  * Download the zipped project from downloads page or clone the git repository to your computer.
 
       $ git clone git://github.com/jotform/jotform-api-ios.git
+
       $ cd jotform-api-ios
 
  * Please open the project and build it and select "Products/libJotForm.a" and click mouse-right button and click "Show in Finder"
