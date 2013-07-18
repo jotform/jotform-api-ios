@@ -27,6 +27,7 @@ typedef void (^JorFormBlock)(id);
 @property (nonatomic, copy) JorFormBlock        didFinishBlock;
 @property (nonatomic, copy) JorFormBlock        didFailBlock;
 
+- (void) getApiKey : (NSString *) username password : (NSString *) password;
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode;
 - (void) getUser;
 - (void) getUsage;

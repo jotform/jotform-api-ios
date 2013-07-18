@@ -126,6 +126,7 @@
 		C6A2B1A21794543800F1818D /* SBJsonUTF8Stream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B0179444CE004E0DE4 /* SBJsonUTF8Stream.h */; };
 		C6A2B1A31794543800F1818D /* SBJsonWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC69B1179444CE004E0DE4 /* SBJsonWriter.h */; };
 		C6CC69B2179444CE004E0DE4 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CC697A179444CE004E0DE4 /* JotForm.m */; };
+		C6E8A4161797DFF600AA1AA7 /* Common.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6CC697B179444CE004E0DE4 /* Common.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +201,7 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.framework/Versions/A/Headers/";
 			dstSubfolderSpec = 0;
 			files = (
+				C6E8A4161797DFF600AA1AA7 /* Common.h in CopyFiles */,
 				C6A2B1701794537C00F1818D /* JotForm.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

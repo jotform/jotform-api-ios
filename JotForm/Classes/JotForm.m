@@ -11,6 +11,22 @@
 @implementation JotForm
 @synthesize operationQueue;
 
+- (id) init
+{
+    if ( self = [super init] ) {
+        
+        apiKey = @"";
+        debugMode = NO;
+        baseUrl = BASE_URL;
+        apiVersion = API_VERSION;
+        operationQueue = [[NSOperationQueue alloc] init];
+        [operationQueue setMaxConcurrentOperationCount:1];
+        
+    }
+    
+    return self;
+}
+
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode
 {
     if ( self = [super init] ) {
@@ -21,6 +37,7 @@
         apiVersion = API_VERSION;
         operationQueue = [[NSOperationQueue alloc] init];
         [operationQueue setMaxConcurrentOperationCount:1];
+
     }
     
     return self;
@@ -85,6 +102,17 @@
 - (void) executePostRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
+}
+
+- (void) getApiKey : (NSString *) username password : (NSString *) password
+{
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    [params setObject:username forKey:@"username"];
+    [params setObject:password forKey:@"password"];
+    [params setObject:@"iOS" forKey:@"appName"];
+    
+    [self executePostRequest:@"login" params:params];
 }
 
 - (void) getUser
