@@ -10,6 +10,9 @@
 
 @implementation JotForm
 @synthesize operationQueue;
+@synthesize delegate;
+@synthesize didFinishSelector;
+@synthesize didFailSelector;
 
 - (id) init
 {
@@ -76,7 +79,15 @@
     [self debugLog:urlStr];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    [request setDelegate:self];
+    
     [request setRequestMethod:method];
+
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    [userinfo setObject:NSStringFromSelector(didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(didFailSelector) forKey:@"didFailSelector"];
+    
+    [request setUserInfo:userinfo];
     [request setUserAgentString:USER_AGENT];
     [request addRequestHeader:@"apiKey" value:apiKey];
         
@@ -90,7 +101,6 @@
             [request addPostValue:[params objectForKey:key] forKey:key];
     }
     
-    [request setDelegate:self];
     [operationQueue addOperation:request];
 }
 
@@ -278,6 +288,8 @@
 {
     [self debugLog:[request responseString]];
     
+    SEL finishSelector = NSSelectorFromString([request.userInfo objectForKey:@"didFinishSelector"]);
+    
     NSInteger statuscode = [request responseStatusCode];
     
     if ( statuscode != 200 ) {
@@ -287,13 +299,39 @@
     SBJsonParser *jsonparser = [SBJsonParser new];
     
     id result = [jsonparser objectWithString:[request responseString]];
+
+    if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+        [self.delegate performSelector:finishSelector withObject:result];
+    }
     
-    self.didFinishBlock(result);
+    /*
+    if ( self.didFinishBlock != nil ) {
+        self.didFinishBlock(result);
+    }
+    
+    if ( self.delegate != nil && [self.delegate respondsToSelector:@selector(requestFinished:)] ) {
+        [self.delegate performSelector:@selector(requestFinished:) withObject:result];
+    }
+     */
 }
 
 - (void) requestFailed : (ASIHTTPRequest *) request
 {
-    self.didFailBlock([request error]);
+    SEL failSelector = NSSelectorFromString([request.userInfo objectForKey:@"didFailSelector"]);
+    
+    if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+        [self.delegate performSelector:failSelector withObject:[request error]];
+    }
+    
+    /*
+    if ( self.didFinishBlock != nil ) {
+        self.didFailBlock();
+    }
+    
+    if ( self.delegate != nil && [self.delegate respondsToSelector:@selector(requestFailed:)] ) {
+        [self.delegate performSelector:@selector(requestFailed:) withObject:[request err]];
+    }
+     */
 }
 
 - (void) dealloc
