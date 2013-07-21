@@ -36,18 +36,23 @@ Print all forms of the user
     JotForm *jotform;
 
     jotform = [[JotForm alloc] initWithApiKey:"Your API KEY" debugMode:NO];
+    jotform.delegate = self;
+
+    [jotform setDidFinishSelector:@selector(getFormsFinish:)];
+    [jotform setDidFailSelector:@selector(getFormsFail:)];
+    [jotform getForms];
 
     // get successfully forms
-    jotform.didFinishBlock = ^(id result) {
+    - (void) getFormsFinish : (id) result
+    {
         NSLog(@"response = %@", result);
-    };
-    
-    // there was an error getting forms
-    jotform.didFailBlock = ^(id error) {
-        NSLog(@"error = %@", error);        
-    };
+    }
 
-    [jotform getForms];
+    // there was an error getting forms
+    - (void) getFormsFail : (id) error
+    {
+        NSLog(@"response = %@", result);
+    }
 
 
 Get latest submissions of the user
@@ -57,15 +62,20 @@ Get latest submissions of the user
     JotForm *jotform;
 
     jotform = [[JotForm alloc] initWithApiKey:"Your API KEY" debugMode:NO];
+    jotform.delegate = self;
+
+    [jotform setDidFinishSelector:@selector(getSubmissionsFinish:)];
+    [jotform setDidFailSelector:@selector(getSubmissionsFail:)];
+    [jotform getSubmissions];
 
     // get successfully submissions
-    jotform.didFinishBlock = ^(id result) {
+    - (void) getSubmissionsFinish : (id) result
+    {
         NSLog(@"response = %@", result);
-    };
-    
-    // there was an error getting submissions
-    jotform.didFailBlock = ^(id error) {
-        NSLog(@"error = %@", error);        
-    };
+    }
 
-    [jotform getSubmissions];
+    // there was an error getting submissions
+    - (void) getSubmissionsFail : (id) error
+    {
+        NSLog(@"response = %@", result);
+    }

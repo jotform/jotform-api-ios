@@ -14,14 +14,7 @@
 
 @protocol JotFormDelegate <NSObject>
 
-@optional
-
-- (void) requestFinished : (id) result;
-- (void) requestFailed : (id) result;
-
 @end
-
-typedef void (^JorFormBlock)(id);
 
 @interface JotForm : NSObject<ASIHTTPRequestDelegate>
 {
@@ -38,9 +31,6 @@ typedef void (^JorFormBlock)(id);
 }
 
 @property (nonatomic, retain) NSOperationQueue      *operationQueue;
-
-@property (nonatomic, copy) JorFormBlock            didFinishBlock;
-@property (nonatomic, copy) JorFormBlock            didFailBlock;
 
 @property (assign) SEL                              didFinishSelector;
 @property (assign) SEL                              didFailSelector;

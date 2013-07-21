@@ -304,7 +304,7 @@
         [self.delegate performSelector:finishSelector withObject:result];
     }
     
-    /*
+    /* for further update
     if ( self.didFinishBlock != nil ) {
         self.didFinishBlock(result);
     }
@@ -323,7 +323,7 @@
         [self.delegate performSelector:failSelector withObject:[request error]];
     }
     
-    /*
+    /* for further update
     if ( self.didFinishBlock != nil ) {
         self.didFailBlock();
     }
