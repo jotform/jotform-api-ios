@@ -9,7 +9,7 @@
 #ifndef JotForm_Common_h
 #define JotForm_Common_h
 
-#define BASE_URL                     @"https://api.jotform.com"
+#define BASE_URL                     @"http://api.jotform.com"
 #define HTTPREQUEST_METHOD_GET       @"GET"
 #define HTTPREQUEST_METHOD_POST      @"POST"
 #define HTTPREQUEST_METHOD_DELETE    @"DELETE"

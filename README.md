@@ -55,7 +55,7 @@ Print all forms of the user
     }
 
 
-Get latest submissions of the user
+Get latest 100 submissions ordered by creation date
 
     #import <JotForm/JotForm.h>
 
@@ -66,7 +66,7 @@ Get latest submissions of the user
 
     [jotform setDidFinishSelector:@selector(getSubmissionsFinish:)];
     [jotform setDidFailSelector:@selector(getSubmissionsFail:)];
-    [jotform getSubmissions];
+    [jotform getSubmissions:0 limit:100 orderBy:@"created_at" filter:nil];
 
     // get successfully submissions
     - (void) getSubmissionsFinish : (id) result
@@ -76,6 +76,60 @@ Get latest submissions of the user
 
     // there was an error getting submissions
     - (void) getSubmissionsFail : (id) error
+    {
+        NSLog(@"response = %@", result);
+    }
+
+Submission filter examples
+
+    #import <JotForm/JotForm.h>
+
+    JotForm *jotform;
+
+    jotform = [[JotForm alloc] initWithApiKey:"Your API KEY" debugMode:NO];
+    jotform.delegate = self;
+
+
+    NSMutableDictionary *submissionFilter = [[NSMutableDictionary alloc] init];
+    [submissionFilter setObject:@"2013-08-06 21:10:08" forKey:@"created_at:gt"];
+    
+    [jotform setDidFinishSelector:@selector(getSubmissionsFinish:)];
+    [jotform setDidFailSelector:@selector(getSubmissionsFail:)];
+    [jotform getSubmissions:0 limit:0 orderBy:nil filter:submissionFilter];
+
+    // get successfully submissions
+    - (void) getSubmissionsFinish : (id) result
+    {
+        NSLog(@"response = %@", result);
+    }
+
+    // there was an error getting submissions
+    - (void) getSubmissionsFail : (id) error
+    {
+        NSLog(@"response = %@", result);
+    }
+
+Delete submission
+
+    #import <JotForm/JotForm.h>
+
+    JotForm *jotform;
+
+    jotform = [[JotForm alloc] initWithApiKey:"Your API KEY" debugMode:NO];
+    jotform.delegate = self;
+
+    [jotform setDidFinishSelector:@selector(deleteSubmissionFinish:)];
+    [jotform setDidFailSelector:@selector(deleteSubmissionFail:)];
+    [jotform deleteSubmission:32243555745860];
+
+    // deleted successfully submission
+    - (void) deleteSubmissionFinish : (id) result
+    {
+        NSLog(@"response = %@", result);
+    }
+
+    // there was an error deleting submission
+    - (void) deleteSubmissionFail : (id) error
     {
         NSLog(@"response = %@", result);
     }

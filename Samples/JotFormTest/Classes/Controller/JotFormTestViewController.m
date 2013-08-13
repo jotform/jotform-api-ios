@@ -8,6 +8,7 @@
 
 #import "JotFormTestViewController.h"
 #import "Common.h"
+#import "HttpRequest.h"
 
 @interface JotFormTestViewController ()
 
@@ -41,15 +42,15 @@
 
 - (void) initJotFormApiClient
 {
-    jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:NO];
+    jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:YES];
     jotform.delegate = self;
 }
 
 - (void) callJotFormAPI
 {
-    
     [jotform setDidFinishSelector:@selector(getFormsFinish:)];
     [jotform setDidFailSelector:@selector(getFormsFail:)];
+    
     [jotform getForms];
 }
 
