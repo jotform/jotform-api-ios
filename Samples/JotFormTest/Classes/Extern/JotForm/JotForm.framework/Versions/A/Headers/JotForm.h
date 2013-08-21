@@ -211,13 +211,6 @@
 - (void) getReport : (long long) reportID;
 
 /**
- * Get folder details
- * @param folderID You can get a list of folders from /user/folders.
- * @return Returns a list of forms in a folder, and other details about the form such as folder color.
- */
-- (void) getFolder : (long long) folderID;
-
-/**
  * Get a list of all properties on a form.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @return Returns form properties like width, expiration date, style etc.

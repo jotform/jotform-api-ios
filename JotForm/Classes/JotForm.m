@@ -82,7 +82,7 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
     [request setDelegate:self];
 
-    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *userinfo = [[[NSMutableDictionary alloc] init] autorelease];
     [userinfo setObject:NSStringFromSelector(didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(didFailSelector) forKey:@"didFailSelector"];
     
@@ -323,8 +323,8 @@
         else
             subkey = [NSString stringWithFormat:@"submission[%@]", key];
         
-        if ( [submission objectForKey:subkey] != nil )
-            [parameters setObject:[submission objectForKey:subkey] forKey:subkey];
+        if ( [submission objectForKey:key] != nil )
+            [parameters setObject:[submission objectForKey:key] forKey:subkey];
         
     }
     
@@ -359,11 +359,6 @@
 - (void) getReport : (long long) reportID
 {
     [self executeGetRequest:[NSString stringWithFormat:@"report/%lld", reportID] params:nil];
-}
-
-- (void) getFolder : (long long) folderID
-{
-    [self executeGetRequest:[NSString stringWithFormat:@"folder/%lld", folderID] params:nil];
 }
 
 - (void) getFormProperties : (long long) formID
