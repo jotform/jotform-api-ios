@@ -540,6 +540,7 @@
 		3CD6BF7C1779FDF70065788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
