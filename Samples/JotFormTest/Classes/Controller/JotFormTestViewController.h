@@ -16,6 +16,4 @@
     JotForm                     *jotform;
 }
 
-- (IBAction) getFormsButtonClicked : (id) sender;
-
 @end

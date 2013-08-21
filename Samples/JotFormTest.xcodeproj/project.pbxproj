@@ -519,8 +519,6 @@
 		3CD6BF7B1779FDF70065788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Simon Miles (57S62L8GUC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Simon Miles (57S62L8GUC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
@@ -533,8 +531,6 @@
 					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "EC6B120D-328B-4CC0-8E5D-5EE0E15277F3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EC6B120D-328B-4CC0-8E5D-5EE0E15277F3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
