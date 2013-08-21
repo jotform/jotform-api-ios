@@ -328,7 +328,8 @@
         
     }
     
-    [self executePostRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params:parameters];
+    [self executePostRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params
+                            :parameters];
 }
 
 - (void) getFormFiles : (long long) formID
@@ -349,6 +350,11 @@
     [params setObject:webhookURL forKey:@"webhookURL"];
     
     [self executePostRequest:[NSString stringWithFormat:@"form/%lld/webhooks", formID] params:params];
+}
+
+- (void) deleteWebhook : (long long) formID webhookId : (long long ) webhookID
+{
+    [self executeDeleteRequest:[NSString stringWithFormat:@"form/%lld/webhooks/%lld", formID, webhookID] params:nil];
 }
 
 - (void) getSubmission : (long long) sid

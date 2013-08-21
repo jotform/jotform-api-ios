@@ -197,6 +197,14 @@
 - (void) createFormWebhooks : (long long) formID hookUrl : (NSString *) webhookURL;
 
 /**
+* Delete a specific webhook of a form.
+* @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+* @param webhookID You can get webhook IDs when you call /form/{formID}/webhooks.
+* @return Returns remaining webhook URLs of form.
+*/
+- (void) deleteWebhook : (long long) formID webhookId : (long long ) webhookID;
+
+/**
  * Get submission data
  * @param sid You can get submission IDs when you call /form/{id}/submissions.
  * @return Returns information and answers of a specific submission.
