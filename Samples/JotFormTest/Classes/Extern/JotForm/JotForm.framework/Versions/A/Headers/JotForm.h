@@ -110,6 +110,14 @@
 - (void) getSettings;
 
 /**
+ * Update user's settings
+ * @param settings New user setting values with setting keys
+ * @return Return changes on user settings
+ */
+
+- (void) updateSettings : (NSMutableDictionary *) settings;
+
+/**
  * Get user activity log.
  * @return Returns activity log about things like forms created/modified/deleted, account logins and other operations.
  */
@@ -195,6 +203,14 @@
  * @return Returns list of webhooks for a specific form.
  */
 - (void) createFormWebhooks : (long long) formID hookUrl : (NSString *) webhookURL;
+
+/**
+* Delete a specific webhook of a form.
+* @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+* @param webhookID You can get webhook IDs when you call /form/{formID}/webhooks.
+* @return Returns remaining webhook URLs of form.
+*/
+- (void) deleteWebhook : (long long) formID webhookId : (long long ) webhookID;
 
 /**
  * Get submission data

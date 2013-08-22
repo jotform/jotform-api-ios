@@ -110,6 +110,14 @@
 - (void) getSettings;
 
 /**
+ * Update user's settings
+ * @param settings New user setting values with setting keys
+ * @return Return changes on user settings
+ */
+
+- (void) updateSettings : (NSMutableDictionary *) settings;
+
+/**
  * Get user activity log.
  * @return Returns activity log about things like forms created/modified/deleted, account logins and other operations.
  */

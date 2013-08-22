@@ -266,6 +266,11 @@
     [self executeGetRequest:@"user/settings" params:nil];
 }
 
+- (void) updateSettings : (NSMutableDictionary *) settings
+{
+    [self executePostRequest:@"user/settings" params:settings];
+}
+
 - (void) getHistory
 {
     [self executeGetRequest:@"user/history" params:nil];
