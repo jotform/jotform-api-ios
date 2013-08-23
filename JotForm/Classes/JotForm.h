@@ -98,6 +98,14 @@
 - (void) getFolders;
 
 /**
+ * Get folder details
+ * @param folderId You can get a list of folders from /user/folders.
+ * @return Returns a list of forms in a folder, and other details about the form such as folder color.
+ */
+- (void) getFolder : (long long) folderId;
+
+
+/**
  * List of URLS for reports in this account.
  * @return Returns reports for all of the forms. ie. Excel, CSV, printable charts, embeddable HTML tables.
  */

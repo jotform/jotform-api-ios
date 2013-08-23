@@ -256,6 +256,11 @@
     [self executeGetRequest:@"user/folders" params:nil];
 }
 
+- (void) getFolder : (long long) folderId
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"folder/%lld", folderId] params:nil];
+}
+
 - (void) getReports
 {
     [self executeGetRequest:@"user/reports" params:nil];
