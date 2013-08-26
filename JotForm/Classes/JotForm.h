@@ -38,8 +38,23 @@
 @property (nonatomic, assign) id<JotFormDelegate>   delegate;
 
 
-- (void) getApiKey : (NSString *) username password : (NSString *) password;
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode;
+
+/**
+ * Login user with given credentials
+ * @param userinfo Username, password, application name and access type of user
+ * @return Returns logged in user's settings and app key
+ */
+
+- (void) login : (NSMutableDictionary *) userinfo;
+
+/**
+ * Register with username, password and email
+ * @param userinfo Username, password and email to register a new user
+ * @return Returns new user's details
+ */
+
+- (void) registerUser : (NSMutableDictionary *) userinfo;
 
 /**
  * Get user account details for a JotForm user.

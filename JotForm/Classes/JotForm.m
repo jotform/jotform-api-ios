@@ -201,15 +201,14 @@
     return params;
 }
 
-- (void) getApiKey : (NSString *) username password : (NSString *) password
+- (void) login : (NSMutableDictionary *) userinfo
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
-    
-    [params setObject:username forKey:@"username"];
-    [params setObject:password forKey:@"password"];
-    [params setObject:@"iOS" forKey:@"appName"];
-    
-    [self executePostRequest:@"login" params:params];
+    [self executePostRequest:@"user/login" params:userinfo];
+}
+
+- (void) registerUser : (NSMutableDictionary *) userinfo
+{
+    [self executePostRequest:@"user/register" params:userinfo];
 }
 
 - (void) getUser
