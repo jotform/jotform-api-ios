@@ -461,7 +461,47 @@
     [self executePutRequest:[NSString stringWithFormat:@"form/%lld/properties", formID] params:properties];
 }
 
-- (void) createForm : (NSString *) form
+- (void) createForm : (NSMutableDictionary *) form
+{
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    NSArray *formKeys = [form allKeys];
+    
+    for ( NSString *formKey in formKeys ) {
+        
+        if ( [formKey isEqualToString:@"properties"] ) {
+            
+            NSMutableDictionary *properties = [form objectForKey:formKey];
+            
+            NSArray *propertyKeys = [properties allKeys];
+            
+            for ( NSString *propertyKey in propertyKeys )
+                [params setObject:[properties objectForKey:propertyKey] forKey:[NSString stringWithFormat:@"%@[%@]", formKey, propertyKey]];
+            
+        } else {
+            
+            NSMutableDictionary *formItem = [form objectForKey:formKey];
+            
+            NSArray *formItemKeys = [formItem allKeys];
+            
+            for ( NSString *formItemKey in formItemKeys ) {
+                
+                NSMutableDictionary *fi = [formItem objectForKey:formItemKey];
+                
+                NSArray *fiKeys = [fi allKeys];
+                
+                for ( NSString *fiKey in fiKeys )
+                    [params setObject:[fi objectForKey:fiKey] forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey, formItemKey, fiKey]];
+                    
+            }
+        }
+        
+    }
+    
+    [self executePostRequest:@"user/forms" params:params];
+}
+
+- (void) createForms : (NSString *) form
 {
     [self executePutRequest:@"user/forms" params:form];
 }

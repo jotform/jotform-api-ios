@@ -340,7 +340,14 @@
  * @param form Questions, properties and emails of new form.
  * @return Returns new form.
  */
-- (void) createForm : (NSString *) form;
+- (void) createForm : (NSMutableDictionary *) form;
+
+/**
+ * Create a new form
+ * @param form Questions, properties and emails of new form.
+ * @return Returns new form.
+ */
+- (void) createForms : (NSString *) form;
 
 /**
  * Delete a single form
