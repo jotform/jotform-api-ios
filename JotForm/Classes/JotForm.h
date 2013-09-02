@@ -356,4 +356,6 @@
  */
 - (void) deleteForm : (long long) formID;
 
+- (id) deleteSubmissionSynchronous : (long long) formID;
+
 @end

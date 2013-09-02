@@ -511,6 +511,39 @@
     [self executeDeleteRequest:[NSString stringWithFormat:@"form/%lld", formID] params:nil];
 }
 
+- (id) deleteSubmissionSynchronous : (long long) formID
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID]];
+    
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
+              NSASCIIStringEncoding];
+    
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    [request setDelegate:self];
+    [request setUserAgentString:USER_AGENT];
+    [request addRequestHeader:@"apiKey" value:apiKey];
+    [request setRequestMethod:HTTPREQUEST_METHOD_DELETE];
+        
+    [request startSynchronous];
+    
+    NSError *error = [request error];
+    
+    if (!error) {
+        
+        NSString *response = [request responseString];
+        
+        SBJsonParser *jsonParser = [SBJsonParser new];
+        
+        id respObject = [jsonParser objectWithString:response];
+        
+        return respObject;
+    }
+    
+    return nil;
+}
+
 #pragma mark - ASIHttpRequest Delegate Method
 
 - (void) requestFinished : (ASIHTTPRequest *) request
