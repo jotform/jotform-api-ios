@@ -24,10 +24,6 @@ If you have build conflicts with any of the libraries above, you have the choice
 
 You can find the docs for the API of this client at [http://api.jotform.com/docs/](http://api.jotform.com/docs)
 
-### Authentication
-
-JotForm API requires API key for all user related calls. You can create your API Keys at  [API section](http://www.jotform.com/myaccount/api) of My Account page.
-
 ### Examples
 
 Print all forms of the user
