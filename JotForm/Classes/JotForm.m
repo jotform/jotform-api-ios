@@ -88,6 +88,7 @@
     
     [request setUserInfo:userinfo];
     [request setUserAgentString:USER_AGENT];
+    [request setTimeOutSeconds:60];
     [request addRequestHeader:@"apiKey" value:apiKey];
     [request setRequestMethod:method];
     
@@ -374,6 +375,24 @@
 - (void) getReport : (long long) reportID
 {
     [self executeGetRequest:[NSString stringWithFormat:@"report/%lld", reportID] params:nil];
+}
+
+- (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields
+{
+    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+
+    [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
+    
+    if ( title != nil )
+        [params setObject:title forKey:@"title"];
+
+    if ( list_type != nil )
+        [params setObject:list_type forKey:@"list_type"];
+    
+    if ( fields != nil )
+        [params setObject:fields forKey:@"fields"];
+
+    [self executePostRequest:[NSString stringWithFormat:@"form/%lld/reports", formID] params:params];
 }
 
 - (void) getFormProperties : (long long) formID

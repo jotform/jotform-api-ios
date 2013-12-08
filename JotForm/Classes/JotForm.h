@@ -250,6 +250,16 @@
 - (void) getReport : (long long) reportID;
 
 /**
+ * Create new report of a form with intended fields, type and title.
+ * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+ * @title title is report title.
+ * @list_type You can specify report type. 'csv', 'excel', 'grid', 'table', 'rss'
+ * @fields you can specify fields, User IP, submission date(dt) and question IDs
+ * @return Report details and URL.
+ */
+- (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields;
+
+/**
  * Get a list of all properties on a form.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @return Returns form properties like width, expiration date, style etc.

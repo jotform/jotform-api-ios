@@ -38,8 +38,23 @@
 @property (nonatomic, assign) id<JotFormDelegate>   delegate;
 
 
-- (void) getApiKey : (NSString *) username password : (NSString *) password;
 - (id) initWithApiKey : (NSString *) apikey debugMode : (BOOL) debugmode;
+
+/**
+ * Login user with given credentials
+ * @param userinfo Username, password, application name and access type of user
+ * @return Returns logged in user's settings and app key
+ */
+
+- (void) login : (NSMutableDictionary *) userinfo;
+
+/**
+ * Register with username, password and email
+ * @param userinfo Username, password and email to register a new user
+ * @return Returns new user's details
+ */
+
+- (void) registerUser : (NSMutableDictionary *) userinfo;
 
 /**
  * Get user account details for a JotForm user.
@@ -96,6 +111,14 @@
  * @return Returns name of the folder and owner of the folder for shared folders.
  */
 - (void) getFolders;
+
+/**
+ * Get folder details
+ * @param folderId You can get a list of folders from /user/folders.
+ * @return Returns a list of forms in a folder, and other details about the form such as folder color.
+ */
+- (void) getFolder : (long long) folderId;
+
 
 /**
  * List of URLS for reports in this account.
@@ -227,6 +250,13 @@
 - (void) getReport : (long long) reportID;
 
 /**
+ * Get report details
+ * @param reportID You can get a list of reports from /user/reports.
+ * @return Returns properties of a specific report like fields and status.
+ */
+- (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields;
+
+/**
  * Get a list of all properties on a form.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @return Returns form properties like width, expiration date, style etc.
@@ -317,7 +347,14 @@
  * @param form Questions, properties and emails of new form.
  * @return Returns new form.
  */
-- (void) createForm : (NSString *) form;
+- (void) createForm : (NSMutableDictionary *) form;
+
+/**
+ * Create a new form
+ * @param form Questions, properties and emails of new form.
+ * @return Returns new form.
+ */
+- (void) createForms : (NSString *) form;
 
 /**
  * Delete a single form
@@ -325,5 +362,7 @@
  * @return Properties of deleted form.
  */
 - (void) deleteForm : (long long) formID;
+
+- (id) deleteSubmissionSynchronous : (long long) formID;
 
 @end
