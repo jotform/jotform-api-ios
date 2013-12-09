@@ -557,6 +557,8 @@
         
         id respObject = [jsonParser objectWithString:response];
         
+        [jsonParser release];
+        
         return respObject;
     }
     
@@ -586,6 +588,8 @@
     if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
         [self.delegate performSelector:finishSelector withObject:result];
     }
+    
+    [jsonparser release];
 }
 
 - (void) requestFailed : (ASIHTTPRequest *) request
