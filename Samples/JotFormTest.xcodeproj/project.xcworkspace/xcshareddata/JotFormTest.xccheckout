@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B714EE7B-6B34-482D-A25A-828DE20BF05C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>JotFormTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>065625C1-3D81-4487-9037-C841A58A1672</key>
+		<string>https://github.com/jotform/jotform-api-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Samples/JotFormTest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>065625C1-3D81-4487-9037-C841A58A1672</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jotform/jotform-api-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>065625C1-3D81-4487-9037-C841A58A1672</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>065625C1-3D81-4487-9037-C841A58A1672</string>
+			<key>IDESourceControlWCCName</key>
+			<string>jotform-api-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

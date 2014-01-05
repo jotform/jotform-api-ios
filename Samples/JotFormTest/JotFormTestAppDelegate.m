@@ -8,6 +8,7 @@
 
 #import "JotFormTestAppDelegate.h"
 #import "JotFormTestViewController.h"
+#import "GetAppKeyViewController.h"
 
 @implementation JotFormTestAppDelegate
 
@@ -17,9 +18,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    JotFormTestViewController *formTestVc = [[JotFormTestViewController alloc] initWithNibName:@"JotFormTestViewController" bundle:nil];
+    GetAppKeyViewController *getAppKeyVc = [[GetAppKeyViewController alloc] initWithNibName:@"GetAppKeyViewController" bundle:nil];
     
-    self.window.rootViewController = formTestVc;
+    mRootNavigationController = [[UINavigationController alloc] initWithRootViewController:getAppKeyVc];
+    
+    self.window.rootViewController = mRootNavigationController;
     
     [self.window makeKeyAndVisible];
     return YES;
