@@ -9,6 +9,6 @@
 #ifndef JotFormTest_Common_h
 #define JotFormTest_Common_h
 
-#define API_KEY                 @"c51943ede92f0fc7b3c1289a63f7cece"
+#define API_KEY                 @""
 
 #endif

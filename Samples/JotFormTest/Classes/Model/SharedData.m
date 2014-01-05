@@ -12,11 +12,14 @@ static SharedData *g_sharedInfo = nil;
 
 @implementation SharedData
 @synthesize apiClient;
+@synthesize sampleStrList;
 
 - (id) init {
+    
 	if ( self = [super init] ) {
 		[self initSharedData];
 	}
+    
 	return self;
 }
 
@@ -31,7 +34,9 @@ static SharedData *g_sharedInfo = nil;
 
 - (void) initSharedData
 {
-
+    NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load & Update setting,Get history,Get form properties,Create form properties";
+    
+    sampleStrList = (NSMutableArray *)[sampleStr componentsSeparatedByString:@","];
 }
 
 - (void) initAPIClient : (NSString *) apiKey

@@ -14,7 +14,8 @@
     JotForm         *apiClient;
 }
 
-@property (nonatomic, retain) JotForm       *apiClient;
+@property (nonatomic, retain) JotForm           *apiClient;
+@property (nonatomic, retain) NSMutableArray    *sampleStrList;
 
 + (SharedData *) sharedData;
 - (void) initSharedData;
