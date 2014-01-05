@@ -7,6 +7,7 @@
 //
 
 #import "SampleListViewController.h"
+#import "GetAllFormsViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -90,6 +91,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ( indexPath.row == 0 ) {
+        
+        GetAllFormsViewController *getAllFormsVc = [[GetAllFormsViewController alloc] initWithNibName:@"GetAllFormsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:getAllFormsVc animated:YES];
+        
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

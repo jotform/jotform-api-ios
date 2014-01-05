@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface GetAllFormsViewController : UIViewController
+{
+    IBOutlet UITableView        *mTableView;
+    
+    IBOutlet UITextField        *mOffsetTextField;
+    IBOutlet UITextField        *mLimitTextField;
+    IBOutlet UIPickerView       *mPickerView;
+    IBOutlet UITextField        *mFilterTextField;
+}
 
 @end
