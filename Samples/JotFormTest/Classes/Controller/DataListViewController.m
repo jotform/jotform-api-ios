@@ -57,6 +57,8 @@
     [dataList addObjectsFromArray:dataarray];
     
     [listTableView reloadData];
+    
+    self.title = @"Form list";
 }
 
 - (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type
@@ -71,6 +73,8 @@
     [dataList addObjectsFromArray:dataarray];
     
     [listTableView reloadData];
+    
+    self.title = @"Submission list";
 }
 
 - (void) initUI
@@ -117,6 +121,7 @@
         cell.detailTextLabel.text = [form objectForKey:@"id"];
     } else {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", form];
+        cell.detailTextLabel.numberOfLines = 0;
     }
 
     cell.textLabel.textColor = [UIColor darkGrayColor];
@@ -127,6 +132,21 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ( listType == DataListTypeSubmissionList ) {
+    
+        id submission = [dataList objectAtIndex:indexPath.row];
+        
+        NSString *submissionStr = [NSString stringWithFormat:@"%@", submission];
+        
+        CGSize labelSize = [submissionStr sizeWithFont:[UIFont systemFontOfSize:12.0]
+                                    constrainedToSize:CGSizeMake(290, 9999)
+                                        lineBreakMode:NSLineBreakByWordWrapping];
+        
+        CGFloat labelHeight = labelSize.height;
+
+        return labelHeight;
+    }
+    
     return 44.0f;
 }
 
