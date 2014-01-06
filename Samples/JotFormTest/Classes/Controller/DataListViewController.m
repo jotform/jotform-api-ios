@@ -1,20 +1,19 @@
 //
-//  SampleListViewController.m
+//  DataListViewController.m
 //  JotFormTest
 //
-//  Created by Administrator on 1/5/14.
-//  Copyright (c) 2014 Interlogy, LLC. All rights reserved.
+//  Created by Administrator on 1/6/14.
+//  Copyright (c) 2014 wang. All rights reserved.
 //
 
-#import "SampleListViewController.h"
-#import "GetAllFormsViewController.h"
+#import "DataListViewController.h"
 #import "SharedData.h"
 
-@interface SampleListViewController ()
+@interface DataListViewController ()
 
 @end
 
-@implementation SampleListViewController
+@implementation DataListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,14 +28,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.title = @"API sample list";
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - user definition method
+
+- (void) initData
+{
+    
+}
+
+- (void) setDataList : (NSMutableArray *) dataarray
+{
+    
+}
+
+- (void) initUI
+{
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -71,13 +85,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SampleCell"];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     SharedData *sharedData = [SharedData sharedData];
     NSString *sampleStr = [sharedData.sampleStrList objectAtIndex:indexPath.row];
     
     cell.textLabel.text = sampleStr;
     cell.textLabel.textColor = [UIColor darkGrayColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-
+    
     return cell;
 }
 
@@ -93,10 +108,6 @@
     
     if ( indexPath.row == 0 ) {
         
-        GetAllFormsViewController *getAllFormsVc = [[GetAllFormsViewController alloc] initWithNibName:@"GetAllFormsViewController" bundle:nil];
-        
-        [self.navigationController pushViewController:getAllFormsVc animated:YES];
-        
     }
 }
 
@@ -104,6 +115,5 @@
 {
     
 }
-
 
 @end

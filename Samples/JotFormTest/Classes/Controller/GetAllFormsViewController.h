@@ -10,12 +10,13 @@
 
 @interface GetAllFormsViewController : UIViewController
 {
-    IBOutlet UITableView        *mTableView;
+    IBOutlet UITextField        *offsetTextField;
+    IBOutlet UITextField        *limitTextField;
+    IBOutlet UIPickerView       *pickerView;
+    IBOutlet UITextField        *filterTextField;
+    IBOutlet UIBarButtonItem    *getBarButtonItem;
     
-    IBOutlet UITextField        *mOffsetTextField;
-    IBOutlet UITextField        *mLimitTextField;
-    IBOutlet UIPickerView       *mPickerView;
-    IBOutlet UITextField        *mFilterTextField;
+    NSArray                     *orderbyList;
 }
 
 @end

@@ -44,4 +44,13 @@ static SharedData *g_sharedInfo = nil;
     apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO];
 }
 
+- (NSArray *) getFormOrderbyList
+{
+    NSString *orderbyStr = @"id,username,title,status,created_at,updated_at,new,count,slug";
+    
+    NSArray *orderbyList = [orderbyStr componentsSeparatedByString:@","];
+    
+    return orderbyList;
+}
+
 @end

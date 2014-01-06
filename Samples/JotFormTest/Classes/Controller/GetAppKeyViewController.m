@@ -72,18 +72,18 @@
 
 - (IBAction) getAppKeyButtonClicked : (id) sender
 {
-    NSString *username = mUsernameTextField.text;
+    NSString *username = usernameTextField.text;
     
     if ( [username isEqualToString:@""] )
-        [mUsernameTextField becomeFirstResponder];
+        [usernameTextField becomeFirstResponder];
     
-    NSString *password = mPasswordTextField.text;
+    NSString *password = passwordTextField.text;
     
     if ( [password isEqualToString:@""] )
-        [mPasswordTextField becomeFirstResponder];
+        [passwordTextField becomeFirstResponder];
     
-    [mUsernameTextField resignFirstResponder];
-    [mPasswordTextField resignFirstResponder];
+    [usernameTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
     
     [SVProgressHUD showWithStatus:@"Getting app key..."];
     
@@ -134,8 +134,6 @@
     if ( buttonIndex == 0 ) {
         
         if ( alertView.tag == 1000 ) {
-            
-            
             
         } else if ( alertView.tag == 3000 ) {
             

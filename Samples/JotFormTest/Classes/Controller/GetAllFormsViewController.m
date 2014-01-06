@@ -3,11 +3,12 @@
 //  JotFormTest
 //
 //  Created by Administrator on 1/6/14.
-//  Copyright (c) 2014 wang. All rights reserved.
+//  Copyright (c) 2014 Interlogy, LLC. All rights reserved.
 //
 
 #import "GetAllFormsViewController.h"
 #import "SharedData.h"
+#import "SVProgressHUD.h"
 
 @interface GetAllFormsViewController ()
 
@@ -28,6 +29,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self initData];
+    [self initUI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,19 +44,47 @@
 
 - (void) initUI
 {
+    self.title = @"Get all forms";
     
+    self.navigationItem.rightBarButtonItem = getBarButtonItem;
 }
 
 - (void) initData
 {
     SharedData *sharedData = [SharedData sharedData];
     
+    orderbyList = [sharedData getFormOrderbyList];
+}
+
+- (void) loadForms
+{
+    [SVProgressHUD showWithStatus:@"Loading forms..."];
+    
+    SharedData *sharedData = [SharedData sharedData];
+    
+    int offset = 0;
+    
+    if ( offsetTextField.text.length > 0 )
+        offset = [offsetTextField.text integerValue];
+    
+    int limit = 0;
+    
+    if ( limitTextField.text.length > 0 )
+        limit = [limitTextField.text integerValue];
+    
+    NSString *orderby = @"";
+    
+    orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
+    
+    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+    [sharedData.apiClient setDidFinishSelector:@selector(loadFormsFinish:)];
+    [sharedData.apiClient setDidFailSelector:@selector(loadFormsFail:)];
 }
 
 #pragma mark -
 #pragma mark UIPickerViewDataSource
 
-/*
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -60,7 +92,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-    return 0;
+    return [orderbyList count];
 }
 
 
@@ -69,22 +101,27 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    if(0 == row) {
-        return @"Create new user";
-    }
+    NSString *rowStr = [orderbyList objectAtIndex:row];
     
-    if([lists count]) {
-        UserList *userList = [lists objectAtIndex:row - 1];
-        return userList.username;
-    }
-    
-    return nil;
+    return rowStr;
 }
 
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
 }
-*/
+
+#pragma mark -
+#pragma mark Jotform delegate
+
+- (void) loadFormsFinish : (id) result
+{
+    [SVProgressHUD dismiss];
+}
+
+- (void) loadFormsFail : (id) error
+{
+    [SVProgressHUD dismiss];
+}
 
 @end

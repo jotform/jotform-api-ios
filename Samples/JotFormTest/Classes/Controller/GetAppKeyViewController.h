@@ -13,8 +13,8 @@
 {
     JotForm                     *apiClient;
     
-    IBOutlet UITextField        *mUsernameTextField;
-    IBOutlet UITextField        *mPasswordTextField;
+    IBOutlet UITextField        *usernameTextField;
+    IBOutlet UITextField        *passwordTextField;
 }
 
 @end

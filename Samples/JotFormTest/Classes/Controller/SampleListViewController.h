@@ -10,7 +10,7 @@
 
 @interface SampleListViewController : UIViewController
 {
-    IBOutlet UITableView        *mTableView;
+    
 }
 
 @end
