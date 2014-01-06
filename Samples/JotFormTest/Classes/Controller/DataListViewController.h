@@ -15,4 +15,6 @@
     NSMutableArray              *dataList;
 }
 
+- (void) setDataList : (NSArray *) dataarray;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GetAllFormsViewController.h"
+#import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
@@ -76,9 +77,28 @@
     
     orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+    [sharedData.apiClient setDelegate:self];
     [sharedData.apiClient setDidFinishSelector:@selector(loadFormsFinish:)];
     [sharedData.apiClient setDidFailSelector:@selector(loadFormsFail:)];
+    
+    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+}
+
+- (void) startDataListViewController : (NSArray *) datalist
+{
+    DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
+
+    [self.navigationController pushViewController:dataListVc animated:YES];
+    
+    [dataListVc setDataList:datalist];
+}
+
+#pragma mark -
+#pragma mark IBAction
+
+- (IBAction) getFormsButtonClicked : (id) sender {
+    
+    [self loadForms];
 }
 
 #pragma mark -
@@ -117,6 +137,19 @@
 - (void) loadFormsFinish : (id) result
 {
     [SVProgressHUD dismiss];
+    
+    if ( result != nil ) {
+        
+        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+        
+        if ( responseCode == 200 || responseCode == 206 ) {
+            
+            NSArray *formsArray = [result objectForKey:@"content"];
+
+            [self startDataListViewController:formsArray];
+        }
+    }
+
 }
 
 - (void) loadFormsFail : (id) error

@@ -41,7 +41,7 @@ static SharedData *g_sharedInfo = nil;
 
 - (void) initAPIClient : (NSString *) apiKey
 {
-    apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO];
+    apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:YES];
 }
 
 - (NSArray *) getFormOrderbyList

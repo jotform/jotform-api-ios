@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,12 +42,19 @@
 
 - (void) initData
 {
-    
+
 }
 
-- (void) setDataList : (NSMutableArray *) dataarray
+- (void) setDataList : (NSArray *) dataarray
 {
+    if ( dataList == nil )
+        dataList = [[NSMutableArray alloc] init];
     
+    [dataList removeAllObjects];
+    
+    [dataList addObjectsFromArray:dataarray];
+    
+    [listTableView reloadData];
 }
 
 - (void) initUI
@@ -72,9 +81,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    SharedData *sharedData = [SharedData sharedData];
-    
-    return [sharedData.sampleStrList count];
+    return [dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,15 +89,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell"];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SampleCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SampleCell"];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    SharedData *sharedData = [SharedData sharedData];
-    NSString *sampleStr = [sharedData.sampleStrList objectAtIndex:indexPath.row];
+    id form = [dataList objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = sampleStr;
+    cell.textLabel.text = [form objectForKey:@"title"];
+    cell.detailTextLabel.text = [form objectForKey:@"id"];
     cell.textLabel.textColor = [UIColor darkGrayColor];
     
     return cell;
