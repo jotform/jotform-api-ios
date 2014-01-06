@@ -45,8 +45,24 @@
 
 }
 
-- (void) setDataList : (NSArray *) dataarray
+- (void) setFormList : (NSArray *) dataarray type : (DataListType) type
 {
+    listType = type;
+    
+    if ( dataList == nil )
+        dataList = [[NSMutableArray alloc] init];
+    
+    [dataList removeAllObjects];
+    
+    [dataList addObjectsFromArray:dataarray];
+    
+    [listTableView reloadData];
+}
+
+- (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type
+{
+    listType = type;
+    
     if ( dataList == nil )
         dataList = [[NSMutableArray alloc] init];
     
@@ -96,8 +112,13 @@
     
     id form = [dataList objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [form objectForKey:@"title"];
-    cell.detailTextLabel.text = [form objectForKey:@"id"];
+    if ( listType == DataListTypeFormList ) {
+        cell.textLabel.text = [form objectForKey:@"title"];
+        cell.detailTextLabel.text = [form objectForKey:@"id"];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", form];
+    }
+
     cell.textLabel.textColor = [UIColor darkGrayColor];
     
     return cell;

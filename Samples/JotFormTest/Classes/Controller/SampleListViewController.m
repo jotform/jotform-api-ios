@@ -8,6 +8,7 @@
 
 #import "SampleListViewController.h"
 #import "GetAllFormsViewController.h"
+#import "GetAllSubmissionsViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -97,6 +98,11 @@
         
         [self.navigationController pushViewController:getAllFormsVc animated:YES];
         
+    } else if ( indexPath.row == 1 ) {
+        
+        GetAllSubmissionsViewController *getAllSubmissionsVc = [[GetAllSubmissionsViewController alloc] initWithNibName:@"GetAllSubmissionsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:getAllSubmissionsVc animated:YES];
     }
 }
 

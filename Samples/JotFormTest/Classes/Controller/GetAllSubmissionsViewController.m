@@ -1,21 +1,21 @@
 //
-//  GetAllFormsViewController.m
+//  GetAllSubmissionsViewController.m
 //  JotFormTest
 //
 //  Created by Administrator on 1/6/14.
-//  Copyright (c) 2014 Interlogy, LLC. All rights reserved.
+//  Copyright (c) 2014 wang. All rights reserved.
 //
 
-#import "GetAllFormsViewController.h"
+#import "GetAllSubmissionsViewController.h"
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface GetAllFormsViewController ()
+@interface GetAllSubmissionsViewController ()
 
 @end
 
-@implementation GetAllFormsViewController
+@implementation GetAllSubmissionsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +45,7 @@
 
 - (void) initUI
 {
-    self.title = @"Get all forms";
+    self.title = @"Get all submissions";
     
     self.navigationItem.rightBarButtonItem = getBarButtonItem;
 }
@@ -59,7 +59,7 @@
 
 - (void) loadForms
 {
-    [SVProgressHUD showWithStatus:@"Loading forms..."];
+    [SVProgressHUD showWithStatus:@"Loading submissions..."];
     
     SharedData *sharedData = [SharedData sharedData];
     
@@ -78,25 +78,25 @@
     orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
     
     [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(loadFormsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(loadFormsFail:)];
+    [sharedData.apiClient setDidFinishSelector:@selector(loadSubmissionsFinish:)];
+    [sharedData.apiClient setDidFailSelector:@selector(loadSubmissionsFail:)];
     
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+    [sharedData.apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil];
 }
 
 - (void) startDataListViewController : (NSArray *) datalist
 {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
-
+    
     [self.navigationController pushViewController:dataListVc animated:YES];
     
-    [dataListVc setFormList:datalist type:DataListTypeFormList];
+    [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
 }
 
 #pragma mark -
 #pragma mark IBAction
 
-- (IBAction) getFormsButtonClicked : (id) sender {
+- (IBAction) getSubmissionsButtonClicked : (id) sender {
     
     [self loadForms];
 }
@@ -134,7 +134,7 @@
 #pragma mark -
 #pragma mark Jotform delegate
 
-- (void) loadFormsFinish : (id) result
+- (void) loadSubmissionsFinish : (id) result
 {
     [SVProgressHUD dismiss];
     
@@ -145,11 +145,11 @@
         if ( responseCode == 200 || responseCode == 206 ) {
             
             NSArray *formsArray = [result objectForKey:@"content"];
-
+            
             [self startDataListViewController:formsArray];
         }
     }
-
+    
 }
 
 - (void) loadFormsFail : (id) error

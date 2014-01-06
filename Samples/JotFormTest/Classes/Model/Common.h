@@ -11,4 +11,9 @@
 
 #define API_KEY                 @""
 
+typedef enum {
+    DataListTypeFormList = 0,
+    DataListTypeSubmissionList
+} DataListType;
+
 #endif
