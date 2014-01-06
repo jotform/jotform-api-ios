@@ -30,6 +30,8 @@
 		C3541DE1187A86CA00FE19DB /* DataListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DDF187A86CA00FE19DB /* DataListViewController.xib */; };
 		C3541DE5187AF52600FE19DB /* GetAllSubmissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DE3187AF52600FE19DB /* GetAllSubmissionsViewController.m */; };
 		C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DE4187AF52600FE19DB /* GetAllSubmissionsViewController.xib */; };
+		C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DE9187B10C100FE19DB /* CreateFormViewController.m */; };
+		C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */; };
 		C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */; };
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
 		C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF7A1879A76700FCFAEA /* SharedData.m */; };
@@ -101,6 +103,9 @@
 		C3541DE2187AF52600FE19DB /* GetAllSubmissionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllSubmissionsViewController.h; sourceTree = "<group>"; };
 		C3541DE3187AF52600FE19DB /* GetAllSubmissionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllSubmissionsViewController.m; sourceTree = "<group>"; };
 		C3541DE4187AF52600FE19DB /* GetAllSubmissionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAllSubmissionsViewController.xib; sourceTree = "<group>"; };
+		C3541DE8187B10C100FE19DB /* CreateFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFormViewController.h; sourceTree = "<group>"; };
+		C3541DE9187B10C100FE19DB /* CreateFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFormViewController.m; sourceTree = "<group>"; };
+		C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateFormViewController.xib; sourceTree = "<group>"; };
 		C3B2AF701879A4DB00FCFAEA /* GetAppKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAppKeyViewController.h; sourceTree = "<group>"; };
 		C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppKeyViewController.m; sourceTree = "<group>"; };
 		C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAppKeyViewController.xib; sourceTree = "<group>"; };
@@ -278,6 +283,9 @@
 				C3541DE2187AF52600FE19DB /* GetAllSubmissionsViewController.h */,
 				C3541DE3187AF52600FE19DB /* GetAllSubmissionsViewController.m */,
 				C3541DE4187AF52600FE19DB /* GetAllSubmissionsViewController.xib */,
+				C3541DE8187B10C100FE19DB /* CreateFormViewController.h */,
+				C3541DE9187B10C100FE19DB /* CreateFormViewController.m */,
+				C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,6 +515,7 @@
 				C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */,
 				3CD6BF731779FDF70065788B /* Default.png in Resources */,
 				3CD6BF751779FDF70065788B /* Default@2x.png in Resources */,
+				C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */,
 				3CD6BF771779FDF70065788B /* Default-568h@2x.png in Resources */,
 				3CD6BFB01779FF8E0065788B /* JotFormTestViewController.xib in Resources */,
 				C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */,
@@ -524,6 +533,7 @@
 				C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */,
 				C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */,
+				C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */,
 				3CD6BFAF1779FF8E0065788B /* JotFormTestViewController.m in Sources */,
 				C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */,
 				C6DEC47417957EE900D04655 /* ASIAuthenticationDialog.m in Sources */,
