@@ -318,6 +318,11 @@
     [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params:params];
 }
 
+- (void) getFormReports : (long long) formID
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/reports", formID] params:nil];
+}
+
 - (void) createFormSubmissions : (long long) formID submission : (NSMutableDictionary *) submission
 {
     NSMutableDictionary *parameters = [[[NSMutableDictionary alloc] init] autorelease];

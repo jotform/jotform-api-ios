@@ -198,6 +198,11 @@
 - (void) getFormSubmissions : (long long) formID offset : (NSInteger) offset limit : (NSInteger) limit orderBy : (NSString *) orderBy filter : (NSMutableDictionary *) filter;
 
 /**
+ * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+ */
+- (void) getFormReports : (long long) formID;
+
+/**
  * Submit data to this form using the API.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @param submission Submission data with question IDs.

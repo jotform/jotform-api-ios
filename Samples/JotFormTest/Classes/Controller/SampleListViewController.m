@@ -7,6 +7,7 @@
 //
 
 #import "SampleListViewController.h"
+#import "GetFormReportsViewController.h"
 #import "GetAllFormsViewController.h"
 #import "GetAllSubmissionsViewController.h"
 #import "CreateFormViewController.h"
@@ -107,6 +108,9 @@
         
     } else if ( indexPath.row == 2 ) {
         
+        GetFormReportsViewController *formReportVc = [[GetFormReportsViewController alloc] initWithNibName:@"GetFormReportsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:formReportVc animated:YES];
         
     } else if ( indexPath.row == 3 ) {
         

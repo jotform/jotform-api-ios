@@ -198,6 +198,11 @@
 - (void) getFormSubmissions : (long long) formID offset : (NSInteger) offset limit : (NSInteger) limit orderBy : (NSString *) orderBy filter : (NSMutableDictionary *) filter;
 
 /**
+ * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+ */
+- (void) getFormReports : (long long) formID;
+
+/**
  * Submit data to this form using the API.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @param submission Submission data with question IDs.
@@ -250,9 +255,12 @@
 - (void) getReport : (long long) reportID;
 
 /**
- * Get report details
- * @param reportID You can get a list of reports from /user/reports.
- * @return Returns properties of a specific report like fields and status.
+ * Create new report of a form with intended fields, type and title.
+ * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
+ * @title title is report title.
+ * @list_type You can specify report type. 'csv', 'excel', 'grid', 'table', 'rss'
+ * @fields you can specify fields, User IP, submission date(dt) and question IDs
+ * @return Report details and URL.
  */
 - (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields;
 

@@ -20,5 +20,6 @@
 
 - (void) setFormList : (NSArray *) dataarray type : (DataListType) type;
 - (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type;
+- (void) setReportList : (NSArray *) dataarray type : (DataListType) type;
 
 @end

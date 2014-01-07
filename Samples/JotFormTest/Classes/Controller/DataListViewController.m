@@ -77,6 +77,22 @@
     self.title = @"Submission list";
 }
 
+- (void) setReportList : (NSArray *) dataarray type : (DataListType) type
+{
+    listType = type;
+    
+    if ( dataList == nil )
+        dataList = [[NSMutableArray alloc] init];
+    
+    [dataList removeAllObjects];
+    
+    [dataList addObjectsFromArray:dataarray];
+    
+    [listTableView reloadData];
+    
+    self.title = @"Report list";
+}
+
 - (void) initUI
 {
     
@@ -119,9 +135,12 @@
     if ( listType == DataListTypeFormList ) {
         cell.textLabel.text = [form objectForKey:@"title"];
         cell.detailTextLabel.text = [form objectForKey:@"id"];
-    } else {
+    } else if ( listType == DataListTypeSubmissionList ) {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", form];
         cell.detailTextLabel.numberOfLines = 0;
+    } else if ( listType == DataListTypeReportList ) {
+        cell.textLabel.text = [form objectForKey:@"title"];
+        cell.detailTextLabel.text = [form objectForKey:@"id"];
     }
 
     cell.textLabel.textColor = [UIColor darkGrayColor];
