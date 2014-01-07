@@ -36,6 +36,8 @@
 		C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */; };
 		C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */; };
 		C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */; };
+		C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C81C187C620700AD6A6C /* CreateReportViewController.m */; };
+		C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C81D187C620700AD6A6C /* CreateReportViewController.xib */; };
 		C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */; };
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
 		C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF7A1879A76700FCFAEA /* SharedData.m */; };
@@ -116,6 +118,9 @@
 		C395C816187C3C3900AD6A6C /* CreateSubmissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSubmissionViewController.h; sourceTree = "<group>"; };
 		C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSubmissionViewController.m; sourceTree = "<group>"; };
 		C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSubmissionViewController.xib; sourceTree = "<group>"; };
+		C395C81B187C620700AD6A6C /* CreateReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReportViewController.h; sourceTree = "<group>"; };
+		C395C81C187C620700AD6A6C /* CreateReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReportViewController.m; sourceTree = "<group>"; };
+		C395C81D187C620700AD6A6C /* CreateReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateReportViewController.xib; sourceTree = "<group>"; };
 		C3B2AF701879A4DB00FCFAEA /* GetAppKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAppKeyViewController.h; sourceTree = "<group>"; };
 		C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppKeyViewController.m; sourceTree = "<group>"; };
 		C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAppKeyViewController.xib; sourceTree = "<group>"; };
@@ -302,6 +307,9 @@
 				C395C816187C3C3900AD6A6C /* CreateSubmissionViewController.h */,
 				C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */,
 				C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */,
+				C395C81B187C620700AD6A6C /* CreateReportViewController.h */,
+				C395C81C187C620700AD6A6C /* CreateReportViewController.m */,
+				C395C81D187C620700AD6A6C /* CreateReportViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -527,6 +535,7 @@
 				C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */,
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
 				3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */,
+				C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */,
 				C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */,
 				C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */,
 				3CD6BF731779FDF70065788B /* Default.png in Resources */,
@@ -568,6 +577,7 @@
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				C6DEC47C17957EE900D04655 /* Reachability.m in Sources */,
 				C6DEC47D17957EE900D04655 /* NSObject+SBJson.m in Sources */,
+				C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */,
 				C6DEC47E17957EE900D04655 /* SBJsonParser.m in Sources */,
 				C6DEC47F17957EE900D04655 /* SBJsonStreamParser.m in Sources */,
 				C6DEC48017957EE900D04655 /* SBJsonStreamParserAccumulator.m in Sources */,
