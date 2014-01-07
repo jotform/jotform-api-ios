@@ -2,8 +2,8 @@
 //  CreateSubmissionViewController.m
 //  JotFormTest
 //
-//  Created by Administrator on 1/7/14.
-//  Copyright (c) 2014 wang. All rights reserved.
+//  Created by Interlogy, LLC on 1/7/14.
+//  Copyright (c) 2014 Interlogy, LLC. All rights reserved.
 //
 
 #import "CreateSubmissionViewController.h"
@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"Create submission";
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,12 +63,12 @@
 
 - (IBAction) createSubmissionButtonClicked : (id) sender
 {
-    
+    [self createSubmission];
 }
 
 #pragma mark - Jotform delegate
 
-- (void) createSubmissionFinish : (id) result
+- (void) createFormSubmissionFinish : (id) result
 {
     [SVProgressHUD dismiss];
     
@@ -76,7 +78,7 @@
         
         if ( responseCode == 200 || responseCode == 206 ) {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"You created submission successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             
             [alertView show];
             
@@ -86,7 +88,7 @@
     }
 }
 
-- (void) createSubmissionFail : (id) error
+- (void) createFormSubmissionFail : (id) error
 {
     [SVProgressHUD dismiss];
 

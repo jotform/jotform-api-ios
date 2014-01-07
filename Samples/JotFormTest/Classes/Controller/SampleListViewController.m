@@ -2,7 +2,7 @@
 //  SampleListViewController.m
 //  JotFormTest
 //
-//  Created by Administrator on 1/5/14.
+//  Created by Interlogy, LLC on 1/5/14.
 //  Copyright (c) 2014 Interlogy, LLC. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 #import "GetAllFormsViewController.h"
 #import "GetAllSubmissionsViewController.h"
 #import "CreateFormViewController.h"
+#import "CreateSubmissionViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -117,6 +118,12 @@
         CreateFormViewController *createFormVc = [[CreateFormViewController alloc] initWithNibName:@"CreateFormViewController" bundle:nil];
 
         [self.navigationController pushViewController:createFormVc animated:YES];
+        
+    } else if ( indexPath.row == 4 ) {
+        
+        CreateSubmissionViewController *createSubmissionVc = [[CreateSubmissionViewController alloc] initWithNibName:@"CreateSubmissionViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:createSubmissionVc animated:YES];
     }
 }
 
