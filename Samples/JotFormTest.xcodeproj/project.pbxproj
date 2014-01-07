@@ -34,6 +34,8 @@
 		C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */; };
 		C395C814187C06AA00AD6A6C /* GetFormReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */; };
 		C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */; };
+		C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */; };
+		C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */; };
 		C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */; };
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
 		C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF7A1879A76700FCFAEA /* SharedData.m */; };
@@ -111,6 +113,9 @@
 		C395C811187C06AA00AD6A6C /* GetFormReportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFormReportsViewController.h; sourceTree = "<group>"; };
 		C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFormReportsViewController.m; sourceTree = "<group>"; };
 		C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFormReportsViewController.xib; sourceTree = "<group>"; };
+		C395C816187C3C3900AD6A6C /* CreateSubmissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSubmissionViewController.h; sourceTree = "<group>"; };
+		C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSubmissionViewController.m; sourceTree = "<group>"; };
+		C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSubmissionViewController.xib; sourceTree = "<group>"; };
 		C3B2AF701879A4DB00FCFAEA /* GetAppKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAppKeyViewController.h; sourceTree = "<group>"; };
 		C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppKeyViewController.m; sourceTree = "<group>"; };
 		C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAppKeyViewController.xib; sourceTree = "<group>"; };
@@ -294,6 +299,9 @@
 				C395C811187C06AA00AD6A6C /* GetFormReportsViewController.h */,
 				C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */,
 				C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */,
+				C395C816187C3C3900AD6A6C /* CreateSubmissionViewController.h */,
+				C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */,
+				C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -525,6 +533,7 @@
 				3CD6BF751779FDF70065788B /* Default@2x.png in Resources */,
 				C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */,
 				3CD6BF771779FDF70065788B /* Default-568h@2x.png in Resources */,
+				C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */,
 				3CD6BFB01779FF8E0065788B /* JotFormTestViewController.xib in Resources */,
 				C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */,
 				C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */,
@@ -544,6 +553,7 @@
 				3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */,
 				C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */,
 				3CD6BFAF1779FF8E0065788B /* JotFormTestViewController.m in Sources */,
+				C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */,
 				C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */,
 				C6DEC47417957EE900D04655 /* ASIAuthenticationDialog.m in Sources */,
 				C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */,
