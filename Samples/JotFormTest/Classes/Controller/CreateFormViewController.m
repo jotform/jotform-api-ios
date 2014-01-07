@@ -98,11 +98,41 @@
 - (void) createFormFinish : (id) result
 {
     [SVProgressHUD dismiss];
+    
+    if ( result != nil ) {
+        
+        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+        
+        if ( responseCode == 200 || responseCode == 206 ) {
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"You created form successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            
+            [alertView show];
+            
+            return;
+        }
+    }
 }
 
 - (void) createFormFail : (id) error
 {
     [SVProgressHUD dismiss];
+
+    if ( error != nil ) {
+        
+        int responseCode = [[error objectForKey:@"response"] integerValue];
+        
+        if ( responseCode == 401 ) {
+            
+            NSString *errorMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:errorMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            
+            [alertView show];
+            
+            return;
+        }
+    }
 }
 
 @end

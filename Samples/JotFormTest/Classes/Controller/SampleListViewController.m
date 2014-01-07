@@ -9,6 +9,7 @@
 #import "SampleListViewController.h"
 #import "GetAllFormsViewController.h"
 #import "GetAllSubmissionsViewController.h"
+#import "CreateFormViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -103,6 +104,15 @@
         GetAllSubmissionsViewController *getAllSubmissionsVc = [[GetAllSubmissionsViewController alloc] initWithNibName:@"GetAllSubmissionsViewController" bundle:nil];
         
         [self.navigationController pushViewController:getAllSubmissionsVc animated:YES];
+        
+    } else if ( indexPath.row == 2 ) {
+        
+        
+    } else if ( indexPath.row == 3 ) {
+        
+        CreateFormViewController *createFormVc = [[CreateFormViewController alloc] initWithNibName:@"CreateFormViewController" bundle:nil];
+
+        [self.navigationController pushViewController:createFormVc animated:YES];
     }
 }
 
