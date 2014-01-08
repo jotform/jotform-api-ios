@@ -34,6 +34,8 @@
 		C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */; };
 		C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35EA489187D5831009DEB74 /* RegisterUserViewController.m */; };
 		C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */; };
+		C35EA490187D9DB7009DEB74 /* CreateQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35EA48E187D9DB7009DEB74 /* CreateQuestionViewController.m */; };
+		C35EA491187D9DB7009DEB74 /* CreateQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EA48F187D9DB7009DEB74 /* CreateQuestionViewController.xib */; };
 		C395C814187C06AA00AD6A6C /* GetFormReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */; };
 		C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */; };
 		C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */; };
@@ -117,6 +119,9 @@
 		C35EA488187D5831009DEB74 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
 		C35EA489187D5831009DEB74 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
 		C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterUserViewController.xib; sourceTree = "<group>"; };
+		C35EA48D187D9DB7009DEB74 /* CreateQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateQuestionViewController.h; sourceTree = "<group>"; };
+		C35EA48E187D9DB7009DEB74 /* CreateQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateQuestionViewController.m; sourceTree = "<group>"; };
+		C35EA48F187D9DB7009DEB74 /* CreateQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuestionViewController.xib; sourceTree = "<group>"; };
 		C395C811187C06AA00AD6A6C /* GetFormReportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFormReportsViewController.h; sourceTree = "<group>"; };
 		C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFormReportsViewController.m; sourceTree = "<group>"; };
 		C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFormReportsViewController.xib; sourceTree = "<group>"; };
@@ -318,6 +323,9 @@
 				C35EA488187D5831009DEB74 /* RegisterUserViewController.h */,
 				C35EA489187D5831009DEB74 /* RegisterUserViewController.m */,
 				C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */,
+				C35EA48D187D9DB7009DEB74 /* CreateQuestionViewController.h */,
+				C35EA48E187D9DB7009DEB74 /* CreateQuestionViewController.m */,
+				C35EA48F187D9DB7009DEB74 /* CreateQuestionViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -550,6 +558,7 @@
 				3CD6BF731779FDF70065788B /* Default.png in Resources */,
 				3CD6BF751779FDF70065788B /* Default@2x.png in Resources */,
 				C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */,
+				C35EA491187D9DB7009DEB74 /* CreateQuestionViewController.xib in Resources */,
 				3CD6BF771779FDF70065788B /* Default-568h@2x.png in Resources */,
 				C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */,
 				3CD6BFB01779FF8E0065788B /* JotFormTestViewController.xib in Resources */,
@@ -579,6 +588,7 @@
 				C6DEC47617957EE900D04655 /* ASIDataDecompressor.m in Sources */,
 				C6DEC47717957EE900D04655 /* ASIDownloadCache.m in Sources */,
 				C6DEC47817957EE900D04655 /* ASIFormDataRequest.m in Sources */,
+				C35EA490187D9DB7009DEB74 /* CreateQuestionViewController.m in Sources */,
 				C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				C6DEC47917957EE900D04655 /* ASIHTTPRequest.m in Sources */,
 				C6DEC47A17957EE900D04655 /* ASIInputStream.m in Sources */,

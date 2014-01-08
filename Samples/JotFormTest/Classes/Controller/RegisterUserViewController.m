@@ -41,16 +41,6 @@
 
 #pragma mark - User definition method
 
-- (void) initUI
-{
-    
-}
-
-- (void) initData
-{
-    
-}
-
 - (void) registerUser
 {
     if ( mUsernameTextField.text.length == 0 ) {
