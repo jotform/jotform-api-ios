@@ -62,7 +62,7 @@
 
 - (void) showAlertView
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"Do you have your Jotform account?" delegate:self cancelButtonTitle:@"Yes, i have" otherButtonTitles:@"No, i have an API key", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Do you have your Jotform account?" delegate:self cancelButtonTitle:@"Yes, i have" otherButtonTitles:@"No, i have an API key", nil];
     alertView.tag = 1000;
     [alertView setDelegate:self];
     [alertView show];
@@ -90,7 +90,7 @@
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     [userInfo setObject:username forKey:@"username"];
     [userInfo setObject:password forKey:@"password"];
-    [userInfo setObject:@"JotformAPISample" forKey:@"appName"];
+    [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
     
     [apiClient setDidFinishSelector:@selector(loginFinish:)];
@@ -144,7 +144,7 @@
         
         if ( [API_KEY isEqualToString:@""] ) {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"Please put your API key in Common.h 12 line." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Please put your API key in Common.h 12 line." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             alertView.tag = 3000;
             [alertView show];
             

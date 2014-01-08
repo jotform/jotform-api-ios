@@ -13,6 +13,7 @@
 #import "CreateFormViewController.h"
 #import "CreateSubmissionViewController.h"
 #import "CreateReportViewController.h"
+#import "RegisterUserViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -131,6 +132,13 @@
         CreateReportViewController *createReportVc = [[CreateReportViewController alloc] initWithNibName:@"CreateReportViewController" bundle:nil];
         
         [self.navigationController pushViewController:createReportVc animated:YES];
+        
+    } else if ( indexPath.row == 6 ) {
+        
+        RegisterUserViewController *registerUserVc = [[RegisterUserViewController alloc] initWithNibName:@"RegisterUserViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:registerUserVc animated:YES];
+
     }
 }
 

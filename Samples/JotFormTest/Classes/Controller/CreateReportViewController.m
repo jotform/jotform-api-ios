@@ -48,7 +48,7 @@
     
     if ( FORM_ID == 0 ) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"Please put Form's id in line 22, Common.h" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alertView show];
         
         return;

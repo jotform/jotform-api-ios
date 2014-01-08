@@ -78,7 +78,7 @@
         
         if ( responseCode == 200 || responseCode == 206 ) {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             
             [alertView show];
             
@@ -100,7 +100,7 @@
             
             NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotformAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             
             [alertView show];
             

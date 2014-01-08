@@ -32,6 +32,8 @@
 		C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DE4187AF52600FE19DB /* GetAllSubmissionsViewController.xib */; };
 		C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DE9187B10C100FE19DB /* CreateFormViewController.m */; };
 		C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */; };
+		C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35EA489187D5831009DEB74 /* RegisterUserViewController.m */; };
+		C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */; };
 		C395C814187C06AA00AD6A6C /* GetFormReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */; };
 		C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */; };
 		C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C817187C3C3900AD6A6C /* CreateSubmissionViewController.m */; };
@@ -112,6 +114,9 @@
 		C3541DE8187B10C100FE19DB /* CreateFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFormViewController.h; sourceTree = "<group>"; };
 		C3541DE9187B10C100FE19DB /* CreateFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFormViewController.m; sourceTree = "<group>"; };
 		C3541DEA187B10C100FE19DB /* CreateFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateFormViewController.xib; sourceTree = "<group>"; };
+		C35EA488187D5831009DEB74 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
+		C35EA489187D5831009DEB74 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
+		C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterUserViewController.xib; sourceTree = "<group>"; };
 		C395C811187C06AA00AD6A6C /* GetFormReportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFormReportsViewController.h; sourceTree = "<group>"; };
 		C395C812187C06AA00AD6A6C /* GetFormReportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFormReportsViewController.m; sourceTree = "<group>"; };
 		C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFormReportsViewController.xib; sourceTree = "<group>"; };
@@ -132,7 +137,7 @@
 		C3B2AF801879ADE400FCFAEA /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C3B2AF831879AE0B00FCFAEA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C3B2AF851879AF5F00FCFAEA /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
-		C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
+		C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		C3B2AF871879AF5F00FCFAEA /* SampleListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleListViewController.xib; sourceTree = "<group>"; };
 		C3B2AF8A1879BBF200FCFAEA /* GetAllFormsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllFormsViewController.h; sourceTree = "<group>"; };
 		C3B2AF8B1879BBF200FCFAEA /* GetAllFormsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllFormsViewController.m; sourceTree = "<group>"; };
@@ -310,6 +315,9 @@
 				C395C81B187C620700AD6A6C /* CreateReportViewController.h */,
 				C395C81C187C620700AD6A6C /* CreateReportViewController.m */,
 				C395C81D187C620700AD6A6C /* CreateReportViewController.xib */,
+				C35EA488187D5831009DEB74 /* RegisterUserViewController.h */,
+				C35EA489187D5831009DEB74 /* RegisterUserViewController.m */,
+				C35EA48A187D5831009DEB74 /* RegisterUserViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 			files = (
 				C3541DE1187A86CA00FE19DB /* DataListViewController.xib in Resources */,
 				C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */,
+				C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */,
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
 				3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */,
 				C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */,
@@ -574,6 +583,7 @@
 				C6DEC47917957EE900D04655 /* ASIHTTPRequest.m in Sources */,
 				C6DEC47A17957EE900D04655 /* ASIInputStream.m in Sources */,
 				C6DEC47B17957EE900D04655 /* ASINetworkQueue.m in Sources */,
+				C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */,
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				C6DEC47C17957EE900D04655 /* Reachability.m in Sources */,
 				C6DEC47D17957EE900D04655 /* NSObject+SBJson.m in Sources */,
