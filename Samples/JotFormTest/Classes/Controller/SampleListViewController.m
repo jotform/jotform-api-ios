@@ -12,6 +12,7 @@
 #import "GetAllSubmissionsViewController.h"
 #import "CreateFormViewController.h"
 #import "CreateSubmissionViewController.h"
+#import "CreateReportViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -124,6 +125,12 @@
         CreateSubmissionViewController *createSubmissionVc = [[CreateSubmissionViewController alloc] initWithNibName:@"CreateSubmissionViewController" bundle:nil];
         
         [self.navigationController pushViewController:createSubmissionVc animated:YES];
+        
+    } else if ( indexPath.row == 5 ) {
+        
+        CreateReportViewController *createReportVc = [[CreateReportViewController alloc] initWithNibName:@"CreateReportViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:createReportVc animated:YES];
     }
 }
 
