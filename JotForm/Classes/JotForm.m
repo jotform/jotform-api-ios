@@ -156,10 +156,12 @@
         NSString *filterStr = @"";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
+        
+        filterStr = @"%7b";
 
         for( NSString *key in keys ) {
             
-            filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%7b%%22%@%%22:%%22%@%%22%%7d", key, [[filter objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22:%%22%@%%22", key, [[filter objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             
             count++;
             
@@ -168,6 +170,8 @@
             }
             
         }
+        
+        filterStr = [filterStr stringByAppendingString:@"%7d"];
         
         [self debugLog:[NSString stringWithFormat:@"filterStr = %@", filterStr]];
         
