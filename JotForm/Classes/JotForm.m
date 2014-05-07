@@ -8,11 +8,17 @@
 
 #import "JotForm.h"
 
+@interface JotForm (){
+    NSString                *apiKey;
+    NSString                *baseUrl;
+    NSString                *apiVersion;
+    BOOL                    debugMode;
+}
+
+@end
+
+
 @implementation JotForm
-@synthesize operationQueue;
-@synthesize delegate;
-@synthesize didFinishSelector;
-@synthesize didFailSelector;
 
 - (id) init
 {
@@ -22,8 +28,8 @@
         debugMode = NO;
         baseUrl = BASE_URL;
         apiVersion = API_VERSION;
-        operationQueue = [[NSOperationQueue alloc] init];
-        [operationQueue setMaxConcurrentOperationCount:1];
+        self.operationQueue = [[NSOperationQueue alloc] init];
+        [self.operationQueue setMaxConcurrentOperationCount:1];
         
     }
     
@@ -38,8 +44,8 @@
         debugMode = debugmode;
         baseUrl = BASE_URL;
         apiVersion = API_VERSION;
-        operationQueue = [[NSOperationQueue alloc] init];
-        [operationQueue setMaxConcurrentOperationCount:1];
+        self.operationQueue = [[NSOperationQueue alloc] init];
+        [self.operationQueue setMaxConcurrentOperationCount:1];
 
     }
     
@@ -83,8 +89,8 @@
     [request setDelegate:self];
 
     NSMutableDictionary *userinfo = [[[NSMutableDictionary alloc] init] autorelease];
-    [userinfo setObject:NSStringFromSelector(didFinishSelector) forKey:@"didFinishSelector"];
-    [userinfo setObject:NSStringFromSelector(didFailSelector) forKey:@"didFailSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
     [request setUserInfo:userinfo];
     [request setUserAgentString:USER_AGENT];
@@ -100,7 +106,7 @@
             [request addPostValue:[params objectForKey:key] forKey:key];
     }
     
-    [operationQueue addOperation:request];
+    [self.operationQueue addOperation:request];
 }
 
 - (void) executeGetRequest : (NSString *) url params : (NSMutableDictionary *) params
@@ -130,15 +136,15 @@
     [request setRequestMethod:HTTPREQUEST_METHOD_PUT];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
-    [userinfo setObject:NSStringFromSelector(didFinishSelector) forKey:@"didFinishSelector"];
-    [userinfo setObject:NSStringFromSelector(didFailSelector) forKey:@"didFailSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
     [request setUserInfo:userinfo];
     [request setUserAgentString:USER_AGENT];
     [request addRequestHeader:@"apiKey" value:apiKey];
     [request appendPostData:[params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [operationQueue addOperation:request];
+    [self.operationQueue addOperation:request];
 }
 
 - (NSMutableDictionary *) createConditions : (NSInteger) offset limit : (NSInteger) limit filter : (NSMutableDictionary *) filter orderBy : (NSString *) orderBy
@@ -612,7 +618,7 @@
 
 - (void) dealloc
 {
-    [operationQueue release];
+    [self.operationQueue release];
     
     [super dealloc];
 }

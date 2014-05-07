@@ -17,18 +17,7 @@
 @end
 
 @interface JotForm : NSObject<ASIHTTPRequestDelegate>
-{
-    NSString                *apiKey;
-    NSString                *baseUrl;
-    NSString                *apiVersion;
-    
-    BOOL                    debugMode;
-    
-    SEL                     didFinishSelector;
-	SEL                     didFailSelector;
-    
-	id <JotFormDelegate>    delegate;
-}
+
 
 @property (nonatomic, retain) NSOperationQueue      *operationQueue;
 
