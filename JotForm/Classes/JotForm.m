@@ -190,7 +190,7 @@
     return params;
 }
 
-- (NSMutableDictionary *) createHistoryQuery : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate
+- (NSMutableDictionary *) createHistoryQuery : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate sortWay : (NSString *) sortWay
 {
     NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
     
@@ -205,9 +205,13 @@
     
     if ( startDate != nil && sortBy.length > 0 )
         [params setObject:startDate forKey:@"startDate"];
-    
+   
     if ( endDate != nil && endDate.length > 0 )
         [params setObject:endDate forKey:@"endDate"];
+
+    if ( sortWay != nil && sortWay.length > 0 )
+        [params setObject:sortWay forKey:@"sortWay"];
+
     
     return params;
 }
@@ -291,9 +295,9 @@
     [self executeGetRequest:@"user/history" params:nil];
 }
 
-- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate
+- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate sortWay : (NSString *) sortWay
 {
-    NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
+    NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate sortWay:sortWay];
     
     [self executeGetRequest:@"user/history" params:params];
 }

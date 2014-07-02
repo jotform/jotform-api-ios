@@ -144,7 +144,7 @@
  * @param endDate Limit results to only before a specific date. Format: MM/DD/YYYY.
  * @return Returns activity log about things like forms created/modified/deleted, account logins and other operations.
  */
-- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate;
+- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate sortWay : (NSString *) sortWay;
 
 /**
  * Get basic information about a form.
