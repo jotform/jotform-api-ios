@@ -244,6 +244,14 @@
 - (void) getReport : (long long) reportID;
 
 /**
+ * Get report details
+ * @param reportID You can Delete an existing report.
+ * @return Deletes the existing report.
+ */
+- (void) deleteReport : (long long) reportID;
+
+/**
+ 
  * Create new report of a form with intended fields, type and title.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @title title is report title.
@@ -361,5 +369,12 @@
 - (void) deleteForm : (long long) formID;
 
 - (id) deleteSubmissionSynchronous : (long long) formID;
+
+/**
+* Get details of a plan
+* @param plan is the name of the requested plan. FREE, PREMIUM etc.
+* @return Get details regarding systems plan
+*/
+- (void) getSystemPlan : (NSString*) plan;
 
 @end

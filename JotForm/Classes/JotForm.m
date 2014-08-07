@@ -55,7 +55,7 @@
 - (void) debugLog : (NSString *) str
 {
     if ( debugMode == YES )
-        NSLog(@"\n%@", str);
+         NSLog(@"\n%@", str);
 }
 
 - (void) executeHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
@@ -82,13 +82,12 @@
         
         urlStr = [NSString stringWithFormat:@"%@?%@", urlStr, paramstr];
         
-        [paramarray release];
     }
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
     [request setDelegate:self];
 
-    NSMutableDictionary *userinfo = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
@@ -149,7 +148,7 @@
 
 - (NSMutableDictionary *) createConditions : (NSInteger) offset limit : (NSInteger) limit filter : (NSMutableDictionary *) filter orderBy : (NSString *) orderBy
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ( offset != 0 )
         [params setObject:[NSNumber numberWithInteger:offset] forKey:@"offset"];
@@ -192,7 +191,7 @@
 
 - (NSMutableDictionary *) createHistoryQuery : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate sortWay : (NSString *) sortWay
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ( action != nil && action.length > 0 )
         [params setObject:action forKey:@"action"];
@@ -219,6 +218,11 @@
 - (void) login : (NSMutableDictionary *) userinfo
 {
     [self executePostRequest:@"user/login" params:userinfo];
+}
+
+- (void) logout : (NSMutableDictionary *) userinfo
+{
+    [self executePostRequest:@"user/logout" params:userinfo];
 }
 
 - (void) registerUser : (NSMutableDictionary *) userinfo
@@ -280,6 +284,11 @@
     [self executeGetRequest:@"user/reports" params:nil];
 }
 
+- (void) deleteReport : (long long) reportID
+{
+    [self executeDeleteRequest: [NSString stringWithFormat:@"user/reports/%lld", reportID]params:nil];
+}
+
 - (void) getSettings
 {
     [self executeGetRequest:@"user/settings" params:nil];
@@ -319,7 +328,7 @@
 
 - (void) getFormSubmissions : (long long) formID
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:@"true" forKey:@"qid_enabled"];
     
     [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/submissions", formID] params:params];
@@ -339,7 +348,7 @@
 
 - (void) createFormSubmissions : (long long) formID submission : (NSMutableDictionary *) submission
 {
-    NSMutableDictionary *parameters = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = [submission allKeys];
     
@@ -373,7 +382,7 @@
 
 - (void) createFormWebhooks : (long long) formID hookUrl : (NSString *) webhookURL
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ( webhookURL != nil && webhookURL.length > 0 )
     [params setObject:webhookURL forKey:@"webhookURL"];
@@ -398,7 +407,7 @@
 
 - (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
     
@@ -431,7 +440,7 @@
 
 - (void) editSubmission : (long long) sid name : (NSString *) submissionName new : (NSInteger) new flag : (NSInteger) flag
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ( submissionName != nil )
         [params setObject:submissionName forKey:@"submission[1][first]"];
@@ -455,7 +464,7 @@
 
 - (void) createFormQuestion : (long long) formID question : (NSMutableDictionary *) question
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = [question allKeys];
     
@@ -472,7 +481,7 @@
 
 - (void) editFormQuestion : (long long) formID questionID : (long long) qid questionProperties : (NSMutableDictionary *) properties
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = [properties allKeys];
     
@@ -484,7 +493,7 @@
 
 - (void) setFormProperties : (long long) formID formProperties : (NSMutableDictionary *) properties
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = [properties allKeys];
     
@@ -501,7 +510,7 @@
 
 - (void) createForm : (NSMutableDictionary *) form
 {
-    NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSArray *formKeys = [form allKeys];
     
@@ -576,12 +585,15 @@
         
         id respObject = [jsonParser objectWithString:response];
         
-        [jsonParser release];
-        
         return respObject;
     }
     
     return nil;
+}
+
+- (void) getSystemPlan : (NSString *) planType
+{
+    [self executeGetRequest:[NSString stringWithFormat:@"/system/plan/%@", planType] params:nil];
 }
 
 #pragma mark - ASIHttpRequest Delegate Method
@@ -608,7 +620,6 @@
         [self.delegate performSelector:finishSelector withObject:result];
     }
     
-    [jsonparser release];
 }
 
 - (void) requestFailed : (ASIHTTPRequest *) request
@@ -622,9 +633,7 @@
 
 - (void) dealloc
 {
-    [self.operationQueue release];
-    
-    [super dealloc];
+
 }
 
 @end
