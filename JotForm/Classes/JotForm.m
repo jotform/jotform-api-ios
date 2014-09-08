@@ -82,7 +82,6 @@
   }
       AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
       [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-     //[manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
       [manager.requestSerializer setTimeoutInterval:60];
     
     
@@ -163,14 +162,13 @@
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    //[manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
-    
     [manager.requestSerializer setTimeoutInterval:60];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
-    
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
     [manager POST:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [operation setUserInfo:userinfo];
@@ -178,7 +176,7 @@
         SBJsonParser *jsonparser = [SBJsonParser new];
         id result = [jsonparser objectWithString:[operation responseString]];
         if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
-            [self.delegate performSelector:finishSelector withObject:result];
+           [self.delegate performSelector:finishSelector withObject:result];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -198,10 +196,8 @@
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-   // [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
-    
     [manager.requestSerializer setTimeoutInterval:60];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
@@ -267,7 +263,6 @@
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
     [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-   // [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
     
     [manager PUT:urlStr parameters:[params dataUsingEncoding:NSUTF8StringEncoding] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [operation setUserInfo:userinfo];
