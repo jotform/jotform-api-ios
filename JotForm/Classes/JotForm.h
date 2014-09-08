@@ -17,7 +17,7 @@
 
 @end
 
-@interface JotForm : NSObject <AFURLRequestSerialization,AFURLResponseSerialization>
+@interface JotForm : NSObject 
 
 @property (nonatomic, retain) NSOperationQueue      *operationQueue;
 
