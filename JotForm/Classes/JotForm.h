@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
-#import "ASIFormDataRequest.h"
 #import "SBJsonParser.h"
 #import "SBJsonWriter.h"
+#import "AFURLConnectionOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @protocol JotFormDelegate <NSObject>
 
 @end
 
-@interface JotForm : NSObject<ASIHTTPRequestDelegate>
-
+@interface JotForm : NSObject <AFURLRequestSerialization,AFURLResponseSerialization>
 
 @property (nonatomic, retain) NSOperationQueue      *operationQueue;
 
@@ -376,5 +376,11 @@
 * @return Get details regarding systems plan
 */
 - (void) getSystemPlan : (NSString*) plan;
+
+
+- (void) createReport : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName  problem : (NSString *) problem simple_spc : (NSString *) simple_spc;
+
+
+- (void) createSuggestion : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName suggestion : (NSString *) suggestion simple_spc : (NSString *) simple_spc;
 
 @end

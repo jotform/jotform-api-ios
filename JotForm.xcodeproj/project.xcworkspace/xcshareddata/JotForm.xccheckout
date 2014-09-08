@@ -10,29 +10,29 @@
 	<string>JotForm</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F98342BD-11B1-4B85-A6CB-AFC4090B27DD</key>
+		<key>6222D5479511A60E6AAF081ABD8848C0EE4CD120</key>
 		<string>https://github.com/jotform/jotform-api-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>JotForm.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F98342BD-11B1-4B85-A6CB-AFC4090B27DD</key>
+		<key>6222D5479511A60E6AAF081ABD8848C0EE4CD120</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jotform/jotform-api-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F98342BD-11B1-4B85-A6CB-AFC4090B27DD</string>
+	<string>6222D5479511A60E6AAF081ABD8848C0EE4CD120</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F98342BD-11B1-4B85-A6CB-AFC4090B27DD</string>
+			<string>6222D5479511A60E6AAF081ABD8848C0EE4CD120</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jotform-api-ios</string>
 		</dict>

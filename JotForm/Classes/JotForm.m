@@ -7,10 +7,13 @@
 //
 
 #import "JotForm.h"
-
+#import "AFHTTPRequestOperationManager.h"
+#import "AFURLConnectionOperation.h"
 @interface JotForm (){
     NSString                *apiKey;
     NSString                *baseUrl;
+    NSString                *submitReportUrl;
+    NSString                *submitSuggestionUrl;
     NSString                *apiVersion;
     BOOL                    debugMode;
 }
@@ -27,6 +30,8 @@
         apiKey = @"";
         debugMode = NO;
         baseUrl = BASE_URL;
+        submitReportUrl = SUBMIT_REPORT_URL;
+        submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setMaxConcurrentOperationCount:1];
@@ -43,10 +48,12 @@
         apiKey = apikey;
         debugMode = debugmode;
         baseUrl = BASE_URL;
+        submitReportUrl = SUBMIT_REPORT_URL;
+        submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setMaxConcurrentOperationCount:1];
-
+        
     }
     
     return self;
@@ -55,68 +62,170 @@
 - (void) debugLog : (NSString *) str
 {
     if ( debugMode == YES )
-         NSLog(@"\n%@", str);
+        NSLog(@"\n%@", str);
 }
 
 - (void) executeHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, path];
-    
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
-     NSASCIIStringEncoding];
+              NSASCIIStringEncoding];
     
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    
-    if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
-        
+  if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-        
         NSArray *keys = [params allKeys];
-        
         for ( NSString *key in keys )
             [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
-        
         NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-        
-        [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
-        
         urlStr = [NSString stringWithFormat:@"%@?%@", urlStr, paramstr];
         
-    }
+  }
+      AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    [request setDelegate:self];
-
+      [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+      [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+      [manager.requestSerializer setTimeoutInterval:60];
+    
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
-    [request setUserInfo:userinfo];
-    [request setUserAgentString:USER_AGENT];
-    [request setTimeOutSeconds:60];
-    [request addRequestHeader:@"apiKey" value:apiKey];
-    [request setRequestMethod:method];
-    
     if ( [method isEqualToString:HTTPREQUEST_METHOD_POST] ) {
+        [manager POST:urlStr parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [operation setUserInfo:userinfo];
+            SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+            SBJsonParser *jsonparser = [SBJsonParser new];
+            id result = [jsonparser objectWithString:[operation responseString]];
+            if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            [self.delegate performSelector:finishSelector withObject:result];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [operation setUserInfo:userinfo];
+            NSLog(@"error%@",error);
+            SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+            if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+                [self.delegate performSelector:failSelector withObject:[operation error]];
+            }
+        }];
         
-        NSArray *keys = [params allKeys];
-        
-        for ( NSString *key in keys )
-            [request addPostValue:[params objectForKey:key] forKey:key];
     }
+    else{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [operation setUserInfo:userinfo];
+            SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+            SBJsonParser *jsonparser = [SBJsonParser new];
+            id result = [jsonparser objectWithString:[operation responseString]];
+            if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+                NSLog(@"the url string%@",urlStr);
+                
+                [self.delegate performSelector:finishSelector withObject:result];
+            }
+
+        }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"error%@",error);
+                 [operation setUserInfo:userinfo];
+                 SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+                 if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+                     [self.delegate performSelector:failSelector withObject:[operation error]];
+                 }
+             }];
+    }
+         }
+
+- (void) executeReportHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
     
-    [self.operationQueue addOperation:request];
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+    [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+    
+    [manager.requestSerializer setTimeoutInterval:60];
+    
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    
+    
+    [manager POST:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [operation setUserInfo:userinfo];
+        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+        SBJsonParser *jsonparser = [SBJsonParser new];
+        id result = [jsonparser objectWithString:[operation responseString]];
+        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            [self.delegate performSelector:finishSelector withObject:result];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [operation setUserInfo:userinfo];
+        SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+        if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+            [self.delegate performSelector:failSelector withObject:[operation error]];
+        }
+    }];
+}
+
+- (void) executeSuggestionHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
+    
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+   // [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+   // [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+    
+    //[manager.requestSerializer setTimeoutInterval:60];
+    
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
+    
+    [manager POST:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [operation setUserInfo:userinfo];
+        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+        SBJsonParser *jsonparser = [SBJsonParser new];
+        id result = [jsonparser objectWithString:[operation responseString]];
+        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            [self.delegate performSelector:finishSelector withObject:result];
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [operation setUserInfo:userinfo];
+        SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+        if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+            [self.delegate performSelector:failSelector withObject:[operation error]];
+        }
+    }];
 }
 
 - (void) executeGetRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
-    return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];   
+    return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];
 }
 
 - (void) executePostRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
 }
+
+- (void) executeReportPostRequest : (NSString *) url params : (NSMutableDictionary *) params
+{
+    return [self executeReportHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
+}
+
+- (void) executeSuggestionPostRequest : (NSString *) url params : (NSMutableDictionary *) params
+{
+    return [self executeSuggestionHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
+}
+
+
 
 - (void) executeDeleteRequest : (NSString *) url params : (NSMutableDictionary *) params
 {
@@ -129,22 +238,61 @@
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:urlStr];
+   
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    [request setDelegate:self];
-    [request setRequestMethod:HTTPREQUEST_METHOD_PUT];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+   
+    // ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+     //[request setDelegate:self];
+     //[request setRequestMethod:HTTPREQUEST_METHOD_PUT];
+     
+     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
-    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
-    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
-    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
-    [request setUserInfo:userinfo];
-    [request setUserAgentString:USER_AGENT];
-    [request addRequestHeader:@"apiKey" value:apiKey];
-    [request appendPostData:[params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [self.operationQueue addOperation:request];
+     //[manager setUserInfo:userinfo];
+     [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+     [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+     //[request appendPostData:[params dataUsingEncoding:NSUTF8StringEncoding]];
+     
+    [manager POST:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [operation setUserInfo:userinfo];
+        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+        SBJsonParser *jsonparser = [SBJsonParser new];
+        id result = [jsonparser objectWithString:[operation responseString]];
+        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            [self.delegate performSelector:finishSelector withObject:result];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [operation setUserInfo:userinfo];
+        SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+        if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+            [self.delegate performSelector:failSelector withObject:[operation error]];
+        }
+    }];
 }
+
+- (void) createReport : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName  problem : (NSString *) problem simple_spc : (NSString *) simple_spc
+{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    
+    [self executeReportPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_problem=%@&simple_spc=%@", formID,formID,email,firstName,lastName,problem,simple_spc] params:parameters];
+    
+}
+
+- (void) createSuggestion:(long long)formID email:(NSString *)email firstName:(NSString *)firstName lastName:(NSString *)lastName suggestion:(NSString *)suggestion simple_spc:(NSString *)simple_spc
+{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    
+    [self executeSuggestionPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_suggestion=%@&simple_spc=%@", formID,formID,email,firstName,lastName,suggestion,simple_spc] params:parameters];
+    
+}
+
 
 - (NSMutableDictionary *) createConditions : (NSInteger) offset limit : (NSInteger) limit filter : (NSMutableDictionary *) filter orderBy : (NSString *) orderBy
 {
@@ -163,7 +311,7 @@
         NSArray *keys = [filter allKeys];
         
         filterStr = @"%7b";
-
+        
         for( NSString *key in keys ) {
             
             filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22:%%22%@%%22", key, [[filter objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -204,13 +352,13 @@
     
     if ( startDate != nil && sortBy.length > 0 )
         [params setObject:startDate forKey:@"startDate"];
-   
+    
     if ( endDate != nil && endDate.length > 0 )
         [params setObject:endDate forKey:@"endDate"];
-
+    
     if ( sortWay != nil && sortWay.length > 0 )
         [params setObject:sortWay forKey:@"sortWay"];
-
+    
     
     return params;
 }
@@ -242,7 +390,7 @@
 
 - (void) getForms
 {
-     [self executeGetRequest:@"user/forms" params:nil];
+    [self executeGetRequest:@"user/forms" params:nil];
 }
 
 - (void) getForms : (NSInteger) offset limit : (NSInteger) limit orderBy : (NSString *) orderBy filter : (NSMutableDictionary *) filter
@@ -385,7 +533,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ( webhookURL != nil && webhookURL.length > 0 )
-    [params setObject:webhookURL forKey:@"webhookURL"];
+        [params setObject:webhookURL forKey:@"webhookURL"];
     
     [self executePostRequest:[NSString stringWithFormat:@"form/%lld/webhooks", formID] params:params];
 }
@@ -408,18 +556,18 @@
 - (void) createReport : (long long) formID title : (NSString *) title list_type : (NSString *) list_type fields : (NSString *) fields
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-
+    
     [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
     
     if ( title != nil )
         [params setObject:title forKey:@"title"];
-
+    
     if ( list_type != nil )
         [params setObject:list_type forKey:@"list_type"];
     
     if ( fields != nil )
         [params setObject:fields forKey:@"fields"];
-
+    
     [self executePostRequest:[NSString stringWithFormat:@"form/%lld/reports", formID] params:params];
 }
 
@@ -539,7 +687,7 @@
                 
                 for ( NSString *fiKey in fiKeys )
                     [params setObject:[fi objectForKey:fiKey] forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey, formItemKey, fiKey]];
-                    
+                
             }
         }
         
@@ -567,73 +715,38 @@
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    [request setDelegate:self];
-    [request setUserAgentString:USER_AGENT];
-    [request addRequestHeader:@"apiKey" value:apiKey];
-    [request setRequestMethod:HTTPREQUEST_METHOD_DELETE];
-        
-    [request startSynchronous];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+    [manager.requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+     //[request setRequestMethod:HTTPREQUEST_METHOD_DELETE];
+     //[request startSynchronous];
+
     
-    NSError *error = [request error];
-    
-    if (!error) {
-        
-        NSString *response = [request responseString];
-        
-        SBJsonParser *jsonParser = [SBJsonParser new];
-        
-        id respObject = [jsonParser objectWithString:response];
-        
-        return respObject;
-    }
-    
-    return nil;
-}
+     /* [manager DELETE:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          
+          return responseObject;
+      }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            return nil;
+            
+        }];*/
+           }
+
 
 - (void) getSystemPlan : (NSString *) planType
 {
     [self executeGetRequest:[NSString stringWithFormat:@"/system/plan/%@", planType] params:nil];
 }
 
-#pragma mark - ASIHttpRequest Delegate Method
-
-- (void) requestFinished : (ASIHTTPRequest *) request
-{
-    [self debugLog:[request responseString]];
-    
-    SEL finishSelector = NSSelectorFromString([request.userInfo objectForKey:@"didFinishSelector"]);
-    
-    NSInteger statuscode = [request responseStatusCode];
-    
-    if ( statuscode != 200 ) {
-        [self debugLog:[request responseStatusMessage]];
-    }
-    
-    [self debugLog:[request responseString]];
-    
-    SBJsonParser *jsonparser = [SBJsonParser new];
-    
-    id result = [jsonparser objectWithString:[request responseString]];
-
-    if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
-        [self.delegate performSelector:finishSelector withObject:result];
-    }
-    
-}
-
-- (void) requestFailed : (ASIHTTPRequest *) request
-{
-    SEL failSelector = NSSelectorFromString([request.userInfo objectForKey:@"didFailSelector"]);
-    
-    if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
-        [self.delegate performSelector:failSelector withObject:[request error]];
-    }
-}
 
 - (void) dealloc
 {
+    
+}
 
+- (NSString *)urlEncode:(NSString *)str {
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)str, NULL, CFSTR("[]"), kCFStringEncodingUTF8));
 }
 
 @end
