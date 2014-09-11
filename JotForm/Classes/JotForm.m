@@ -71,6 +71,7 @@
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
               NSASCIIStringEncoding];
     
+    
   if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
         NSArray *keys = [params allKeys];
@@ -110,6 +111,7 @@
     else if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] ) {
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
             [operation setUserInfo:userinfo];
             SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
             SBJsonParser *jsonparser = [SBJsonParser new];
@@ -122,6 +124,7 @@
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                  [operation setUserInfo:userinfo];
                  SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+
                  if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
                      [self.delegate performSelector:failSelector withObject:[operation error]];
                  }
@@ -137,14 +140,11 @@
             SBJsonParser *jsonparser = [SBJsonParser new];
             id result = [jsonparser objectWithString:[operation responseString]];
             if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
-                NSLog(@"the url string%@",urlStr);
-                
                 [self.delegate performSelector:finishSelector withObject:result];
             }
             
         }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"error%@",error);
                  [operation setUserInfo:userinfo];
                  SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
                  if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
