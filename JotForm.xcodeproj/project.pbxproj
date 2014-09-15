@@ -84,6 +84,8 @@
 		60A58AFB19BACA7100F25CB9 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58AF219BACA7100F25CB9 /* AFURLRequestSerialization.m */; };
 		60A58AFC19BACA7100F25CB9 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58AF319BACA7100F25CB9 /* AFURLResponseSerialization.m */; };
 		60A58AFD19BACA7100F25CB9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58AF419BACA7100F25CB9 /* AFURLSessionManager.m */; };
+		60DD4CB619C778A500A100C3 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60DD4C6419C7763900A100C3 /* Reachability.h */; };
+		60DD4CB719C778BF00A100C3 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60DD4C6419C7763900A100C3 /* Reachability.h */; };
 		C6A2B09D179448DC00F1818D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A2B09C179448DC00F1818D /* Foundation.framework */; };
 		C6A2B09F1794495600F1818D /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CC6979179444CE004E0DE4 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6A2B0A01794495A00F1818D /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CC697B179444CE004E0DE4 /* Common.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -172,6 +174,7 @@
 			dstPath = ExternalLib/Header/afn;
 			dstSubfolderSpec = 16;
 			files = (
+				60DD4CB719C778BF00A100C3 /* Reachability.h in CopyFiles */,
 				6006F72419C20BF000D5E4A5 /* AFURLResponseSerialization.h in CopyFiles */,
 				6006F72319C20BEC00D5E4A5 /* AFURLSessionManager.h in CopyFiles */,
 				6006F72219C20BE800D5E4A5 /* AFURLRequestSerialization.h in CopyFiles */,
@@ -264,6 +267,7 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Header/afn";
 			dstSubfolderSpec = 0;
 			files = (
+				60DD4CB619C778A500A100C3 /* Reachability.h in CopyFiles */,
 				6006F73E19C20CF100D5E4A5 /* AFURLRequestSerialization.h in CopyFiles */,
 				6006F73F19C20CF100D5E4A5 /* AFURLResponseSerialization.h in CopyFiles */,
 				6006F74019C20CF100D5E4A5 /* AFURLSessionManager.h in CopyFiles */,
@@ -341,6 +345,7 @@
 		60A58AF219BACA7100F25CB9 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		60A58AF319BACA7100F25CB9 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		60A58AF419BACA7100F25CB9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		60DD4C6419C7763900A100C3 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C6A2B09C179448DC00F1818D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C6CC6967179444B8004E0DE4 /* libJotForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJotForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CC696E179444B8004E0DE4 /* JotForm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotForm-Prefix.pch"; sourceTree = "<group>"; };
@@ -517,6 +522,7 @@
 				60A58ADF19BAC9C900F25CB9 /* AFURLRequestSerialization.h */,
 				60A58AE019BAC9C900F25CB9 /* AFURLResponseSerialization.h */,
 				60A58AE119BAC9C900F25CB9 /* AFURLSessionManager.h */,
+				60DD4C6419C7763900A100C3 /* Reachability.h */,
 			);
 			name = afn;
 			path = asi;

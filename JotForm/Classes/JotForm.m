@@ -157,7 +157,7 @@
     }
          }
 
-- (void) executeReportHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
+- (void) executeReportHttpRequest : (NSString *) path method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
     
@@ -191,7 +191,7 @@
     }];
 }
 
-- (void) executeSuggestionHttpRequest : (NSString *) path params : (NSMutableDictionary *) params method : (NSString *) method
+- (void) executeSuggestionHttpRequest : (NSString *) path method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
     
@@ -235,14 +235,14 @@
     return [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
 }
 
-- (void) executeReportPostRequest : (NSString *) url params : (NSMutableDictionary *) params
+- (void) executeReportPostRequest : (NSString *) url
 {
-    return [self executeReportHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
+    return [self executeReportHttpRequest:url method:HTTPREQUEST_METHOD_POST];
 }
 
-- (void) executeSuggestionPostRequest : (NSString *) url params : (NSMutableDictionary *) params
+- (void) executeSuggestionPostRequest : (NSString *) url
 {
-    return [self executeSuggestionHttpRequest:url params:params method:HTTPREQUEST_METHOD_POST];
+    return [self executeSuggestionHttpRequest:url method:HTTPREQUEST_METHOD_POST];
 }
 
 
@@ -287,19 +287,13 @@
 
 - (void) createReport : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName  problem : (NSString *) problem simple_spc : (NSString *) simple_spc
 {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    
-    
-    [self executeReportPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_problem=%@&simple_spc=%@", formID,formID,email,firstName,lastName,problem,simple_spc] params:parameters];
+    [self executeReportPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_problem=%@&simple_spc=%@", formID,formID,email,firstName,lastName,problem,simple_spc]];
     
 }
 
 - (void) createSuggestion:(long long)formID email:(NSString *)email firstName:(NSString *)firstName lastName:(NSString *)lastName suggestion:(NSString *)suggestion simple_spc:(NSString *)simple_spc
 {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    
-    
-    [self executeSuggestionPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_suggestion=%@&simple_spc=%@", formID,formID,email,firstName,lastName,suggestion,simple_spc] params:parameters];
+    [self executeSuggestionPostRequest:[NSString stringWithFormat:@"submit/%lld/?formID=%lld&q2_email2=%@&q3_fullName[first]=%@&q3_fullName[last]=%@&q4_suggestion=%@&simple_spc=%@", formID,formID,email,firstName,lastName,suggestion,simple_spc]];
     
 }
 
