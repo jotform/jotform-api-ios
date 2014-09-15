@@ -169,7 +169,7 @@
 		C6A2B0B71794499500F1818D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = ExternalLib/Header/asi;
+			dstPath = ExternalLib/Header/afn;
 			dstSubfolderSpec = 16;
 			files = (
 				6006F72419C20BF000D5E4A5 /* AFURLResponseSerialization.h in CopyFiles */,
@@ -221,7 +221,7 @@
 		C6A2B171179453A300F1818D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Classes/asi";
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Classes/afn";
 			dstSubfolderSpec = 0;
 			files = (
 				6006F73619C20CC800D5E4A5 /* AFURLSessionManager.m in CopyFiles */,
@@ -261,7 +261,7 @@
 		C6A2B1881794541300F1818D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Header/asi";
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Header/afn";
 			dstSubfolderSpec = 0;
 			files = (
 				6006F73E19C20CF100D5E4A5 /* AFURLRequestSerialization.h in CopyFiles */,
@@ -302,7 +302,7 @@
 		C6CC6965179444B8004E0DE4 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = ExternalLib/Classes/asi;
+			dstPath = ExternalLib/Classes/afn;
 			dstSubfolderSpec = 16;
 			files = (
 				6006F72D19C20C2A00D5E4A5 /* AFURLConnectionOperation.m in Copy Files */,
@@ -452,13 +452,13 @@
 		C6CC697D179444CE004E0DE4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C6CC697E179444CE004E0DE4 /* asi */,
+				C6CC697E179444CE004E0DE4 /* afn */,
 				C6CC6988179444CE004E0DE4 /* json */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		C6CC697E179444CE004E0DE4 /* asi */ = {
+		C6CC697E179444CE004E0DE4 /* afn */ = {
 			isa = PBXGroup;
 			children = (
 				60A58AEC19BACA7100F25CB9 /* AFHTTPRequestOperation.m */,
@@ -472,6 +472,7 @@
 				60A58AF419BACA7100F25CB9 /* AFURLSessionManager.m */,
 				C6CC6987179444CE004E0DE4 /* Reachability.m */,
 			);
+			name = afn;
 			path = asi;
 			sourceTree = "<group>";
 		};
@@ -497,13 +498,13 @@
 		C6CC6995179444CE004E0DE4 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				C6CC6996179444CE004E0DE4 /* asi */,
+				C6CC6996179444CE004E0DE4 /* afn */,
 				C6CC69A4179444CE004E0DE4 /* json */,
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		C6CC6996179444CE004E0DE4 /* asi */ = {
+		C6CC6996179444CE004E0DE4 /* afn */ = {
 			isa = PBXGroup;
 			children = (
 				60A58AD819BAC9C900F25CB9 /* AFHTTPRequestOperation.h */,
@@ -517,6 +518,7 @@
 				60A58AE019BAC9C900F25CB9 /* AFURLResponseSerialization.h */,
 				60A58AE119BAC9C900F25CB9 /* AFURLSessionManager.h */,
 			);
+			name = afn;
 			path = asi;
 			sourceTree = "<group>";
 		};
