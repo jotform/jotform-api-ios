@@ -10,12 +10,15 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLConnectionOperation.h"
 @interface JotForm (){
+   
     NSString                *apiKey;
     NSString                *baseUrl;
     NSString                *submitReportUrl;
     NSString                *submitSuggestionUrl;
     NSString                *apiVersion;
     BOOL                    debugMode;
+
+
 }
 
 @end
@@ -86,7 +89,7 @@
         
     }
     
-    if ( [method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES ){
+    if ( [method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES || [method isEqualToString:HTTPREQUEST_METHOD_POST] ){
         
         urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
         
@@ -260,6 +263,9 @@
 - (void) executePutRequest : (NSString *) url params : (NSString *) params
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, url];
+    
+    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
+    
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:urlStr];
