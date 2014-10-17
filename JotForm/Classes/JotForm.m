@@ -89,7 +89,7 @@
         
     }
     
-    if ( [method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES || [method isEqualToString:HTTPREQUEST_METHOD_POST] ){
+    if ( [method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES || [method isEqualToString:HTTPREQUEST_METHOD_POST] == YES ){
         
         urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
         
