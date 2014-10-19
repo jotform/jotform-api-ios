@@ -167,8 +167,7 @@
 
 - (void) executeReportHttpRequest : (NSString *) path method : (NSString *) method
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
-    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@?apikey=%@", submitReportUrl, [self urlEncode:path],apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
@@ -198,11 +197,9 @@
 
 - (void) executeSuggestionHttpRequest : (NSString *) path method : (NSString *) method
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
-    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@?apikey=%@", submitReportUrl, [self urlEncode:path],apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -257,10 +254,7 @@
 
 - (void) executePutRequest : (NSString *) url params : (NSString *) params
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, url];
-    
-    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
-    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, url,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:urlStr];
@@ -716,9 +710,7 @@
 
 - (id) deleteSubmissionSynchronous : (long long) formID
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID]];
-    
-    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID, apiKey]];
     
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
               NSASCIIStringEncoding];
