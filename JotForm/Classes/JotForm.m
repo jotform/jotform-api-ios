@@ -165,6 +165,45 @@
     }
 }
 
+- (void) executeGetSystemPlan : (NSString *) path params : (NSMutableDictionary *) params
+{
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
+
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
+              NSASCIIStringEncoding];
+    
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [operation setUserInfo:userinfo];
+        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+        SBJsonParser *jsonparser = [SBJsonParser new];
+        id result = [jsonparser objectWithString:[operation responseString]];
+        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            [self.delegate performSelector:finishSelector withObject:result];
+        }
+        
+    }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [operation setUserInfo:userinfo];
+             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+             
+             if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+                 [self.delegate performSelector:failSelector withObject:[operation error]];
+             }
+         }];
+    
+}
+
+
+
+
 - (void) executeReportHttpRequest : (NSString *) path method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@?apikey=%@", submitReportUrl, [self urlEncode:path],apiKey];
@@ -710,7 +749,7 @@
 
 - (id) deleteSubmissionSynchronous : (long long) formID
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID, apiKey]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID],apiKey];
     
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
               NSASCIIStringEncoding];
@@ -751,7 +790,7 @@
 
 - (void) getSystemPlan : (NSString *) planType
 {
-    [self executeGetRequest:[NSString stringWithFormat:@"/system/plan/%@", planType] params:nil];
+    [self executeGetSystemPlan:[NSString stringWithFormat:@"system/plan/%@", planType] params:nil];
 }
 
 
