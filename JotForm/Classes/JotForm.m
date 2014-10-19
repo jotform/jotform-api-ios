@@ -168,15 +168,12 @@
 - (void) executeReportHttpRequest : (NSString *) path method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
+    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    [manager.requestSerializer setTimeoutInterval:60];
-    
+
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
@@ -202,14 +199,12 @@
 - (void) executeSuggestionHttpRequest : (NSString *) path method : (NSString *) method
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
+    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    [manager.requestSerializer setTimeoutInterval:60];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
@@ -275,8 +270,6 @@
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
-    
-    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
     
     [manager PUT:urlStr parameters:[params dataUsingEncoding:NSUTF8StringEncoding] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [operation setUserInfo:userinfo];
@@ -725,6 +718,8 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, [NSString stringWithFormat:@"submission/%lld", formID]];
     
+    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
+    
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
               NSASCIIStringEncoding];
     
@@ -733,7 +728,7 @@
     __block id respObject;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"apiKey"];
+   
     
     [manager DELETE:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

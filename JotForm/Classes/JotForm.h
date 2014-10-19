@@ -386,7 +386,6 @@
 /**
  * Sends out a suggestion to Jotform.
  */
-
 - (void) createSuggestion : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName suggestion : (NSString *) suggestion simple_spc : (NSString *) simple_spc;
 
 
