@@ -297,6 +297,8 @@
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:urlStr];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
