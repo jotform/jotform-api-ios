@@ -296,7 +296,6 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, url,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    [self debugLog:urlStr];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
     
     
