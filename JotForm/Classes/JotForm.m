@@ -74,8 +74,6 @@
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
               NSASCIIStringEncoding];
     
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    
     if ( [method isEqualToString:HTTPREQUEST_METHOD_GET] == YES ) {
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
         NSArray *keys = [params allKeys];
@@ -94,6 +92,8 @@
         urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr,apiKey];
         
     }
+    
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
