@@ -10,15 +10,15 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLConnectionOperation.h"
 @interface JotForm (){
-   
+    
     NSString                *apiKey;
     NSString                *baseUrl;
     NSString                *submitReportUrl;
     NSString                *submitSuggestionUrl;
     NSString                *apiVersion;
     BOOL                    debugMode;
-
-
+    
+    
 }
 
 @end
@@ -170,7 +170,7 @@
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
-
+    
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:
@@ -211,7 +211,7 @@
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-
+    
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
@@ -761,7 +761,7 @@
     __block id respObject;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-   
+    
     
     [manager DELETE:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
