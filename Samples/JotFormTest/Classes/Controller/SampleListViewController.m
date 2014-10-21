@@ -14,6 +14,7 @@
 #import "CreateSubmissionViewController.h"
 #import "CreateReportViewController.h"
 #import "RegisterUserViewController.h"
+#import "CreateFormsViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -139,6 +140,12 @@
         
         [self.navigationController pushViewController:registerUserVc animated:YES];
 
+    } else if ( indexPath.row == 12) {
+        
+        CreateFormsViewController *createFormsVC = [[CreateFormsViewController alloc] initWithNibName:@"CreateFormsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:createFormsVC animated:YES];
+        
     }
 }
 

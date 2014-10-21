@@ -292,36 +292,61 @@
 }
 
 - (void) executePutRequest : (NSString *) url params : (NSString *) params
+
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, url,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
     
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector) forKey:@"didFinishSelector"];
+    
     [userinfo setObject:NSStringFromSelector(self.didFailSelector) forKey:@"didFailSelector"];
     
-    [manager PUT:urlStr parameters:[params dataUsingEncoding:NSUTF8StringEncoding] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSData *data = [params dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *parameters = [NSJSONSerialization JSONObjectWithData:data
+                                
+                                                               options:kNilOptions
+                                
+                                                                 error:nil];
+    
+    [manager PUT:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [operation setUserInfo:userinfo];
-        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
-        SBJsonParser *jsonparser = [SBJsonParser new];
-        id result = [jsonparser objectWithString:[operation responseString]];
-        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
-            [self.delegate performSelector:finishSelector withObject:result];
-        }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [operation setUserInfo:userinfo];
-        SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
-        if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
-            [self.delegate performSelector:failSelector withObject:[operation error]];
+        SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+        
+        SBJsonParser *jsonparser = [SBJsonParser new];
+        
+        id result = [jsonparser objectWithString:[operation responseString]];
+        
+        if ( self.delegate != nil && [self.delegate respondsToSelector:finishSelector] ) {
+            
+            [self.delegate performSelector:finishSelector withObject:result];
+            
         }
-    }];
+    }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             [operation setUserInfo:userinfo];
+             
+             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+             
+             if ( self.delegate != nil && [self.delegate respondsToSelector:failSelector] ) {
+                 
+                 [self.delegate performSelector:failSelector withObject:[operation error]];
+                 
+             }
+         }];
 }
+
 
 - (void) createReport : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName  problem : (NSString *) problem simple_spc : (NSString *) simple_spc
 {

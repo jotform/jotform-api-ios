@@ -8,27 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
-#import "ASIFormDataRequest.h"
 #import "SBJsonParser.h"
 #import "SBJsonWriter.h"
+#import "AFURLConnectionOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @protocol JotFormDelegate <NSObject>
 
 @end
 
-@interface JotForm : NSObject<ASIHTTPRequestDelegate>
-{
-    NSString                *apiKey;
-    NSString                *baseUrl;
-    NSString                *apiVersion;
-    
-    BOOL                    debugMode;
-    
-    SEL                     didFinishSelector;
-	SEL                     didFailSelector;
-    
-	id <JotFormDelegate>    delegate;
-}
+@interface JotForm : NSObject 
 
 @property (nonatomic, retain) NSOperationQueue      *operationQueue;
 
@@ -155,7 +144,7 @@
  * @param endDate Limit results to only before a specific date. Format: MM/DD/YYYY.
  * @return Returns activity log about things like forms created/modified/deleted, account logins and other operations.
  */
-- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate;
+- (void) getHistory : (NSString *) action date : (NSString *) date sortBy : (NSString *) sortBy startDate : (NSString *) startDate endDate : (NSString *) endDate sortWay : (NSString *) sortWay;
 
 /**
  * Get basic information about a form.
@@ -255,6 +244,14 @@
 - (void) getReport : (long long) reportID;
 
 /**
+ * Get report details
+ * @param reportID You can Delete an existing report.
+ * @return Deletes the existing report.
+ */
+- (void) deleteReport : (long long) reportID;
+
+/**
+ 
  * Create new report of a form with intended fields, type and title.
  * @param formID Form ID is the numbers you see on a form URL. You can get form IDs when you call /user/forms.
  * @title title is report title.
@@ -372,5 +369,24 @@
 - (void) deleteForm : (long long) formID;
 
 - (id) deleteSubmissionSynchronous : (long long) formID;
+
+/**
+* Get details of a plan
+* @param plan is the name of the requested plan. FREE, PREMIUM etc.
+* @return Get details regarding systems plan
+*/
+- (void) getSystemPlan : (NSString*) plan;
+
+
+/**
+ * Sends out a report to Jotform.
+ */
+- (void) createReport : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName  problem : (NSString *) problem simple_spc : (NSString *) simple_spc;
+
+/**
+ * Sends out a suggestion to Jotform.
+ */
+- (void) createSuggestion : (long long) formID email : (NSString *) email firstName : (NSString *) firstName  lastName : (NSString *) lastName suggestion : (NSString *) suggestion simple_spc : (NSString *) simple_spc;
+
 
 @end

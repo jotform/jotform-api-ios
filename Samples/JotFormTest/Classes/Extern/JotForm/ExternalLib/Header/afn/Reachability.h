@@ -97,7 +97,7 @@
  dictionary. This allows each observer to quickly determine if the event is
  important to them.
  
- -currentReachabilityStatus also has a significantly different decision criteria than 
+ -currentReachabilityStatus also has a significantly different decision criteria than
  Apple's code.
  
  A multiple convenience test methods have been added.
@@ -107,26 +107,26 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 
 #define USE_DDG_EXTENSIONS 1 // Use DDG's Extensions to test network criteria.
-// Since NSAssert and NSCAssert are used in this code, 
+// Since NSAssert and NSCAssert are used in this code,
 // I recommend you set NS_BLOCK_ASSERTIONS=1 in the release versions of your projects.
 
 enum {
-	
-	// DDG NetworkStatus Constant Names.
-	kNotReachable = 0, // Apple's code depends upon 'NotReachable' being the same value as 'NO'.
-	kReachableViaWWAN, // Switched order from Apple's enum. WWAN is active before WiFi.
-	kReachableViaWiFi
-	
+    
+    // DDG NetworkStatus Constant Names.
+    kNotReachable = 0, // Apple's code depends upon 'NotReachable' being the same value as 'NO'.
+    kReachableViaWWAN, // Switched order from Apple's enum. WWAN is active before WiFi.
+    kReachableViaWiFi
+    
 };
 typedef	uint32_t NetworkStatus;
 
 enum {
-	
-	// Apple NetworkStatus Constant Names.
-	NotReachable     = kNotReachable,
-	ReachableViaWiFi = kReachableViaWiFi,
-	ReachableViaWWAN = kReachableViaWWAN
-	
+    
+    // Apple NetworkStatus Constant Names.
+    NotReachable     = kNotReachable,
+    ReachableViaWiFi = kReachableViaWiFi,
+    ReachableViaWWAN = kReachableViaWWAN
+    
 };
 
 
@@ -135,11 +135,11 @@ extern NSString *const kLocalWiFiConnection;
 extern NSString *const kReachabilityChangedNotification;
 
 @interface Reachability: NSObject {
-	
+    
 @private
-	NSString                *key_;
-	SCNetworkReachabilityRef reachabilityRef;
-
+    NSString                *key_;
+    SCNetworkReachabilityRef reachabilityRef;
+    
 }
 
 @property (copy) NSString *key; // Atomic because network operations are asynchronous.
@@ -147,13 +147,13 @@ extern NSString *const kReachabilityChangedNotification;
 // Designated Initializer.
 - (Reachability *) initWithReachabilityRef: (SCNetworkReachabilityRef) ref;
 
-// Use to check the reachability of a particular host name. 
+// Use to check the reachability of a particular host name.
 + (Reachability *) reachabilityWithHostName: (NSString*) hostName;
 
-// Use to check the reachability of a particular IP address. 
+// Use to check the reachability of a particular IP address.
 + (Reachability *) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
 
-// Use to check whether the default route is available.  
+// Use to check whether the default route is available.
 // Should be used to, at minimum, establish network connectivity.
 + (Reachability *) reachabilityForInternetConnection;
 
