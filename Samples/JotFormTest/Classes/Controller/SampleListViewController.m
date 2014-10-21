@@ -15,6 +15,7 @@
 #import "CreateReportViewController.h"
 #import "RegisterUserViewController.h"
 #import "CreateFormsViewController.h"
+#import "CreateFormQuestionsViewController.h"
 #import "SharedData.h"
 
 @interface SampleListViewController ()
@@ -147,6 +148,14 @@
         [self.navigationController pushViewController:createFormsVC animated:YES];
         
     }
+    else if ( indexPath.row == 13) {
+        
+        CreateFormQuestionsViewController *createFormQuestionsVC = [[CreateFormQuestionsViewController alloc] initWithNibName:@"CreateFormQuestionsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:createFormQuestionsVC animated:YES];
+        
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

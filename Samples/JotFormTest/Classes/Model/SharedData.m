@@ -34,7 +34,7 @@ static SharedData *g_sharedInfo = nil;
 
 - (void) initSharedData
 {
-    NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load & Update setting,Get history,Get form properties,Create form properties,Create Forms";
+    NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load & Update setting,Get history,Get form properties,Create form properties,Create Forms,Create Form Questions";
     
     sampleStrList = (NSMutableArray *)[sampleStr componentsSeparatedByString:@","];
 }

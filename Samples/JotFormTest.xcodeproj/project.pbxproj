@@ -49,6 +49,8 @@
 		604B75E919F6E1BD00B873D4 /* JotForm in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75D119F6E1BD00B873D4 /* JotForm */; };
 		604B75EA19F6E1BD00B873D4 /* JotForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75D219F6E1BD00B873D4 /* JotForm.framework */; };
 		604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75EB19F6E23A00B873D4 /* Security.framework */; };
+		604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */; };
+		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
 		C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD6187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m */; };
@@ -155,6 +157,9 @@
 		604B75D119F6E1BD00B873D4 /* JotForm */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JotForm; sourceTree = "<group>"; };
 		604B75D219F6E1BD00B873D4 /* JotForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm.framework; sourceTree = "<group>"; };
 		604B75EB19F6E23A00B873D4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		604B75F219F6E59800B873D4 /* CreateFormQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFormQuestionsViewController.h; sourceTree = "<group>"; };
+		604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFormQuestionsViewController.m; sourceTree = "<group>"; };
+		604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateFormQuestionsViewController.xib; sourceTree = "<group>"; };
 		C3541DD1187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		C3541DD3187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -338,6 +343,9 @@
 				604B759619F6DFCA00B873D4 /* CreateFormsViewController.h */,
 				604B759719F6DFCA00B873D4 /* CreateFormsViewController.m */,
 				604B759819F6DFCA00B873D4 /* CreateFormsViewController.xib */,
+				604B75F219F6E59800B873D4 /* CreateFormQuestionsViewController.h */,
+				604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */,
+				604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
 				3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */,
 				C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */,
+				604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */,
 				C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */,
 				C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */,
 				604B759A19F6DFCA00B873D4 /* CreateFormsViewController.xib in Resources */,
@@ -598,6 +607,7 @@
 				604B75E819F6E1BD00B873D4 /* SBJsonWriter.m in Sources */,
 				C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */,
 				C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */,
+				604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */,
 				604B75E719F6E1BD00B873D4 /* SBJsonUTF8Stream.m in Sources */,
 				C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */,
 				C35EA490187D9DB7009DEB74 /* CreateQuestionViewController.m in Sources */,
