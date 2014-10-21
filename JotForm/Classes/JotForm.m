@@ -78,9 +78,9 @@
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     urlStr = [NSString
         stringWithFormat:@"%@?apikey=%@&%@", urlStr, apiKey, paramstr];
-
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
   }
+  
+  [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
 
   if ([method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES ||
       [method isEqualToString:HTTPREQUEST_METHOD_POST] == YES) {
