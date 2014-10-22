@@ -235,13 +235,15 @@
 
 - (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method {
   NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@?apikey=%@", submitReportUrl,
-                                 [self urlEncode:path], apiKey];
+      [NSString stringWithFormat:@"%@/%@", submitReportUrl,
+                                 [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
   NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
   [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
@@ -278,13 +280,15 @@
 - (void)executeSuggestionHttpRequest:(NSString *)path
                               method:(NSString *)method {
   NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@?apikey=%@", submitReportUrl,
-                                 [self urlEncode:path], apiKey];
+      [NSString stringWithFormat:@"%@/%@", submitReportUrl,
+                                 [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
+    
+   manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
   NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
   [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
