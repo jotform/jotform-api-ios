@@ -14,7 +14,7 @@
 		<string>https://github.com/jotform/jotform-api-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Samples/JotFormTest.xcodeproj/project.xcworkspace</string>
+	<string>Samples/JotFormTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6222D5479511A60E6AAF081ABD8848C0EE4CD120</key>

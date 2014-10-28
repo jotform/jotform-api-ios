@@ -77,7 +77,7 @@
                                                [params objectForKey:key]]];
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     urlStr = [NSString
-        stringWithFormat:@"%@?apikey=%@&%@", urlStr, apiKey, paramstr];
+        stringWithFormat:@"%@?apiKey=%@&%@", urlStr, apiKey, paramstr];
 
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
   }
@@ -85,7 +85,7 @@
   if ([method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES ||
       [method isEqualToString:HTTPREQUEST_METHOD_POST] == YES) {
 
-    urlStr = [NSString stringWithFormat:@"%@?apikey=%@", urlStr, apiKey];
+    urlStr = [NSString stringWithFormat:@"%@?apiKey=%@", urlStr, apiKey];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
   }
 
@@ -354,7 +354,7 @@
 
 {
   NSString *urlStr = [NSString
-      stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion, url, apiKey];
+      stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl, apiVersion, url, apiKey];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
@@ -916,7 +916,7 @@
 
 - (id)deleteSubmissionSynchronous:(long long)formID {
   NSString *urlStr = [NSString
-      stringWithFormat:@"%@/%@/%@?apikey=%@", baseUrl, apiVersion,
+      stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl, apiVersion,
                        [NSString stringWithFormat:@"submission/%lld", formID],
                        apiKey];
 
