@@ -64,7 +64,7 @@
                     params:(NSMutableDictionary *)params
                     method:(NSString *)method {
   NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@/%@", baseUrl, apiVersion, path];
+      [NSString stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl, apiVersion, path,apiKey];
   urlStr =
       [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 
@@ -76,20 +76,18 @@
           addObject:[NSString stringWithFormat:@"%@=%@", key,
                                                [params objectForKey:key]]];
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-    urlStr = [NSString
-        stringWithFormat:@"%@?apiKey=%@&%@", urlStr, apiKey, paramstr];
-
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
+   
+      if ( paramstr != nil || paramstr.length != 0) {
+          
+          urlStr = [NSString
+                    stringWithFormat:@"%@&%@", urlStr,paramstr];
+          
+         [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
+          
+      }
   }
 
-  if ([method isEqualToString:HTTPREQUEST_METHOD_DELETE] == YES ||
-      [method isEqualToString:HTTPREQUEST_METHOD_POST] == YES) {
-
-    urlStr = [NSString stringWithFormat:@"%@?apiKey=%@", urlStr, apiKey];
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
-  }
-
-  [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
