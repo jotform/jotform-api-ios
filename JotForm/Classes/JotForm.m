@@ -63,8 +63,8 @@
 - (void)executeHttpRequest:(NSString *)path
                     params:(NSMutableDictionary *)params
                     method:(NSString *)method {
-  NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl, apiVersion, path,apiKey];
+  NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl,
+                                                apiVersion, path, apiKey];
   urlStr =
       [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 
@@ -76,18 +76,16 @@
           addObject:[NSString stringWithFormat:@"%@=%@", key,
                                                [params objectForKey:key]]];
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-   
-      if ( paramstr != nil || paramstr.length != 0) {
-          
-          urlStr = [NSString
-                    stringWithFormat:@"%@&%@", urlStr,paramstr];
-          
-         [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
-          
-      }
+
+    if (paramstr != nil || paramstr.length != 0) {
+
+      urlStr = [NSString stringWithFormat:@"%@&%@", urlStr, paramstr];
+
+      [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
+    }
   }
 
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+  [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
@@ -105,12 +103,12 @@
             [operation setUserInfo:userinfo];
             SEL finishSelector = NSSelectorFromString(
                 [operation.userInfo objectForKey:@"didFinishSelector"]);
-            SBJsonParser *jsonparser = [SBJsonParser new];
-            id result =
-                [jsonparser objectWithString:[operation responseString]];
+
             if (self.delegate != nil &&
                 [self.delegate respondsToSelector:finishSelector]) {
-              [self.delegate performSelector:finishSelector withObject:result];
+
+              [self.delegate performSelector:finishSelector
+                                  withObject:responseObject];
             }
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -134,12 +132,12 @@
             [operation setUserInfo:userinfo];
             SEL finishSelector = NSSelectorFromString(
                 [operation.userInfo objectForKey:@"didFinishSelector"]);
-            SBJsonParser *jsonparser = [SBJsonParser new];
-            id result =
-                [jsonparser objectWithString:[operation responseString]];
+
             if (self.delegate != nil &&
                 [self.delegate respondsToSelector:finishSelector]) {
-              [self.delegate performSelector:finishSelector withObject:result];
+
+              [self.delegate performSelector:finishSelector
+                                  withObject:responseObject];
             }
 
         }
@@ -165,12 +163,12 @@
             [operation setUserInfo:userinfo];
             SEL finishSelector = NSSelectorFromString(
                 [operation.userInfo objectForKey:@"didFinishSelector"]);
-            SBJsonParser *jsonparser = [SBJsonParser new];
-            id result =
-                [jsonparser objectWithString:[operation responseString]];
+
             if (self.delegate != nil &&
                 [self.delegate respondsToSelector:finishSelector]) {
-              [self.delegate performSelector:finishSelector withObject:result];
+
+              [self.delegate performSelector:finishSelector
+                                  withObject:responseObject];
             }
 
         }
@@ -199,8 +197,6 @@
   urlStr =
       [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 
-  [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
   [manager GET:urlStr
@@ -210,11 +206,12 @@
           [operation setUserInfo:userinfo];
           SEL finishSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFinishSelector"]);
-          SBJsonParser *jsonparser = [SBJsonParser new];
-          id result = [jsonparser objectWithString:[operation responseString]];
+
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:finishSelector]) {
-            [self.delegate performSelector:finishSelector withObject:result];
+
+            [self.delegate performSelector:finishSelector
+                                withObject:responseObject];
           }
 
       }
@@ -232,16 +229,15 @@
 }
 
 - (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method {
-  NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@", submitReportUrl,
-                                 [self urlEncode:path]];
+  NSString *urlStr = [NSString
+      stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
-    
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+  manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
   NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
   [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
@@ -255,11 +251,12 @@
           [operation setUserInfo:userinfo];
           SEL finishSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFinishSelector"]);
-          SBJsonParser *jsonparser = [SBJsonParser new];
-          id result = [jsonparser objectWithString:[operation responseString]];
+
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:finishSelector]) {
-            [self.delegate performSelector:finishSelector withObject:result];
+
+            [self.delegate performSelector:finishSelector
+                                withObject:responseObject];
           }
 
       }
@@ -277,16 +274,15 @@
 
 - (void)executeSuggestionHttpRequest:(NSString *)path
                               method:(NSString *)method {
-  NSString *urlStr =
-      [NSString stringWithFormat:@"%@/%@", submitReportUrl,
-                                 [self urlEncode:path]];
+  NSString *urlStr = [NSString
+      stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
-    
-   manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+  manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
   NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
   [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
@@ -300,11 +296,12 @@
           [operation setUserInfo:userinfo];
           SEL finishSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFinishSelector"]);
-          SBJsonParser *jsonparser = [SBJsonParser new];
-          id result = [jsonparser objectWithString:[operation responseString]];
+
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:finishSelector]) {
-            [self.delegate performSelector:finishSelector withObject:result];
+
+            [self.delegate performSelector:finishSelector
+                                withObject:responseObject];
           }
 
       }
@@ -387,14 +384,11 @@
           SEL finishSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFinishSelector"]);
 
-          SBJsonParser *jsonparser = [SBJsonParser new];
-
-          id result = [jsonparser objectWithString:[operation responseString]];
-
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:finishSelector]) {
 
-            [self.delegate performSelector:finishSelector withObject:result];
+            [self.delegate performSelector:finishSelector
+                                withObject:responseObject];
           }
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -931,12 +925,6 @@
   [manager DELETE:urlStr
       parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-          NSString *response = [operation responseString];
-
-          SBJsonParser *jsonParser = [SBJsonParser new];
-
-          respObject = [jsonParser objectWithString:response];
 
       }
       failure:^(AFHTTPRequestOperation *operation, NSError *error){
