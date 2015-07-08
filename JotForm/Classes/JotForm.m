@@ -228,8 +228,8 @@
       }];
 }
 
-- (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method {
-  NSString *urlStr = [NSString
+- (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method params:(NSMutableDictionary *)params {
+    NSString *urlStr = [NSString
       stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
@@ -246,7 +246,7 @@
                forKey:@"didFailSelector"];
 
   [manager POST:urlStr
-      parameters:nil
+      parameters:params
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           [operation setUserInfo:userinfo];
           SEL finishSelector = NSSelectorFromString(
@@ -273,9 +273,12 @@
 }
 
 - (void)executeSuggestionHttpRequest:(NSString *)path
-                              method:(NSString *)method {
+                              method:(NSString *)method
+                              params:(NSMutableDictionary *)params
+
+{
   NSString *urlStr = [NSString
-      stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
+      stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
 
   [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 
@@ -291,24 +294,26 @@
                forKey:@"didFailSelector"];
 
   [manager POST:urlStr
-      parameters:nil
+      parameters:params
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
           [operation setUserInfo:userinfo];
           SEL finishSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFinishSelector"]);
 
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:finishSelector]) {
-
             [self.delegate performSelector:finishSelector
                                 withObject:responseObject];
           }
-
       }
+   
       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
           [operation setUserInfo:userinfo];
           SEL failSelector = NSSelectorFromString(
               [operation.userInfo objectForKey:@"didFailSelector"]);
+        
           if (self.delegate != nil &&
               [self.delegate respondsToSelector:failSelector]) {
             [self.delegate performSelector:failSelector
@@ -329,12 +334,12 @@
                            method:HTTPREQUEST_METHOD_POST];
 }
 
-- (void)executeReportPostRequest:(NSString *)url {
-  return [self executeReportHttpRequest:url method:HTTPREQUEST_METHOD_POST];
+- (void)executeReportPostRequest:(NSString *)url params:(NSMutableDictionary *)params {
+    return [self executeReportHttpRequest:url method:HTTPREQUEST_METHOD_POST params:params];
 }
 
-- (void)executeSuggestionPostRequest:(NSString *)url {
-  return [self executeSuggestionHttpRequest:url method:HTTPREQUEST_METHOD_POST];
+- (void)executeSuggestionPostRequest:(NSString *)url params:(NSMutableDictionary *)params {
+  return [self executeSuggestionHttpRequest:url method:HTTPREQUEST_METHOD_POST params:params];
 }
 
 - (void)executeDeleteRequest:(NSString *)url
@@ -407,34 +412,16 @@
       }];
 }
 
-- (void)createReport:(long long)formID
-               email:(NSString *)email
-           firstName:(NSString *)firstName
-            lastName:(NSString *)lastName
-             problem:(NSString *)problem
-          simple_spc:(NSString *)simple_spc {
-  [self executeReportPostRequest:
-            [NSString stringWithFormat:@"submit/%lld/"
-                                       @"?formID=%lld&q2_email2=%@&q3_"
-                                       @"fullName[first]=%@&q3_fullName[last]="
-                                       @"%@&q4_problem=%@&simple_spc=%@",
-                                       formID, formID, email, firstName,
-                                       lastName, problem, simple_spc]];
+- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams {
+    
+    [self executeReportPostRequest:
+    [NSString stringWithFormat:@"submit/%lld/",formID]params:reportParams];
 }
 
-- (void)createSuggestion:(long long)formID
-                   email:(NSString *)email
-               firstName:(NSString *)firstName
-                lastName:(NSString *)lastName
-              suggestion:(NSString *)suggestion
-              simple_spc:(NSString *)simple_spc {
-  [self executeSuggestionPostRequest:
-            [NSString stringWithFormat:@"submit/%lld/"
-                                       @"?formID=%lld&q2_email2=%@&q3_"
-                                       @"fullName[first]=%@&q3_fullName[last]="
-                                       @"%@&q4_suggestion=%@&simple_spc=%@",
-                                       formID, formID, email, firstName,
-                                       lastName, suggestion, simple_spc]];
+- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams;
+{
+    [self executeSuggestionPostRequest:
+    [NSString stringWithFormat:@"submit/%lld/",formID]params:suggestionParams];
 }
 
 - (NSMutableDictionary *)createConditions:(NSInteger)offset
