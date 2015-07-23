@@ -185,6 +185,14 @@
 - (void)getFormQuestions:(long long)formID;
 
 /**
+ * Check wether or not the form is encrypted
+ * @param formID Form ID is the numbers you see on a form URL. You can get form
+ * IDs when you call /user/forms.
+ * @return Returns Yes or No.
+ */
+- (void)getFormEncrypted:(long long)formID;
+
+/**
  * Get details about a question
  * @param formID Form ID is the numbers you see on a form URL. You can get form
  * IDs when you call /user/forms.

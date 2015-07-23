@@ -321,7 +321,6 @@
 }
 
 - (void)executeGetRequest:(NSString *)url params:(NSMutableDictionary *)params {
-    return
     [self executeHttpRequest:url params:params method:HTTPREQUEST_METHOD_GET];
 }
 
@@ -738,6 +737,10 @@
     [self executeGetRequest:[NSString
                              stringWithFormat:@"form/%lld/properties", formID]
                      params:nil];
+}
+
+- (void)getFormEncrypted:(long long)formID {
+    [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/properties/isEncrypted",formID ] params:nil];
 }
 
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey {
