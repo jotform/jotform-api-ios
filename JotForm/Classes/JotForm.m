@@ -33,13 +33,11 @@
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setMaxConcurrentOperationCount:1];
     }
-    
     return self;
 }
 
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode {
     if (self = [super init]) {
-        
         apiKey = apikey;
         debugMode = debugmode;
         baseUrl = BASE_URL;
@@ -49,7 +47,6 @@
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setMaxConcurrentOperationCount:1];
     }
-    
     return self;
 }
 
@@ -61,7 +58,6 @@
 - (void)executeHttpRequest:(NSString *)path
                     params:(NSMutableDictionary *)params
                     method:(NSString *)method {
-    
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl,
                         apiVersion, path, apiKey];
     urlStr =
@@ -77,7 +73,6 @@
                  forKey:@"didFailSelector"];
     
     if ([method isEqualToString:HTTPREQUEST_METHOD_GET] == YES) {
-        
         NSMutableArray *paramarray = [[NSMutableArray alloc] init];
         NSArray *keys = [params allKeys];
         
@@ -88,9 +83,7 @@
         NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
         
         if (paramstr != nil || paramstr.length != 0) {
-            
             urlStr = [NSString stringWithFormat:@"%@&%@", urlStr, paramstr];
-            
             [self debugLog:[NSString stringWithFormat:@"paramstr = %@", paramstr]];
         }
         
@@ -108,12 +101,10 @@
                      [self.delegate performSelector:finishSelector
                                          withObject:responseObject];
                  }
-                 
-             }
+            }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                  [operation setUserInfo:userinfo];
-                 SEL failSelector = NSSelectorFromString(
-                                                         [operation.userInfo objectForKey:@"didFailSelector"]);
+                 SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
                  
                  if (self.delegate != nil &&
                      [self.delegate respondsToSelector:failSelector]) {
@@ -123,53 +114,42 @@
              }];
         
     } else if ([method isEqualToString:HTTPREQUEST_METHOD_POST]) {
-        
         [manager POST:urlStr
            parameters:params
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   [operation setUserInfo:userinfo];
-                  SEL finishSelector = NSSelectorFromString(
-                                                            [operation.userInfo objectForKey:@"didFinishSelector"]);
+                  SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
                   
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:finishSelector]) {
-                      
                       [self.delegate performSelector:finishSelector
                                           withObject:responseObject];
                   }
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   [operation setUserInfo:userinfo];
-                  SEL failSelector = NSSelectorFromString(
-                                                          [operation.userInfo objectForKey:@"didFailSelector"]);
+                  SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:failSelector]) {
                       [self.delegate performSelector:failSelector
                                           withObject:[operation error]];
                   }
               }];
-        
     } else {
-        
         [manager DELETE:urlStr
              parameters:params
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     [operation setUserInfo:userinfo];
-                    SEL finishSelector = NSSelectorFromString(
-                                                              [operation.userInfo objectForKey:@"didFinishSelector"]);
-                    
+                    SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:finishSelector]) {
-                        
                         [self.delegate performSelector:finishSelector
                                             withObject:responseObject];
                     }
-                    
                 }
                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     [operation setUserInfo:userinfo];
-                    SEL failSelector = NSSelectorFromString(
-                                                            [operation.userInfo objectForKey:@"didFailSelector"]);
+                    SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:failSelector]) {
                         [self.delegate performSelector:failSelector
@@ -177,9 +157,7 @@
                     }
                 }];
     }
-    
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-
 }
 
 - (void)executeGetSystemPlan:(NSString *)path
@@ -199,14 +177,10 @@
     [manager GET:urlStr
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             
              [operation setUserInfo:userinfo];
-             SEL finishSelector = NSSelectorFromString(
-                                                       [operation.userInfo objectForKey:@"didFinishSelector"]);
-             
+             SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
-                 
                  [self.delegate performSelector:finishSelector
                                      withObject:responseObject];
              }
@@ -214,8 +188,7 @@
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [operation setUserInfo:userinfo];
-             SEL failSelector = NSSelectorFromString(
-                                                     [operation.userInfo objectForKey:@"didFailSelector"]);
+             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
@@ -226,7 +199,6 @@
 }
 
 - (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method params:(NSMutableDictionary *)params {
-    
     NSString *urlStr = [NSString
                         stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
     
@@ -266,7 +238,6 @@
                                       withObject:[operation error]];
               }
           }];
-    
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 }
 
@@ -294,10 +265,8 @@
     [manager POST:urlStr
        parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              
               [operation setUserInfo:userinfo];
-              SEL finishSelector = NSSelectorFromString(
-                                                        [operation.userInfo objectForKey:@"didFinishSelector"]);
+              SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:finishSelector]) {
@@ -307,10 +276,8 @@
           }
      
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              
               [operation setUserInfo:userinfo];
-              SEL failSelector = NSSelectorFromString(
-                                                      [operation.userInfo objectForKey:@"didFailSelector"]);
+              SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:failSelector]) {
@@ -352,7 +319,7 @@
 {
     NSString *urlStr = [NSString
                         stringWithFormat:@"%@/%@/%@?apiKey=%@", baseUrl, apiVersion, url, apiKey];
-    
+
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
@@ -371,12 +338,7 @@
                  forKey:@"didFailSelector"];
     
     NSData *data = [params dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *parameters = [NSJSONSerialization JSONObjectWithData:data
-                                
-                                                               options:kNilOptions
-                                
-                                                                 error:nil];
+    NSDictionary *parameters = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
     [manager PUT:urlStr
       parameters:parameters
@@ -394,7 +356,6 @@
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             
              [operation setUserInfo:userinfo];
              
              SEL failSelector = NSSelectorFromString(
@@ -410,7 +371,6 @@
 }
 
 - (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams {
-    
     [self executeReportPostRequest:
      [NSString stringWithFormat:@"submit/%lld/",formID]params:reportParams];
 }
@@ -434,7 +394,6 @@
         [params setObject:[NSNumber numberWithInteger:limit] forKey:@"limit"];
     
     if (filter != nil) {
-        
         NSString *filterStr = @"";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
@@ -829,8 +788,7 @@
     NSArray *keys = [properties allKeys];
     
     for (NSString *key in keys)
-        [params setObject:[properties objectForKey:key]
-                   forKey:[NSString stringWithFormat:@"properties[%@]", key]];
+        [params setObject:[properties objectForKey:key] forKey:[NSString stringWithFormat:@"properties[%@]", key]];
     
     [self executePostRequest:[NSString
                               stringWithFormat:@"form/%lld/properties", formID]
@@ -863,15 +821,12 @@
                                    propertyKey]];
             
         } else {
-            
             NSMutableDictionary *formItem = [form objectForKey:formKey];
             
             NSArray *formItemKeys = [formItem allKeys];
             
             for (NSString *formItemKey in formItemKeys) {
-                
                 NSMutableDictionary *fi = [formItem objectForKey:formItemKey];
-                
                 NSArray *fiKeys = [fi allKeys];
                 
                 for (NSString *fiKey in fiKeys)
@@ -881,7 +836,6 @@
             }
         }
     }
-    
     [self executePostRequest:@"user/forms" params:params];
 }
 
@@ -927,17 +881,14 @@
 }
 
 - (void)getSystemPlan:(NSString *)planType {
-    [self executeGetSystemPlan:[NSString
-                                stringWithFormat:@"system/plan/%@", planType]
-                        params:nil];
+    [self executeGetSystemPlan:[NSString stringWithFormat:@"system/plan/%@", planType]params:nil];
 }
 
 - (void)dealloc {
 }
 
 - (NSString *)urlEncode:(NSString *)str {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
-                                                                                 NULL, (CFStringRef)str, NULL, CFSTR("[]"), kCFStringEncodingUTF8));
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)str, NULL, CFSTR("[]"), kCFStringEncodingUTF8));
 }
 
 @end

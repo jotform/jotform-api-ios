@@ -9,9 +9,9 @@
 #ifndef JotForm_Common_h
 #define JotForm_Common_h
 
-#define BASE_URL                     @"http://api.jotform.com"
-#define SUBMIT_REPORT_URL            @"http://submit.jotform.com"
-#define SUBMIT_SUGGESTION_URL        @"http://submit.jotform.me"
+#define BASE_URL                     @"https://api.jotform.com"
+#define SUBMIT_REPORT_URL            @"https://submit.jotform.com"
+#define SUBMIT_SUGGESTION_URL        @"https://submit.jotform.me"
 #define HTTPREQUEST_METHOD_GET       @"GET"
 #define HTTPREQUEST_METHOD_POST      @"POST"
 #define HTTPREQUEST_METHOD_DELETE    @"DELETE"
