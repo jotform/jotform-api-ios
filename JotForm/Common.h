@@ -10,7 +10,7 @@
 #define JotForm_Common_h
 
 #define BASE_URL                     @"https://api.jotform.com"
-#define BASE_URL_EU                  @"http://eu.api.jotform.com"
+#define BASE_URL_EU                  @"http://eu-api.jotform.com"
 #define SUBMIT_REPORT_URL            @"https://submit.jotform.com"
 #define SUBMIT_SUGGESTION_URL        @"https://submit.jotform.me"
 #define HTTPREQUEST_METHOD_GET       @"GET"
