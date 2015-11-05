@@ -24,7 +24,7 @@
 
 @property(nonatomic, assign) id<JotFormDelegate> delegate;
 
-- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode;
+- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
 
 /**
  * Login user with given credentials
@@ -410,6 +410,12 @@
  */
 - (void)setFormProperties:(long long)formID
            formProperties:(NSMutableDictionary *)properties;
+
+/**
+* @return Returns wether or not a account is running on a EU server.
+*/
+
+- (void)checkEUserver;
 
 /**
  * Add or edit properties of a specific form

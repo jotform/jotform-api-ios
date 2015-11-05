@@ -36,11 +36,15 @@
     return self;
 }
 
-- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode {
+- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
     if (self = [super init]) {
         apiKey = apikey;
         debugMode = debugmode;
-        baseUrl = BASE_URL;
+        if (euApi) {
+            baseUrl = BASE_URL_EU;
+        } else {
+            baseUrl = BASE_URL;
+        }
         submitReportUrl = SUBMIT_REPORT_URL;
         submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
@@ -159,6 +163,47 @@
     }
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
 }
+
+- (void)executeGetEUapi:(NSString *)path {
+    NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
+    [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
+                 forKey:@"didFinishSelector"];
+    [userinfo setObject:NSStringFromSelector(self.didFailSelector)
+                 forKey:@"didFailSelector"];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
+    urlStr =
+    [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    
+    [self debugLog:urlStr];
+    
+    AFHTTPRequestOperationManager *manager =
+    [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET:urlStr
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             [operation setUserInfo:userinfo];
+             SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+             if (self.delegate != nil &&
+                 [self.delegate respondsToSelector:finishSelector]) {
+                 [self.delegate performSelector:finishSelector
+                                     withObject:responseObject];
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [operation setUserInfo:userinfo];
+             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+             
+             if (self.delegate != nil &&
+                 [self.delegate respondsToSelector:failSelector]) {
+                 [self.delegate performSelector:failSelector
+                                     withObject:[operation error]];
+             }
+         }];
+}
+
 
 - (void)executeGetSystemPlan:(NSString *)path
                       params:(NSMutableDictionary *)params {
@@ -706,6 +751,10 @@
     [self executeGetRequest:[NSString stringWithFormat:@"form/%lld/properties/%@",
                              formID, propertyKey]
                      params:nil];
+}
+
+- (void)checkEUserver {
+    [self executeGetEUapi:[NSString stringWithFormat:@"user/settings/euOnly"]];
 }
 
 - (void)deleteSubmission:(long long)sid {
