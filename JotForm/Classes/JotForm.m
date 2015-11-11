@@ -204,7 +204,6 @@
          }];
 }
 
-
 - (void)executeGetSystemPlan:(NSString *)path
                       params:(NSMutableDictionary *)params {
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
@@ -778,6 +777,8 @@
     
     [self executePostRequest:[NSString stringWithFormat:@"submission/%lld", sid]
                       params:params];
+    
+    [self debugLog:[NSString stringWithFormat:@"params = %@",params]];
 }
 
 - (void)cloneForm:(long long)formID {
