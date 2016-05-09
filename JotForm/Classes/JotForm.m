@@ -7,8 +7,8 @@
 //
 
 #import "JotForm.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "AFURLConnectionOperation.h"
+#import "AFHTTPSessionManager.h"
+
 @interface JotForm () {
     NSString *apiKey;
     NSString *baseUrl;
@@ -67,8 +67,7 @@
     urlStr =
     [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
@@ -93,11 +92,9 @@
         
         [manager GET:urlStr
           parameters:nil
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             success:^(NSURLSessionTask *task, id responseObject) {
                  
-                 [operation setUserInfo:userinfo];
-                 SEL finishSelector = NSSelectorFromString(
-                                                           [operation.userInfo objectForKey:@"didFinishSelector"]);
+                 SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
                  
                  if (self.delegate != nil &&
                      [self.delegate respondsToSelector:finishSelector]) {
@@ -106,23 +103,22 @@
                                          withObject:responseObject];
                  }
             }
-             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 [operation setUserInfo:userinfo];
-                 SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+             failure:^(NSURLSessionTask *operation, NSError *error) {
+                 
+                 SEL failSelector = NSSelectorFromString(@"didFailSelector");
                  
                  if (self.delegate != nil &&
                      [self.delegate respondsToSelector:failSelector]) {
                      [self.delegate performSelector:failSelector
-                                         withObject:[operation error]];
+                                         withObject:error];
                  }
              }];
         
     } else if ([method isEqualToString:HTTPREQUEST_METHOD_POST]) {
         [manager POST:urlStr
            parameters:params
-              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                  [operation setUserInfo:userinfo];
-                  SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+              success:^(NSURLSessionTask *task, id responseObject) {
+                  SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
                   
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:finishSelector]) {
@@ -130,30 +126,28 @@
                                           withObject:responseObject];
                   }
               }
-              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                  [operation setUserInfo:userinfo];
-                  SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+              failure:^(NSURLSessionTask *operation, NSError *error) {
+                  
+                  SEL failSelector = NSSelectorFromString(@"didFailSelector");
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:failSelector]) {
                       [self.delegate performSelector:failSelector
-                                          withObject:[operation error]];
+                                          withObject:error];
                   }
               }];
     } else {
         [manager DELETE:urlStr
              parameters:params
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [operation setUserInfo:userinfo];
-                    SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+                success:^(NSURLSessionTask *task, id responseObject) {
+                    SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:finishSelector]) {
                         [self.delegate performSelector:finishSelector
                                             withObject:responseObject];
                     }
                 }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    [operation setUserInfo:userinfo];
-                    SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+                failure:^(NSURLSessionTask *operation, NSError *error) {
+                    SEL failSelector = NSSelectorFromString(@"didFailSelector");
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:failSelector]) {
                         [self.delegate performSelector:failSelector
@@ -177,24 +171,21 @@
     
     [self debugLog:urlStr];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [manager GET:urlStr
       parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             [operation setUserInfo:userinfo];
-             SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+         success:^(NSURLSessionTask *task, id responseObject) {
+             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
                  [self.delegate performSelector:finishSelector
                                      withObject:responseObject];
              }
          }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [operation setUserInfo:userinfo];
-             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             SEL failSelector = NSSelectorFromString(@"didFailSelector");
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
@@ -216,13 +207,12 @@
     urlStr =
     [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
     [manager GET:urlStr
       parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             [operation setUserInfo:userinfo];
-             SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+         success:^(NSURLSessionTask *task, id responseObject) {
+             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
                  [self.delegate performSelector:finishSelector
@@ -230,9 +220,9 @@
              }
              
          }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [operation setUserInfo:userinfo];
-             SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+    
+             SEL failSelector = NSSelectorFromString(@"didFailSelector");
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
@@ -246,9 +236,7 @@
     NSString *urlStr = [NSString
                         stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
-    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
@@ -259,10 +247,8 @@
     
     [manager POST:urlStr
        parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              [operation setUserInfo:userinfo];
-              SEL finishSelector = NSSelectorFromString(
-                                                        [operation.userInfo objectForKey:@"didFinishSelector"]);
+          success:^(NSURLSessionTask *task, id responseObject) {
+              SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:finishSelector]) {
@@ -272,10 +258,8 @@
               }
               
           }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              [operation setUserInfo:userinfo];
-              SEL failSelector = NSSelectorFromString(
-                                                      [operation.userInfo objectForKey:@"didFailSelector"]);
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              SEL failSelector = NSSelectorFromString(@"didFailSelector");
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:failSelector]) {
                   [self.delegate performSelector:failSelector
@@ -295,9 +279,7 @@
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
-    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
@@ -308,9 +290,8 @@
     
     [manager POST:urlStr
        parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              [operation setUserInfo:userinfo];
-              SEL finishSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFinishSelector"]);
+          success:^(NSURLSessionTask *task, id responseObject) {
+              SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:finishSelector]) {
@@ -319,14 +300,13 @@
               }
           }
      
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              [operation setUserInfo:userinfo];
-              SEL failSelector = NSSelectorFromString([operation.userInfo objectForKey:@"didFailSelector"]);
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              SEL failSelector = NSSelectorFromString(@"didFailSelector");
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:failSelector]) {
                   [self.delegate performSelector:failSelector
-                                      withObject:[operation error]];
+                                      withObject:error];
               }
           }];
 }
@@ -368,9 +348,7 @@
     
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
-    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
@@ -386,11 +364,8 @@
     
     [manager PUT:urlStr
       parameters:parameters
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             [operation setUserInfo:userinfo];
-             
-             SEL finishSelector = NSSelectorFromString(
-                                                       [operation.userInfo objectForKey:@"didFinishSelector"]);
+         success:^(NSURLSessionTask *task, id responseObject) {
+             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
@@ -399,17 +374,14 @@
                                      withObject:responseObject];
              }
          }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [operation setUserInfo:userinfo];
-             
-             SEL failSelector = NSSelectorFromString(
-                                                     [operation.userInfo objectForKey:@"didFailSelector"]);
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+            SEL failSelector = NSSelectorFromString(@"didFailSelector");
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
                  
                  [self.delegate performSelector:failSelector
-                                     withObject:[operation error]];
+                                     withObject:error];
              }
          }];
 }
@@ -911,15 +883,14 @@
     
     __block id respObject;
     
-    AFHTTPRequestOperationManager *manager =
-    [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager DELETE:urlStr
          parameters:nil
-            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            success:^(NSURLSessionTask *task, id responseObject) {
                 
             }
-            failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            failure:^(NSURLSessionTask *operation, NSError *error){
                 
             }];
     

@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
-#import "AFURLConnectionOperation.h"
-#import "AFHTTPRequestOperation.h"
+
 
 @protocol JotFormDelegate <NSObject>
 
