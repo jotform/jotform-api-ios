@@ -21,7 +21,7 @@
 @property(assign) SEL didFinishSelector;
 @property(assign) SEL didFailSelector;
 
-@property(nonatomic, assign) id<JotFormDelegate> delegate;
+@property(nonatomic, assign) id <JotFormDelegate> delegate;
 
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
 

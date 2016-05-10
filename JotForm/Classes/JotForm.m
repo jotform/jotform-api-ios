@@ -93,19 +93,16 @@
         [manager GET:urlStr
           parameters:nil
              success:^(NSURLSessionTask *task, id responseObject) {
-                 
-                 SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+                 SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
                  
                  if (self.delegate != nil &&
                      [self.delegate respondsToSelector:finishSelector]) {
-                     
                      [self.delegate performSelector:finishSelector
                                          withObject:responseObject];
                  }
             }
              failure:^(NSURLSessionTask *operation, NSError *error) {
-                 
-                 SEL failSelector = NSSelectorFromString(@"didFailSelector");
+                 SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
                  
                  if (self.delegate != nil &&
                      [self.delegate respondsToSelector:failSelector]) {
@@ -118,7 +115,7 @@
         [manager POST:urlStr
            parameters:params
               success:^(NSURLSessionTask *task, id responseObject) {
-                  SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+                 SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
                   
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:finishSelector]) {
@@ -127,8 +124,8 @@
                   }
               }
               failure:^(NSURLSessionTask *operation, NSError *error) {
+                SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
                   
-                  SEL failSelector = NSSelectorFromString(@"didFailSelector");
                   if (self.delegate != nil &&
                       [self.delegate respondsToSelector:failSelector]) {
                       [self.delegate performSelector:failSelector
@@ -139,7 +136,8 @@
         [manager DELETE:urlStr
              parameters:params
                 success:^(NSURLSessionTask *task, id responseObject) {
-                    SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+                    SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
+                    
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:finishSelector]) {
                         [self.delegate performSelector:finishSelector
@@ -147,7 +145,8 @@
                     }
                 }
                 failure:^(NSURLSessionTask *operation, NSError *error) {
-                    SEL failSelector = NSSelectorFromString(@"didFailSelector");
+                    SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
+                    
                     if (self.delegate != nil &&
                         [self.delegate respondsToSelector:failSelector]) {
                         [self.delegate performSelector:failSelector
@@ -177,7 +176,8 @@
     [manager GET:urlStr
       parameters:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+             SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
+             
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
                  [self.delegate performSelector:finishSelector
@@ -185,7 +185,7 @@
              }
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             SEL failSelector = NSSelectorFromString(@"didFailSelector");
+             SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
@@ -212,7 +212,8 @@
     [manager GET:urlStr
       parameters:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+             SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
+           
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
                  [self.delegate performSelector:finishSelector
@@ -221,8 +222,7 @@
              
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-    
-             SEL failSelector = NSSelectorFromString(@"didFailSelector");
+              SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
@@ -248,7 +248,7 @@
     [manager POST:urlStr
        parameters:params
           success:^(NSURLSessionTask *task, id responseObject) {
-              SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+             SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:finishSelector]) {
@@ -259,7 +259,8 @@
               
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-              SEL failSelector = NSSelectorFromString(@"didFailSelector");
+              SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
+              
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:failSelector]) {
                   [self.delegate performSelector:failSelector
@@ -291,7 +292,7 @@
     [manager POST:urlStr
        parameters:params
           success:^(NSURLSessionTask *task, id responseObject) {
-              SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+              SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:finishSelector]) {
@@ -301,7 +302,7 @@
           }
      
           failure:^(NSURLSessionTask *operation, NSError *error) {
-              SEL failSelector = NSSelectorFromString(@"didFailSelector");
+             SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
               
               if (self.delegate != nil &&
                   [self.delegate respondsToSelector:failSelector]) {
@@ -365,7 +366,7 @@
     [manager PUT:urlStr
       parameters:parameters
          success:^(NSURLSessionTask *task, id responseObject) {
-             SEL finishSelector = NSSelectorFromString(@"didFinishSelector");
+            SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:finishSelector]) {
@@ -375,7 +376,7 @@
              }
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-            SEL failSelector = NSSelectorFromString(@"didFailSelector");
+            SEL failSelector = NSSelectorFromString([userinfo objectForKey:@"didFailSelector"]);
              
              if (self.delegate != nil &&
                  [self.delegate respondsToSelector:failSelector]) {
