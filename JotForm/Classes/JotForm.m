@@ -30,8 +30,6 @@
         submitReportUrl = SUBMIT_REPORT_URL;
         submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
-        self.operationQueue = [[NSOperationQueue alloc] init];
-        [self.operationQueue setMaxConcurrentOperationCount:1];
     }
     return self;
 }
@@ -48,8 +46,6 @@
         submitReportUrl = SUBMIT_REPORT_URL;
         submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
-        self.operationQueue = [[NSOperationQueue alloc] init];
-        [self.operationQueue setMaxConcurrentOperationCount:1];
     }
     return self;
 }
@@ -68,7 +64,8 @@
     [urlStr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+    manager.operationQueue.maxConcurrentOperationCount = 1;
+
     NSMutableDictionary *userinfo = [[NSMutableDictionary alloc] init];
     [userinfo setObject:NSStringFromSelector(self.didFinishSelector)
                  forKey:@"didFinishSelector"];
@@ -92,6 +89,7 @@
         
         [manager GET:urlStr
           parameters:nil
+            progress:nil
              success:^(NSURLSessionTask *task, id responseObject) {
                  SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
                  
@@ -114,6 +112,7 @@
     } else if ([method isEqualToString:HTTPREQUEST_METHOD_POST]) {
         [manager POST:urlStr
            parameters:params
+             progress:nil
               success:^(NSURLSessionTask *task, id responseObject) {
                  SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
                   
@@ -175,6 +174,7 @@
     
     [manager GET:urlStr
       parameters:nil
+        progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
              
@@ -211,6 +211,7 @@
     
     [manager GET:urlStr
       parameters:nil
+        progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
            
@@ -247,6 +248,7 @@
     
     [manager POST:urlStr
        parameters:params
+         progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
              SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
               
@@ -291,6 +293,7 @@
     
     [manager POST:urlStr
        parameters:params
+         progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               SEL finishSelector = NSSelectorFromString([userinfo objectForKey:@"didFinishSelector"]);
               

@@ -16,8 +16,6 @@
 
 @interface JotForm : NSObject
 
-@property(nonatomic, retain) NSOperationQueue *operationQueue;
-
 @property(assign) SEL didFinishSelector;
 @property(assign) SEL didFailSelector;
 
