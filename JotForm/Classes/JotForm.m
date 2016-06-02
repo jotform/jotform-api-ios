@@ -66,30 +66,33 @@
         parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-          
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-           
+             failureBlock(error);
          }];
 }
-- (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method params:(NSMutableDictionary *)params {
+- (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method params:(NSMutableDictionary *)params onSuccess:(void (^)(id))successBlock onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager POST:[NSString stringWithFormat:@"%@/%@", submitReportUrl, [self urlEncode:path]]
+    [manager POST:[NSString
+                   stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]]
        parameters:params
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
-              
+              successBlock(responseObject);
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-              
+              failureBlock(error);
           }];
 }
 
 - (void)executeSuggestionHttpRequest:(NSString *)path
                               method:(NSString *)method
                               params:(NSMutableDictionary *)params
+                           onSuccess:(void (^)(id))successBlock
+                           onFailure:(void (^)(NSError *))failureBlock
 
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -100,10 +103,10 @@
        parameters:params
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
-             
+             successBlock(responseObject);
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+             failureBlock(error);
           }];
 }
 
@@ -117,10 +120,10 @@
           parameters:reportParams
           progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
-              
+              successBlock(responseObject);
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-              
+              failureBlock(error);
           }];
 }
 
@@ -135,10 +138,10 @@
        parameters:suggestionParams
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
-              
+              successBlock(responseObject);
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-              
+              failureBlock(error);
           }];
 }
 
@@ -774,10 +777,10 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             
+              successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+              failureBlock(error);
          }];
 
 }
@@ -791,10 +794,10 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+             failureBlock(error);
          }];
 }
 
@@ -807,10 +810,10 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+             failureBlock(error);
          }];
 }
 
@@ -819,14 +822,14 @@ onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    [manager GET:[NSString stringWithFormat:@"%@/user/settings/euOnly", baseUrl]
+    [manager GET:[NSString stringWithFormat:@"%@/%@/user/settings/euOnly", baseUrl,apiVersion]
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             
+              successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+              failureBlock(error);
          }];
 }
 
@@ -874,8 +877,6 @@ onFailure:(void (^)(NSError *))failureBlock {
           failure:^(NSURLSessionTask *operation, NSError *error) {
               failureBlock(error);
           }];
-    
-    [self debugLog:[NSString stringWithFormat:@"params = %@",params]];
 }
 
 - (void)cloneForm:(long long)formID
@@ -1123,10 +1124,10 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-             
+             failureBlock(error);
          }];
 }
 
@@ -1171,8 +1172,6 @@ onFailure:(void (^)(NSError *))failureBlock {
         }
         
         filterStr = [filterStr stringByAppendingString:@"%7d"];
-        
-        [self debugLog:[NSString stringWithFormat:@"filterStr = %@", filterStr]];
         
         [params setObject:filterStr forKey:@"filter"];
     }
