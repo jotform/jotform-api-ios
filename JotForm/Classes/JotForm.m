@@ -320,8 +320,20 @@ onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.operationQueue.maxConcurrentOperationCount = 1;
     
-    [manager GET:[NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@", baseUrl,
-                  apiVersion, apiKey]
+    NSMutableDictionary *params =
+    [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
+    
+    NSMutableArray *paramarray = [[NSMutableArray alloc] init];
+    NSArray *keys = [params allKeys];
+    
+    for (NSString *key in keys)
+        [paramarray
+         addObject:[NSString stringWithFormat:@"%@=%@", key,
+                    [params objectForKey:key]]];
+    
+    NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
+   
+    [manager GET:[NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr]
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
