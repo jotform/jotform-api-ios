@@ -63,7 +63,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [manager GET:[NSString stringWithFormat:@"%@/%@", baseUrl, path]
-        parameters:nil
+      parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
@@ -103,10 +103,10 @@
        parameters:params
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
+              successBlock(responseObject);
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
+              failureBlock(error);
           }];
 }
 
@@ -117,8 +117,8 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/submit/%lld/", submitReportUrl, [self urlEncode:@""],formID]
-          parameters:reportParams
-          progress:nil
+       parameters:reportParams
+         progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -178,22 +178,20 @@
     onSuccess:(void (^)(id))successBlock
     onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/user/login?apiKey=%@", baseUrl,apiVersion,apiKey] parameters:userinfo progress:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+          success:^(NSURLSessionTask *task, id responseObject) {
+              successBlock(responseObject);
+          }
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              failureBlock(error);
+          }];
 }
 
 - (void)logout:(NSMutableDictionary *)userinfo
      onSuccess:(void (^)(id))successBlock
      onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/user/logout?apiKey=%@", baseUrl,apiVersion,apiKey] parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -208,7 +206,6 @@
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/user/register?apiKey=%@", baseUrl,apiVersion,apiKey] parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -222,7 +219,6 @@
 - (void)getUser:(void (^)(id))successBlock
       onFailure:(void (^)(NSError *))failureBlock  {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -234,13 +230,11 @@
          failure:^(NSURLSessionTask *operation, NSError *error) {
              failureBlock(error);
          }];
-
 }
 
 - (void)getUsage:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock {
+       onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/usage?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -257,7 +251,6 @@ onFailure:(void (^)(NSError *))failureBlock {
 - (void)getForms:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -278,7 +271,6 @@ onFailure:(void (^)(NSError *))failureBlock {
        onSuccess:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     NSMutableDictionary *params =
     [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
@@ -306,9 +298,8 @@ onFailure:(void (^)(NSError *))failureBlock {
 }
 
 - (void)getSubmissions:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock {
+             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -330,7 +321,6 @@ onFailure:(void (^)(NSError *))failureBlock {
              onFailure:(void (^)(NSError *))failureBlock
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     NSMutableDictionary *params =
     [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
@@ -344,7 +334,7 @@ onFailure:(void (^)(NSError *))failureBlock {
                     [params objectForKey:key]]];
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-   
+    
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr]
       parameters:nil
         progress:nil
@@ -357,9 +347,8 @@ onFailure:(void (^)(NSError *))failureBlock {
 }
 
 - (void)getSubusers:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock  {
+          onFailure:(void (^)(NSError *))failureBlock  {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/subusers?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -376,7 +365,6 @@ onFailure:(void (^)(NSError *))failureBlock  {
 - (void)getFolders:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/users/folders?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -394,7 +382,6 @@ onFailure:(void (^)(NSError *))failureBlock  {
         onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/folder/%lld?apiKey=%@", baseUrl,
                   apiVersion,folderId, apiKey]
@@ -409,9 +396,8 @@ onFailure:(void (^)(NSError *))failureBlock  {
 }
 
 - (void)getReports:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock {
+         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/reports/apiKey=%@", baseUrl, apiVersion, apiKey]
       parameters:nil
@@ -428,7 +414,6 @@ onFailure:(void (^)(NSError *))failureBlock {
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/user/reports/%lld?apiKey=%@", baseUrl,
                      apiVersion,reportID, apiKey] parameters:nil
@@ -441,9 +426,8 @@ onFailure:(void (^)(NSError *))failureBlock {
 }
 
 - (void)getSettings:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock {
+          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -461,7 +445,6 @@ onFailure:(void (^)(NSError *))failureBlock {
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl,apiVersion,apiKey] parameters:settings progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -473,9 +456,8 @@ onFailure:(void (^)(NSError *))failureBlock {
 }
 
 - (void)getHistory:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock {
+         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl,
                   apiVersion, apiKey]
@@ -504,7 +486,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                                                    endDate:endDate
                                                    sortWay:sortWay];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl, apiVersion,apiKey]
       parameters:params
@@ -515,14 +496,13 @@ onFailure:(void (^)(NSError *))failureBlock {
          failure:^(NSURLSessionTask *operation, NSError *error) {
              failureBlock(error);
          }];
-
+    
 }
 
 - (void)getForm:(long long)formID
       onSuccess:(void (^)(id))successBlock
       onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey]
       parameters:nil
@@ -541,7 +521,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                onFailure:(void (^)(NSError *))failureBlock
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
                   apiVersion,formID, apiKey]
@@ -559,7 +538,6 @@ onFailure:(void (^)(NSError *))failureBlock {
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,
                   apiVersion,formID,qid, apiKey]
@@ -580,7 +558,6 @@ onFailure:(void (^)(NSError *))failureBlock {
     [params setObject:@"true" forKey:@"qid_enabled"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey] parameters:params progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -602,7 +579,6 @@ onFailure:(void (^)(NSError *))failureBlock {
     [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey] parameters:params progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -617,15 +593,14 @@ onFailure:(void (^)(NSError *))failureBlock {
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID, apiKey] parameters:nil progress:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+         success:^(NSURLSessionTask *task, id responseObject) {
+             successBlock(responseObject);
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             failureBlock(error);
+         }];
 }
 
 - (void)createFormSubmissions:(long long)formID
@@ -654,7 +629,6 @@ onFailure:(void (^)(NSError *))failureBlock {
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/logout?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:parameters progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -663,14 +637,13 @@ onFailure:(void (^)(NSError *))failureBlock {
           failure:^(NSURLSessionTask *operation, NSError *error) {
               failureBlock(error);
           }];
-
+    
 }
 
 - (void)getFormFiles:(long long)formID
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/files?apiKey=%@", baseUrl,apiVersion,formID, apiKey] parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -685,7 +658,6 @@ onFailure:(void (^)(NSError *))failureBlock {
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID, apiKey] parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -705,7 +677,6 @@ onFailure:(void (^)(NSError *))failureBlock {
         [params setObject:webhookURL forKey:@"webhookURL"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -720,7 +691,6 @@ onFailure:(void (^)(NSError *))failureBlock {
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/forms/%lld/webhooks/%lld?apiKey=%@", baseUrl,
                      apiVersion,formID,webhookID, apiKey] parameters:nil
@@ -736,7 +706,6 @@ onFailure:(void (^)(NSError *))failureBlock {
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/submissions/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,sid, apiKey] parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -750,7 +719,6 @@ onFailure:(void (^)(NSError *))failureBlock {
 - (void)getReport:(long long)reportID onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager GET:[NSString stringWithFormat:@"%@/%@/report/%lld?apiKey=%@", baseUrl,apiVersion,reportID, apiKey] parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -781,7 +749,6 @@ onFailure:(void (^)(NSError *))failureBlock {
         [params setObject:fields forKey:@"fields"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -801,12 +768,12 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
+             failureBlock(error);
          }];
-
+    
 }
 
 - (void)getFormEncrypted:(long long)formID
@@ -842,7 +809,7 @@ onFailure:(void (^)(NSError *))failureBlock {
 }
 
 - (void)checkEUserver:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock {
+            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -850,10 +817,10 @@ onFailure:(void (^)(NSError *))failureBlock {
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
+             successBlock(responseObject);
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
+             failureBlock(error);
          }];
 }
 
@@ -862,7 +829,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                onFailure:(void (^)(NSError *))failureBlock
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,
                      apiVersion,sid, apiKey] parameters:nil
@@ -892,9 +858,8 @@ onFailure:(void (^)(NSError *))failureBlock {
                forKey:@"submission[flag]"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
-    [manager POST:[NSString stringWithFormat:@"%@/%@/submission/%lld/?apiKey=%@", baseUrl,apiVersion,sid,apiKey] parameters:params progress:nil
+    [manager POST:[NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion,sid,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -906,9 +871,8 @@ onFailure:(void (^)(NSError *))failureBlock {
 - (void)cloneForm:(long long)formID
         onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
-   
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/clone?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:nil progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -923,7 +887,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,
                      apiVersion,formID,qid,apiKey] parameters:nil
@@ -948,7 +911,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                    forKey:[NSString stringWithFormat:@"question[%@]", key]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -963,7 +925,6 @@ onFailure:(void (^)(NSError *))failureBlock {
                   onSuccess:(void (^)(id))successBlock
                   onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager PUT:[NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
                   apiVersion,formID, apiKey] parameters:questions
@@ -973,7 +934,7 @@ onFailure:(void (^)(NSError *))failureBlock {
          failure:^(NSURLSessionTask *operation, NSError *error) {
              failureBlock(error);
          }];
-
+    
 }
 
 - (void)editFormQuestion:(long long)formID
@@ -990,16 +951,15 @@ onFailure:(void (^)(NSError *))failureBlock {
         [params setObject:[properties objectForKey:key]
                    forKey:[NSString stringWithFormat:@"question[%@]", key]];
     
-     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-     manager.operationQueue.maxConcurrentOperationCount = 1;
-     
-     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey] parameters:params progress:nil
-           success:^(NSURLSessionTask *task, id responseObject) {
-               successBlock(responseObject);
-           }
-           failure:^(NSURLSessionTask *operation, NSError *error) {
-               failureBlock(error);
-           }];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey] parameters:params progress:nil
+          success:^(NSURLSessionTask *task, id responseObject) {
+              successBlock(responseObject);
+          }
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              failureBlock(error);
+          }];
 }
 
 - (void)setFormProperties:(long long)formID
@@ -1014,7 +974,6 @@ onFailure:(void (^)(NSError *))failureBlock {
         [params setObject:[properties objectForKey:key] forKey:[NSString stringWithFormat:@"properties[%@]", key]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl,apiVersion,formID,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -1031,16 +990,15 @@ onFailure:(void (^)(NSError *))failureBlock {
                         onFailure:(void (^)(NSError *))failureBlock {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager PUT:[NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl,
-                     apiVersion,formID, apiKey] parameters:properties
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+                  apiVersion,formID, apiKey] parameters:properties
+         success:^(NSURLSessionTask *task, id responseObject) {
+             successBlock(responseObject);
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             failureBlock(error);
+         }];
 }
 
 - (void)createForm:(NSMutableDictionary *)form
@@ -1081,7 +1039,6 @@ onFailure:(void (^)(NSError *))failureBlock {
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager POST:[NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl,apiVersion,apiKey] parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -1096,10 +1053,9 @@ onFailure:(void (^)(NSError *))failureBlock {
           onSuccess:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager PUT:[NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl,
-                   apiVersion, apiKey] parameters:form
+                  apiVersion, apiKey] parameters:form
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -1112,31 +1068,29 @@ onFailure:(void (^)(NSError *))failureBlock {
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/forms/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey] parameters:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+            success:^(NSURLSessionTask *task, id responseObject) {
+                successBlock(responseObject);
+            }
+            failure:^(NSURLSessionTask *operation, NSError *error) {
+                failureBlock(error);
+            }];
 }
 
 - (void)deleteSubmissionSynchronous:(long long)formID
                           onSuccess:(void (^)(id))successBlock
                           onFailure:(void (^)(NSError *))failureBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.operationQueue.maxConcurrentOperationCount = 1;
     
     [manager DELETE:[NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,
-                  apiVersion,formID, apiKey] parameters:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+                     apiVersion,formID, apiKey] parameters:nil
+            success:^(NSURLSessionTask *task, id responseObject) {
+                successBlock(responseObject);
+            }
+            failure:^(NSURLSessionTask *operation, NSError *error) {
+                failureBlock(error);
+            }];
 }
 
 - (void)getSystemPlan:(NSString *)planType
