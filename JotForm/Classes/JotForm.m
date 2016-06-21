@@ -707,7 +707,7 @@
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager GET:[NSString stringWithFormat:@"%@/%@/submissions/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,sid, apiKey] parameters:nil progress:nil
+    [manager GET:[NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion,sid, apiKey] parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
