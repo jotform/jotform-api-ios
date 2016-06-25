@@ -9,14 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Common.h"
 
-
-@protocol JotFormDelegate <NSObject>
-
-@end
-
 @interface JotForm : NSObject
-
-@property(nonatomic, assign) id <JotFormDelegate> delegate;
 
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
 
