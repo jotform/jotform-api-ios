@@ -62,9 +62,11 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+   
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -78,9 +80,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
     
-    [manager POST:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr
        parameters:params
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -101,9 +106,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
     
-    [manager POST:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr
        parameters:params
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -120,9 +128,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitReportUrl, [self urlEncode:@""],formID]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitReportUrl, [self urlEncode:@""],formID];
     
-    [manager POST:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", reportParams]];
+    
+    [manager POST:urlStr
        parameters:reportParams
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -140,9 +151,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitSuggestionUrl, [self urlEncode:@""],formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitSuggestionUrl, [self urlEncode:@""],formID];
     
-    [manager POST:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", suggestionParams]];
+    
+    [manager POST:urlStr
        parameters:suggestionParams
          progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -158,9 +172,12 @@
     onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/login?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/login?apiKey=%@", baseUrl,apiVersion,apiKey];
     
-    [manager POST:urlString parameters:userinfo progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", userinfo]];
+    
+    [manager POST:urlStr parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -174,9 +191,12 @@
      onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/logout?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/logout?apiKey=%@", baseUrl,apiVersion,apiKey];
     
-    [manager POST:urlString parameters:userinfo progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", userinfo]];
+    
+    [manager POST:urlStr parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -190,9 +210,12 @@
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/register?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/register?apiKey=%@", baseUrl,apiVersion,apiKey];
     
-    [manager POST:urlString parameters:userinfo progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", userinfo]];
+    
+    [manager POST:urlStr parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -205,9 +228,11 @@
       onFailure:(void (^)(NSError *))failureBlock  {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user?apiKey=%@", baseUrl,apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user?apiKey=%@", baseUrl,apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -222,9 +247,11 @@
        onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/usage?apiKey=%@", baseUrl,apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/usage?apiKey=%@", baseUrl,apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -239,9 +266,11 @@
        onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl, apiVersion, apiKey]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl, apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+   
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -271,9 +300,11 @@
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@&%@", baseUrl,apiVersion, apiKey,paramstr];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@&%@", baseUrl,apiVersion, apiKey,paramstr];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -288,9 +319,11 @@
              onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@", baseUrl,apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@", baseUrl,apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -322,9 +355,11 @@
                     [params objectForKey:key]]];
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -339,9 +374,11 @@
           onFailure:(void (^)(NSError *))failureBlock  {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
    
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/subusers?apiKey=%@", baseUrl, apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/subusers?apiKey=%@", baseUrl, apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -356,9 +393,11 @@
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/users/folders?apiKey=%@", baseUrl,apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/users/folders?apiKey=%@", baseUrl,apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -374,9 +413,11 @@
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/folder/%lld?apiKey=%@", baseUrl, apiVersion,folderId, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/folder/%lld?apiKey=%@", baseUrl, apiVersion,folderId, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -391,9 +432,11 @@
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/reports/apiKey=%@", baseUrl, apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/reports/apiKey=%@", baseUrl, apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+ 
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -409,9 +452,11 @@
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/reports/%lld?apiKey=%@", baseUrl, apiVersion reportID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/reports/%lld?apiKey=%@", baseUrl, apiVersion,reportID, apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -424,9 +469,11 @@
           onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl, apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl, apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
         parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -442,9 +489,12 @@
              onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings?apiKey=%@", baseUrl,apiVersion,apiKey];
     
-    [manager POST:urlString parameters:settings progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", settings]];
+    
+    [manager POST:urlStr parameters:settings progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -457,9 +507,11 @@
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl,apiVersion, apiKey]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl,apiVersion, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -487,9 +539,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl, apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/history?apiKey=%@", baseUrl, apiVersion,apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager GET:urlStr
       parameters:params
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -506,9 +561,11 @@
       onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+  
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -526,10 +583,12 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
-                           apiVersion,formID, apiKey]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
+                        apiVersion,formID, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -545,10 +604,12 @@
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,
                            apiVersion,formID,qid, apiKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -567,9 +628,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
     
-    [manager GET:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager GET:urlStr parameters:params progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -590,9 +654,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
     
-    [manager GET:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager GET:urlStr parameters:params progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -606,9 +673,11 @@
              onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
     
-    [manager GET:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -644,9 +713,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/logout?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/logout?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:parameters progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", parameters]];
+    
+    [manager POST:urlStr parameters:parameters progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -661,9 +733,11 @@
            onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/files?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/files?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
     
-    [manager GET:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -677,9 +751,11 @@
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID, apiKey];
     
-    [manager GET:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+  
+    [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -698,9 +774,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/webhooks?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -714,10 +793,12 @@
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/forms/%lld/webhooks/%lld?apiKey=%@", baseUrl,
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/forms/%lld/webhooks/%lld?apiKey=%@", baseUrl,
                            apiVersion,formID,webhookID, apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -731,9 +812,11 @@
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion,sid, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion,sid, apiKey];
     
-    [manager GET:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -746,9 +829,11 @@
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/report/%lld?apiKey=%@", baseUrl,apiVersion,reportID, apiKey]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/report/%lld?apiKey=%@", baseUrl,apiVersion,reportID, apiKey];
     
-    [manager GET:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -778,9 +863,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/reports?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -794,9 +882,11 @@
                 onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties",baseUrl,formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties",baseUrl,formID];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -813,9 +903,11 @@
                onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties/isEncrypted",baseUrl,formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/isEncrypted",baseUrl,formID];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -831,9 +923,11 @@
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties/%@",baseUrl,formID,propertyKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/%@",baseUrl,formID,propertyKey];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -849,9 +943,11 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly", baseUrl,apiVersion];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly", baseUrl,apiVersion];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -868,9 +964,11 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl, apiVersion,sid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl, apiVersion,sid,apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -898,9 +996,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion sid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl,apiVersion,sid,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -914,9 +1015,11 @@
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/clone?apiKey=%@", baseUrl,apiVersion formID,apiKey]
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/clone?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:nil progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager POST:urlStr parameters:nil progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -930,9 +1033,11 @@
                  onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -955,9 +1060,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -971,10 +1079,13 @@
                   onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
                            apiVersion,formID, apiKey];
     
-    [manager PUT:urlString parameters:questions
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", questions]];
+    
+    [manager PUT:urlStr parameters:questions
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -1000,9 +1111,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/question/%lld?apiKey=%@", baseUrl,apiVersion,formID,qid,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -1024,9 +1138,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl,apiVersion formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -1042,9 +1159,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
-    [manager PUT:urlString parameters:properties
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", properties]];
+    
+    [manager PUT:urlStr parameters:properties
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -1092,9 +1212,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl,apiVersion,apiKey];
     
-    [manager POST:urlString parameters:params progress:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
+    
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -1108,9 +1231,12 @@
           onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl, apiVersion, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl, apiVersion, apiKey];
     
-    [manager PUT:urlString parameters:form
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", form]];
+    
+    [manager PUT:urlStr parameters:form
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
          }
@@ -1124,9 +1250,11 @@
          onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/forms/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/forms/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -1140,9 +1268,11 @@
                           onFailure:(void (^)(NSError *))failureBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
-    [manager DELETE:urlString parameters:nil
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
             }
@@ -1156,9 +1286,11 @@
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/system/plan/%@", baseUrl,planType];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/system/plan/%@", baseUrl,planType];
     
-    [manager GET:urlString
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
