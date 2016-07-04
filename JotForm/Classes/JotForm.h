@@ -8,21 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
-#import "AFURLConnectionOperation.h"
-#import "AFHTTPRequestOperation.h"
-
-@protocol JotFormDelegate <NSObject>
-
-@end
 
 @interface JotForm : NSObject
-
-@property(nonatomic, retain) NSOperationQueue *operationQueue;
-
-@property(assign) SEL didFinishSelector;
-@property(assign) SEL didFailSelector;
-
-@property(nonatomic, assign) id<JotFormDelegate> delegate;
 
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
 
@@ -32,7 +19,9 @@
  * @return Returns logged in user's settings and app key
  */
 
-- (void)login:(NSMutableDictionary *)userinfo;
+- (void)login:(NSMutableDictionary *)userinfo
+    onSuccess:(void (^)(id))successBlock
+    onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Register with username, password and email
@@ -40,28 +29,33 @@
  * @return Returns new user's details
  */
 
-- (void)registerUser:(NSMutableDictionary *)userinfo;
+- (void)registerUser:(NSMutableDictionary *)userinfo
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get user account details for a JotForm user.
  * @return Returns user account type, avatar URL, name, email, website URL and
  * account limits.
  */
-- (void)getUser;
+- (void)getUser:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get number of form submissions received this month.
  * @return Returns number of submissions, number of SSL form submissions,
  * payment form submissions and upload space used by user.
  */
-- (void)getUsage;
+- (void)getUsage:(void (^)(id))successBlock
+       onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of forms for this account
  * @return Returns basic details such as title of the form, when it was created,
  * number of new and total submissions.
  */
-- (void)getForms;
+- (void)getForms:(void (^)(id))successBlock
+       onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of forms for this account
@@ -74,15 +68,18 @@
  */
 - (void)getForms:(NSInteger)offset
            limit:(NSInteger)limit
-         orderBy:(NSString *)orderBy
-          filter:(NSMutableDictionary *)filter;
+           orderBy:(NSString *)orderBy
+          filter:(NSMutableDictionary *)filter
+         onSuccess:(void (^)(id))successBlock
+         onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of submissions for this account.
  * @return Returns basic details such as title of the form, when it was created,
  * number of new and total submissions.
  */
-- (void)getSubmissions;
+- (void)getSubmissions:(void (^)(id))successBlock
+                      onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of submissions for this account.
@@ -96,20 +93,24 @@
 - (void)getSubmissions:(NSInteger)offset
                  limit:(NSInteger)limit
                orderBy:(NSString *)orderBy
-                filter:(NSMutableDictionary *)filter;
+                filter:(NSMutableDictionary *)filter
+             onSuccess:(void (^)(id))successBlock
+             onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of sub users for this account.
  * @return Returns list of forms and form folders with access privileges.
  */
-- (void)getSubusers;
+- (void)getSubusers:(void (^)(id))successBlock
+                   onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of form folders for this account.
  * @return Returns name of the folder and owner of the folder for shared
  * folders.
  */
-- (void)getFolders;
+- (void)getFolders:(void (^)(id))successBlock
+                  onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get folder details
@@ -117,20 +118,24 @@
  * @return Returns a list of forms in a folder, and other details about the form
  * such as folder color.
  */
-- (void)getFolder:(long long)folderId;
+- (void)getFolder:(long long)folderId
+        onSuccess:(void (^)(id))successBlock
+        onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * List of URLS for reports in this account.
  * @return Returns reports for all of the forms. ie. Excel, CSV, printable
  * charts, embeddable HTML tables.
  */
-- (void)getReports;
+- (void)getReports:(void (^)(id))successBlock
+                  onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get user's settings for this account.
  * @return Returns user's time zone and language.
  */
-- (void)getSettings;
+- (void)getSettings:(void (^)(id))successBlock
+                   onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Update user's settings
@@ -138,14 +143,17 @@
  * @return Return changes on user settings
  */
 
-- (void)updateSettings:(NSMutableDictionary *)settings;
+- (void)updateSettings:(NSMutableDictionary *)settings
+             onSuccess:(void (^)(id))successBlock
+             onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get user activity log.
  * @return Returns activity log about things like forms
  * created/modified/deleted, account logins and other operations.
  */
-- (void)getHistory;
+- (void)getHistory:(void (^)(id))successBlock
+                  onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get user activity log.
@@ -165,7 +173,9 @@
             sortBy:(NSString *)sortBy
          startDate:(NSString *)startDate
            endDate:(NSString *)endDate
-           sortWay:(NSString *)sortWay;
+           sortWay:(NSString *)sortWay
+         onSuccess:(void (^)(id))successBlock
+         onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get basic information about a form.
@@ -174,7 +184,9 @@
  * @return Returns form ID, status, update and creation dates, submission count
  * etc.
  */
-- (void)getForm:(long long)formID;
+- (void)getForm:(long long)formID
+      onSuccess:(void (^)(id))successBlock
+      onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of all questions on a form.
@@ -182,7 +194,9 @@
  * IDs when you call /user/forms.
  * @return Returns question properties of a form.
  */
-- (void)getFormQuestions:(long long)formID;
+- (void)getFormQuestions:(long long)formID
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Check wether or not the form is encrypted
@@ -190,7 +204,9 @@
  * IDs when you call /user/forms.
  * @return Returns Yes or No.
  */
-- (void)getFormEncrypted:(long long)formID;
+- (void)getFormEncrypted:(long long)formID
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get details about a question
@@ -200,7 +216,9 @@
  * question IDs from /form/{id}/questions.
  * @return Returns question properties like required and validation.
  */
-- (void)getFormQuestion:(long long)formID questionID:(long long)qid;
+- (void)getFormQuestion:(long long)formID questionID:(long long)qid
+              onSuccess:(void (^)(id))successBlock
+              onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * List of a form submissions.
@@ -208,7 +226,9 @@
  * IDs when you call /user/forms.
  * @return Returns submissions of a specific form.
  */
-- (void)getFormSubmissions:(long long)formID;
+- (void)getFormSubmissions:(long long)formID
+                 onSuccess:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * List of a form submissions.
@@ -224,13 +244,17 @@
                     offset:(NSInteger)offset
                      limit:(NSInteger)limit
                    orderBy:(NSString *)orderBy
-                    filter:(NSMutableDictionary *)filter;
+                    filter:(NSMutableDictionary *)filter
+                 onSuccess:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * @param formID Form ID is the numbers you see on a form URL. You can get form
  * IDs when you call /user/forms.
  */
-- (void)getFormReports:(long long)formID;
+- (void)getFormReports:(long long)formID
+             onSuccess:(void (^)(id))successBlock
+             onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Submit data to this form using the API.
@@ -240,7 +264,9 @@
  * @return Returns posted submission ID and URL.
  */
 - (void)createFormSubmissions:(long long)formID
-                   submission:(NSMutableDictionary *)submission;
+                   submission:(NSMutableDictionary *)submission
+                    onSuccess:(void (^)(id))successBlock
+                    onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * List of files uploaded on a form.
@@ -248,7 +274,9 @@
  * IDs when you call /user/forms.
  * @return Returns uploaded file information and URLs on a specific form.
  */
-- (void)getFormFiles:(long long)formID;
+- (void)getFormFiles:(long long)formID
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get list of webhooks for a form
@@ -256,7 +284,9 @@
  * IDs when you call /user/forms.
  * @return Returns list of webhooks for a specific form.
  */
-- (void)getFormWebhooks:(long long)formID;
+- (void)getFormWebhooks:(long long)formID
+              onSuccess:(void (^)(id))successBlock
+              onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Add a new webhook
@@ -266,7 +296,9 @@
  * submitted.
  * @return Returns list of webhooks for a specific form.
  */
-- (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL;
+- (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL
+                 onSuccess:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
 * Delete a specific webhook of a form.
@@ -276,28 +308,36 @@
 * /form/{formID}/webhooks.
 * @return Returns remaining webhook URLs of form.
 */
-- (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID;
+- (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID
+            onSuccess:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get submission data
  * @param sid You can get submission IDs when you call /form/{id}/submissions.
  * @return Returns information and answers of a specific submission.
  */
-- (void)getSubmission:(long long)sid;
+- (void)getSubmission:(long long)sid
+            onSuccess:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get report details
  * @param reportID You can get a list of reports from /user/reports.
  * @return Returns properties of a specific report like fields and status.
  */
-- (void)getReport:(long long)reportID;
+- (void)getReport:(long long)reportID
+        onSuccess:(void (^)(id))successBlock
+        onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get report details
  * @param reportID You can Delete an existing report.
  * @return Deletes the existing report.
  */
-- (void)deleteReport:(long long)reportID;
+- (void)deleteReport:(long long)reportID
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
 
 /**
 
@@ -313,7 +353,9 @@
 - (void)createReport:(long long)formID
                title:(NSString *)title
            list_type:(NSString *)list_type
-              fields:(NSString *)fields;
+              fields:(NSString *)fields
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a list of all properties on a form.
@@ -321,7 +363,9 @@
  * IDs when you call /user/forms.
  * @return Returns form properties like width, expiration date, style etc.
  */
-- (void)getFormProperties:(long long)formID;
+- (void)getFormProperties:(long long)formID
+                onSuccess:(void (^)(id))successBlock
+                onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Get a specific property of the form.
@@ -331,14 +375,18 @@
  * /form/{id}/properties.
  * @return Returns given property key value.
  */
-- (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey;
+- (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
+              onSuccess:(void (^)(id))successBlock
+              onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Delete a single submission.
  * @param sid You can get submission IDs when you call /user/submissions.
  * @return Returns status of request.
  */
-- (void)deleteSubmission:(long long)sid;
+- (void)deleteSubmission:(long long)sid
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Edit a single submission.
@@ -349,7 +397,9 @@
 - (void)editSubmission:(long long)sid
                   name:(NSString *)submissionName
                    new:(NSInteger) new
-                  flag:(NSInteger)flag;
+                  flag:(NSInteger)flag
+                 onSuccess:(void (^)(id))successBlock
+                  onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Clone a single form.
@@ -357,7 +407,9 @@
  * IDs when you call /user/forms.
  * @return Returns status of request.
  */
-- (void)cloneForm:(long long)formID;
+- (void)cloneForm:(long long)formID
+        onSuccess:(void (^)(id))successBlock
+        onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Delete a single form question.
@@ -367,7 +419,9 @@
  * question IDs from /form/{id}/questions.
  * @return Returns status of request.
  */
-- (void)deleteFormQuestion:(long long)formID questionID:(long long)qid;
+- (void)deleteFormQuestion:(long long)formID questionID:(long long)qid
+                 onSuccess:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Add new question to specified form.
@@ -377,7 +431,9 @@
  * @return Returns properties of new question.
  */
 - (void)createFormQuestion:(long long)formID
-                  question:(NSMutableDictionary *)question;
+                  question:(NSMutableDictionary *)question
+                 onSuccess:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  *  Add new questions to specified form.
@@ -386,7 +442,9 @@
  * @param questions New question properties like type and text.
  * @return Returns properties of new questions.
  */
-- (void)createFormQuestions:(long long)formID questions:(NSString *)questions;
+- (void)createFormQuestions:(long long)formID questions:(NSString *)questions
+                  onSuccess:(void (^)(id))successBlock
+                  onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Edit a single question properties.
@@ -399,7 +457,9 @@
  */
 - (void)editFormQuestion:(long long)formID
               questionID:(long long)qid
-      questionProperties:(NSMutableDictionary *)properties;
+      questionProperties:(NSMutableDictionary *)properties
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Add or edit properties of a specific form
@@ -409,13 +469,16 @@
  * @return Returns edited properties.
  */
 - (void)setFormProperties:(long long)formID
-           formProperties:(NSMutableDictionary *)properties;
+           formProperties:(NSMutableDictionary *)properties
+                onSuccess:(void (^)(id))successBlock
+                onFailure:(void (^)(NSError *))failureBlock;
 
 /**
 * @return Returns wether or not a account is running on a EU server.
 */
 
-- (void)checkEUserver;
+- (void)checkEUserver:(void (^)(id))successBlock
+                     onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Add or edit properties of a specific form
@@ -425,21 +488,27 @@
  * @return Returns edited properties.
  */
 - (void)setMultipleFormProperties:(long long)formID
-                   formProperties:(NSString *)properties;
+                   formProperties:(NSString *)properties
+                        onSuccess:(void (^)(id))successBlock
+                        onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Create a new form
  * @param form Questions, properties and emails of new form.
  * @return Returns new form.
  */
-- (void)createForm:(NSMutableDictionary *)form;
+- (void)createForm:(NSMutableDictionary *)form
+         onSuccess:(void (^)(id))successBlock
+         onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Create a new form
  * @param form Questions, properties and emails of new form.
  * @return Returns new form.
  */
-- (void)createForms:(NSString *)form;
+- (void)createForms:(NSString *)form
+          onSuccess:(void (^)(id))successBlock
+          onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Delete a single form
@@ -447,27 +516,37 @@
  * IDs when you call /user/forms.
  * @return Properties of deleted form.
  */
-- (void)deleteForm:(long long)formID;
+- (void)deleteForm:(long long)formID
+         onSuccess:(void (^)(id))successBlock
+         onFailure:(void (^)(NSError *))failureBlock;
 
-- (id)deleteSubmissionSynchronous:(long long)formID;
+- (void)deleteSubmissionSynchronous:(long long)formID
+                        onSuccess:(void (^)(id))successBlock
+                        onFailure:(void (^)(NSError *))failureBlock;
 
 /**
 * Get details of a plan
 * @param plan is the name of the requested plan. FREE, PREMIUM etc.
 * @return Get details regarding systems plan
 */
-- (void)getSystemPlan:(NSString *)plan;
+- (void)getSystemPlan:(NSString *)plan
+            onSuccess:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Sends out a report to Jotform.
  */
 
-- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams;
+- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Sends out a suggestion to Jotform.
  */
 
-- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams;
+- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
 
 @end
