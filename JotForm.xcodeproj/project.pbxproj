@@ -14,7 +14,7 @@
 				C6CC69CD17944534004E0DE4 /* Build Static Library */,
 				C6CC69CC179444FC004E0DE4 /* Creating Universal Framework */,
 				C6A2B16F1794535800F1818D /* CopyFiles */,
-				C6A2B171179453A300F1818D /* CopyFiles */,
+				C6A2B171179453A300F1818D /* Copy Files */,
 				C6A2B17B179453FF00F1818D /* CopyFiles */,
 				C6A2B1881794541300F1818D /* CopyFiles */,
 				C6A2B1961794542500F1818D /* CopyFiles */,
@@ -40,12 +40,12 @@
 		6006F72A19C20C2000D5E4A5 /* AFHTTPSessionManager.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AEE19BACA7100F25CB9 /* AFHTTPSessionManager.m */; };
 		6006F72B19C20C2200D5E4A5 /* AFSecurityPolicy.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AF019BACA7100F25CB9 /* AFSecurityPolicy.m */; };
 		6006F72C19C20C2600D5E4A5 /* AFNetworkReachabilityManager.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AEF19BACA7100F25CB9 /* AFNetworkReachabilityManager.m */; };
-		6006F73019C20CB700D5E4A5 /* AFHTTPSessionManager.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AEE19BACA7100F25CB9 /* AFHTTPSessionManager.m */; };
-		6006F73119C20CBA00D5E4A5 /* AFNetworkReachabilityManager.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AEF19BACA7100F25CB9 /* AFNetworkReachabilityManager.m */; };
-		6006F73219C20CBD00D5E4A5 /* AFSecurityPolicy.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AF019BACA7100F25CB9 /* AFSecurityPolicy.m */; };
-		6006F73419C20CC300D5E4A5 /* AFURLRequestSerialization.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AF219BACA7100F25CB9 /* AFURLRequestSerialization.m */; };
-		6006F73519C20CC500D5E4A5 /* AFURLResponseSerialization.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AF319BACA7100F25CB9 /* AFURLResponseSerialization.m */; };
-		6006F73619C20CC800D5E4A5 /* AFURLSessionManager.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58AF419BACA7100F25CB9 /* AFURLSessionManager.m */; };
+		6006F73019C20CB700D5E4A5 /* AFHTTPSessionManager.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AEE19BACA7100F25CB9 /* AFHTTPSessionManager.m */; };
+		6006F73119C20CBA00D5E4A5 /* AFNetworkReachabilityManager.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AEF19BACA7100F25CB9 /* AFNetworkReachabilityManager.m */; };
+		6006F73219C20CBD00D5E4A5 /* AFSecurityPolicy.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AF019BACA7100F25CB9 /* AFSecurityPolicy.m */; };
+		6006F73419C20CC300D5E4A5 /* AFURLRequestSerialization.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AF219BACA7100F25CB9 /* AFURLRequestSerialization.m */; };
+		6006F73519C20CC500D5E4A5 /* AFURLResponseSerialization.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AF319BACA7100F25CB9 /* AFURLResponseSerialization.m */; };
+		6006F73619C20CC800D5E4A5 /* AFURLSessionManager.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 60A58AF419BACA7100F25CB9 /* AFURLSessionManager.m */; };
 		6006F73919C20CD900D5E4A5 /* AFHTTPSessionManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58ADA19BAC9C900F25CB9 /* AFHTTPSessionManager.h */; };
 		6006F73A19C20CDD00D5E4A5 /* AFNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58ADB19BAC9C900F25CB9 /* AFNetworking.h */; };
 		6006F73B19C20CE100D5E4A5 /* AFNetworkReachabilityManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60A58ADC19BAC9C900F25CB9 /* AFNetworkReachabilityManager.h */; };
@@ -120,19 +120,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6A2B171179453A300F1818D /* CopyFiles */ = {
+		C6A2B171179453A300F1818D /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/ExternalLib/Classes/afn";
 			dstSubfolderSpec = 0;
 			files = (
-				6006F73619C20CC800D5E4A5 /* AFURLSessionManager.m in CopyFiles */,
-				6006F73519C20CC500D5E4A5 /* AFURLResponseSerialization.m in CopyFiles */,
-				6006F73419C20CC300D5E4A5 /* AFURLRequestSerialization.m in CopyFiles */,
-				6006F73219C20CBD00D5E4A5 /* AFSecurityPolicy.m in CopyFiles */,
-				6006F73119C20CBA00D5E4A5 /* AFNetworkReachabilityManager.m in CopyFiles */,
-				6006F73019C20CB700D5E4A5 /* AFHTTPSessionManager.m in CopyFiles */,
+				6006F73619C20CC800D5E4A5 /* AFURLSessionManager.m in Copy Files */,
+				6006F73519C20CC500D5E4A5 /* AFURLResponseSerialization.m in Copy Files */,
+				6006F73419C20CC300D5E4A5 /* AFURLRequestSerialization.m in Copy Files */,
+				6006F73219C20CBD00D5E4A5 /* AFSecurityPolicy.m in Copy Files */,
+				6006F73119C20CBA00D5E4A5 /* AFNetworkReachabilityManager.m in Copy Files */,
+				6006F73019C20CB700D5E4A5 /* AFHTTPSessionManager.m in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C6A2B17B179453FF00F1818D /* CopyFiles */ = {
