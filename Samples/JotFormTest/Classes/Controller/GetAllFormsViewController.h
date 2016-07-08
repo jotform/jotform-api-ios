@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface GetAllFormsViewController : UIViewController<JotFormDelegate>
+@interface GetAllFormsViewController : UIViewController
 {
     IBOutlet UITextField        *offsetTextField;
     IBOutlet UITextField        *limitTextField;

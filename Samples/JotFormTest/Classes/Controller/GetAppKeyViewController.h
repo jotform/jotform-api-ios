@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface GetAppKeyViewController : UIViewController<JotFormDelegate>
+@interface GetAppKeyViewController : UIViewController
 {
     JotForm                     *apiClient;
     

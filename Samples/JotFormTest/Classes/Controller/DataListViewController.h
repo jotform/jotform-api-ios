@@ -12,9 +12,7 @@
 @interface DataListViewController : UIViewController
 {
     IBOutlet UITableView        *listTableView;
-    
     NSMutableArray              *dataList;
-    
     DataListType                 listType;
 }
 

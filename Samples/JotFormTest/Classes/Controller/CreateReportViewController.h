@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface CreateReportViewController : UIViewController<JotFormDelegate>
+@interface CreateReportViewController : UIViewController
 
 @end

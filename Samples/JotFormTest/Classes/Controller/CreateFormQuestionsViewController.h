@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface CreateFormQuestionsViewController : UIViewController<JotFormDelegate>
+@interface CreateFormQuestionsViewController : UIViewController
 {
     
 }
