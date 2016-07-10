@@ -10,9 +10,14 @@
 #import "SampleListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 #import "Common.h"
 
-@interface GetAppKeyViewController ()
+@interface GetAppKeyViewController () {
+    JotForm *apiClient;
+    IBOutlet UITextField *usernameTextField;
+    IBOutlet UITextField *passwordTextField;
+}
 
 @end
 

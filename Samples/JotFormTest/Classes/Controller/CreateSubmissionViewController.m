@@ -7,9 +7,10 @@
 //
 
 #import "CreateSubmissionViewController.h"
-#include "SVProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "SharedData.h"
 #import "Common.h"
+#import <JotForm/JotForm.h>
 
 @interface CreateSubmissionViewController ()
 
@@ -94,8 +95,5 @@
 {
     [self createSubmission];
 }
-
-#pragma mark - Jotform delegate
-
 
 @end

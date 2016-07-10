@@ -16,9 +16,7 @@
 
 @end
 
-@implementation CreateFormQuestionsViewController {
-    
-}
+@implementation CreateFormQuestionsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,7 +77,5 @@
 {
     [self createFormQuestions];
 }
-
-
 
 @end

@@ -10,8 +10,16 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
-@interface GetAllSubmissionsViewController ()
+@interface GetAllSubmissionsViewController () {
+    IBOutlet UITextField        *offsetTextField;
+    IBOutlet UITextField        *limitTextField;
+    IBOutlet UIPickerView       *pickerView;
+    IBOutlet UITextField        *filterTextField;
+    IBOutlet UIBarButtonItem    *getBarButtonItem;
+    NSArray                     *orderbyList;
+}
 
 @end
 
@@ -137,7 +145,6 @@
     
     return rowStr;
 }
-
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     

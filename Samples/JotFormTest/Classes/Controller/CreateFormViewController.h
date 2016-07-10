@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm/JotForm.h>
 
-@interface CreateFormViewController : UIViewController {
-    
-}
+@interface CreateFormViewController : UIViewController
+
 
 @end

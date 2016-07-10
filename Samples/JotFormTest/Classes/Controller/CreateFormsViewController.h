@@ -10,8 +10,5 @@
 #import <JotForm/JotForm.h>
 
 @interface CreateFormsViewController : UIViewController
-{
-    
-}
 
 @end

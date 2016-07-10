@@ -10,8 +10,17 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
-@interface GetAllFormsViewController ()
+@interface GetAllFormsViewController () {
+    IBOutlet UITextField        *offsetTextField;
+    IBOutlet UITextField        *limitTextField;
+    IBOutlet UIPickerView       *pickerView;
+    IBOutlet UITextField        *filterTextField;
+    IBOutlet UIBarButtonItem    *getBarButtonItem;
+    
+    NSArray                     *orderbyList;
+}
 
 @end
 
@@ -106,7 +115,6 @@
     [dataListVc setFormList:datalist type:DataListTypeFormList];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (IBAction) getFormsButtonClicked : (id) sender {
@@ -114,7 +122,6 @@
     [self loadForms];
 }
 
-#pragma mark -
 #pragma mark UIPickerViewDataSource
 
 
@@ -128,8 +135,6 @@
     return [orderbyList count];
 }
 
-
-#pragma mark -
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {

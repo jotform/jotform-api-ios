@@ -16,9 +16,7 @@
 
 @end
 
-@implementation CreateFormsViewController {
-    
-}
+@implementation CreateFormsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

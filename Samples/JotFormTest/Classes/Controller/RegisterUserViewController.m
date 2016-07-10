@@ -10,7 +10,11 @@
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface RegisterUserViewController ()
+@interface RegisterUserViewController () {
+    IBOutlet UITextField        *mUsernameTextField;
+    IBOutlet UITextField        *mPasswordTextField;
+    IBOutlet UITextField        *mEmailTextField;
+}
 
 @end
 

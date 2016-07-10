@@ -9,6 +9,7 @@
 #import "CreateFormViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
 @interface CreateFormViewController ()
 
@@ -37,18 +38,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - user definition method
-
-- (void) initData
-{
-    
-}
-
-- (void) initUI
-{
-    
 }
 
 #pragma mark - IBAction

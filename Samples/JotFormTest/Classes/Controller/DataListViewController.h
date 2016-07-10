@@ -10,11 +10,6 @@
 #import "Common.h"
 
 @interface DataListViewController : UIViewController
-{
-    IBOutlet UITableView        *listTableView;
-    NSMutableArray              *dataList;
-    DataListType                 listType;
-}
 
 - (void) setFormList : (NSArray *) dataarray type : (DataListType) type;
 - (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type;

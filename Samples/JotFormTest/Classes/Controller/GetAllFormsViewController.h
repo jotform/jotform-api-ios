@@ -7,17 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm/JotForm.h>
 
 @interface GetAllFormsViewController : UIViewController
-{
-    IBOutlet UITextField        *offsetTextField;
-    IBOutlet UITextField        *limitTextField;
-    IBOutlet UIPickerView       *pickerView;
-    IBOutlet UITextField        *filterTextField;
-    IBOutlet UIBarButtonItem    *getBarButtonItem;
-    
-    NSArray                     *orderbyList;
-}
 
 @end

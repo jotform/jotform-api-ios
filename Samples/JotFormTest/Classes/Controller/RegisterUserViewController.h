@@ -10,11 +10,7 @@
 #import <JotForm/JotForm.h>
 
 @interface RegisterUserViewController : UIViewController
-{
-    IBOutlet UITextField        *mUsernameTextField;
-    IBOutlet UITextField        *mPasswordTextField;
-    IBOutlet UITextField        *mEmailTextField;
-}
+
 
 - (IBAction) registerButtonClicked : (id) sender;
 

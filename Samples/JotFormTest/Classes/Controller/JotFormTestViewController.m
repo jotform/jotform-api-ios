@@ -8,8 +8,12 @@
 
 #import "JotFormTestViewController.h"
 #import "Common.h"
+#import <JotForm/JotForm.h>
 
-@interface JotFormTestViewController ()
+@interface JotFormTestViewController () {
+    IBOutlet UILabel *resultLabel;
+    JotForm *jotform;
+}
 
 @end
 
