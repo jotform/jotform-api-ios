@@ -92,7 +92,7 @@
     [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
 
-    [apiClient login:userInfo onSuccess:^(id success) {
+    [apiClient login:userInfo onSuccess:^(id result) {
         if ( result != nil ) {
             
             int responseCode = [[result objectForKey:@"responseCode"] integerValue];

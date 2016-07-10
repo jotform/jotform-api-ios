@@ -77,11 +77,24 @@
     
     orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(loadFormsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(loadFormsFail:)];
-    
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
+        [SVProgressHUD dismiss];
+        
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                NSArray *formsArray = [result objectForKey:@"content"];
+                
+                [self startDataListViewController:formsArray];
+            }
+        }
+  
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 - (void) startDataListViewController : (NSArray *) datalist
@@ -129,32 +142,6 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-}
-
-#pragma mark -
-#pragma mark Jotform delegate
-
-- (void) loadFormsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            NSArray *formsArray = [result objectForKey:@"content"];
-
-            [self startDataListViewController:formsArray];
-        }
-    }
-
-}
-
-- (void) loadFormsFail : (id) error
-{
-    [SVProgressHUD dismiss];
 }
 
 @end

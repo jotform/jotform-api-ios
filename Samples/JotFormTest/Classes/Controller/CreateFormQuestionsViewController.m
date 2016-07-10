@@ -47,13 +47,29 @@
 {
     SharedData *sharedData = [SharedData sharedData];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(createFormQuestionsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(createFormQuestionsFail:)];
- 
     NSString *jsonString = @"{\"questions\":{\"1\":{\"type\":\"control_head\",\"text\":\"Text 1\",\"order\":\"1\",\"name\":\"Header1\"},\"2\":{\"type\":\"control_head\",\"text\":\"Text 2\",\"order\":\"2\",\"name\":\"Header2\"}}}";
 
-    [sharedData.apiClient createFormQuestions:FORM_ID questions:jsonString];
+  
+    [sharedData.apiClient createFormQuestions:FORM_ID questions:jsonString onSuccess:^(id result){
+        [SVProgressHUD dismiss];
+        
+        if (result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created question successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                return;
+                
+            }
+        }
+    } onFailure:^(id error) {
+        
+    }];
     
 }
 
@@ -63,37 +79,6 @@
 {
     [self createFormQuestions];
 }
-
-#pragma mark - Jotform delegate
-
-- (void) createFormQuestionsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created question successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            
-            return;
-            
-        }
-        
-    }
-}
-
-- (void) createFormQuestionsFail : (id) error
-{
-    NSLog(@"error %@",error);
-    
-}
-
 
 
 

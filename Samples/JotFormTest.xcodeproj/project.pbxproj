@@ -247,7 +247,6 @@
 				C69709A9178D50B600858450 /* Extern */,
 				3CD6BF7E1779FE460065788B /* Controller */,
 				3CD6BF9B1779FE460065788B /* Model */,
-				3CD6BF9E1779FE460065788B /* View */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -309,13 +308,6 @@
 				C3B2AF7A1879A76700FCFAEA /* SharedData.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3CD6BF9E1779FE460065788B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A6F93F061D304B4A005EE644 /* JotForm */ = {
