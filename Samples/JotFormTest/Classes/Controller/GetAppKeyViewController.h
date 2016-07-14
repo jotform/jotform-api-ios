@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface GetAppKeyViewController : UIViewController<JotFormDelegate>
-{
-    JotForm                     *apiClient;
-    
-    IBOutlet UITextField        *usernameTextField;
-    IBOutlet UITextField        *passwordTextField;
-}
+@interface GetAppKeyViewController : UIViewController
 
 @end

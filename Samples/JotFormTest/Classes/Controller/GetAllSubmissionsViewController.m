@@ -10,8 +10,16 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
-@interface GetAllSubmissionsViewController ()
+@interface GetAllSubmissionsViewController () {
+    IBOutlet UITextField        *offsetTextField;
+    IBOutlet UITextField        *limitTextField;
+    IBOutlet UIPickerView       *pickerView;
+    IBOutlet UITextField        *filterTextField;
+    IBOutlet UIBarButtonItem    *getBarButtonItem;
+    NSArray                     *orderbyList;
+}
 
 @end
 
@@ -74,14 +82,26 @@
         limit = [limitTextField.text integerValue];
     
     NSString *orderby = @"";
-    
     orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(loadSubmissionsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(loadSubmissionsFail:)];
-    
-    [sharedData.apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil];
+   [sharedData.apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
+       
+       [SVProgressHUD dismiss];
+       
+       if ( result != nil ) {
+           
+           int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+           
+           if ( responseCode == 200 || responseCode == 206 ) {
+               
+               NSArray *formsArray = [result objectForKey:@"content"];
+               
+               [self startDataListViewController:formsArray];
+           }
+       }
+    }onFailure:^(id response) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 - (void) startDataListViewController : (NSArray *) datalist
@@ -126,35 +146,8 @@
     return rowStr;
 }
 
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-}
-
-#pragma mark -
-#pragma mark Jotform delegate
-
-- (void) loadSubmissionsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            NSArray *formsArray = [result objectForKey:@"content"];
-            
-            [self startDataListViewController:formsArray];
-        }
-    }
-    
-}
-
-- (void) loadFormsFail : (id) error
-{
-    [SVProgressHUD dismiss];
 }
 
 @end

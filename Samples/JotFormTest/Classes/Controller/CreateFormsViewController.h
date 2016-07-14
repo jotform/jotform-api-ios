@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface CreateFormsViewController : UIViewController<JotFormDelegate>
-{
-    
-}
+@interface CreateFormsViewController : UIViewController
 
 @end

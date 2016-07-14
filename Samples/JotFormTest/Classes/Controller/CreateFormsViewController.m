@@ -16,9 +16,7 @@
 
 @end
 
-@implementation CreateFormsViewController {
-    
-}
+@implementation CreateFormsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,17 +45,13 @@
 {
     SharedData *sharedData = [SharedData sharedData];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(createFormsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(createFormsFail:)];
- 
-    
-    
     NSString *jsonString = @"{\"questions\":[{\"type\":\"control_head\"}]}";
 
-    [sharedData.apiClient createForms:jsonString];
-    
-    
+    [sharedData.apiClient createForms:jsonString onSuccess:^(id result){
+        
+    } onFailure:^(id response) {
+        
+    }];
 }
 
 #pragma mark - IBAction

@@ -10,9 +10,14 @@
 #import "SampleListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 #import "Common.h"
 
-@interface GetAppKeyViewController ()
+@interface GetAppKeyViewController () {
+    JotForm *apiClient;
+    IBOutlet UITextField *usernameTextField;
+    IBOutlet UITextField *passwordTextField;
+}
 
 @end
 
@@ -50,7 +55,6 @@
 - (void) initData
 {
     apiClient = [[JotForm alloc] init];
-    apiClient.delegate = self;
 }
 
 - (void) showSampleListViewController
@@ -92,10 +96,27 @@
     [userInfo setObject:password forKey:@"password"];
     [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
-    
-    [apiClient setDidFinishSelector:@selector(loginFinish:)];
-    [apiClient setDidFailSelector:@selector(loginFail:)];
-    [apiClient login:userInfo];
+
+    [apiClient login:userInfo onSuccess:^(id result) {
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                id content = [result objectForKey:@"content"];
+                
+                SharedData *sharedData = [SharedData sharedData];
+                [sharedData initAPIClient:[content objectForKey:@"appKey"]];
+                
+                [self showSampleListViewController];
+            }
+        }
+        
+        [SVProgressHUD dismiss];
+    } onFailure:^(id error) {
+          [SVProgressHUD dismiss];
+    }];
 }
 
 #pragma mark - Jotform delegate

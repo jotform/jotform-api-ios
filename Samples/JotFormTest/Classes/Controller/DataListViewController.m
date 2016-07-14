@@ -8,8 +8,13 @@
 
 #import "DataListViewController.h"
 #import "SharedData.h"
+#import "Common.h"
 
-@interface DataListViewController ()
+@interface DataListViewController () {
+    IBOutlet UITableView        *listTableView;
+    NSMutableArray              *dataList;
+    DataListType                 listType;
+}
 
 @end
 
@@ -27,9 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [self initData];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,11 +42,6 @@
 }
 
 #pragma mark - user definition method
-
-- (void) initData
-{
-
-}
 
 - (void) setFormList : (NSArray *) dataarray type : (DataListType) type
 {
@@ -91,11 +89,6 @@
     [listTableView reloadData];
     
     self.title = @"Report list";
-}
-
-- (void) initUI
-{
-    
 }
 
 #pragma mark - UITableViewDataSource

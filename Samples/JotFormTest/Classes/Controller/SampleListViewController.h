@@ -9,8 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SampleListViewController : UIViewController
-{
-    
-}
 
 @end

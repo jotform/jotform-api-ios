@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm/JotForm.h>
 
-@interface JotFormTestViewController : UIViewController<JotFormDelegate>
-{
-    IBOutlet UILabel            *resultLabel;
-    
-    JotForm                     *jotform;
-}
+@interface JotFormTestViewController : UIViewController
 
 @end

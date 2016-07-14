@@ -10,7 +10,11 @@
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface RegisterUserViewController ()
+@interface RegisterUserViewController () {
+    IBOutlet UITextField        *mUsernameTextField;
+    IBOutlet UITextField        *mPasswordTextField;
+    IBOutlet UITextField        *mEmailTextField;
+}
 
 @end
 
@@ -73,11 +77,32 @@
     [userInfo setObject:mPasswordTextField.text forKey:@"password"];
     [userInfo setObject:mEmailTextField.text forKey:@"email"];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(registerUserFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(registerUserFail:)];
-    
-    [sharedData.apiClient registerUser:userInfo];
+    [sharedData.apiClient registerUser:userInfo onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
+        
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You registered new user successfully." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertView show];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+                return;
+                
+            } else {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:[result objectForKey:@"message"] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+            }
+        }
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 #pragma mark - IBAction
@@ -87,37 +112,5 @@
     [self registerUser];
 }
 
-#pragma mark - Jotform delegate
-
-- (void) registerUserFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You registered new user successfully." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alertView show];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            return;
-
-        } else {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:[result objectForKey:@"message"] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-        }
-    }
-}
-
-- (void) registerUserFail : (id) error
-{
-    [SVProgressHUD dismiss];
-}
 
 @end

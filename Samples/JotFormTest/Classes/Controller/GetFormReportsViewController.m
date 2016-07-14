@@ -10,6 +10,7 @@
 #import "DataListViewController.h"
 #import "SVProgressHUD.h"
 #import "SharedData.h"
+#import <JotForm/JotForm.h>
 #import "Common.h"
 
 @interface GetFormReportsViewController ()
@@ -67,35 +68,23 @@
         return;
     }
     
-    [sharedData.apiClient setDelegate:self];
-    
-    [sharedData.apiClient setDidFinishSelector:@selector(loadFormReportsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(loadFormReportsFail:)];
-    [sharedData.apiClient getFormReports:FORM_ID];
-}
-
-#pragma mark - Jotform delegate
-
-- (void) loadFormReportsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
+    [sharedData.apiClient getFormReports:FORM_ID onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
         
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-        
-            NSArray *reportsArray = [result objectForKey:@"content"];
+        if ( result != nil ) {
             
-            [self startDataListViewController:reportsArray];
-        }   
-    }
-}
-
-- (void) loadFormReportFail : (id) result
-{
-    [SVProgressHUD dismiss];
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                NSArray *reportsArray = [result objectForKey:@"content"];
+                
+                [self startDataListViewController:reportsArray];
+            }   
+        }
+    }onFailure:^(id error) {
+          [SVProgressHUD dismiss];
+    }];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "CreateFormViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
 @interface CreateFormViewController ()
 
@@ -37,18 +38,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - user definition method
-
-- (void) initData
-{
-    
-}
-
-- (void) initUI
-{
-    
 }
 
 #pragma mark - IBAction
@@ -82,57 +71,42 @@
     [questions setObject:questionItem forKey:@"2"];
     
     NSMutableDictionary *form = [[NSMutableDictionary alloc] init];
-    
     [form setObject:properties forKey:@"properties"];
     [form setObject:questions forKey:@"questions"];
-
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(createFormFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(createFormFail:)];
     
-    [sharedData.apiClient createForm:form];
-}
-
-#pragma mark - Jotform delegate
-
-- (void) createFormFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
+    [sharedData.apiClient createForm:form onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
         
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
+        if ( result != nil ) {
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created form successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            return;
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created form successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertView show];
+                
+                return;
+            }
         }
-    }
-}
-
-- (void) createFormFail : (id) error
-{
-    [SVProgressHUD dismiss];
-
-    if ( error != nil ) {
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
         
-        int responseCode = [[error objectForKey:@"response"] integerValue];
-        
-        if ( responseCode == 401 ) {
+        if ( error != nil ) {
             
-            NSString *errorMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
+            int responseCode = [[error objectForKey:@"response"] integerValue];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errorMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            return;
+            if ( responseCode == 401 ) {
+                
+                NSString *errorMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errorMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                return;
+            }
         }
-    }
+    }];
 }
 
 @end

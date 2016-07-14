@@ -7,9 +7,10 @@
 //
 
 #import "CreateSubmissionViewController.h"
-#include "SVProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "SharedData.h"
 #import "Common.h"
+#import <JotForm/JotForm.h>
 
 @interface CreateSubmissionViewController ()
 
@@ -51,12 +52,41 @@
     NSMutableDictionary *submission = [[NSMutableDictionary alloc] init];
     [submission setObject:@"XXX" forKey:@"1"];
     [submission setObject:@"This is a test for creating submission." forKey:@"2"];
-
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(createFormSubmissionFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(createFormSubmissionFail:)];
     
-    [sharedData.apiClient createFormSubmissions:FORM_ID submission:submission];
+    [sharedData.apiClient createForm:FORM_ID onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
+        
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+        
+        if (error != nil) {
+            int responseCode = [[error objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 401 ) {
+                
+                NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                return;
+            }
+        }
+    }];
 }
 
 #pragma mark - IBAction
@@ -64,49 +94,6 @@
 - (IBAction) createSubmissionButtonClicked : (id) sender
 {
     [self createSubmission];
-}
-
-#pragma mark - Jotform delegate
-
-- (void) createFormSubmissionFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    }
-}
-
-- (void) createFormSubmissionFail : (id) error
-{
-    [SVProgressHUD dismiss];
-
-    if ( error != nil ) {
-        
-        int responseCode = [[error objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 401 ) {
-            
-            NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            return;
-        }
-    }
 }
 
 @end

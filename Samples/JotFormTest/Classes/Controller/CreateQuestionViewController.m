@@ -62,11 +62,43 @@
     
     SharedData *sharedData = [SharedData sharedData];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(createQuestionFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(createQuestionFail:)];
-    
-    [sharedData.apiClient createFormQuestion:FORM_ID question:question];
+    [sharedData.apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
+        
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created question successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                return;
+                
+            }
+            
+        }
+
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+        
+        if ( error != nil ) {
+            int responseCode = [[error objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 401 ) {
+                
+                NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+                
+                return;
+            }
+        }
+    }];
 }
 
 #pragma mark - IBAction
@@ -76,48 +108,5 @@
     [self createFormQuestion];
 }
 
-#pragma mark - Jotform delegate
-
-- (void) createQuestionFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created question successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            return;
-            
-        }
-        
-    }
-}
-
-- (void) createQuestionFail : (id) error
-{
-    [SVProgressHUD dismiss];
-    
-    if ( error != nil ) {
-        
-        int responseCode = [[error objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 401 ) {
-            
-            NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            
-            [alertView show];
-            
-            return;
-        }
-    }
-}
 
 @end

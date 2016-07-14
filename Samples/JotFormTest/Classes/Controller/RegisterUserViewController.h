@@ -9,12 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <JotForm/JotForm.h>
 
-@interface RegisterUserViewController : UIViewController<JotFormDelegate>
-{
-    IBOutlet UITextField        *mUsernameTextField;
-    IBOutlet UITextField        *mPasswordTextField;
-    IBOutlet UITextField        *mEmailTextField;
-}
+@interface RegisterUserViewController : UIViewController
+
 
 - (IBAction) registerButtonClicked : (id) sender;
 

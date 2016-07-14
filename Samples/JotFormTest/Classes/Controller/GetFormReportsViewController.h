@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm/JotForm.h>
 
-@interface GetFormReportsViewController : UIViewController<JotFormDelegate>
+@interface GetFormReportsViewController : UIViewController
 
 @end

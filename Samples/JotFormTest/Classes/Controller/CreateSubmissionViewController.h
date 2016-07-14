@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm/JotForm.h>
 
-@interface CreateSubmissionViewController : UIViewController<JotFormDelegate>
+@interface CreateSubmissionViewController : UIViewController
 
 @end

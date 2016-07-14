@@ -10,8 +10,17 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
+#import <JotForm/JotForm.h>
 
-@interface GetAllFormsViewController ()
+@interface GetAllFormsViewController () {
+    IBOutlet UITextField        *offsetTextField;
+    IBOutlet UITextField        *limitTextField;
+    IBOutlet UIPickerView       *pickerView;
+    IBOutlet UITextField        *filterTextField;
+    IBOutlet UIBarButtonItem    *getBarButtonItem;
+    
+    NSArray                     *orderbyList;
+}
 
 @end
 
@@ -77,11 +86,24 @@
     
     orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient setDelegate:self];
-    [sharedData.apiClient setDidFinishSelector:@selector(loadFormsFinish:)];
-    [sharedData.apiClient setDidFailSelector:@selector(loadFormsFail:)];
-    
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil];
+    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
+        [SVProgressHUD dismiss];
+        
+        if ( result != nil ) {
+            
+            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            
+            if ( responseCode == 200 || responseCode == 206 ) {
+                
+                NSArray *formsArray = [result objectForKey:@"content"];
+                
+                [self startDataListViewController:formsArray];
+            }
+        }
+  
+    } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 - (void) startDataListViewController : (NSArray *) datalist
@@ -93,7 +115,6 @@
     [dataListVc setFormList:datalist type:DataListTypeFormList];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (IBAction) getFormsButtonClicked : (id) sender {
@@ -101,7 +122,6 @@
     [self loadForms];
 }
 
-#pragma mark -
 #pragma mark UIPickerViewDataSource
 
 
@@ -115,8 +135,6 @@
     return [orderbyList count];
 }
 
-
-#pragma mark -
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -129,32 +147,6 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-}
-
-#pragma mark -
-#pragma mark Jotform delegate
-
-- (void) loadFormsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            
-            NSArray *formsArray = [result objectForKey:@"content"];
-
-            [self startDataListViewController:formsArray];
-        }
-    }
-
-}
-
-- (void) loadFormsFail : (id) error
-{
-    [SVProgressHUD dismiss];
 }
 
 @end
