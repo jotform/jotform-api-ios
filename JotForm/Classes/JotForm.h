@@ -173,7 +173,6 @@
             sortBy:(NSString *)sortBy
          startDate:(NSString *)startDate
            endDate:(NSString *)endDate
-           sortWay:(NSString *)sortWay
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock;
 

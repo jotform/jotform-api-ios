@@ -527,15 +527,13 @@
             sortBy:(NSString *)sortBy
          startDate:(NSString *)startDate
            endDate:(NSString *)endDate
-           sortWay:(NSString *)sortWay
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [self createHistoryQuery:action
                                                       date:date
                                                     sortBy:sortBy
                                                  startDate:startDate
-                                                   endDate:endDate
-                                                   sortWay:sortWay];
+                                                   endDate:endDate];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   
@@ -1356,8 +1354,7 @@
                                        date:(NSString *)date
                                      sortBy:(NSString *)sortBy
                                   startDate:(NSString *)startDate
-                                    endDate:(NSString *)endDate
-                                    sortWay:(NSString *)sortWay {
+                                    endDate:(NSString *)endDate {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if (action != nil && action.length > 0)
@@ -1374,9 +1371,6 @@
     
     if (endDate != nil && endDate.length > 0)
         [params setObject:endDate forKey:@"endDate"];
-    
-    if (sortWay != nil && sortWay.length > 0)
-        [params setObject:sortWay forKey:@"sortWay"];
     
     return params;
 }
