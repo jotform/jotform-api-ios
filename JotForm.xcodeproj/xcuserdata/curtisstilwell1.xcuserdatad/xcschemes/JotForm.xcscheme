@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6CC6966179444B8004E0DE4"
-               BuildableName = "libJotForm.a"
+               BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
+               BuildableName = "JotForm.framework"
                BlueprintName = "JotForm"
                ReferencedContainer = "container:JotForm.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6CC6966179444B8004E0DE4"
-            BuildableName = "libJotForm.a"
+            BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
+            BuildableName = "JotForm.framework"
             BlueprintName = "JotForm"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>
@@ -63,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6CC6966179444B8004E0DE4"
-            BuildableName = "libJotForm.a"
+            BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
+            BuildableName = "JotForm.framework"
             BlueprintName = "JotForm"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>

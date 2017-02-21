@@ -4,25 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>JotForm-Universal.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>JotForm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
+		</dict>
+		<key>JotFormUniversal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>C6CC6966179444B8004E0DE4</key>
+		<key>A6240F811E5CCCFF00E24B30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6CC69C8179444F6004E0DE4</key>
+		<key>A6288DE71E5CE34E007EB753</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A67F05B41E5BD781002E9B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A67F05BD1E5BD782002E9B11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
