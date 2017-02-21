@@ -558,6 +558,7 @@
 				A6288DEA1E5CE34E007EB753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A67F05AF1E5BD781002E9B11 /* Build configuration list for PBXProject "JotForm" */ = {
 			isa = XCConfigurationList;

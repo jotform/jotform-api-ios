@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/curtisstilwell1/Library/Developer/Xcode/DerivedData/JotForm-gchzuecmdedocwejzjnzhffbuhpz/Build/Products/Debug-iphonesimulator/JotForm.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "JotForm-Swift.h",
+          'external-contents': "/Users/curtisstilwell1/Library/Developer/Xcode/DerivedData/JotForm-gchzuecmdedocwejzjnzhffbuhpz/Build/Products/Debug-iphonesimulator/JotForm.framework/Headers/JotForm-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "JotForm.h",
+          'external-contents': "/Users/curtisstilwell1/Desktop/Refactor_Api/JotForm/JotForm.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/curtisstilwell1/Library/Developer/Xcode/DerivedData/JotForm-gchzuecmdedocwejzjnzhffbuhpz/Build/Products/Debug-iphonesimulator/JotForm.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/curtisstilwell1/Desktop/Refactor_Api/build/JotForm.build/Debug-iphonesimulator/JotForm.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

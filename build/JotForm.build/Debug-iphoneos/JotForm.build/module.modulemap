@@ -1,0 +1,6 @@
+framework module JotForm {
+  umbrella header "JotForm.h"
+
+  export *
+  module * { export * }
+}
