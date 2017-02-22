@@ -324,7 +324,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 1. Build Device and Simulator versions on iOS\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}\"  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' clean build\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}\" -sdk iphoneos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}/Frameworks/iOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}.framework\" \"${TMPDIR}/${PROJECT_NAME}/Frameworks/iOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}.framework.tar.gz\" \"${PROJECT_NAME}/Frameworks/\"\nmv \"${PROJECT_NAME}.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
 		};
 		AD007DF1D40038781A7592B7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -497,6 +497,7 @@
 				INFOPLIST_FILE = JotForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -517,6 +518,7 @@
 				INFOPLIST_FILE = JotForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
