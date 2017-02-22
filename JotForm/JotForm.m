@@ -77,51 +77,6 @@
              failureBlock(error);
          }];
 }
-- (void)executeReportHttpRequest:(NSString *)path method:(NSString *)method params:(NSMutableDictionary *)params onSuccess:(void (^)(id))successBlock onFailure:(void (^)(NSError *))failureBlock {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
-    
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
-    
-    [manager POST:urlStr
-       parameters:params
-         progress:nil
-          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
-          }
-          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
-          }];
-}
-
-- (void)executeSuggestionHttpRequest:(NSString *)path
-                              method:(NSString *)method
-                              params:(NSMutableDictionary *)params
-                           onSuccess:(void (^)(id))successBlock
-                           onFailure:(void (^)(NSError *))failureBlock
-
-{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", submitSuggestionUrl, [self urlEncode:path]];
-    
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    [self debugLog:[NSString stringWithFormat:@"paramstr = %@", params]];
-    
-    [manager POST:urlStr
-       parameters:params
-         progress:nil
-          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
-          }
-          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
-          }];
-}
 
 - (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
            onSuccess:(void (^)(id))successBlock
@@ -129,7 +84,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitReportUrl, [self urlEncode:@""],formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/submit/%lld/", submitReportUrl,formID];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", reportParams]];
@@ -152,7 +107,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submit/%lld/", submitSuggestionUrl, [self urlEncode:@""],formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/submit/%lld/", submitSuggestionUrl,formID];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", suggestionParams]];
@@ -1298,10 +1253,6 @@
          failure:^(NSURLSessionTask *operation, NSError *error) {
              failureBlock(error);
          }];
-}
-
-- (NSString *)urlEncode:(NSString *)str {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)str, NULL, CFSTR("[]"), kCFStringEncodingUTF8));
 }
 
 - (NSMutableDictionary *)createConditions:(NSInteger)offset
