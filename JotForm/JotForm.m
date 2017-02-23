@@ -1283,18 +1283,12 @@
         NSString *filterStr = @"";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
-        
         filterStr = @"%7b";
         
+        NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
+        
         for (NSString *key in keys) {
-            
-            filterStr = [filterStr
-                         stringByAppendingString:
-                         [NSString stringWithFormat:
-                          @"%%22%@%%22:%%22%@%%22", key,
-                          [[filter objectForKey:key]
-                           stringByAddingPercentEscapesUsingEncoding:
-                           NSUTF8StringEncoding]]];
+            filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat: @"%%22%@%%22:%%22%@%%22", key,[[filter objectForKey:key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
             
             count++;
             
@@ -1304,7 +1298,6 @@
         }
         
         filterStr = [filterStr stringByAppendingString:@"%7d"];
-        
         [params setObject:filterStr forKey:@"filter"];
     }
     
@@ -1337,9 +1330,6 @@
         [params setObject:endDate forKey:@"endDate"];
     
     return params;
-}
-
-- (void)dealloc {
 }
 
 @end
