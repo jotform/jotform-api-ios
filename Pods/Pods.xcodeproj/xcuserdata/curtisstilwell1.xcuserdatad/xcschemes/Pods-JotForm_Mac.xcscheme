@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A4A197540B76DDF407754E25FB512DE0'
-               BlueprintName = 'Pods-JotFormTests'
+               BlueprintIdentifier = '24A90ACA41DCC74808561E3AC109BACD'
+               BlueprintName = 'Pods-JotForm_Mac'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-JotFormTests.a'>
+               BuildableName = 'libPods-JotForm_Mac.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

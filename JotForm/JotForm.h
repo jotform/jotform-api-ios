@@ -6,7 +6,11 @@
 //  Copyright 2013 Interlogy, LLC. All rights reserved.
 //
 
+#if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 
 @interface JotForm : NSObject

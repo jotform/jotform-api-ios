@@ -7,16 +7,41 @@
 		<key>JotForm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>0</integer>
 		</dict>
 		<key>JotFormUniversal.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
+		</dict>
+		<key>JotForm_Mac copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>JotForm_Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>JotForm_foo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A609CCCE1E5F5639003FFA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A609CCD61E5F5639003FFA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A6240F811E5CCCFF00E24B30</key>
 		<dict>
 			<key>primary</key>
@@ -33,6 +58,31 @@
 			<true/>
 		</dict>
 		<key>A67F05BD1E5BD782002E9B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B278E61E5F7B8900703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B278EE1E5F7B8A00703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B279021E5F7C0100703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B2790A1E5F7C0200703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B279211E5F7DC300703A88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
