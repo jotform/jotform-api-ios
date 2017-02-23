@@ -18,7 +18,6 @@
 #define HTTPREQUEST_METHOD_POST      @"POST"
 #define HTTPREQUEST_METHOD_DELETE    @"DELETE"
 #define HTTPREQUEST_METHOD_PUT       @"PUT"
-#define USER_AGENT                   @"JOTFORM_IOS_WRAPPER"
 #define API_VERSION                  @"v1"
 
 
@@ -1267,6 +1266,31 @@
          }];
 }
 
+- (NSMutableDictionary *)createHistoryQuery:(NSString *)action
+                                       date:(NSString *)date
+                                     sortBy:(NSString *)sortBy
+                                  startDate:(NSString *)startDate
+                                    endDate:(NSString *)endDate {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    if (action != nil && action.length > 0)
+        [params setObject:action forKey:@"action"];
+    
+    if (date != nil && date.length > 0)
+        [params setObject:date forKey:@"date"];
+    
+    if (sortBy != nil && sortBy.length > 0)
+        [params setObject:sortBy forKey:@"sortBy"];
+    
+    if (startDate != nil && sortBy.length > 0)
+        [params setObject:startDate forKey:@"startDate"];
+    
+    if (endDate != nil && endDate.length > 0)
+        [params setObject:endDate forKey:@"endDate"];
+    
+    return params;
+}
+
 - (NSMutableDictionary *)createConditions:(NSInteger)offset
                                     limit:(NSInteger)limit
                                    filter:(NSMutableDictionary *)filter
@@ -1303,31 +1327,6 @@
     
     if (orderBy != nil)
         [params setObject:orderBy forKey:@"orderby"];
-    
-    return params;
-}
-
-- (NSMutableDictionary *)createHistoryQuery:(NSString *)action
-                                       date:(NSString *)date
-                                     sortBy:(NSString *)sortBy
-                                  startDate:(NSString *)startDate
-                                    endDate:(NSString *)endDate {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    if (action != nil && action.length > 0)
-        [params setObject:action forKey:@"action"];
-    
-    if (date != nil && date.length > 0)
-        [params setObject:date forKey:@"date"];
-    
-    if (sortBy != nil && sortBy.length > 0)
-        [params setObject:sortBy forKey:@"sortBy"];
-    
-    if (startDate != nil && sortBy.length > 0)
-        [params setObject:startDate forKey:@"startDate"];
-    
-    if (endDate != nil && endDate.length > 0)
-        [params setObject:endDate forKey:@"endDate"];
     
     return params;
 }
