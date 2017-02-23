@@ -36,6 +36,18 @@
 
 @implementation JotForm
 
+- (id)init {
+    if (self = [super init]) {
+        apiKey = @"";
+        debugMode = NO;
+        baseUrl = BASE_URL;
+        submitReportUrl = SUBMIT_REPORT_URL;
+        submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
+        apiVersion = API_VERSION;
+    }
+    return self;
+}
+
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
     if (self = [super init]) {
         apiKey = apikey;
