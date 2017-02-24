@@ -14,20 +14,10 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>JotForm_Mac copy.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
 		<key>JotForm_Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
-		</dict>
-		<key>JotForm_foo.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

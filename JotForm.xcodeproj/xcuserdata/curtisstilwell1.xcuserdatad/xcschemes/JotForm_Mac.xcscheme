@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A609CCCE1E5F5639003FFA42"
+               BlueprintIdentifier = "A6B279021E5F7C0100703A88"
                BuildableName = "JotForm_Mac.framework"
                BlueprintName = "JotForm_Mac"
                ReferencedContainer = "container:JotForm.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A609CCD61E5F5639003FFA42"
+               BlueprintIdentifier = "A6B2790A1E5F7C0200703A88"
                BuildableName = "JotForm_MacTests.xctest"
                BlueprintName = "JotForm_MacTests"
                ReferencedContainer = "container:JotForm.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A609CCCE1E5F5639003FFA42"
+            BlueprintIdentifier = "A6B279021E5F7C0100703A88"
             BuildableName = "JotForm_Mac.framework"
             BlueprintName = "JotForm_Mac"
             ReferencedContainer = "container:JotForm.xcodeproj">
@@ -64,7 +64,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A609CCCE1E5F5639003FFA42"
+            BlueprintIdentifier = "A6B279021E5F7C0100703A88"
             BuildableName = "JotForm_Mac.framework"
             BlueprintName = "JotForm_Mac"
             ReferencedContainer = "container:JotForm.xcodeproj">
@@ -82,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A609CCCE1E5F5639003FFA42"
+            BlueprintIdentifier = "A6B279021E5F7C0100703A88"
             BuildableName = "JotForm_Mac.framework"
             BlueprintName = "JotForm_Mac"
             ReferencedContainer = "container:JotForm.xcodeproj">

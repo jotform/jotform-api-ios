@@ -30,7 +30,7 @@
 		A6B279131E5F7C0200703A88 /* JotForm_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B279051E5F7C0200703A88 /* JotForm_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B2791B1E5F7C8100703A88 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
-		AB33455913537EE2731DC204 /* libPods-JotForm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F3576F39A1ABB552DCEE43 /* libPods-JotForm.a */; };
+		A6B279501E5FAA6900703A88 /* libPods-JotForm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F3576F39A1ABB552DCEE43 /* libPods-JotForm.a */; };
 		C474E9D1736D544ED8B24DD5 /* libPods-JotFormTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6308285460DB121496892550 /* libPods-JotFormTests.a */; };
 		C93D8B534FDAC2DFF3379FAC /* libPods-JotForm_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A099D58D5E4D4552B6A2F5 /* libPods-JotForm_Mac.a */; };
 /* End PBXBuildFile section */
@@ -75,6 +75,7 @@
 		A6B279101E5F7C0200703A88 /* JotForm_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotForm_MacTests.m; sourceTree = "<group>"; };
 		A6B279121E5F7C0200703A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B279301E5F7DC300703A88 /* JotForm_Mac copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JotForm_Mac copy-Info.plist"; path = "/Users/curtisstilwell1/Documents/Api/Refactor/JotForm_Mac copy-Info.plist"; sourceTree = "<absolute>"; };
+		A6B2794E1E5FAA2E00703A88 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../Library/Developer/Xcode/DerivedData/JotForm-gktyxgirhjdcnxeenwolpuevruth/Build/Products/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		BF1D1326B993FB4BCE17CE3F /* Pods-JotForm_Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB33455913537EE2731DC204 /* libPods-JotForm.a in Frameworks */,
+				A6B279501E5FAA6900703A88 /* libPods-JotForm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +119,7 @@
 		4E06AAC4A79338CFB3C71199 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6B2794E1E5FAA2E00703A88 /* libAFNetworking.a */,
 				62F3576F39A1ABB552DCEE43 /* libPods-JotForm.a */,
 				6308285460DB121496892550 /* libPods-JotFormTests.a */,
 				17A099D58D5E4D4552B6A2F5 /* libPods-JotForm_Mac.a */,
@@ -605,6 +607,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -657,6 +660,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -687,11 +691,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = JotForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -708,11 +714,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = JotForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
