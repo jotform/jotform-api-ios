@@ -9,3 +9,8 @@ target :JotForm_Mac do
     platform :osx, '10.9'
     pod 'AFNetworking', '~> 3.0'
 end
+
+target :JotForm_Watch do
+    platform :watchos, '2.0'
+    pod 'AFNetworking', '~> 3.0'
+end
