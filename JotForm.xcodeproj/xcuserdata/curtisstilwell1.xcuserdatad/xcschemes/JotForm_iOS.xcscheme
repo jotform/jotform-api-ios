@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
-               BuildableName = "JotForm.framework"
-               BlueprintName = "JotForm"
+               BuildableName = "JotForm_iOS.framework"
+               BlueprintName = "JotForm_iOS"
                ReferencedContainer = "container:JotForm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
-            BuildableName = "JotForm.framework"
-            BlueprintName = "JotForm"
+            BuildableName = "JotForm_iOS.framework"
+            BlueprintName = "JotForm_iOS"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A67F05B41E5BD781002E9B11"
-            BuildableName = "JotForm.framework"
-            BlueprintName = "JotForm"
+            BuildableName = "JotForm_iOS.framework"
+            BlueprintName = "JotForm_iOS"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

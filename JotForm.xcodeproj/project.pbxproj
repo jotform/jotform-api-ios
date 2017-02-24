@@ -18,11 +18,11 @@
 			name = JotFormUniversal;
 			productName = JotFormUniversal;
 		};
-		A64817101E5FD448007714BA /* JotFormWatchUniversal */ = {
+		A6BB21D91E60E44600623493 /* JotFormWatchUniversal */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = A64817111E5FD448007714BA /* Build configuration list for PBXAggregateTarget "JotFormWatchUniversal" */;
+			buildConfigurationList = A6BB21DA1E60E44600623493 /* Build configuration list for PBXAggregateTarget "JotFormWatchUniversal" */;
 			buildPhases = (
-				A64817141E5FD451007714BA /* ShellScript */,
+				A6BB21DD1E60E44B00623493 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -32,39 +32,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A648170C1E5FD273007714BA /* JotForm_Watch.h in Headers */ = {isa = PBXBuildFile; fileRef = A648170A1E5FD273007714BA /* JotForm_Watch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A64817151E5FD9E5007714BA /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A64817191E5FDE17007714BA /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
-		A67F05BF1E5BD782002E9B11 /* JotForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67F05B51E5BD781002E9B11 /* JotForm.framework */; };
-		A67F05C41E5BD782002E9B11 /* JotFormTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05C31E5BD782002E9B11 /* JotFormTests.m */; };
 		A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67F05D01E5BD7C7002E9B11 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
-		A6B2790C1E5F7C0200703A88 /* JotForm_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */; };
-		A6B279111E5F7C0200703A88 /* JotForm_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B279101E5F7C0200703A88 /* JotForm_MacTests.m */; };
-		A6B279131E5F7C0200703A88 /* JotForm_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B279051E5F7C0200703A88 /* JotForm_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B2791B1E5F7C8100703A88 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
 		A6B279501E5FAA6900703A88 /* libPods-JotForm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F3576F39A1ABB552DCEE43 /* libPods-JotForm.a */; };
 		C93D8B534FDAC2DFF3379FAC /* libPods-JotForm_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A099D58D5E4D4552B6A2F5 /* libPods-JotForm_Mac.a */; };
 		F01E308C858D3F6E43B7F19D /* libPods-JotForm_Watch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C686E85C32134EB46F8C396 /* libPods-JotForm_Watch.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A67F05C01E5BD782002E9B11 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67F05AC1E5BD781002E9B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A67F05B41E5BD781002E9B11;
-			remoteInfo = JotForm;
-		};
-		A6B2790D1E5F7C0200703A88 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67F05AC1E5BD781002E9B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6B279021E5F7C0100703A88;
-			remoteInfo = JotForm_Mac;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		17A099D58D5E4D4552B6A2F5 /* libPods-JotForm_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,23 +52,12 @@
 		62F3576F39A1ABB552DCEE43 /* libPods-JotForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6308285460DB121496892550 /* libPods-JotFormTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotFormTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C686E85C32134EB46F8C396 /* libPods-JotForm_Watch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_Watch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A64817081E5FD273007714BA /* JotForm_Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A648170A1E5FD273007714BA /* JotForm_Watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm_Watch.h; sourceTree = "<group>"; };
-		A648170B1E5FD273007714BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A67F05B51E5BD781002E9B11 /* JotForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64817081E5FD273007714BA /* JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B81E5BD781002E9B11 /* JotForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A67F05BE1E5BD782002E9B11 /* JotFormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JotFormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A67F05C31E5BD782002E9B11 /* JotFormTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotFormTests.m; sourceTree = "<group>"; };
-		A67F05C51E5BD782002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67F05CF1E5BD7C7002E9B11 /* JotForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotForm.m; sourceTree = "<group>"; };
 		A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6B279051E5F7C0200703A88 /* JotForm_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm_Mac.h; sourceTree = "<group>"; };
-		A6B279061E5F7C0200703A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6B2790B1E5F7C0200703A88 /* JotForm_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JotForm_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6B279101E5F7C0200703A88 /* JotForm_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotForm_MacTests.m; sourceTree = "<group>"; };
-		A6B279121E5F7C0200703A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6B279301E5F7DC300703A88 /* JotForm_Mac copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JotForm_Mac copy-Info.plist"; path = "/Users/curtisstilwell1/Documents/Api/Refactor/JotForm_Mac copy-Info.plist"; sourceTree = "<absolute>"; };
 		A6B2794E1E5FAA2E00703A88 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../Library/Developer/Xcode/DerivedData/JotForm-gktyxgirhjdcnxeenwolpuevruth/Build/Products/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		BF1D1326B993FB4BCE17CE3F /* Pods-JotForm_Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		E3F6F0EEE0E5391B753F3E61 /* Pods-JotForm_Watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Watch.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Watch/Pods-JotForm_Watch.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,27 +80,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A67F05BB1E5BD782002E9B11 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A67F05BF1E5BD782002E9B11 /* JotForm.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A6B278FF1E5F7C0100703A88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C93D8B534FDAC2DFF3379FAC /* libPods-JotForm_Mac.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6B279081E5F7C0200703A88 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6B2790C1E5F7C0200703A88 /* JotForm_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,38 +103,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A64817091E5FD273007714BA /* JotForm_Watch */ = {
-			isa = PBXGroup;
-			children = (
-				A648170A1E5FD273007714BA /* JotForm_Watch.h */,
-				A648170B1E5FD273007714BA /* Info.plist */,
-			);
-			path = JotForm_Watch;
-			sourceTree = "<group>";
-		};
 		A67F05AB1E5BD781002E9B11 = {
 			isa = PBXGroup;
 			children = (
 				A67F05B71E5BD781002E9B11 /* JotForm */,
-				A67F05C21E5BD782002E9B11 /* JotFormTests */,
-				A6B279041E5F7C0200703A88 /* JotForm_Mac */,
-				A6B2790F1E5F7C0200703A88 /* JotForm_MacTests */,
-				A64817091E5FD273007714BA /* JotForm_Watch */,
 				A67F05B61E5BD781002E9B11 /* Products */,
 				AA280E23DCA0C9C8AFF7FFC6 /* Pods */,
 				4E06AAC4A79338CFB3C71199 /* Frameworks */,
-				A6B279301E5F7DC300703A88 /* JotForm_Mac copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		A67F05B61E5BD781002E9B11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A67F05B51E5BD781002E9B11 /* JotForm.framework */,
-				A67F05BE1E5BD782002E9B11 /* JotFormTests.xctest */,
+				A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */,
 				A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */,
-				A6B2790B1E5F7C0200703A88 /* JotForm_MacTests.xctest */,
-				A64817081E5FD273007714BA /* JotForm_Watch.framework */,
+				A64817081E5FD273007714BA /* JotForm_WatchOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,33 +131,6 @@
 				A67F05B91E5BD781002E9B11 /* Info.plist */,
 			);
 			path = JotForm;
-			sourceTree = "<group>";
-		};
-		A67F05C21E5BD782002E9B11 /* JotFormTests */ = {
-			isa = PBXGroup;
-			children = (
-				A67F05C31E5BD782002E9B11 /* JotFormTests.m */,
-				A67F05C51E5BD782002E9B11 /* Info.plist */,
-			);
-			path = JotFormTests;
-			sourceTree = "<group>";
-		};
-		A6B279041E5F7C0200703A88 /* JotForm_Mac */ = {
-			isa = PBXGroup;
-			children = (
-				A6B279051E5F7C0200703A88 /* JotForm_Mac.h */,
-				A6B279061E5F7C0200703A88 /* Info.plist */,
-			);
-			path = JotForm_Mac;
-			sourceTree = "<group>";
-		};
-		A6B2790F1E5F7C0200703A88 /* JotForm_MacTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6B279101E5F7C0200703A88 /* JotForm_MacTests.m */,
-				A6B279121E5F7C0200703A88 /* Info.plist */,
-			);
-			path = JotForm_MacTests;
 			sourceTree = "<group>";
 		};
 		AA280E23DCA0C9C8AFF7FFC6 /* Pods */ = {
@@ -246,7 +153,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A648170C1E5FD273007714BA /* JotForm_Watch.h in Headers */,
 				A64817151E5FD9E5007714BA /* JotForm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,16 +170,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */,
-				A6B279131E5F7C0200703A88 /* JotForm_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A64817071E5FD273007714BA /* JotForm_Watch */ = {
+		A64817071E5FD273007714BA /* JotForm_WatchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A648170F1E5FD273007714BA /* Build configuration list for PBXNativeTarget "JotForm_Watch" */;
+			buildConfigurationList = A648170F1E5FD273007714BA /* Build configuration list for PBXNativeTarget "JotForm_WatchOS" */;
 			buildPhases = (
 				0FDF244CB0D4538999A719B8 /* [CP] Check Pods Manifest.lock */,
 				A64817031E5FD273007714BA /* Sources */,
@@ -286,14 +191,14 @@
 			);
 			dependencies = (
 			);
-			name = JotForm_Watch;
+			name = JotForm_WatchOS;
 			productName = JotForm_Watch;
-			productReference = A64817081E5FD273007714BA /* JotForm_Watch.framework */;
+			productReference = A64817081E5FD273007714BA /* JotForm_WatchOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A67F05B41E5BD781002E9B11 /* JotForm */ = {
+		A67F05B41E5BD781002E9B11 /* JotForm_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A67F05C91E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotForm" */;
+			buildConfigurationList = A67F05C91E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotForm_iOS" */;
 			buildPhases = (
 				517DD13305853568FE47E33A /* [CP] Check Pods Manifest.lock */,
 				A67F05B01E5BD781002E9B11 /* Sources */,
@@ -306,28 +211,10 @@
 			);
 			dependencies = (
 			);
-			name = JotForm;
+			name = JotForm_iOS;
 			productName = JotForm;
-			productReference = A67F05B51E5BD781002E9B11 /* JotForm.framework */;
+			productReference = A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		A67F05BD1E5BD782002E9B11 /* JotFormTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A67F05CC1E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotFormTests" */;
-			buildPhases = (
-				A67F05BA1E5BD782002E9B11 /* Sources */,
-				A67F05BB1E5BD782002E9B11 /* Frameworks */,
-				A67F05BC1E5BD782002E9B11 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A67F05C11E5BD782002E9B11 /* PBXTargetDependency */,
-			);
-			name = JotFormTests;
-			productName = JotFormTests;
-			productReference = A67F05BE1E5BD782002E9B11 /* JotFormTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A6B279021E5F7C0100703A88 /* JotForm_Mac */ = {
 			isa = PBXNativeTarget;
@@ -349,24 +236,6 @@
 			productReference = A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A6B2790A1E5F7C0200703A88 /* JotForm_MacTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6B279171E5F7C0200703A88 /* Build configuration list for PBXNativeTarget "JotForm_MacTests" */;
-			buildPhases = (
-				A6B279071E5F7C0200703A88 /* Sources */,
-				A6B279081E5F7C0200703A88 /* Frameworks */,
-				A6B279091E5F7C0200703A88 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6B2790E1E5F7C0200703A88 /* PBXTargetDependency */,
-			);
-			name = JotForm_MacTests;
-			productName = JotForm_MacTests;
-			productReference = A6B2790B1E5F7C0200703A88 /* JotForm_MacTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -386,17 +255,7 @@
 						DevelopmentTeam = 58SHK2R9Q3;
 						ProvisioningStyle = Automatic;
 					};
-					A64817101E5FD448007714BA = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 58SHK2R9Q3;
-						ProvisioningStyle = Automatic;
-					};
 					A67F05B41E5BD781002E9B11 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 58SHK2R9Q3;
-						ProvisioningStyle = Automatic;
-					};
-					A67F05BD1E5BD782002E9B11 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 58SHK2R9Q3;
 						ProvisioningStyle = Automatic;
@@ -406,9 +265,8 @@
 						DevelopmentTeam = 58SHK2R9Q3;
 						ProvisioningStyle = Automatic;
 					};
-					A6B2790A1E5F7C0200703A88 = {
+					A6BB21D91E60E44600623493 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 58SHK2R9Q3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -425,13 +283,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A67F05B41E5BD781002E9B11 /* JotForm */,
-				A67F05BD1E5BD782002E9B11 /* JotFormTests */,
+				A67F05B41E5BD781002E9B11 /* JotForm_iOS */,
 				A6288DE71E5CE34E007EB753 /* JotFormUniversal */,
 				A6B279021E5F7C0100703A88 /* JotForm_Mac */,
-				A6B2790A1E5F7C0200703A88 /* JotForm_MacTests */,
-				A64817071E5FD273007714BA /* JotForm_Watch */,
-				A64817101E5FD448007714BA /* JotFormWatchUniversal */,
+				A64817071E5FD273007714BA /* JotForm_WatchOS */,
+				A6BB21D91E60E44600623493 /* JotFormWatchUniversal */,
 			);
 		};
 /* End PBXProject section */
@@ -451,21 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A67F05BC1E5BD782002E9B11 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A6B279011E5F7C0100703A88 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6B279091E5F7C0200703A88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -561,9 +403,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 1. Build Device and Simulator versions on iOS\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}\"  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' clean build\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}\" -sdk iphoneos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}/Frameworks/iOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}.framework\" \"${TMPDIR}/${PROJECT_NAME}/Frameworks/iOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}.framework.tar.gz\" \"${PROJECT_NAME}/Frameworks/\"\nmv \"${PROJECT_NAME}.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 1. Build Device and Simulator versions on iOS\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_iOS\"  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7' clean build\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_iOS\" -sdk iphoneos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}_iOS.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/iOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}_iOS.framework/${PROJECT_NAME}_iOS\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}_iOS.framework/${PROJECT_NAME}_iOS\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}_iOS.framework/${PROJECT_NAME}_iOS\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}_iOS/Frameworks/iOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/iOS/${PROJECT_NAME}_iOS.framework\" \"${TMPDIR}/${PROJECT_NAME}_iOS/Frameworks/iOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}_iOS.framework.tar.gz\" \"${PROJECT_NAME}_iOS/Frameworks/\"\nmv \"${PROJECT_NAME}_iOS.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
 		};
-		A64817141E5FD451007714BA /* ShellScript */ = {
+		A6BB21DD1E60E44B00623493 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -574,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 1. Build Device and Simulator versions on watchOS\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_Watch\"  -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch Series 2 - 42mm' clean build\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_Watch\" -sdk watchos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_Watch.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_Watch.framework/${PROJECT_NAME}_Watch\" \"${BUILD_DIR}/${CONFIGURATION}-watchsimulator/${PROJECT_NAME}_Watch.framework/${PROJECT_NAME}_Watch\" \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_Watch.framework/${PROJECT_NAME}_Watch\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}_Watch/Frameworks/watchOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_Watch.framework\" \"${TMPDIR}/${PROJECT_NAME}_Watch/Frameworks/watchOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}_Watch.framework.tar.gz\" \"${PROJECT_NAME}_Watch/Frameworks/\"\nmv \"${PROJECT_NAME}_Watch.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n\n";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 1. Build Device and Simulator versions on watchOS\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_WatchOS\"  -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch Series 2 - 42mm' clean build\nxcodebuild -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_WatchOS\" -sdk watchos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_WatchOS.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\" \"${BUILD_DIR}/${CONFIGURATION}-watchsimulator/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\" \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}_WatchOS/Frameworks/watchOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_WatchOS.framework\" \"${TMPDIR}/${PROJECT_NAME}_WatchOS/Frameworks/watchOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}_WatchOS.framework.tar.gz\" \"${PROJECT_NAME}_WatchOS/Frameworks/\"\nmv \"${PROJECT_NAME}_WatchOS.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
 		};
 		DFA5FB318AD77D64D6735563 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -610,14 +452,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A67F05BA1E5BD782002E9B11 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A67F05C41E5BD782002E9B11 /* JotFormTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A6B278FE1E5F7C0100703A88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,28 +460,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6B279071E5F7C0200703A88 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6B279111E5F7C0200703A88 /* JotForm_MacTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A67F05C11E5BD782002E9B11 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A67F05B41E5BD781002E9B11 /* JotForm */;
-			targetProxy = A67F05C01E5BD782002E9B11 /* PBXContainerItemProxy */;
-		};
-		A6B2790E1E5F7C0200703A88 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6B279021E5F7C0100703A88 /* JotForm_Mac */;
-			targetProxy = A6B2790D1E5F7C0200703A88 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A6288DE91E5CE34E007EB753 /* Debug */ = {
@@ -674,20 +487,21 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JotForm_Watch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JotForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Watch";
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -697,38 +511,21 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JotForm_Watch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JotForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Watch";
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
-			};
-			name = Release;
-		};
-		A64817121E5FD448007714BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos3.1;
-			};
-			name = Debug;
-		};
-		A64817131E5FD448007714BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -838,7 +635,7 @@
 			baseConfigurationReference = 1CADB50A3AA9DB2B85B2EFBB /* Pods-JotForm.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -851,6 +648,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -861,7 +659,7 @@
 			baseConfigurationReference = 50A907566FE2D98198D03883 /* Pods-JotForm.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -874,30 +672,9 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		A67F05CD1E5BD782002E9B11 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				INFOPLIST_FILE = JotFormTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotFormTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		A67F05CE1E5BD782002E9B11 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				INFOPLIST_FILE = JotFormTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotFormTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -907,17 +684,19 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = JotForm_Mac/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JotForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Mac";
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -930,50 +709,38 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = JotForm_Mac/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JotForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Mac";
+				PRODUCT_MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		A6B279181E5F7C0200703A88 /* Debug */ = {
+		A6BB21DB1E60E44600623493 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				INFOPLIST_FILE = JotForm_MacTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 			};
 			name = Debug;
 		};
-		A6B279191E5F7C0200703A88 /* Release */ = {
+		A6BB21DC1E60E44600623493 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 58SHK2R9Q3;
-				INFOPLIST_FILE = JotForm_MacTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 			};
 			name = Release;
 		};
@@ -989,20 +756,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A648170F1E5FD273007714BA /* Build configuration list for PBXNativeTarget "JotForm_Watch" */ = {
+		A648170F1E5FD273007714BA /* Build configuration list for PBXNativeTarget "JotForm_WatchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A648170D1E5FD273007714BA /* Debug */,
 				A648170E1E5FD273007714BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A64817111E5FD448007714BA /* Build configuration list for PBXAggregateTarget "JotFormWatchUniversal" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A64817121E5FD448007714BA /* Debug */,
-				A64817131E5FD448007714BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1016,20 +774,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A67F05C91E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotForm" */ = {
+		A67F05C91E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotForm_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A67F05CA1E5BD782002E9B11 /* Debug */,
 				A67F05CB1E5BD782002E9B11 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A67F05CC1E5BD782002E9B11 /* Build configuration list for PBXNativeTarget "JotFormTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A67F05CD1E5BD782002E9B11 /* Debug */,
-				A67F05CE1E5BD782002E9B11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1043,14 +792,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6B279171E5F7C0200703A88 /* Build configuration list for PBXNativeTarget "JotForm_MacTests" */ = {
+		A6BB21DA1E60E44600623493 /* Build configuration list for PBXAggregateTarget "JotFormWatchUniversal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6B279181E5F7C0200703A88 /* Debug */,
-				A6B279191E5F7C0200703A88 /* Release */,
+				A6BB21DB1E60E44600623493 /* Debug */,
+				A6BB21DC1E60E44600623493 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

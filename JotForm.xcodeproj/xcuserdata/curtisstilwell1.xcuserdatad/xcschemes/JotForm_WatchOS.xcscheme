@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A64817101E5FD448007714BA"
-               BuildableName = "JotFormWatchUniversal"
-               BlueprintName = "JotFormWatchUniversal"
+               BlueprintIdentifier = "A64817071E5FD273007714BA"
+               BuildableName = "JotForm_WatchOS.framework"
+               BlueprintName = "JotForm_WatchOS"
                ReferencedContainer = "container:JotForm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817101E5FD448007714BA"
-            BuildableName = "JotFormWatchUniversal"
-            BlueprintName = "JotFormWatchUniversal"
+            BlueprintIdentifier = "A64817071E5FD273007714BA"
+            BuildableName = "JotForm_WatchOS.framework"
+            BlueprintName = "JotForm_WatchOS"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817101E5FD448007714BA"
-            BuildableName = "JotFormWatchUniversal"
-            BlueprintName = "JotFormWatchUniversal"
+            BlueprintIdentifier = "A64817071E5FD273007714BA"
+            BuildableName = "JotForm_WatchOS.framework"
+            BlueprintName = "JotForm_WatchOS"
             ReferencedContainer = "container:JotForm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
