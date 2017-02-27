@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>JotForm-Universal.xcscheme</key>
+		<key>JotFormUniversal.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>JotForm.xcscheme</key>
+		<key>JotFormWatchUniversal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>JotForm_Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>JotForm_WatchOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>JotForm_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,12 +32,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>C6CC6966179444B8004E0DE4</key>
+		<key>A609CCCE1E5F5639003FFA42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6CC69C8179444F6004E0DE4</key>
+		<key>A609CCD61E5F5639003FFA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6240F811E5CCCFF00E24B30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6288DE71E5CE34E007EB753</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A64817071E5FD273007714BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A64817101E5FD448007714BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A67F05B41E5BD781002E9B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A67F05BD1E5BD782002E9B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B278E61E5F7B8900703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B278EE1E5F7B8A00703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B279021E5F7C0100703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B2790A1E5F7C0200703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6B279211E5F7DC300703A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6BB21D91E60E44600623493</key>
 		<dict>
 			<key>primary</key>
 			<true/>
