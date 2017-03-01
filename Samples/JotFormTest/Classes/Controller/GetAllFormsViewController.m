@@ -10,7 +10,7 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
-#import <JotForm/JotForm.h>
+#import <JotForm_iOS/JotForm.h>
 
 @interface GetAllFormsViewController () {
     IBOutlet UITextField        *offsetTextField;

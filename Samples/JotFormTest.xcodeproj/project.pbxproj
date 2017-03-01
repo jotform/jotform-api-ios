@@ -27,14 +27,13 @@
 		604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75EB19F6E23A00B873D4 /* Security.framework */; };
 		604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */; };
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
+		A6D733CD1E6652EA00359510 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
 		A6F93F1D1D304B4A005EE644 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0C1D304B4A005EE644 /* AFSecurityPolicy.m */; };
 		A6F93F1E1D304B4A005EE644 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0D1D304B4A005EE644 /* AFURLRequestSerialization.m */; };
 		A6F93F1F1D304B4A005EE644 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0E1D304B4A005EE644 /* AFURLResponseSerialization.m */; };
 		A6F93F201D304B4A005EE644 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0F1D304B4A005EE644 /* AFURLSessionManager.m */; };
-		A6F93F211D304B4A005EE644 /* JotForm in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F93F191D304B4A005EE644 /* JotForm */; };
-		A6F93F221D304B4A005EE644 /* JotForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F93F1A1D304B4A005EE644 /* JotForm.framework */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
 		C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD6187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m */; };
@@ -96,6 +95,7 @@
 		604B75F219F6E59800B873D4 /* CreateFormQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFormQuestionsViewController.h; sourceTree = "<group>"; };
 		604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFormQuestionsViewController.m; sourceTree = "<group>"; };
 		604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateFormQuestionsViewController.xib; sourceTree = "<group>"; };
+		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		A6F93F0C1D304B4A005EE644 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
@@ -109,8 +109,6 @@
 		A6F93F161D304B4A005EE644 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		A6F93F171D304B4A005EE644 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		A6F93F181D304B4A005EE644 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		A6F93F191D304B4A005EE644 /* JotForm */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JotForm; sourceTree = "<group>"; };
-		A6F93F1A1D304B4A005EE644 /* JotForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm.framework; sourceTree = "<group>"; };
 		C3541DD1187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		C3541DD3187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -166,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F93F211D304B4A005EE644 /* JotForm in Frameworks */,
+				A6D733CD1E6652EA00359510 /* JotForm_iOS.framework in Frameworks */,
 				604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */,
 				C3B2AF841879AE0B00FCFAEA /* QuartzCore.framework in Frameworks */,
 				3CD6BFB8177A04310065788B /* libz.dylib in Frameworks */,
@@ -176,7 +174,6 @@
 				3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */,
 				3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */,
 				3CD6BF651779FDF70065788B /* CoreGraphics.framework in Frameworks */,
-				A6F93F221D304B4A005EE644 /* JotForm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,9 +310,8 @@
 		A6F93F061D304B4A005EE644 /* JotForm */ = {
 			isa = PBXGroup;
 			children = (
+				A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */,
 				A6F93F071D304B4A005EE644 /* ExternalLib */,
-				A6F93F191D304B4A005EE644 /* JotForm */,
-				A6F93F1A1D304B4A005EE644 /* JotForm.framework */,
 			);
 			path = JotForm;
 			sourceTree = "<group>";
