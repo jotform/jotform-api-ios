@@ -148,9 +148,7 @@
 
 #pragma mark - UIAlertView delegate method
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSLog(@"button index = %d", buttonIndex);
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if ( buttonIndex == 0 ) {
         

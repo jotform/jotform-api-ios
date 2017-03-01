@@ -65,8 +65,6 @@
 
 - (void) createFormsFinish : (id) result
 {
-    NSLog(@"result%@",result);
-    
     [SVProgressHUD dismiss];
     
     if ( result != nil ) {
@@ -89,8 +87,6 @@
 
 - (void) createFormsFail : (id) error
 {
-    NSLog(@"error %@",error);
-    
 }
 
 
