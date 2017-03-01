@@ -61,13 +61,21 @@
     SharedData *sharedData = [SharedData sharedData];
     
     if ( FORM_ID == 0 ) {
+        UIAlertController *alertView = [UIAlertController
+                                        alertControllerWithTitle:@"JotFormAPISample"
+                                        message:@"Please put Form's id in line 19, Common.h"
+                                        preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 19, Common.h" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alertView show];
+        UIAlertAction *cancelButton = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action){
+                                           
+                                       }];
         
-        return;
-    }
-    
+        [alertView addAction:cancelButton];
+        [self presentViewController:alertView animated:YES completion:nil];
+    } else {
     [sharedData.apiClient getFormReports:FORM_ID onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
@@ -85,6 +93,7 @@
     }onFailure:^(id error) {
           [SVProgressHUD dismiss];
     }];
+}
 }
 
 @end

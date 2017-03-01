@@ -60,11 +60,21 @@
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:@"You created submission successfully"
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created submission successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [alertView show];
-                
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
+
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
@@ -75,14 +85,22 @@
            NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 401 ) {
-                
                 NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:errMsg
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                [alertView show];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                return;
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             }
         }
     }];

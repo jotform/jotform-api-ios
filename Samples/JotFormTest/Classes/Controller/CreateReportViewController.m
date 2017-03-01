@@ -47,10 +47,17 @@
     // check if FORM_ID is specified
     
     if ( FORM_ID == 0 ) {
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alertView show];
+        UIAlertAction *cancelButton = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action){
+                                           
+                                       }];
         
+        [alertView addAction:cancelButton];
+        [self presentViewController:alertView animated:YES completion:nil];
         return;
     }
     
@@ -65,12 +72,20 @@
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:@"You created report successfully."
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created report successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [alertView show];
-                
-                return;
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             }
         }
     } onFailure:^(id error){
@@ -81,14 +96,22 @@
             NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 401 ) {
+                 NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
                 
-                NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:errMsg
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [alertView show];
-                
-                return;
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             }
         }
 

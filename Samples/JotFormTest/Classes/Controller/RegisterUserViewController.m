@@ -51,7 +51,6 @@
         
         [mUsernameTextField becomeFirstResponder];
         return;
-        
     }
     
     if ( mPasswordTextField.text.length == 0 ) {
@@ -83,20 +82,36 @@
         if ( result != nil ) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
+            if (responseCode == 200 || responseCode == 206) {
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:@"You registered new user successfully."
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You registered new user successfully." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                [alertView show];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [self.navigationController popViewControllerAnimated:YES];
-                
-                return;
-                
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             } else {
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:[result objectForKey:@"message"]
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:[result objectForKey:@"message"] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [alertView show];
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             }
         }
     } onFailure:^(id error) {

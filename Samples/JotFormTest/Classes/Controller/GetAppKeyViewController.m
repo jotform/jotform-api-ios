@@ -65,10 +65,49 @@
 
 - (void) showAlertView
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Do you have your Jotform account?" delegate:self cancelButtonTitle:@"Yes, i have" otherButtonTitles:@"No, i have an API key", nil];
-    alertView.tag = 1000;
-    [alertView setDelegate:self];
-    [alertView show];
+    
+    UIAlertController *alertView = [UIAlertController
+                                    alertControllerWithTitle:@"JotFormAPISample"
+                                    message:@"Do you have your Jotform account?"
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *noButton = [UIAlertAction
+                                   actionWithTitle:@"No, I have an API key"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action){
+                                       if ([API_KEY isEqualToString:@""]) {
+                                           
+                                           UIAlertController *alertViewCancel = [UIAlertController
+                                                                           alertControllerWithTitle:@"JotFormAPISample"
+                                                                           message:@"Please put your API key in Common.h 12 line." preferredStyle:UIAlertControllerStyleAlert];
+                                           
+                                           UIAlertAction *noCancelButton = [UIAlertAction
+                                                                      actionWithTitle:@"No, I have an API key"
+                                                                      style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction *action){
+                                                                      }];
+                                           [alertViewCancel addAction:noCancelButton];
+                                           [self presentViewController:alertViewCancel animated:YES completion:nil];
+                                       } else {
+                                           
+                                           SharedData *sharedData = [SharedData sharedData];
+                                           [sharedData initAPIClient:API_KEY];
+                                           
+                                           [self showSampleListViewController];
+                                       }
+
+                                   }];
+    
+    UIAlertAction *yesButton = [UIAlertAction
+                               actionWithTitle:@"Yes, I have an API key"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action){
+                                   exit(0);
+                               }];
+    
+    [alertView addAction:yesButton];
+    [alertView addAction:noButton];
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 #pragma mark - IBAction
@@ -142,35 +181,6 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark - UIAlertView delegate method
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if ( buttonIndex == 0 ) {
-        
-        if ( alertView.tag == 1000 ) {
-            
-        } else if ( alertView.tag == 3000 ) {
-            
-            exit(0);
-        }
-        
-    } else if ( buttonIndex == 1 ) {
-        
-        if ( [API_KEY isEqualToString:@""] ) {
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"Please put your API key in Common.h 12 line." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            alertView.tag = 3000;
-            [alertView show];
-            
-            return;
-        }
-        
-        SharedData *sharedData = [SharedData sharedData];
-        [sharedData initAPIClient:API_KEY];
-        
-        [self showSampleListViewController];
-    }
-}
 
 @end
