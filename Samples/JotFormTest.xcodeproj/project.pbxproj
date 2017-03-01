@@ -27,7 +27,7 @@
 		604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75EB19F6E23A00B873D4 /* Security.framework */; };
 		604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */; };
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
-		A6D733CD1E6652EA00359510 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
+		A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
 		A6F93F1D1D304B4A005EE644 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0C1D304B4A005EE644 /* AFSecurityPolicy.m */; };
@@ -164,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D733CD1E6652EA00359510 /* JotForm_iOS.framework in Frameworks */,
+				A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */,
 				604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */,
 				C3B2AF841879AE0B00FCFAEA /* QuartzCore.framework in Frameworks */,
 				3CD6BFB8177A04310065788B /* libz.dylib in Frameworks */,
@@ -612,12 +612,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
 					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
 				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
@@ -635,12 +635,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
 					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
 				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
