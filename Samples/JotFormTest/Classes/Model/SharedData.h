@@ -10,12 +10,9 @@
 #import <JotForm_iOS/JotForm.h>
 
 @interface SharedData : NSObject
-{
-    JotForm         *apiClient;
-}
 
-@property (nonatomic, retain) JotForm           *apiClient;
-@property (nonatomic, retain) NSMutableArray    *sampleStrList;
+@property (nonatomic, strong) JotForm *apiClient;
+@property (nonatomic, strong) NSMutableArray *sampleStrList;
 
 + (SharedData *) sharedData;
 - (void) initSharedData;

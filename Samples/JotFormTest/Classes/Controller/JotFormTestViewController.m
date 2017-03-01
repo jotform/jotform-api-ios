@@ -10,10 +10,9 @@
 #import "Common.h"
 #import <JotForm_iOS/JotForm.h>
 
-@interface JotFormTestViewController () {
-    IBOutlet UILabel *resultLabel;
-    JotForm *jotform;
-}
+@interface JotFormTestViewController ()
+
+@property (nonatomic,weak) IBOutlet UILabel *resultLabel;
 
 @end
 
@@ -33,7 +32,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self initJotFormApiClient];
     [self callJotFormAPI];
 }
 
@@ -43,13 +41,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) initJotFormApiClient
-{
-    jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:NO euApi:NO];
-}
 
 - (void) callJotFormAPI
 {
+   JotForm *jotform;  jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:NO euApi:NO];
+    
     [jotform getForms:^(id result) {
         NSString *contentStr = @"";
         NSArray *contentArray = [result objectForKey:@"content"];
@@ -67,7 +63,7 @@
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"username = %@ \n\n", [content objectForKey:@"username"]]];
             
         }
-       resultLabel.text = contentStr;
+       self.resultLabel.text = contentStr;
     }  onFailure:^(NSError *error){
         
     }];

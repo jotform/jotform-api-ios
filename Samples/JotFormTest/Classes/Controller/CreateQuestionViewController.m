@@ -11,10 +11,6 @@
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface CreateQuestionViewController ()
-
-@end
-
 @implementation CreateQuestionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

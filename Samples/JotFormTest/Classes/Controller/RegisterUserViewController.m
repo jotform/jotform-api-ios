@@ -10,11 +10,11 @@
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface RegisterUserViewController () {
-    IBOutlet UITextField        *mUsernameTextField;
-    IBOutlet UITextField        *mPasswordTextField;
-    IBOutlet UITextField        *mEmailTextField;
-}
+@interface RegisterUserViewController ()
+
+@property (nonatomic,weak) IBOutlet UITextField *usernameTextField;
+@property (nonatomic,weak) IBOutlet UITextField *passwordTextField;
+@property (nonatomic,weak) IBOutlet UITextField *emailTextField;
 
 @end
 
@@ -47,24 +47,19 @@
 
 - (void) registerUser
 {
-    if ( mUsernameTextField.text.length == 0 ) {
-        
-        [mUsernameTextField becomeFirstResponder];
+    if (self.usernameTextField.text.length == 0 ) {
+        [self.usernameTextField becomeFirstResponder];
         return;
     }
     
-    if ( mPasswordTextField.text.length == 0 ) {
-        
-        [mPasswordTextField becomeFirstResponder];
+    if (self.passwordTextField.text.length == 0 ) {
+        [self.passwordTextField becomeFirstResponder];
         return;
-        
     }
     
-    if ( mEmailTextField.text.length == 0 ) {
-        
-        [mEmailTextField becomeFirstResponder];
+    if (self.emailTextField.text.length == 0 ) {
+        [self.emailTextField becomeFirstResponder];
         return;
-        
     }
     
     [SVProgressHUD showWithStatus:@"Registering user..."];
@@ -72,9 +67,9 @@
     SharedData *sharedData = [SharedData sharedData];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:mUsernameTextField.text forKey:@"username"];
-    [userInfo setObject:mPasswordTextField.text forKey:@"password"];
-    [userInfo setObject:mEmailTextField.text forKey:@"email"];
+    [userInfo setObject:self.usernameTextField.text forKey:@"username"];
+    [userInfo setObject:self.passwordTextField.text forKey:@"password"];
+    [userInfo setObject:self.emailTextField.text forKey:@"email"];
     
     [sharedData.apiClient registerUser:userInfo onSuccess:^(id result) {
         [SVProgressHUD dismiss];

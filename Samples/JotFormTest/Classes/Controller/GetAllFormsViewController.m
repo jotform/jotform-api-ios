@@ -13,14 +13,14 @@
 #import <JotForm_iOS/JotForm.h>
 
 @interface GetAllFormsViewController () {
-    IBOutlet UITextField        *offsetTextField;
-    IBOutlet UITextField        *limitTextField;
-    IBOutlet UIPickerView       *pickerView;
-    IBOutlet UITextField        *filterTextField;
-    IBOutlet UIBarButtonItem    *getBarButtonItem;
-    
-    NSArray                     *orderbyList;
+           NSArray *orderbyList;
 }
+
+@property (nonatomic,weak) IBOutlet UITextField *offsetTextField;
+@property (nonatomic,weak) IBOutlet UITextField *limitTextField;
+@property (nonatomic,weak) IBOutlet UIPickerView *pickerView;
+@property (nonatomic,weak) IBOutlet UITextField *filterTextField;
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *getBarButtonItem;
 
 @end
 
@@ -55,8 +55,7 @@
 - (void) initUI
 {
     self.title = @"Get all forms";
-    
-    self.navigationItem.rightBarButtonItem = getBarButtonItem;
+    self.navigationItem.rightBarButtonItem = self.getBarButtonItem;
 }
 
 - (void) initData
@@ -74,17 +73,17 @@
     
     NSInteger offset = 0;
     
-    if ( offsetTextField.text.length > 0 )
-        offset = [offsetTextField.text integerValue];
+    if (self.offsetTextField.text.length > 0 )
+        offset = [self.offsetTextField.text integerValue];
     
     NSInteger limit = 0;
     
-    if ( limitTextField.text.length > 0 )
-        limit = [limitTextField.text integerValue];
+    if (self.limitTextField.text.length > 0 )
+        limit = [self.limitTextField.text integerValue];
     
     NSString *orderby = @"";
     
-    orderby = [orderbyList objectAtIndex:[pickerView selectedRowInComponent:0]];
+    orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
     [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
         [SVProgressHUD dismiss];
@@ -143,7 +142,6 @@
     
     return rowStr;
 }
-
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     

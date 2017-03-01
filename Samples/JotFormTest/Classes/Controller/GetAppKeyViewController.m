@@ -13,11 +13,10 @@
 #import <JotForm_iOS/JotForm.h>
 #import "Common.h"
 
-@interface GetAppKeyViewController () {
-    JotForm *apiClient;
-    IBOutlet UITextField *usernameTextField;
-    IBOutlet UITextField *passwordTextField;
-}
+@interface GetAppKeyViewController ()
+
+@property (nonatomic,weak) IBOutlet UITextField *usernameTextField;
+@property (nonatomic,weak) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -38,8 +37,6 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Get App Key";
-    
-    [self initData];
     [self showAlertView];
 }
 
@@ -50,11 +47,6 @@
 }
 
 #pragma mark - user definition method
-
-- (void) initData
-{
-    apiClient = [[JotForm alloc] init];
-}
 
 - (void) showSampleListViewController
 {
@@ -114,18 +106,20 @@
 
 - (IBAction) getAppKeyButtonClicked : (id) sender
 {
-    NSString *username = usernameTextField.text;
+    JotForm *apiClient = [[JotForm alloc] init];
+    
+    NSString *username = self.usernameTextField.text;
     
     if ( [username isEqualToString:@""] )
-        [usernameTextField becomeFirstResponder];
+        [self.usernameTextField becomeFirstResponder];
     
-    NSString *password = passwordTextField.text;
+    NSString *password = self.passwordTextField.text;
     
     if ( [password isEqualToString:@""] )
-        [passwordTextField becomeFirstResponder];
+        [self.passwordTextField becomeFirstResponder];
     
-    [usernameTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
     
     [SVProgressHUD showWithStatus:@"Getting app key..."];
     
