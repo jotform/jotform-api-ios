@@ -144,31 +144,12 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ( listType == DataListTypeSubmissionList ) {
-    
-        id submission = [dataList objectAtIndex:indexPath.row];
-        
-        NSString *submissionStr = [NSString stringWithFormat:@"%@", submission];
-        
-        CGSize labelSize = [submissionStr sizeWithFont:[UIFont systemFontOfSize:12.0]
-                                    constrainedToSize:CGSizeMake(290, 9999)
-                                        lineBreakMode:NSLineBreakByWordWrapping];
-        
-        CGFloat labelHeight = labelSize.height;
-
-        return labelHeight;
-    }
-    
     return 44.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ( indexPath.row == 0 ) {
-        
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

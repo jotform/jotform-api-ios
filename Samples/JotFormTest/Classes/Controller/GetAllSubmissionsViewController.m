@@ -71,12 +71,12 @@
     
     SharedData *sharedData = [SharedData sharedData];
     
-    int offset = 0;
+    NSInteger offset = 0;
     
     if ( offsetTextField.text.length > 0 )
         offset = [offsetTextField.text integerValue];
     
-    int limit = 0;
+    NSInteger limit = 0;
     
     if ( limitTextField.text.length > 0 )
         limit = [limitTextField.text integerValue];
@@ -89,8 +89,7 @@
        [SVProgressHUD dismiss];
        
        if ( result != nil ) {
-           
-           int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+           NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
            
            if ( responseCode == 200 || responseCode == 206 ) {
                
