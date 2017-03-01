@@ -62,8 +62,7 @@
         [SVProgressHUD dismiss];
         
         if ( result != nil ) {
-            
-            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
                 
@@ -79,7 +78,7 @@
         
         if ( error != nil ) {
             
-            int responseCode = [[error objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 401 ) {
                 

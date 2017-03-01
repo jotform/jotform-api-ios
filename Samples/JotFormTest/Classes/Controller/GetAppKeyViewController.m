@@ -40,7 +40,6 @@
     self.title = @"Get App Key";
     
     [self initData];
-    
     [self showAlertView];
 }
 
@@ -99,8 +98,7 @@
 
     [apiClient login:userInfo onSuccess:^(id result) {
         if ( result != nil ) {
-            
-            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
                 
@@ -124,11 +122,9 @@
 - (void) loginFinish : (id) result
 {
     if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+        NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
         
         if ( responseCode == 200 || responseCode == 206 ) {
-            
             id content = [result objectForKey:@"content"];
             
             SharedData *sharedData = [SharedData sharedData];

@@ -55,11 +55,11 @@
         NSArray *contentArray = [result objectForKey:@"content"];
         
         for (id content in contentArray ) {
-            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"count = %d\n", [[content objectForKey:@"count"] integerValue]]];
+            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"count = %ld\n", [[content objectForKey:@"count"] integerValue]]];
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"created_at = %@\n", [content objectForKey:@"created_at"]]];
-            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"height = %d\n", [[content objectForKey:@"height"] integerValue]]];
+            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"height = %ld\n", [[content objectForKey:@"height"] integerValue]]];
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"id = %lld\n", [[content objectForKey:@"id"] longLongValue]]];
-            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"new = %d\n", [[content objectForKey:@"new"] integerValue]]];
+            contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"new = %ld\n", [[content objectForKey:@"new"] integerValue]]];
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"status = %@\n", [content objectForKey:@"status"]]];
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"title = %@\n", [content objectForKey:@"title"]]];
             contentStr = [contentStr stringByAppendingString:[NSString stringWithFormat:@"updated_at = %@\n", [content objectForKey:@"updated_at"]]];
