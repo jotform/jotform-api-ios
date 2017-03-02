@@ -6,19 +6,13 @@
 //  Copyright (c) 2013 Interlogy, LLC. All rights reserved.
 //
 
-#ifndef JotFormTest_Common_h
-#define JotFormTest_Common_h
-
-#define API_KEY                 @""
+#define API_KEY @""
 
 typedef enum {
-
     DataListTypeFormList = 0,
     DataListTypeSubmissionList,
     DataListTypeReportList
-    
 } DataListType;
 
 #define FORM_ID                 0
 
-#endif

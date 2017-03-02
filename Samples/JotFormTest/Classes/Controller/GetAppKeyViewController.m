@@ -60,11 +60,10 @@
     
     UIAlertController *alertView = [UIAlertController
                                     alertControllerWithTitle:@"JotFormAPISample"
-                                    message:@"Do you have your Jotform account?"
+                                    message:@"Do you have an API key?"
                                     preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *noButton = [UIAlertAction
-                                   actionWithTitle:@"No, I have an API key"
+    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"Yes"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action){
                                        if ([API_KEY isEqualToString:@""]) {
@@ -73,12 +72,12 @@
                                                                            alertControllerWithTitle:@"JotFormAPISample"
                                                                            message:@"Please put your API key in Common.h 12 line." preferredStyle:UIAlertControllerStyleAlert];
                                            
-                                           UIAlertAction *noCancelButton = [UIAlertAction
-                                                                      actionWithTitle:@"No, I have an API key"
+                                           UIAlertAction *cancelButton = [UIAlertAction
+                                                                      actionWithTitle:@"Ok"
                                                                       style:UIAlertActionStyleDefault
                                                                       handler:^(UIAlertAction *action){
                                                                       }];
-                                           [alertViewCancel addAction:noCancelButton];
+                                           [alertViewCancel addAction:cancelButton];
                                            [self presentViewController:alertViewCancel animated:YES completion:nil];
                                        } else {
                                            
@@ -91,10 +90,10 @@
                                    }];
     
     UIAlertAction *yesButton = [UIAlertAction
-                               actionWithTitle:@"Yes, I have an API key"
+                               actionWithTitle:@"No"
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action){
-                                   exit(0);
+                                   
                                }];
     
     [alertView addAction:yesButton];
