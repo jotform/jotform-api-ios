@@ -57,7 +57,6 @@
 
 - (void) showAlertView
 {
-    
     UIAlertController *alertView = [UIAlertController
                                     alertControllerWithTitle:@"JotFormAPISample"
                                     message:@"Do you have an API key?"
@@ -70,7 +69,7 @@
                                                              
                                                              UIAlertController *alertViewCancel = [UIAlertController
                                                                                                    alertControllerWithTitle:@"JotFormAPISample"
-                                                                                                   message:@"Please put your API key in Common.h 12 line." preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                   message:@"Please put your API key in Common.h." preferredStyle:UIAlertControllerStyleAlert];
                                                              
                                                              UIAlertAction *cancelButton = [UIAlertAction
                                                                                             actionWithTitle:@"Ok"
