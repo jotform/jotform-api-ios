@@ -7,6 +7,7 @@
 //
 
 #define API_KEY @""
+#define EU_API  NO
 
 typedef enum {
     DataListTypeFormList = 0,

@@ -14,9 +14,9 @@
 @property (nonatomic, strong) JotForm *apiClient;
 @property (nonatomic, strong) NSMutableArray *sampleStrList;
 
-+ (SharedData *) sharedData;
-- (void) initSharedData;
-- (void) initAPIClient : (NSString *) apiKey;
-- (NSArray *) getFormOrderbyList;
++ (SharedData *)sharedData;
+- (void)initSharedData;
+- (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi;
+- (NSArray *)getFormOrderbyList;
 
 @end

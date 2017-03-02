@@ -64,37 +64,37 @@
                                     preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"Yes"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action){
-                                       if ([API_KEY isEqualToString:@""]) {
-                                           
-                                           UIAlertController *alertViewCancel = [UIAlertController
-                                                                           alertControllerWithTitle:@"JotFormAPISample"
-                                                                           message:@"Please put your API key in Common.h 12 line." preferredStyle:UIAlertControllerStyleAlert];
-                                           
-                                           UIAlertAction *cancelButton = [UIAlertAction
-                                                                      actionWithTitle:@"Ok"
-                                                                      style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction *action){
-                                                                      }];
-                                           [alertViewCancel addAction:cancelButton];
-                                           [self presentViewController:alertViewCancel animated:YES completion:nil];
-                                       } else {
-                                           
-                                           SharedData *sharedData = [SharedData sharedData];
-                                           [sharedData initAPIClient:API_KEY];
-                                           
-                                           [self showSampleListViewController];
-                                       }
-
-                                   }];
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action){
+                                                         if ([API_KEY isEqualToString:@""]) {
+                                                             
+                                                             UIAlertController *alertViewCancel = [UIAlertController
+                                                                                                   alertControllerWithTitle:@"JotFormAPISample"
+                                                                                                   message:@"Please put your API key in Common.h 12 line." preferredStyle:UIAlertControllerStyleAlert];
+                                                             
+                                                             UIAlertAction *cancelButton = [UIAlertAction
+                                                                                            actionWithTitle:@"Ok"
+                                                                                            style:UIAlertActionStyleDefault
+                                                                                            handler:^(UIAlertAction *action){
+                                                                                            }];
+                                                             [alertViewCancel addAction:cancelButton];
+                                                             [self presentViewController:alertViewCancel animated:YES completion:nil];
+                                                         } else {
+                                                             
+                                                             SharedData *sharedData = [SharedData sharedData];
+                                                             [sharedData initAPIClient:API_KEY euApi:EU_API];
+                                                             
+                                                             [self showSampleListViewController];
+                                                         }
+                                                         
+                                                     }];
     
     UIAlertAction *yesButton = [UIAlertAction
-                               actionWithTitle:@"No"
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action){
-                                   
-                               }];
+                                actionWithTitle:@"No"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action){
+                                    
+                                }];
     
     [alertView addAction:yesButton];
     [alertView addAction:noButton];
@@ -127,53 +127,41 @@
     [userInfo setObject:password forKey:@"password"];
     [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
-
+    
     [apiClient login:userInfo onSuccess:^(id result) {
-        if ( result != nil ) {
+        if (result != nil) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
-                
                 id content = [result objectForKey:@"content"];
                 
-                SharedData *sharedData = [SharedData sharedData];
-                [sharedData initAPIClient:[content objectForKey:@"appKey"]];
-                
-                [self showSampleListViewController];
+                [apiClient checkEUserver:^(id result) {
+                    BOOL euAPI = NO;
+                    if (result != nil) {
+                        // if the location key exist see if the user is on eu server or not.
+                        if ([result objectForKey:@"location"] != nil) {
+                            NSString *location = [result objectForKey:@"location"];
+                            if ([location containsString:@"https://eu-api.jotform.com/"]) {
+                                euAPI = YES;
+                            } else {
+                                euAPI = NO;
+                            }
+                        } else {
+                            euAPI = NO;
+                        }
+                    }
+                    [[SharedData sharedData] initAPIClient:[content objectForKey:@"appKey"] euApi:euAPI];
+                     [self showSampleListViewController];
+                    [SVProgressHUD dismiss];
+                }  onFailure:^(NSError *error) {
+                    
+                }];
             }
         }
-        
-        [SVProgressHUD dismiss];
     } onFailure:^(id error) {
-          [SVProgressHUD dismiss];
+        [SVProgressHUD dismiss];
     }];
 }
-
-#pragma mark - Jotform delegate
-
-- (void) loginFinish : (id) result
-{
-    if ( result != nil ) {
-        NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            id content = [result objectForKey:@"content"];
-            
-            SharedData *sharedData = [SharedData sharedData];
-            [sharedData initAPIClient:[content objectForKey:@"appKey"]];
-            
-            [self showSampleListViewController];
-        }
-    }
-    
-    [SVProgressHUD dismiss];
-}
-
-- (void) loginFail : (id) error
-{
-    [SVProgressHUD dismiss];
-}
-
 
 
 @end

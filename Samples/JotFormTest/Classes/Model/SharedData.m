@@ -37,9 +37,9 @@ static SharedData *g_sharedInfo = nil;
     self.sampleStrList = (NSMutableArray *)[sampleStr componentsSeparatedByString:@","];
 }
 
-- (void) initAPIClient : (NSString *) apiKey
+- (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi
 {
-    self.apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO euApi:NO];
+    self.apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO euApi:euApi];
 }
 
 - (NSArray *) getFormOrderbyList

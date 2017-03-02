@@ -56,7 +56,7 @@
     [sharedData.apiClient createForm:FORM_ID onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
-        if ( result != nil ) {
+        if (result != nil) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
