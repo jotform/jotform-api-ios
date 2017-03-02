@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" constant="30" id="u3z-Ig-N2P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bL-FC-qg7">
                     <rect key="frame" x="25" y="146" width="215" height="30"/>

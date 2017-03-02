@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterUserViewController">
             <connections>
-                <outlet property="mEmailTextField" destination="w1H-m0-KCP" id="a1Z-6j-cE7"/>
-                <outlet property="mPasswordTextField" destination="eeV-AU-xLo" id="o4s-J8-pQA"/>
-                <outlet property="mUsernameTextField" destination="6ej-lE-McO" id="irQ-Wy-dig"/>
+                <outlet property="emailTextField" destination="w1H-m0-KCP" id="sAQ-6h-8kb"/>
+                <outlet property="passwordTextField" destination="eeV-AU-xLo" id="M1J-K5-rmS"/>
+                <outlet property="usernameTextField" destination="6ej-lE-McO" id="wxr-je-AIH"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -67,10 +67,10 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s9-QR-Mzg">
-                            <rect key="frame" x="73" y="547" width="206" height="45"/>
+                            <rect key="frame" x="73" y="441" width="206" height="45"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="45" id="lVS-xG-o3Z"/>
-                                <constraint firstAttribute="width" constant="206" id="oq2-eK-sDD"/>
+                                <constraint firstAttribute="width" constant="206" id="2FJ-Az-aTY"/>
+                                <constraint firstAttribute="height" constant="45" id="bMq-Ev-gEO"/>
                             </constraints>
                             <state key="normal" title="Register">
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,21 +84,21 @@
                         <constraint firstItem="6ej-lE-McO" firstAttribute="leading" secondItem="Zwc-ke-aKZ" secondAttribute="leading" constant="22" id="2Cx-9b-xwx"/>
                         <constraint firstItem="6ej-lE-McO" firstAttribute="leading" secondItem="eeV-AU-xLo" secondAttribute="leading" id="4DI-Uz-WXF"/>
                         <constraint firstAttribute="trailing" secondItem="6ej-lE-McO" secondAttribute="trailing" constant="84" id="83x-en-DFc"/>
+                        <constraint firstItem="3s9-QR-Mzg" firstAttribute="centerX" secondItem="w1H-m0-KCP" secondAttribute="centerX" id="8Gm-6P-ow2"/>
+                        <constraint firstAttribute="bottom" secondItem="3s9-QR-Mzg" secondAttribute="bottom" constant="381" id="8yC-dJ-g5d"/>
                         <constraint firstItem="eeV-AU-xLo" firstAttribute="leading" secondItem="w1H-m0-KCP" secondAttribute="leading" id="EQM-kR-2jJ"/>
                         <constraint firstItem="PrU-19-cxV" firstAttribute="top" secondItem="Zwc-ke-aKZ" secondAttribute="top" constant="204" id="FK1-sj-uSx"/>
-                        <constraint firstItem="3s9-QR-Mzg" firstAttribute="leading" secondItem="Zwc-ke-aKZ" secondAttribute="leading" constant="73" id="ILT-NS-8zB"/>
                         <constraint firstItem="Kdc-7u-gGy" firstAttribute="top" secondItem="eeV-AU-xLo" secondAttribute="bottom" constant="14" id="K85-OW-Pjm"/>
                         <constraint firstItem="STA-vg-CSE" firstAttribute="leading" secondItem="Kdc-7u-gGy" secondAttribute="leading" id="Sf1-ND-80F"/>
-                        <constraint firstItem="3s9-QR-Mzg" firstAttribute="top" secondItem="Zwc-ke-aKZ" secondAttribute="top" constant="547" id="SfZ-zb-w6A"/>
                         <constraint firstItem="PrU-19-cxV" firstAttribute="leading" secondItem="Zwc-ke-aKZ" secondAttribute="leading" constant="24" id="Ubc-6O-cNt"/>
+                        <constraint firstItem="3s9-QR-Mzg" firstAttribute="leading" secondItem="Zwc-ke-aKZ" secondAttribute="leading" constant="73" id="WY8-Xd-LyY"/>
                         <constraint firstItem="w1H-m0-KCP" firstAttribute="top" secondItem="Kdc-7u-gGy" secondAttribute="bottom" constant="2" id="Xrm-a8-p93"/>
-                        <constraint firstItem="w1H-m0-KCP" firstAttribute="centerX" secondItem="3s9-QR-Mzg" secondAttribute="centerX" id="Yke-RH-d9P"/>
                         <constraint firstItem="6ej-lE-McO" firstAttribute="top" secondItem="PrU-19-cxV" secondAttribute="bottom" constant="3" id="fXJ-eG-jeo"/>
                         <constraint firstItem="STA-vg-CSE" firstAttribute="top" secondItem="6ej-lE-McO" secondAttribute="bottom" constant="11" id="mLr-1D-0MC"/>
-                        <constraint firstAttribute="bottom" secondItem="3s9-QR-Mzg" secondAttribute="bottom" constant="275" id="mly-aj-hs5"/>
                         <constraint firstItem="PrU-19-cxV" firstAttribute="leading" secondItem="STA-vg-CSE" secondAttribute="leading" id="oEq-yb-JtB"/>
                         <constraint firstItem="eeV-AU-xLo" firstAttribute="trailing" secondItem="w1H-m0-KCP" secondAttribute="trailing" id="pcL-tX-rJm"/>
                         <constraint firstItem="6ej-lE-McO" firstAttribute="trailing" secondItem="eeV-AU-xLo" secondAttribute="trailing" id="sNl-Db-Ko7"/>
+                        <constraint firstItem="3s9-QR-Mzg" firstAttribute="top" secondItem="w1H-m0-KCP" secondAttribute="bottom" constant="45" id="tyw-ws-JTa"/>
                         <constraint firstItem="eeV-AU-xLo" firstAttribute="top" secondItem="STA-vg-CSE" secondAttribute="bottom" constant="6" id="zIn-jg-dTf"/>
                     </constraints>
                 </scrollView>
