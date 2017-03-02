@@ -81,9 +81,7 @@
     if (self.limitTextField.text.length > 0 )
         limit = [self.limitTextField.text integerValue];
     
-    NSString *orderby = @"";
-    
-    orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+    NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
     [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
         [SVProgressHUD dismiss];

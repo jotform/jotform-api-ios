@@ -44,7 +44,7 @@
 
 - (void) callJotFormAPI
 {
-   JotForm *jotform;  jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:NO euApi:NO];
+   JotForm *jotform = [[JotForm alloc] initWithApiKey:API_KEY debugMode:NO euApi:NO];
     
     [jotform getForms:^(id result) {
         NSString *contentStr = @"";

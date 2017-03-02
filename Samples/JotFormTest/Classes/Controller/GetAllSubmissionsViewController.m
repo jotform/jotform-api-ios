@@ -113,7 +113,6 @@
     [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (IBAction) getSubmissionsButtonClicked : (id) sender {
@@ -121,7 +120,6 @@
     [self loadForms];
 }
 
-#pragma mark -
 #pragma mark UIPickerViewDataSource
 
 
@@ -136,7 +134,6 @@
 }
 
 
-#pragma mark -
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
