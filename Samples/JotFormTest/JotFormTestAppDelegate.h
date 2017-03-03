@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface JotFormTestAppDelegate : UIResponder <UIApplicationDelegate>
-{
-    UINavigationController          *mRootNavigationController;
-}
 
 @property (strong, nonatomic) UIWindow *window;
 
