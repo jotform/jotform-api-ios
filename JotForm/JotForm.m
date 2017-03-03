@@ -139,7 +139,7 @@
     onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/login?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/login", baseUrl,apiVersion];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", userinfo]];

@@ -20,9 +20,9 @@
     
     GetAppKeyViewController *getAppKeyVc = [[GetAppKeyViewController alloc] initWithNibName:@"GetAppKeyViewController" bundle:nil];
     
-    mRootNavigationController = [[UINavigationController alloc] initWithRootViewController:getAppKeyVc];
+    UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:getAppKeyVc];
     
-    self.window.rootViewController = mRootNavigationController;
+    self.window.rootViewController = rootNavigationController;
     
     [self.window makeKeyAndVisible];
     return YES;

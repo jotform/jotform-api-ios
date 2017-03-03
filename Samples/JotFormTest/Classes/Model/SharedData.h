@@ -7,19 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JotForm/JotForm.h>
+#import <JotForm_iOS/JotForm.h>
 
 @interface SharedData : NSObject
-{
-    JotForm         *apiClient;
-}
 
-@property (nonatomic, retain) JotForm           *apiClient;
-@property (nonatomic, retain) NSMutableArray    *sampleStrList;
+@property (nonatomic, strong) JotForm *apiClient;
+@property (nonatomic, strong) NSMutableArray *sampleStrList;
 
-+ (SharedData *) sharedData;
-- (void) initSharedData;
-- (void) initAPIClient : (NSString *) apiKey;
-- (NSArray *) getFormOrderbyList;
++ (SharedData *)sharedData;
+- (void)initSharedData;
+- (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi;
+- (NSArray *)getFormOrderbyList;
 
 @end

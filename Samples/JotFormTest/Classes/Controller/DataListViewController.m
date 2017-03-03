@@ -11,10 +11,11 @@
 #import "Common.h"
 
 @interface DataListViewController () {
-    IBOutlet UITableView        *listTableView;
-    NSMutableArray              *dataList;
-    DataListType                 listType;
+           DataListType listType;
 }
+
+@property (nonatomic,weak) IBOutlet UITableView *listTableView;
+@property (nonatomic,strong) NSMutableArray *dataList;
 
 @end
 
@@ -47,14 +48,12 @@
 {
     listType = type;
     
-    if ( dataList == nil )
-        dataList = [[NSMutableArray alloc] init];
+    if (self.dataList == nil )
+        self.dataList = [[NSMutableArray alloc] init];
     
-    [dataList removeAllObjects];
-    
-    [dataList addObjectsFromArray:dataarray];
-    
-    [listTableView reloadData];
+    [self.dataList removeAllObjects];
+    [self.dataList addObjectsFromArray:dataarray];
+    [self.listTableView reloadData];
     
     self.title = @"Form list";
 }
@@ -63,14 +62,12 @@
 {
     listType = type;
     
-    if ( dataList == nil )
-        dataList = [[NSMutableArray alloc] init];
+    if (self.dataList == nil )
+        self.dataList = [[NSMutableArray alloc] init];
     
-    [dataList removeAllObjects];
-    
-    [dataList addObjectsFromArray:dataarray];
-    
-    [listTableView reloadData];
+    [self.dataList removeAllObjects];
+    [self.dataList addObjectsFromArray:dataarray];
+    [self.listTableView reloadData];
     
     self.title = @"Submission list";
 }
@@ -79,14 +76,12 @@
 {
     listType = type;
     
-    if ( dataList == nil )
-        dataList = [[NSMutableArray alloc] init];
+    if (self.dataList == nil )
+        self.dataList = [[NSMutableArray alloc] init];
     
-    [dataList removeAllObjects];
-    
-    [dataList addObjectsFromArray:dataarray];
-    
-    [listTableView reloadData];
+    [self.dataList removeAllObjects];
+    [self.dataList addObjectsFromArray:dataarray];
+    [self.listTableView reloadData];
     
     self.title = @"Report list";
 }
@@ -110,7 +105,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [dataList count];
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,7 +118,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    id form = [dataList objectAtIndex:indexPath.row];
+    id form = [self.dataList objectAtIndex:indexPath.row];
     
     if ( listType == DataListTypeFormList ) {
         cell.textLabel.text = [form objectForKey:@"title"];
@@ -144,31 +139,12 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ( listType == DataListTypeSubmissionList ) {
-    
-        id submission = [dataList objectAtIndex:indexPath.row];
-        
-        NSString *submissionStr = [NSString stringWithFormat:@"%@", submission];
-        
-        CGSize labelSize = [submissionStr sizeWithFont:[UIFont systemFontOfSize:12.0]
-                                    constrainedToSize:CGSizeMake(290, 9999)
-                                        lineBreakMode:NSLineBreakByWordWrapping];
-        
-        CGFloat labelHeight = labelSize.height;
-
-        return labelHeight;
-    }
-    
     return 44.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ( indexPath.row == 0 ) {
-        
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

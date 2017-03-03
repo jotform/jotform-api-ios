@@ -12,10 +12,6 @@
 #import "SharedData.h"
 #import "SVProgressHUD.h"
 
-@interface CreateFormsViewController ()
-
-@end
-
 @implementation CreateFormsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,20 +61,26 @@
 
 - (void) createFormsFinish : (id) result
 {
-    NSLog(@"result%@",result);
-    
     [SVProgressHUD dismiss];
     
     if ( result != nil ) {
-        
-        int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+        NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
         
         if ( responseCode == 200 || responseCode == 206 ) {
+            UIAlertController *alertView = [UIAlertController
+                                            alertControllerWithTitle:@"JotFormAPISample"
+                                            message:@"You created question successfully."
+                                            preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created question successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertAction *cancelButton = [UIAlertAction
+                                           actionWithTitle:@"Ok"
+                                           style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction *action){
+                                               
+                                           }];
             
-            [alertView show];
-            
+            [alertView addAction:cancelButton];
+            [self presentViewController:alertView animated:YES completion:nil];
             
             return;
             
@@ -89,8 +91,6 @@
 
 - (void) createFormsFail : (id) error
 {
-    NSLog(@"error %@",error);
-    
 }
 
 

@@ -9,7 +9,7 @@
 #import "CreateFormViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
-#import <JotForm/JotForm.h>
+#import <JotForm_iOS/JotForm.h>
 
 @interface CreateFormViewController ()
 
@@ -78,30 +78,48 @@
         [SVProgressHUD dismiss];
         
         if ( result != nil ) {
-            int responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
+                UIAlertController *alertView = [UIAlertController
+                                             alertControllerWithTitle:@"JotFormAPISample"
+                                             message:@"You created form successfully"
+                                             preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:@"You created form successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                [alertView show];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                            actionWithTitle:@"Cancel"
+                                            style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                      
+                                            }];
                 
-                return;
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
             }
         }
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
         
         if ( error != nil ) {
-            
-            int responseCode = [[error objectForKey:@"response"] integerValue];
+            NSInteger responseCode = [[error objectForKey:@"response"] integerValue];
             
             if ( responseCode == 401 ) {
+                NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
                 
-                NSString *errorMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
+                UIAlertController *alertView = [UIAlertController
+                                                alertControllerWithTitle:@"JotFormAPISample"
+                                                message:errMsg
+                                                preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"JotFormAPISample" message:errorMsg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertAction *cancelButton = [UIAlertAction
+                                               actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   
+                                               }];
                 
-                [alertView show];
+                [alertView addAction:cancelButton];
+                [self presentViewController:alertView animated:YES completion:nil];
                 
                 return;
             }
