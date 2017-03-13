@@ -492,6 +492,7 @@
 			baseConfigurationReference = 18E432F275D88296170B893F /* Pods-JotForm_Watch.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
@@ -516,6 +517,7 @@
 			baseConfigurationReference = E3F6F0EEE0E5391B753F3E61 /* Pods-JotForm_Watch.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
@@ -640,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CADB50A3AA9DB2B85B2EFBB /* Pods-JotForm.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
@@ -665,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50A907566FE2D98198D03883 /* Pods-JotForm.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 58SHK2R9Q3;
@@ -739,6 +743,7 @@
 		A6BB21DB1E60E44600623493 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 			};
@@ -747,6 +752,7 @@
 		A6BB21DC1E60E44600623493 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 			};
