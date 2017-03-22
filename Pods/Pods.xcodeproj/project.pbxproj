@@ -871,6 +871,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 116A36A684FCD5CEAFEF1470AEFC8358 /* Pods-JotForm_Mac.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -995,6 +996,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4039DC64467F5CC2ECE13F554F7904F /* Pods-JotForm_Mac.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1022,6 +1024,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0E58FBB717F34938C0F84C61FCD3F91 /* AFNetworking-c94d3492.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1048,6 +1051,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0E58FBB717F34938C0F84C61FCD3F91 /* AFNetworking-c94d3492.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
