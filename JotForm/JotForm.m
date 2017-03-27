@@ -1304,24 +1304,34 @@
         [params setObject:[NSNumber numberWithInteger:limit] forKey:@"limit"];
     
     if (filter != nil) {
-        NSString *filterStr = @"";
+        NSString *filterStr = @"%7B";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
-        filterStr = @"%7b";
-        
         NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
         
         for (NSString *key in keys) {
-            filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat: @"%%22%@%%22:%%22%@%%22", key,[[filter objectForKey:key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
-            
-            count++;
-            
-            if (count < [filter count]) {
-                filterStr = [filterStr stringByAppendingString:@"%2c"];
+            if ([[filter objectForKey:key] isKindOfClass:[NSArray class]]) {
+                filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat: @"%%22%@%%22%%3A%%5B", key]];
+                for (NSString *value in [filter objectForKey:key]) {
+                    filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22", [value stringByAddingPercentEncodingWithAllowedCharacters:set]]];
+                    
+                    if ([[filter objectForKey:key] lastObject] != value) {
+                         filterStr = [filterStr stringByAppendingString:@"%2C"];
+                    }
+                }
+                 filterStr = [filterStr stringByAppendingString:@"%5D"];
+            } else {
+                filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22%%3A%%22%@%%22",key,[[filter objectForKey:key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
+                
+                count++;
+                
+                if (count < [filter count]) {
+                    filterStr = [filterStr stringByAppendingString:@"%2C"];
+                }
             }
         }
         
-        filterStr = [filterStr stringByAppendingString:@"%7d"];
+        filterStr = [filterStr stringByAppendingString:@"%7D"];
         [params setObject:filterStr forKey:@"filter"];
     }
     
