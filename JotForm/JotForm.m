@@ -863,32 +863,12 @@
     
 }
 
-- (void)getFormEncrypted:(long long)formID
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/isEncrypted",baseUrl,formID];
-    
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    
-    [manager GET:urlStr
-      parameters:nil
-        progress:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
-}
-
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/%@",baseUrl,formID,propertyKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/%@?apiKey=%@",baseUrl,formID,propertyKey,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     

@@ -203,16 +203,6 @@
                onFailure:(void (^)(NSError *))failureBlock;
 
 /**
- * Check wether or not the form is encrypted
- * @param formID Form ID is the numbers you see on a form URL. You can get form
- * IDs when you call /user/forms.
- * Returns Yes or No.
- */
-- (void)getFormEncrypted:(long long)formID
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
-
-/**
  * Get details about a question
  * @param formID Form ID is the numbers you see on a form URL. You can get form
  * IDs when you call /user/forms.
