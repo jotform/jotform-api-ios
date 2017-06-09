@@ -375,12 +375,12 @@
          }];
 }
 
-- (void)getFolder:(long long)folderId
+- (void)getFolder:(long long)folderID
         onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/folder/%lld?apiKey=%@", baseUrl, apiVersion,folderId, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/folder/%lld?apiKey=%@", baseUrl, apiVersion,folderID, apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
@@ -678,7 +678,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/logout?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/submissions?apiKey=%@", baseUrl,apiVersion,formID,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     [self debugLog:[NSString stringWithFormat:@"paramstr = %@", parameters]];
@@ -1196,24 +1196,6 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/forms/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
-    
-    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
-    
-    [manager DELETE:urlStr parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
-}
-
-- (void)deleteSubmissionSynchronous:(long long)formID
-                          onSuccess:(void (^)(id))successBlock
-                          onFailure:(void (^)(NSError *))failureBlock{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/submission/%lld?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
