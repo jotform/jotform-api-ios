@@ -40,7 +40,7 @@
 
 /**
  * Get user's account details for this JotForm user.
- * Including user account type, avatar URL, name, email, website URL and account limits.
+ * Return user account type, avatar URL, name, email, website URL and account limits.
  */
 
 - (void)getUser:(void (^)(id))successBlock
@@ -268,9 +268,11 @@
 
 /**
  * Add a Submissions to the Form.
- * @param formID is the number you see on a form URL. You can get formIDs when you call /user/forms.
- * @param submission Submission data with question IDs.
- * Submit data to this form using the API. You should get a list of question IDs from form/{id}/questions and send the submission data with qid.
+ * @param formID is the number you see on a form URL. You can get formIDs when you 
+ * call /user/forms.
+ * @param submission containing a dictionary with question IDs. You should get a
+ * list of question IDs from form/{id}/questions and send the submission data with qid
+ * Create submit data to this form using the API.
  */
 
 - (void)createFormSubmissions:(long long)formID
@@ -304,7 +306,7 @@
  * @param formID is the number you see on a form URL. You can get formIDs when you call /user/forms.
  * @param webhookURL Webhook URL is where form data will be posted when form is
  * submitted.
- * Webhooks can be used to send form submission data as an instant notification.
+ * Create webhooks that can be used to send form submission data as an instant notification.
  */
 
 - (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL
@@ -455,8 +457,7 @@
  * Add new question to specified form.
  * @param formID is the number you see on a form URL. You can get formIDs when you call /user/forms.
  * @param questions New question properties like type and text.
- * Add new question to specified form. Form questions might have various properties. 
- * Examples: Is it required? Are there any validations such as 'numeric only'?
+ * Add new question to specified form. Form questions might have various properties.
  */
 
 - (void)createFormQuestions:(long long)formID questions:(NSString *)questions
@@ -532,7 +533,7 @@
 /**
  * Delete a single form
  * @param formID is the number you see on a form URL. You can get formIDs when you call /user/forms.
- * Return Properties of deleted form.
+ * Delete properties of a form.
  */
 
 - (void)deleteForm:(long long)formID
