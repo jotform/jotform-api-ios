@@ -319,7 +319,7 @@
     for (NSString *key in keys)
         [paramarray
          addObject:[NSString stringWithFormat:@"%@=%@", key,
-                    params[key]];
+                    params[key]]];
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr];
