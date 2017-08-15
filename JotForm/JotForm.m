@@ -735,7 +735,7 @@
                  onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (webhookURL != nil && webhookURL.length > 0)
+    if (webhookURL && webhookURL.length > 0)
         [params setObject:webhookURL forKey:@"webhookURL"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -818,13 +818,13 @@
     
     [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
     
-    if (title != nil)
+    if (title)
         [params setObject:title forKey:@"title"];
     
-    if (list_type != nil)
+    if (list_type)
         [params setObject:list_type forKey:@"list_type"];
     
-    if (fields != nil)
+    if (fields)
         [params setObject:fields forKey:@"fields"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -932,7 +932,7 @@
              onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (submissionName != nil)
+    if (submissionName)
         [params setObject:submissionName forKey:@"submission[1][first]"];
     
     [params setObject:[NSString stringWithFormat:@"%zd", new]
@@ -1236,19 +1236,19 @@
                                     endDate:(NSString *)endDate {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (action != nil && action.length > 0)
+    if (action && action.length > 0)
         [params setObject:action forKey:@"action"];
     
-    if (date != nil && date.length > 0)
+    if (date && date.length > 0)
         [params setObject:date forKey:@"date"];
     
-    if (sortBy != nil && sortBy.length > 0)
+    if (sortBy && sortBy.length > 0)
         [params setObject:sortBy forKey:@"sortBy"];
     
-    if (startDate != nil && sortBy.length > 0)
+    if (startDate && sortBy.length > 0)
         [params setObject:startDate forKey:@"startDate"];
     
-    if (endDate != nil && endDate.length > 0)
+    if (endDate && endDate.length > 0)
         [params setObject:endDate forKey:@"endDate"];
     
     return params;
@@ -1266,7 +1266,7 @@
     if (limit != 0)
         [params setObject:[NSNumber numberWithInteger:limit] forKey:@"limit"];
     
-    if (filter != nil) {
+    if (filter) {
         NSString *filterStr = @"%7B";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
@@ -1298,7 +1298,7 @@
         [params setObject:filterStr forKey:@"filter"];
     }
     
-    if (orderBy != nil)
+    if (orderBy)
         [params setObject:orderBy forKey:@"orderby"];
     
     return params;
