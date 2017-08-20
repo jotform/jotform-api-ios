@@ -309,7 +309,7 @@ static const CGFloat SVProgressHUDRingThickness = 6;
 - (void)setFadeOutTimer:(NSTimer *)newTimer {
     
     if(fadeOutTimer)
-        [fadeOutTimer invalidate], fadeOutTimer = nil;
+        (void)([fadeOutTimer invalidate]), fadeOutTimer = nil;
     
     if(newTimer)
         fadeOutTimer = newTimer;
