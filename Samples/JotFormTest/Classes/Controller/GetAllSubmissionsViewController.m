@@ -108,9 +108,9 @@
 {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-    [self.navigationController pushViewController:dataListVc animated:YES];
+     [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
     
-    [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
+    [self.navigationController pushViewController:dataListVc animated:YES];
 }
 
 #pragma mark IBAction

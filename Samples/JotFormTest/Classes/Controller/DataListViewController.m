@@ -62,7 +62,7 @@
 {
     listType = type;
     
-    if (self.dataList == nil )
+    if (!self.dataList)
         self.dataList = [[NSMutableArray alloc] init];
     
     [self.dataList removeAllObjects];
@@ -76,7 +76,7 @@
 {
     listType = type;
     
-    if (self.dataList == nil )
+    if (!self.dataList)
         self.dataList = [[NSMutableArray alloc] init];
     
     [self.dataList removeAllObjects];
@@ -112,25 +112,24 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell"];
     
-    if (cell == nil) {
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SampleCell"];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    id form = [self.dataList objectAtIndex:indexPath.row];
+    id object = [self.dataList objectAtIndex:indexPath.row];
     
-    if ( listType == DataListTypeFormList ) {
-        cell.textLabel.text = [form objectForKey:@"title"];
-        cell.detailTextLabel.text = [form objectForKey:@"id"];
-    } else if ( listType == DataListTypeSubmissionList ) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", form];
-        cell.detailTextLabel.numberOfLines = 0;
-    } else if ( listType == DataListTypeReportList ) {
-        cell.textLabel.text = [form objectForKey:@"title"];
-        cell.detailTextLabel.text = [form objectForKey:@"id"];
+    if (listType == DataListTypeFormList) {
+        cell.textLabel.text = [object objectForKey:@"title"];
+        cell.detailTextLabel.text = [object objectForKey:@"id"];
+    } else if (listType == DataListTypeSubmissionList) {
+        cell.detailTextLabel.text = [object objectForKey:@"id"];
+    } else if (listType == DataListTypeReportList) {
+        cell.textLabel.text = [object objectForKey:@"title"];
+        cell.detailTextLabel.text = [object objectForKey:@"id"];
     }
-
+    
     cell.textLabel.textColor = [UIColor darkGrayColor];
     
     return cell;
