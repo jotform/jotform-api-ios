@@ -135,14 +135,9 @@
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    NSString *rowStr = [orderbyList objectAtIndex:row];
+   NSString *rowStr = [orderbyList objectAtIndex:row];
     
     return rowStr;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
 }
 
 @end

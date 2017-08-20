@@ -99,43 +99,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (indexPath.row == 0) {
         GetAllFormsViewController *getAllFormsVc = [[GetAllFormsViewController alloc] initWithNibName:@"GetAllFormsViewController" bundle:nil];
         
         [self.navigationController pushViewController:getAllFormsVc animated:YES];
-        
     } else if (indexPath.row == 1) {
         GetAllSubmissionsViewController *getAllSubmissionsVc = [[GetAllSubmissionsViewController alloc] initWithNibName:@"GetAllSubmissionsViewController" bundle:nil];
         
         [self.navigationController pushViewController:getAllSubmissionsVc animated:YES];
-        
     } else if (indexPath.row == 2) {
         GetFormReportsViewController *formReportVc = [[GetFormReportsViewController alloc] initWithNibName:@"GetFormReportsViewController" bundle:nil];
         
         [self.navigationController pushViewController:formReportVc animated:YES];
-        
     } else if (indexPath.row == 3) {
         CreateFormViewController *createFormVc = [[CreateFormViewController alloc] initWithNibName:@"CreateFormViewController" bundle:nil];
 
         [self.navigationController pushViewController:createFormVc animated:YES];
-        
     } else if (indexPath.row == 4) {
         CreateSubmissionViewController *createSubmissionVc = [[CreateSubmissionViewController alloc] initWithNibName:@"CreateSubmissionViewController" bundle:nil];
         
         [self.navigationController pushViewController:createSubmissionVc animated:YES];
-        
     } else if (indexPath.row == 5) {
         CreateReportViewController *createReportVc = [[CreateReportViewController alloc] initWithNibName:@"CreateReportViewController" bundle:nil];
         
         [self.navigationController pushViewController:createReportVc animated:YES];
-        
     } else if (indexPath.row == 6) {
         RegisterUserViewController *registerUserVc = [[RegisterUserViewController alloc] initWithNibName:@"RegisterUserViewController" bundle:nil];
         
         [self.navigationController pushViewController:registerUserVc animated:YES];
-
     } else if (indexPath.row == 7) {
        CreateQuestionViewController *createQuestionVc = [[CreateQuestionViewController alloc] initWithNibName:@"CreateQuestionViewController" bundle:nil];
         
@@ -148,14 +139,7 @@
         CreateFormQuestionsViewController *createFormQuestionsVC = [[CreateFormQuestionsViewController alloc] initWithNibName:@"CreateFormQuestionsViewController" bundle:nil];
         
         [self.navigationController pushViewController:createFormQuestionsVC animated:YES];
-        
     }
 }
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 
 @end

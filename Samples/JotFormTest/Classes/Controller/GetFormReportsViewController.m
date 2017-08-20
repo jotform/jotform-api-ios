@@ -48,9 +48,9 @@
 {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-    [self.navigationController pushViewController:dataListVc animated:YES];
-    
     [dataListVc setReportList:reportList type:DataListTypeFormList];
+    
+    [self.navigationController pushViewController:dataListVc animated:YES];
 }
 
 
@@ -60,7 +60,7 @@
     
     SharedData *sharedData = [SharedData sharedData];
     
-    if ( FORM_ID == 0 ) {
+    if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController
                                         alertControllerWithTitle:@"JotFormAPISample"
                                         message:@"Please put Form's id in line 19, Common.h"
@@ -79,21 +79,18 @@
     [sharedData.apiClient getFormReports:FORM_ID onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
-        if ( result != nil ) {
-            
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
-                
+            if (responseCode == 200 || responseCode == 206) {
                 NSArray *reportsArray = [result objectForKey:@"content"];
-                
                 [self startDataListViewController:reportsArray];
             }   
         }
-    }onFailure:^(id error) {
+    } onFailure:^(id error) {
           [SVProgressHUD dismiss];
-    }];
-}
+     }];
+   }
 }
 
 @end
