@@ -263,7 +263,7 @@
     for (NSString *key in keys)
         [paramarray
          addObject:[NSString stringWithFormat:@"%@=%@", key,
-                    [params objectForKey:key]]];
+                    params[key]]];
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     
@@ -319,7 +319,7 @@
     for (NSString *key in keys)
         [paramarray
          addObject:[NSString stringWithFormat:@"%@=%@", key,
-                    [params objectForKey:key]]];
+                    params[key]]];
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr];
@@ -672,8 +672,9 @@
         else
             subkey = [NSString stringWithFormat:@"submission[%@]", key];
         
-        if ([submission objectForKey:key] != nil)
-            [parameters setObject:[submission objectForKey:key] forKey:subkey];
+        if (submission[key]) {
+            [parameters setObject:submission[key] forKey:subkey];
+        }
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -734,7 +735,7 @@
                  onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (webhookURL != nil && webhookURL.length > 0)
+    if (webhookURL && webhookURL.length > 0)
         [params setObject:webhookURL forKey:@"webhookURL"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -817,13 +818,13 @@
     
     [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
     
-    if (title != nil)
+    if (title)
         [params setObject:title forKey:@"title"];
     
-    if (list_type != nil)
+    if (list_type)
         [params setObject:list_type forKey:@"list_type"];
     
-    if (fields != nil)
+    if (fields)
         [params setObject:fields forKey:@"fields"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -931,7 +932,7 @@
              onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (submissionName != nil)
+    if (submissionName)
         [params setObject:submissionName forKey:@"submission[1][first]"];
     
     [params setObject:[NSString stringWithFormat:@"%zd", new]
@@ -1000,7 +1001,7 @@
     NSArray *keys = [question allKeys];
     
     for (NSString *key in keys)
-        [params setObject:[question objectForKey:key]
+        [params setObject:question[key]
                    forKey:[NSString stringWithFormat:@"question[%@]", key]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -1051,7 +1052,7 @@
     NSArray *keys = [properties allKeys];
     
     for (NSString *key in keys)
-        [params setObject:[properties objectForKey:key]
+        [params setObject:properties[key]
                    forKey:[NSString stringWithFormat:@"question[%@]", key]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -1078,8 +1079,9 @@
     
     NSArray *keys = [properties allKeys];
     
-    for (NSString *key in keys)
-        [params setObject:[properties objectForKey:key] forKey:[NSString stringWithFormat:@"properties[%@]", key]];
+    for (NSString *key in keys) {
+        [params setObject:properties[key] forKey:[NSString stringWithFormat:@"properties[%@]", key]];
+    }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -1128,27 +1130,26 @@
     for (NSString *formKey in formKeys) {
         
         if ([formKey isEqualToString:@"properties"]) {
-            
-            NSMutableDictionary *properties = [form objectForKey:formKey];
+            NSMutableDictionary *properties = form[formKey];
             
             NSArray *propertyKeys = [properties allKeys];
             
-            for (NSString *propertyKey in propertyKeys)
-                [params setObject:[properties objectForKey:propertyKey]
+            for (NSString *propertyKey in propertyKeys) {
+                [params setObject:properties[propertyKey]
                            forKey:[NSString stringWithFormat:@"%@[%@]", formKey,
                                    propertyKey]];
-            
+            }
         } else {
-            NSMutableDictionary *formItem = [form objectForKey:formKey];
+            NSMutableDictionary *formItem = form[formKey];
             
             NSArray *formItemKeys = [formItem allKeys];
             
             for (NSString *formItemKey in formItemKeys) {
-                NSMutableDictionary *fi = [formItem objectForKey:formItemKey];
+                NSMutableDictionary *fi = formItem[formItemKey];
                 NSArray *fiKeys = [fi allKeys];
                 
                 for (NSString *fiKey in fiKeys)
-                    [params setObject:[fi objectForKey:fiKey]
+                    [params setObject:fi[fiKey]
                                forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey,
                                        formItemKey, fiKey]];
             }
@@ -1235,19 +1236,19 @@
                                     endDate:(NSString *)endDate {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (action != nil && action.length > 0)
+    if (action && action.length > 0)
         [params setObject:action forKey:@"action"];
     
-    if (date != nil && date.length > 0)
+    if (date && date.length > 0)
         [params setObject:date forKey:@"date"];
     
-    if (sortBy != nil && sortBy.length > 0)
+    if (sortBy && sortBy.length > 0)
         [params setObject:sortBy forKey:@"sortBy"];
     
-    if (startDate != nil && sortBy.length > 0)
+    if (startDate && sortBy.length > 0)
         [params setObject:startDate forKey:@"startDate"];
     
-    if (endDate != nil && endDate.length > 0)
+    if (endDate && endDate.length > 0)
         [params setObject:endDate forKey:@"endDate"];
     
     return params;
@@ -1265,25 +1266,25 @@
     if (limit != 0)
         [params setObject:[NSNumber numberWithInteger:limit] forKey:@"limit"];
     
-    if (filter != nil) {
+    if (filter) {
         NSString *filterStr = @"%7B";
         NSInteger count = 0;
         NSArray *keys = [filter allKeys];
         NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
         
         for (NSString *key in keys) {
-            if ([[filter objectForKey:key] isKindOfClass:[NSArray class]]) {
+            if ([filter[key] isKindOfClass:[NSArray class]]) {
                 filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat: @"%%22%@%%22%%3A%%5B", key]];
-                for (NSString *value in [filter objectForKey:key]) {
+                for (NSString *value in filter[key]) {
                     filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22", [value stringByAddingPercentEncodingWithAllowedCharacters:set]]];
                     
-                    if ([[filter objectForKey:key] lastObject] != value) {
+                    if ([filter[key] lastObject] != value) {
                          filterStr = [filterStr stringByAppendingString:@"%2C"];
                     }
                 }
                  filterStr = [filterStr stringByAppendingString:@"%5D"];
             } else {
-                filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22%%3A%%22%@%%22",key,[[filter objectForKey:key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
+                filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22%%3A%%22%@%%22",key,[filter[key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
                 
                 count++;
                 
@@ -1297,7 +1298,7 @@
         [params setObject:filterStr forKey:@"filter"];
     }
     
-    if (orderBy != nil)
+    if (orderBy)
         [params setObject:orderBy forKey:@"orderby"];
     
     return params;
