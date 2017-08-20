@@ -46,7 +46,7 @@
 {
     // check if FORM_ID is specified
     
-    if ( FORM_ID == 0 ) {
+    if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelButton = [UIAlertAction
@@ -68,7 +68,7 @@
     [sharedData.apiClient createReport:FORM_ID title:@"Test Report" list_type:@"csv" fields:@"date" onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
-        if ( result != nil ) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
@@ -91,8 +91,7 @@
     } onFailure:^(id error){
         [SVProgressHUD dismiss];
         
-        if ( error != nil ) {
-            
+        if (error) {
             NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 401 ) {

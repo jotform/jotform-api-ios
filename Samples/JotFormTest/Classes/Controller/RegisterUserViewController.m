@@ -47,17 +47,17 @@
 
 - (void) registerUser
 {
-    if (self.usernameTextField.text.length == 0 ) {
+    if (self.usernameTextField.text.length == 0) {
         [self.usernameTextField becomeFirstResponder];
         return;
     }
     
-    if (self.passwordTextField.text.length == 0 ) {
+    if (self.passwordTextField.text.length == 0) {
         [self.passwordTextField becomeFirstResponder];
         return;
     }
     
-    if (self.emailTextField.text.length == 0 ) {
+    if (self.emailTextField.text.length == 0) {
         [self.emailTextField becomeFirstResponder];
         return;
     }

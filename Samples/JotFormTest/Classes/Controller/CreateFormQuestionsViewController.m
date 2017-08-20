@@ -47,10 +47,10 @@
     [sharedData.apiClient createFormQuestions:FORM_ID questions:jsonString onSuccess:^(id result){
         [SVProgressHUD dismiss];
         
-        if (result != nil ) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
+            if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"
                                                 message:@"You created question successfully."

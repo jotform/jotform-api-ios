@@ -72,28 +72,27 @@
     SharedData *sharedData = [SharedData sharedData];
     
     NSInteger offset = 0;
-    
-    if (self.offsetTextField.text.length > 0 )
-        offset = [self.offsetTextField.text integerValue];
-    
     NSInteger limit = 0;
     
-    if (self.limitTextField.text.length > 0 )
+    if (self.offsetTextField.text.length > 0) {
+        offset = [self.offsetTextField.text integerValue];
+    }
+    
+    if (self.limitTextField.text.length > 0) {
         limit = [self.limitTextField.text integerValue];
+    }
     
     NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
     [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
+       
         [SVProgressHUD dismiss];
         
-        if ( result != nil ) {
-            
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
-                
+            if (responseCode == 200 || responseCode == 206) {
                 NSArray *formsArray = [result objectForKey:@"content"];
-                
                 [self startDataListViewController:formsArray];
             }
         }
@@ -114,18 +113,15 @@
 
 #pragma mark IBAction
 
-- (IBAction) getFormsButtonClicked : (id) sender {
-    
-    [self loadForms];
+- (IBAction)getFormsButtonClicked : (id) sender {
+       [self loadForms];
 }
 
 #pragma mark UIPickerViewDataSource
 
-
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
-
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     

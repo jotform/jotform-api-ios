@@ -63,7 +63,7 @@
 {
     [SVProgressHUD dismiss];
     
-    if ( result != nil ) {
+    if (result) {
         NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
         
         if ( responseCode == 200 || responseCode == 206 ) {
@@ -88,12 +88,5 @@
         
     }
 }
-
-- (void) createFormsFail : (id) error
-{
-}
-
-
-
 
 @end
