@@ -32,7 +32,7 @@ static SharedData *g_sharedInfo = nil;
 
 - (void) initSharedData
 {
-    NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load & Update setting,Get history,Get form properties,Create form properties,Create Forms,Create Form Questions";
+    NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load settings,Get history,Get form properties,Create form properties,Create Forms,Create Form Questions";
     
     self.sampleStrList = (NSMutableArray *)[sampleStr componentsSeparatedByString:@","];
 }
@@ -45,7 +45,6 @@ static SharedData *g_sharedInfo = nil;
 - (NSArray *) getFormOrderbyList
 {
     NSString *orderbyStr = @"id,username,title,status,created_at,updated_at,new,count,slug";
-    
     NSArray *orderbyList = [orderbyStr componentsSeparatedByString:@","];
     
     return orderbyList;
