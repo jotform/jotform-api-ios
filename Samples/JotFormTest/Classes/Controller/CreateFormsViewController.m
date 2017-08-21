@@ -40,53 +40,27 @@
 - (void) createForms
 {
     SharedData *sharedData = [SharedData sharedData];
-    
-    NSString *jsonString = @"{\"questions\":[{\"type\":\"control_head\"}]}";
+   
+    NSError *error;
+    NSData *objectData = [@"{\"questions\":[{\"type\":\"control_head\"}]}" dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:&error];
+  
+    [sharedData.apiClient createForms:json onSuccess:^(id result){
+   
+    } onFailure:^(NSError *error) {
 
-    [sharedData.apiClient createForms:jsonString onSuccess:^(id result){
-        
-    } onFailure:^(id response) {
-        
     }];
 }
 
 #pragma mark - IBAction
 
-- (IBAction) createFormsViewClicked : (id) sender
+- (IBAction) createFormsViewClicked:(id) sender
 {
     [self createForms];
 }
 
-#pragma mark - Jotform delegate
 
-- (void) createFormsFinish : (id) result
-{
-    [SVProgressHUD dismiss];
-    
-    if (result) {
-        NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
-        
-        if ( responseCode == 200 || responseCode == 206 ) {
-            UIAlertController *alertView = [UIAlertController
-                                            alertControllerWithTitle:@"JotFormAPISample"
-                                            message:@"You created question successfully."
-                                            preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *cancelButton = [UIAlertAction
-                                           actionWithTitle:@"Ok"
-                                           style:UIAlertActionStyleDefault
-                                           handler:^(UIAlertAction *action){
-                                               
-                                           }];
-            
-            [alertView addAction:cancelButton];
-            [self presentViewController:alertView animated:YES completion:nil];
-            
-            return;
-            
-        }
-        
-    }
-}
 
 @end

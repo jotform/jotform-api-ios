@@ -526,7 +526,7 @@
  * Creates new forms with questions, properties and email settings.
  */
 
-- (void)createForms:(NSString *)form
+- (void)createForms:(NSDictionary *)form
           onSuccess:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock;
 
