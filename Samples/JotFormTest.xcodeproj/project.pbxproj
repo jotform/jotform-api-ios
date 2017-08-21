@@ -29,6 +29,8 @@
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
 		A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */; };
 		A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */; };
+		A62BE2891F4B81BA00A68DA1 /* GetHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */; };
+		A62BE28A1F4B81BA00A68DA1 /* GetHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */; };
 		A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
@@ -100,6 +102,9 @@
 		A61E08271F4B5C0D00330B48 /* LoadSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadSettingsViewController.h; sourceTree = "<group>"; };
 		A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadSettingsViewController.m; sourceTree = "<group>"; };
 		A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadSettingsViewController.xib; sourceTree = "<group>"; };
+		A62BE2861F4B81BA00A68DA1 /* GetHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetHistoryViewController.h; sourceTree = "<group>"; };
+		A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetHistoryViewController.m; sourceTree = "<group>"; };
+		A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetHistoryViewController.xib; sourceTree = "<group>"; };
 		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
@@ -301,6 +306,9 @@
 				A61E08271F4B5C0D00330B48 /* LoadSettingsViewController.h */,
 				A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */,
 				A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */,
+				A62BE2861F4B81BA00A68DA1 /* GetHistoryViewController.h */,
+				A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */,
+				A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -480,6 +488,7 @@
 				C3541DEC187B10C100FE19DB /* CreateFormViewController.xib in Resources */,
 				C35EA491187D9DB7009DEB74 /* CreateQuestionViewController.xib in Resources */,
 				3CD6BF771779FDF70065788B /* Default-568h@2x.png in Resources */,
+				A62BE28A1F4B81BA00A68DA1 /* GetHistoryViewController.xib in Resources */,
 				C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */,
 				3CD6BFB01779FF8E0065788B /* JotFormTestViewController.xib in Resources */,
 				C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */,
@@ -494,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62BE2891F4B81BA00A68DA1 /* GetHistoryViewController.m in Sources */,
 				3CD6BF6D1779FDF70065788B /* main.m in Sources */,
 				C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */,
 				C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */,
