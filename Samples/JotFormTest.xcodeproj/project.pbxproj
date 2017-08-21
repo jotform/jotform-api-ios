@@ -27,6 +27,8 @@
 		604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604B75EB19F6E23A00B873D4 /* Security.framework */; };
 		604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */; };
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
+		A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */; };
+		A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */; };
 		A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
@@ -95,6 +97,9 @@
 		604B75F219F6E59800B873D4 /* CreateFormQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFormQuestionsViewController.h; sourceTree = "<group>"; };
 		604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFormQuestionsViewController.m; sourceTree = "<group>"; };
 		604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateFormQuestionsViewController.xib; sourceTree = "<group>"; };
+		A61E08271F4B5C0D00330B48 /* LoadSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadSettingsViewController.h; sourceTree = "<group>"; };
+		A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadSettingsViewController.m; sourceTree = "<group>"; };
+		A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadSettingsViewController.xib; sourceTree = "<group>"; };
 		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
@@ -293,6 +298,9 @@
 				604B75F219F6E59800B873D4 /* CreateFormQuestionsViewController.h */,
 				604B75F319F6E59800B873D4 /* CreateFormQuestionsViewController.m */,
 				604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */,
+				A61E08271F4B5C0D00330B48 /* LoadSettingsViewController.h */,
+				A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */,
+				A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -460,6 +468,7 @@
 				C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */,
 				C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */,
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
+				A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */,
 				3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */,
 				C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */,
 				604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */,
@@ -503,6 +512,7 @@
 				C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */,
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				A6F93F201D304B4A005EE644 /* AFURLSessionManager.m in Sources */,
+				A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */,
 				C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */,
 				C3541DE0187A86CA00FE19DB /* DataListViewController.m in Sources */,
 				A6F93F1F1D304B4A005EE644 /* AFURLResponseSerialization.m in Sources */,

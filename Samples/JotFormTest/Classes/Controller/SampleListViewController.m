@@ -17,6 +17,7 @@
 #import "CreateFormsViewController.h"
 #import "CreateFormQuestionsViewController.h"
 #import "CreateQuestionViewController.h"
+#import "LoadSettingsViewController.h"
 #import "SharedData.h"
 
 
@@ -131,6 +132,10 @@
        CreateQuestionViewController *createQuestionVc = [[CreateQuestionViewController alloc] initWithNibName:@"CreateQuestionViewController" bundle:nil];
         
         [self.navigationController pushViewController:createQuestionVc animated:YES];
+    } else if (indexPath.row == 8) {
+       LoadSettingsViewController *loadSettingsVC = [[LoadSettingsViewController alloc] initWithNibName:@"LoadSettingsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:loadSettingsVC animated:YES];
     } else if (indexPath.row == 12) {
         CreateFormsViewController *createFormsVC = [[CreateFormsViewController alloc] initWithNibName:@"CreateFormsViewController" bundle:nil];
         
