@@ -13,7 +13,9 @@
 #import <JotForm_iOS/JotForm.h>
 #import "Common.h"
 
-@interface GetAppKeyViewController ()
+@interface GetAppKeyViewController () {
+    JotForm *apiClient;
+}
 
 @property (nonatomic,weak) IBOutlet UITextField *usernameTextField;
 @property (nonatomic,weak) IBOutlet UITextField *passwordTextField;
@@ -36,7 +38,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    apiClient = [[JotForm alloc] init];
     self.title = @"Get App Key";
+    
     [self showAlertView];
 }
 
@@ -111,8 +115,6 @@
         [storage deleteCookie:cookie];
     }
     
-    JotForm *apiClient = [[JotForm alloc] init];
-    
     NSString *username = self.usernameTextField.text;
     
     if ( [username isEqualToString:@""] )
@@ -120,7 +122,7 @@
     
     NSString *password = self.passwordTextField.text;
     
-    if ( [password isEqualToString:@""] )
+    if ([password isEqualToString:@""])
         [self.passwordTextField becomeFirstResponder];
     
     [self.usernameTextField resignFirstResponder];
@@ -138,22 +140,25 @@
         if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
-                id content = [result objectForKey:@"content"];
-                
-                [apiClient checkEUserver:^(id result) {
-                    BOOL isEuServer = [result[@"content"][@"euOnly"]boolValue];
-                    
-                    [[SharedData sharedData] initAPIClient:[content objectForKey:@"appKey"] euApi:isEuServer];
-
-                     [self showSampleListViewController];
-                    [SVProgressHUD dismiss];
-                }  onFailure:^(NSError *error) {
-                    
-                }];
+            if (responseCode == 200 || responseCode == 206 ) {
+                NSString *appKey = [[result objectForKey:@"content"]objectForKey:@"appKey"];
+                [self checkEuServer:appKey];
             }
         }
     } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
+- (void)checkEuServer:(NSString *)appKey {
+    [apiClient checkEUserver:^(id result) {
+        BOOL isEuServer = [result[@"content"][@"euOnly"]boolValue];
+        
+        [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
+        
+        [self showSampleListViewController];
+        [SVProgressHUD dismiss];
+    }  onFailure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];
 }
