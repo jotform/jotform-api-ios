@@ -20,6 +20,7 @@
 #import "LoadSettingsViewController.h"
 #import "GetHistoryViewController.h"
 #import "GetFormPropertiesViewController.h"
+#import "CreateFormPropertiesViewController.h"
 #import "SharedData.h"
 
 
@@ -146,10 +147,14 @@
         GetFormPropertiesViewController *getFormPropertiesVC = [[GetFormPropertiesViewController alloc] initWithNibName:@"GetFormPropertiesViewController" bundle:nil];
         
         [self.navigationController pushViewController:getFormPropertiesVC animated:YES];
-    } else if (indexPath.row == 12) {
-        CreateFormsViewController *createFormsViewController = [[CreateFormsViewController alloc]init];
+    } else if (indexPath.row == 11) {
+        CreateFormPropertiesViewController *createFormPropertiesVC = [[CreateFormPropertiesViewController alloc]initWithNibName:@"CreateFormPropertiesViewController" bundle:nil];
         
-        [self.navigationController pushViewController:createFormsViewController animated:YES];
+        [self.navigationController pushViewController:createFormPropertiesVC animated:YES];
+    } else if (indexPath.row == 12) {
+        CreateFormsViewController *createFormsVC = [[CreateFormsViewController alloc]initWithNibName:@"CreateFormsViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:createFormsVC animated:YES];
     } else if (indexPath.row == 13) {
         CreateFormQuestionsViewController *createFormQuestionsVC = [[CreateFormQuestionsViewController alloc] initWithNibName:@"CreateFormQuestionsViewController" bundle:nil];
         

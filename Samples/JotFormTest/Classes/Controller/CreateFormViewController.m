@@ -100,7 +100,7 @@
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
         
-        if ( error != nil ) {
+        if (error) {
             NSInteger responseCode = [[error objectForKey:@"response"] integerValue];
             
             if ( responseCode == 401 ) {

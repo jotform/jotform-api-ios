@@ -33,6 +33,8 @@
 		A62BE28A1F4B81BA00A68DA1 /* GetHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */; };
 		A62BE28E1F4B85B700A68DA1 /* GetFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE28C1F4B85B700A68DA1 /* GetFormPropertiesViewController.m */; };
 		A62BE28F1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE28D1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib */; };
+		A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */; };
+		A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */; };
 		A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
@@ -110,6 +112,9 @@
 		A62BE28B1F4B85B700A68DA1 /* GetFormPropertiesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetFormPropertiesViewController.h; sourceTree = "<group>"; };
 		A62BE28C1F4B85B700A68DA1 /* GetFormPropertiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetFormPropertiesViewController.m; sourceTree = "<group>"; };
 		A62BE28D1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetFormPropertiesViewController.xib; sourceTree = "<group>"; };
+		A62BE2901F4BA8B200A68DA1 /* CreateFormPropertiesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateFormPropertiesViewController.h; sourceTree = "<group>"; };
+		A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateFormPropertiesViewController.m; sourceTree = "<group>"; };
+		A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFormPropertiesViewController.xib; sourceTree = "<group>"; };
 		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
@@ -317,6 +322,9 @@
 				A62BE28B1F4B85B700A68DA1 /* GetFormPropertiesViewController.h */,
 				A62BE28C1F4B85B700A68DA1 /* GetFormPropertiesViewController.m */,
 				A62BE28D1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib */,
+				A62BE2901F4BA8B200A68DA1 /* CreateFormPropertiesViewController.h */,
+				A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */,
+				A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -491,6 +499,7 @@
 				604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */,
 				C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */,
 				C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */,
+				A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */,
 				604B759A19F6DFCA00B873D4 /* CreateFormsViewController.xib in Resources */,
 				3CD6BF731779FDF70065788B /* Default.png in Resources */,
 				3CD6BF751779FDF70065788B /* Default@2x.png in Resources */,
@@ -518,6 +527,7 @@
 				C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */,
 				C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */,
+				A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */,
 				3CD6BFAF1779FF8E0065788B /* JotFormTestViewController.m in Sources */,
 				A6F93F1D1D304B4A005EE644 /* AFSecurityPolicy.m in Sources */,
 				C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */,

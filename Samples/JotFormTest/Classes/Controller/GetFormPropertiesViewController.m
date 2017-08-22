@@ -25,7 +25,7 @@
     SharedData *sharedData = [SharedData sharedData];
     
     [sharedData.apiClient getFormProperties:FORM_ID onSuccess:^(id result) {
-       
+        
         self.textView.text = [NSString stringWithFormat:@"%@",result];
    
     } onFailure:^(NSError *error) {
