@@ -136,7 +136,7 @@
         
         [self.navigationController pushViewController:createQuestionVc animated:YES];
     } else if (indexPath.row == 8) {
-       LoadSettingsViewController *loadSettingsVC = [[LoadSettingsViewController alloc] initWithNibName:@"LoadSettingsViewController" bundle:nil];
+        LoadSettingsViewController *loadSettingsVC = [[LoadSettingsViewController alloc] initWithNibName:@"LoadSettingsViewController" bundle:nil];
         
         [self.navigationController pushViewController:loadSettingsVC animated:YES];
     } else if (indexPath.row == 9) {

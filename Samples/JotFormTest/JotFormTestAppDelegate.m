@@ -7,7 +7,6 @@
 //
 
 #import "JotFormTestAppDelegate.h"
-#import "JotFormTestViewController.h"
 #import "GetAppKeyViewController.h"
 
 @implementation JotFormTestAppDelegate

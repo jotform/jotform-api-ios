@@ -56,8 +56,6 @@
 
 - (IBAction) getFormReportsButtonClicked : (id) sender
 {
-    [SVProgressHUD showWithStatus:@"Loading reports..."];
-    
     SharedData *sharedData = [SharedData sharedData];
     
     if (FORM_ID == 0) {
@@ -76,6 +74,8 @@
         [alertView addAction:cancelButton];
         [self presentViewController:alertView animated:YES completion:nil];
     } else {
+    [SVProgressHUD showWithStatus:@"Loading reports..."];
+        
     [sharedData.apiClient getFormReports:FORM_ID onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         

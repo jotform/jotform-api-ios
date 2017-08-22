@@ -80,30 +80,7 @@
             }
         }
       } onFailure:^(id error) {
-          [SVProgressHUD dismiss];
-          
-          if (error) {
-              NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
-              
-              if ( responseCode == 401 ) {
-                  NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
-                  
-                  UIAlertController *alertView = [UIAlertController
-                                                  alertControllerWithTitle:@"JotFormAPISample"
-                                                  message:errMsg
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-                  
-                  UIAlertAction *cancelButton = [UIAlertAction
-                                                 actionWithTitle:@"Ok"
-                                                 style:UIAlertActionStyleDefault
-                                                 handler:^(UIAlertAction *action){
-                                                     
-                                                 }];
-                  
-                  [alertView addAction:cancelButton];
-                  [self presentViewController:alertView animated:YES completion:nil];
-              }
-          }
+   
       }];
 }
 
