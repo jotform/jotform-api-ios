@@ -1,0 +1,45 @@
+//
+//  CreateFormProperties.m
+//  JotFormTest
+//
+//  Created by Curtis Stilwell on 8/21/17.
+//  Copyright © 2017 wang. All rights reserved.
+//
+
+#import "CreateFormPropertiesViewController.h"
+#import "Common.h"
+#import "SharedData.h"
+
+@interface CreateFormPropertiesViewController ()
+
+@end
+
+@implementation CreateFormPropertiesViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - IBAction
+
+- (IBAction) createFormPropertiesClicked : (id) sender
+{
+    SharedData *sharedData = [SharedData sharedData];
+    
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setObject:@"properties[formWidth]" forKey:@"350"];
+    
+    [sharedData.apiClient setFormProperties:FORM_ID formProperties:userInfo onSuccess:^(id result) {
+     
+    } onFailure:^(NSError *error) {
+        
+    }];
+}
+
+@end

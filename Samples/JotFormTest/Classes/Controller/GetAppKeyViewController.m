@@ -13,7 +13,9 @@
 #import <JotForm_iOS/JotForm.h>
 #import "Common.h"
 
-@interface GetAppKeyViewController ()
+@interface GetAppKeyViewController () {
+    JotForm *apiClient;
+}
 
 @property (nonatomic,weak) IBOutlet UITextField *usernameTextField;
 @property (nonatomic,weak) IBOutlet UITextField *passwordTextField;
@@ -36,7 +38,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    apiClient = [[JotForm alloc] init];
     self.title = @"Get App Key";
+    
     [self showAlertView];
 }
 
@@ -104,7 +108,12 @@
 
 - (IBAction) getAppKeyButtonClicked : (id) sender
 {
-    JotForm *apiClient = [[JotForm alloc] init];
+    // Remove cookies to avoid EU API issue.
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
     
     NSString *username = self.usernameTextField.text;
     
@@ -113,7 +122,7 @@
     
     NSString *password = self.passwordTextField.text;
     
-    if ( [password isEqualToString:@""] )
+    if ([password isEqualToString:@""])
         [self.passwordTextField becomeFirstResponder];
     
     [self.usernameTextField resignFirstResponder];
@@ -128,36 +137,28 @@
     [userInfo setObject:@"full" forKey:@"access"];
     
     [apiClient login:userInfo onSuccess:^(id result) {
-        if (result != nil) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
-                id content = [result objectForKey:@"content"];
-                
-                [apiClient checkEUserver:^(id result) {
-                    BOOL euAPI = NO;
-                    if (result != nil) {
-                        // if the location key exist see if the user is on eu server or not.
-                        if ([result objectForKey:@"location"] != nil) {
-                            NSString *location = [result objectForKey:@"location"];
-                            if ([location containsString:@"https://eu-api.jotform.com/"]) {
-                                euAPI = YES;
-                            } else {
-                                euAPI = NO;
-                            }
-                        } else {
-                            euAPI = NO;
-                        }
-                    }
-                    [[SharedData sharedData] initAPIClient:[content objectForKey:@"appKey"] euApi:euAPI];
-                     [self showSampleListViewController];
-                    [SVProgressHUD dismiss];
-                }  onFailure:^(NSError *error) {
-                    
-                }];
+            if (responseCode == 200 || responseCode == 206 ) {
+                NSString *appKey = [[result objectForKey:@"content"]objectForKey:@"appKey"];
+                [self checkEuServer:appKey];
             }
         }
     } onFailure:^(id error) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
+- (void)checkEuServer:(NSString *)appKey {
+    [apiClient checkEUserver:^(id result) {
+        BOOL isEuServer = [result[@"content"][@"euOnly"]boolValue];
+        
+        [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
+        
+        [self showSampleListViewController];
+        [SVProgressHUD dismiss];
+    }  onFailure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];
 }

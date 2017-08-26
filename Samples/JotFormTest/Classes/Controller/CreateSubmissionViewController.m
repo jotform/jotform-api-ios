@@ -53,10 +53,11 @@
     [submission setObject:@"XXX" forKey:@"1"];
     [submission setObject:@"This is a test for creating submission." forKey:@"2"];
     
-    [sharedData.apiClient createForm:FORM_ID onSuccess:^(id result) {
+    
+    [sharedData.apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
-        if (result != nil) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if ( responseCode == 200 || responseCode == 206 ) {
@@ -74,36 +75,13 @@
                 
                 [alertView addAction:cancelButton];
                 [self presentViewController:alertView animated:YES completion:nil];
-
+                
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
-    } onFailure:^(id error) {
-        [SVProgressHUD dismiss];
-        
-        if (error != nil) {
-           NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
-            
-            if ( responseCode == 401 ) {
-                NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create submission with API key for 'Full Access'", [error objectForKey:@"message"]];
-                
-                UIAlertController *alertView = [UIAlertController
-                                                alertControllerWithTitle:@"JotFormAPISample"
-                                                message:errMsg
-                                                preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *cancelButton = [UIAlertAction
-                                               actionWithTitle:@"Ok"
-                                               style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction *action){
-                                                   
-                                               }];
-                
-                [alertView addAction:cancelButton];
-                [self presentViewController:alertView animated:YES completion:nil];
-            }
-        }
-    }];
+      } onFailure:^(id error) {
+   
+      }];
 }
 
 #pragma mark - IBAction

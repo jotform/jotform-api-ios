@@ -848,7 +848,7 @@
                 onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties",baseUrl,formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@",baseUrl,formID,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
@@ -1172,10 +1172,12 @@
           }];
 }
 
-- (void)createForms:(NSString *)form
+- (void)createForms:(NSDictionary *)form
           onSuccess:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock {
+  
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/forms?apiKey=%@", baseUrl, apiVersion, apiKey];
     

@@ -43,14 +43,13 @@
     
     NSString *jsonString = @"{\"questions\":{\"1\":{\"type\":\"control_head\",\"text\":\"Text 1\",\"order\":\"1\",\"name\":\"Header1\"},\"2\":{\"type\":\"control_head\",\"text\":\"Text 2\",\"order\":\"2\",\"name\":\"Header2\"}}}";
 
-  
     [sharedData.apiClient createFormQuestions:FORM_ID questions:jsonString onSuccess:^(id result){
         [SVProgressHUD dismiss];
         
-        if (result != nil ) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
+            if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"
                                                 message:@"You created question successfully."
