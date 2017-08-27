@@ -14,11 +14,6 @@
 #define BASE_URL_EU                  @"https://eu-api.jotform.com"
 #define SUBMIT_REPORT_URL            @"https://submit.jotform.com"
 #define SUBMIT_SUGGESTION_URL        @"https://submit.jotform.me"
-#define HTTPREQUEST_METHOD_GET       @"GET"
-#define HTTPREQUEST_METHOD_POST      @"POST"
-#define HTTPREQUEST_METHOD_DELETE    @"DELETE"
-#define HTTPREQUEST_METHOD_PUT       @"PUT"
-#define API_VERSION                  @"v1"
 
 
 @interface JotForm () {
@@ -884,12 +879,13 @@
          }];
 }
 
-- (void)checkEUserver:(void (^)(id))successBlock
+- (void)checkEUserver:(NSString *)apiKey
+            onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly", baseUrl,apiVersion];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly?apiKey=%@", baseUrl,apiVersion,apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     

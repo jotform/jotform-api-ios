@@ -29,6 +29,16 @@
     onFailure:(void (^)(NSError *))failureBlock;
 
 /**
+ * Returns whether or not an account is on the EU server.
+ * @param apiKey is the account's api key.
+ */
+
+- (void)checkEUserver:(NSString *)apiKey
+            onSuccess:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock;
+
+
+/**
  * Register with username, password and email.
  * @param userinfo needs username, password and email to register a new user
  * Create a new user.
@@ -491,12 +501,6 @@
                 onSuccess:(void (^)(id))successBlock
                 onFailure:(void (^)(NSError *))failureBlock;
 
-/**
- * Returns whether or not an account is on the EU server.
- */
-
-- (void)checkEUserver:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Add or edit properties of a specific form
