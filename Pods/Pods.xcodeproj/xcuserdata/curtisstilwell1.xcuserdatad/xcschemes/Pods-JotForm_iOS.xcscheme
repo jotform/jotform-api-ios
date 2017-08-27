@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61C0B33BB47D50652EEEF5B422E75717"
-               BuildableName = "libPods-JotForm_Mac.a"
-               BlueprintName = "Pods-JotForm_Mac"
+               BlueprintIdentifier = "DD7DA4A5C24AE52ECDFE00C5CB495519"
+               BuildableName = "libPods-JotForm_iOS.a"
+               BlueprintName = "Pods-JotForm_iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61C0B33BB47D50652EEEF5B422E75717"
-            BuildableName = "libPods-JotForm_Mac.a"
-            BlueprintName = "Pods-JotForm_Mac"
+            BlueprintIdentifier = "DD7DA4A5C24AE52ECDFE00C5CB495519"
+            BuildableName = "libPods-JotForm_iOS.a"
+            BlueprintName = "Pods-JotForm_iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

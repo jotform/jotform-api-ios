@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61C0B33BB47D50652EEEF5B422E75717"
-               BuildableName = "libPods-JotForm_Mac.a"
-               BlueprintName = "Pods-JotForm_Mac"
+               BlueprintIdentifier = "F8961321B2F30AEC49254A0B6977B600"
+               BuildableName = "libAFNetworking-0dc884aa.a"
+               BlueprintName = "AFNetworking-0dc884aa"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61C0B33BB47D50652EEEF5B422E75717"
-            BuildableName = "libPods-JotForm_Mac.a"
-            BlueprintName = "Pods-JotForm_Mac"
+            BlueprintIdentifier = "F8961321B2F30AEC49254A0B6977B600"
+            BuildableName = "libAFNetworking-0dc884aa.a"
+            BlueprintName = "AFNetworking-0dc884aa"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

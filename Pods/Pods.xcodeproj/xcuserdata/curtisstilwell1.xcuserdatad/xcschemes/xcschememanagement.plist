@@ -4,81 +4,38 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AFNetworking-c94d3492.xcscheme</key>
+		<key>AFNetworking-0dc884aa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
-		<key>AFNetworking.root-NSURLSession-Security-Serialization.xcscheme</key>
+		<key>AFNetworking-NSURLSession-Security-Serialization.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
-		<key>AFNetworking.xcscheme</key>
+		<key>AFNetworking-b0a86b24.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>Pods-JotForm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-JotForm_Mac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
-		<key>Pods-JotForm_Watch.xcscheme</key>
+		<key>Pods-JotForm_WatchOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
+		</dict>
+		<key>Pods-JotForm_iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>24A90ACA41DCC74808561E3AC109BACD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5497DCEC8D0488D5C17229F3061EE988</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8888CAC7280C6E92A4DD789BEDAF7388</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C289FFFBA02E90751B75D32C13AD38BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DA049C33357DEBBE48823ED61F9DDDFE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
