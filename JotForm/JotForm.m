@@ -14,7 +14,7 @@
 #define BASE_URL_EU                  @"https://eu-api.jotform.com"
 #define SUBMIT_REPORT_URL            @"https://submit.jotform.com"
 #define SUBMIT_SUGGESTION_URL        @"https://submit.jotform.me"
-
+#define API_VERSION                  @"v1"
 
 @interface JotForm () {
     NSString *apiKey;
