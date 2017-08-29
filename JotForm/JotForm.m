@@ -879,13 +879,13 @@
          }];
 }
 
-- (void)checkEUserver:(NSString *)apiKey
+- (void)checkEUserver:(NSString *)_apiKey
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly?apiKey=%@", baseUrl,apiVersion,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly?apiKey=%@", baseUrl,apiVersion,_apiKey];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
