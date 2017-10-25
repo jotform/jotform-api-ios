@@ -555,6 +555,13 @@
             onFailure:(void (^)(NSError *))failureBlock;
 
 /**
+ * Get system time.
+ */
+
+- (void)getSystemTime:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock;
+
+/**
  * Sends out a report to Jotform.
  */
 

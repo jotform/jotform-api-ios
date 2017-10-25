@@ -1227,6 +1227,25 @@
          }];
 }
 
+- (void)getSystemTime:(void (^)(id))successBlock
+            onFailure:(void (^)(NSError *))failureBlock {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@/system/time", baseUrl];
+    
+    [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
+    
+    [manager GET:urlStr
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
+             successBlock(responseObject);
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             failureBlock(error);
+         }];
+}
+
 - (NSMutableDictionary *)createHistoryQuery:(NSString *)action
                                        date:(NSString *)date
                                      sortBy:(NSString *)sortBy
