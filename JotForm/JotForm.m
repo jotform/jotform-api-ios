@@ -59,7 +59,7 @@
 }
 
 - (void)debugLog:(NSString *)str {
-    if (debugMode == YES)
+    if (debugMode)
         NSLog(@"\n%@", str);
 }
 
