@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target :JotForm_iOS do
-       platform :ios, '8.0'
+       platform :ios, '9.0'
        pod 'AFNetworking/NSURLSession', '~> 3.0'
 end
 

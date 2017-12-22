@@ -1324,7 +1324,7 @@
         [params setObject:filterStr forKey:@"filter"];
     }
     
-    if (orderBy) {
+    if ([orderBy length]) {
         [params setObject:orderBy forKey:@"orderby"];
     }
     
