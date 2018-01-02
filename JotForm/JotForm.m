@@ -25,7 +25,6 @@
     BOOL debugMode;
 }
 
-
 @end
 
 @implementation JotForm
@@ -46,11 +45,7 @@
     if (self = [super init]) {
         apiKey = apikey;
         debugMode = debugmode;
-        if (euApi) {
-            baseUrl = BASE_URL_EU;
-        } else {
-            baseUrl = BASE_URL;
-        }
+        baseUrl = (euApi) ? BASE_URL_EU : BASE_URL;
         submitReportUrl = SUBMIT_REPORT_URL;
         submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
         apiVersion = API_VERSION;
@@ -59,8 +54,9 @@
 }
 
 - (void)debugLog:(NSString *)str {
-    if (debugMode == YES)
+    if (debugMode) {
         NSLog(@"\n%@", str);
+    }
 }
 
 - (void)executeGetEUapi:(NSString *)path
@@ -255,10 +251,11 @@
     NSMutableArray *paramarray = [[NSMutableArray alloc] init];
     NSArray *keys = [params allKeys];
     
-    for (NSString *key in keys)
+    for (NSString *key in keys) {
         [paramarray
          addObject:[NSString stringWithFormat:@"%@=%@", key,
                     params[key]]];
+    }
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     
@@ -311,10 +308,11 @@
     NSMutableArray *paramarray = [[NSMutableArray alloc] init];
     NSArray *keys = [params allKeys];
     
-    for (NSString *key in keys)
+    for (NSString *key in keys) {
         [paramarray
          addObject:[NSString stringWithFormat:@"%@=%@", key,
                     params[key]]];
+    }
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/submissions?apiKey=%@&%@",baseUrl, apiVersion, apiKey,paramstr];
@@ -657,7 +655,6 @@
     NSString *subkey = @"";
     
     for (NSString *key in keys) {
-        
         if ([key rangeOfString:@"_"].location != NSNotFound)
             subkey = [NSString
                       stringWithFormat:
@@ -730,8 +727,9 @@
                  onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (webhookURL && webhookURL.length > 0)
+    if (webhookURL && webhookURL.length > 0) {
         [params setObject:webhookURL forKey:@"webhookURL"];
+    }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -811,16 +809,19 @@
            onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    [params setObject:[NSNumber numberWithLongLong:formID] forKey:@"id"];
+    [params setObject:@(formID) forKey:@"id"];
     
-    if (title)
+    if (title) {
         [params setObject:title forKey:@"title"];
+    }
     
-    if (list_type)
+    if (list_type) {
         [params setObject:list_type forKey:@"list_type"];
+    }
     
-    if (fields)
+    if (fields) {
         [params setObject:fields forKey:@"fields"];
+    }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -885,7 +886,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/user/settings/euOnly?apiKey=%@", baseUrl,apiVersion,_apiKey];
+    NSString *urlStr = [[NSString stringWithFormat:@"%@/%@/user/settings/euOnly?apiKey=%@", baseUrl,apiVersion,_apiKey] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     [self debugLog:[NSString stringWithFormat:@"urlstr = %@", urlStr]];
     
@@ -928,8 +929,9 @@
              onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (submissionName)
+    if (submissionName) {
         [params setObject:submissionName forKey:@"submission[1][first]"];
+    }
     
     [params setObject:[NSString stringWithFormat:@"%zd", new]
                forKey:@"submission[new]"];
@@ -996,9 +998,10 @@
     
     NSArray *keys = [question allKeys];
     
-    for (NSString *key in keys)
+    for (NSString *key in keys) {
         [params setObject:question[key]
                    forKey:[NSString stringWithFormat:@"question[%@]", key]];
+    }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -1124,7 +1127,6 @@
     NSArray *formKeys = [form allKeys];
     
     for (NSString *formKey in formKeys) {
-        
         if ([formKey isEqualToString:@"properties"]) {
             NSMutableDictionary *properties = form[formKey];
             
@@ -1253,20 +1255,25 @@
                                     endDate:(NSString *)endDate {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (action && action.length > 0)
+    if ([action length]) {
         [params setObject:action forKey:@"action"];
+    }
     
-    if (date && date.length > 0)
+    if ([date length]) {
         [params setObject:date forKey:@"date"];
+    }
     
-    if (sortBy && sortBy.length > 0)
+    if ([sortBy length]) {
         [params setObject:sortBy forKey:@"sortBy"];
+    }
     
-    if (startDate && sortBy.length > 0)
+    if ([startDate length]) {
         [params setObject:startDate forKey:@"startDate"];
+    }
     
-    if (endDate && endDate.length > 0)
+    if ([endDate length]) {
         [params setObject:endDate forKey:@"endDate"];
+    }
     
     return params;
 }
@@ -1277,11 +1284,13 @@
                                   orderBy:(NSString *)orderBy {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if (offset != 0)
-        [params setObject:[NSNumber numberWithInteger:offset] forKey:@"offset"];
+    if (offset != 0) {
+        [params setObject:@(offset) forKey:@"offset"];
+    }
     
-    if (limit != 0)
-        [params setObject:[NSNumber numberWithInteger:limit] forKey:@"limit"];
+    if (limit != 0) {
+        [params setObject:@(limit) forKey:@"limit"];
+    }
     
     if (filter) {
         NSString *filterStr = @"%7B";
@@ -1315,8 +1324,9 @@
         [params setObject:filterStr forKey:@"filter"];
     }
     
-    if (orderBy)
+    if ([orderBy length]) {
         [params setObject:orderBy forKey:@"orderby"];
+    }
     
     return params;
 }

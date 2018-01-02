@@ -1,4 +1,4 @@
-CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/AFNetworking-0dc884aa
+CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/AFNetworking-2b1e3ee3
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/AFNetworking" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking"
 OTHER_LDFLAGS = -framework "CoreServices" -framework "Security" -framework "SystemConfiguration"

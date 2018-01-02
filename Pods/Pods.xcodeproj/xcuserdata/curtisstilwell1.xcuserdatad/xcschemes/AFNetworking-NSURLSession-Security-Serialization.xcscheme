@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A64817071E5FD273007714BA"
-               BuildableName = "JotForm_WatchOS.framework"
-               BlueprintName = "JotForm_WatchOS"
-               ReferencedContainer = "container:JotForm.xcodeproj">
+               BlueprintIdentifier = "DF8BD294D2B1FEEB609E0292480223C7"
+               BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
+               BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,10 +47,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817071E5FD273007714BA"
-            BuildableName = "JotForm_WatchOS.framework"
-            BlueprintName = "JotForm_WatchOS"
-            ReferencedContainer = "container:JotForm.xcodeproj">
+            BlueprintIdentifier = "DF8BD294D2B1FEEB609E0292480223C7"
+            BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
+            BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,15 +62,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817071E5FD273007714BA"
-            BuildableName = "JotForm_WatchOS.framework"
-            BlueprintName = "JotForm_WatchOS"
-            ReferencedContainer = "container:JotForm.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

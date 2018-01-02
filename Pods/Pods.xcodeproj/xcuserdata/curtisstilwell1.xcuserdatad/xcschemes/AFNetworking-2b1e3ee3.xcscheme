@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A64817071E5FD273007714BA"
-               BuildableName = "JotForm_WatchOS.framework"
-               BlueprintName = "JotForm_WatchOS"
-               ReferencedContainer = "container:JotForm.xcodeproj">
+               BlueprintIdentifier = "7D3DFBA7BA601078EE1D6E3747C111A2"
+               BuildableName = "libAFNetworking-2b1e3ee3.a"
+               BlueprintName = "AFNetworking-2b1e3ee3"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,10 +47,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817071E5FD273007714BA"
-            BuildableName = "JotForm_WatchOS.framework"
-            BlueprintName = "JotForm_WatchOS"
-            ReferencedContainer = "container:JotForm.xcodeproj">
+            BlueprintIdentifier = "7D3DFBA7BA601078EE1D6E3747C111A2"
+            BuildableName = "libAFNetworking-2b1e3ee3.a"
+            BlueprintName = "AFNetworking-2b1e3ee3"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,15 +62,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A64817071E5FD273007714BA"
-            BuildableName = "JotForm_WatchOS.framework"
-            BlueprintName = "JotForm_WatchOS"
-            ReferencedContainer = "container:JotForm.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
