@@ -165,7 +165,7 @@
            onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/register?apiKey=%@", baseUrl,apiKey];
     
-     [self debugLog:urlStr params:userinfo];
+    [self debugLog:urlStr params:userinfo];
     
     [manager POST:urlStr parameters:userinfo progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -180,7 +180,7 @@
       onFailure:(void (^)(NSError *))failureBlock  {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user?apiKey=%@", baseUrl,apiKey];
     
-   [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr
       parameters:nil
@@ -238,9 +238,7 @@
     NSArray *keys = [params allKeys];
     
     for (NSString *key in keys) {
-        [paramarray
-         addObject:[NSString stringWithFormat:@"%@=%@", key,
-                    params[key]]];
+        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
     }
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
@@ -264,7 +262,7 @@
              onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@", baseUrl,apiKey];
     
-   [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr
       parameters:nil
@@ -290,9 +288,7 @@
     NSArray *keys = [params allKeys];
     
     for (NSString *key in keys) {
-        [paramarray
-         addObject:[NSString stringWithFormat:@"%@=%@", key,
-                    params[key]]];
+        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
     }
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
@@ -456,7 +452,7 @@
     
      NSString *urlStr = [NSString stringWithFormat:@"%@/user/history?apiKey=%@", baseUrl,apiKey];
     
-    NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
+     NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
     
     [self debugLog:urlStr params:params];
     
@@ -494,7 +490,7 @@
 - (void)getFormQuestions:(long long)formID
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -533,7 +529,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:@"true" forKey:@"qid_enabled"];
+    params[@"qid_enabled"] = @"true";
     
     [self debugLog:urlStr params:params];
     
@@ -588,7 +584,7 @@
                    submission:(NSMutableDictionary *)submission
                     onSuccess:(void (^)(id))successBlock
                     onFailure:(void (^)(NSError *))failureBlock {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = [submission allKeys];
     
@@ -606,15 +602,15 @@
         }
         
         if (submission[key]) {
-            [parameters setObject:submission[key] forKey:subkey];
+            params[subkey] = submission[key];
         }
     }
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID,apiKey];
     
-    [self debugLog:urlStr params:parameters];
+    [self debugLog:urlStr params:params];
     
-    [manager POST:urlStr parameters:parameters progress:nil
+    [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
               successBlock(responseObject);
           }
@@ -642,7 +638,7 @@
 - (void)getFormWebhooks:(long long)formID
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", baseUrl,formID,apiKey];
+  NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", baseUrl,formID,apiKey];
     
    [self debugLog:urlStr params:nil];
     
@@ -661,7 +657,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ([webhookURL length]) {
-        [params setObject:webhookURL forKey:@"webhookURL"];
+        params[@"webhookURL"] = webhookURL;
     }
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", baseUrl,formID,apiKey];
@@ -734,18 +730,18 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    [params setObject:@(formID) forKey:@"id"];
+    params[@"id"] = @(formID);
     
     if (title) {
-        [params setObject:title forKey:@"title"];
+        params[@"title"] = title;
     }
     
     if (list_type) {
-        [params setObject:list_type forKey:@"list_type"];
+        params[@"list_type"] = list_type;
     }
     
     if (fields) {
-        [params setObject:fields forKey:@"fields"];
+        params[@"fields"] = fields;
     }
 
     [self debugLog:urlStr params:params];
@@ -842,15 +838,13 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if (submissionName) {
-        [params setObject:submissionName forKey:@"submission[1][first]"];
+        params[@"submission[1][first]"] = submissionName;
     }
     
-    [params setObject:[NSString stringWithFormat:@"%zd", new]
-               forKey:@"submission[new]"];
-    [params setObject:[NSString stringWithFormat:@"%zd", flag]
-               forKey:@"submission[flag]"];
+    params[@"submission[new]"] = [@(new) stringValue];
+    params[@"submission[flag]"] = [@(flag) stringValue];
     
-   [self debugLog:urlStr params:params];
+    [self debugLog:urlStr params:params];
     
     [manager POST:urlStr parameters:params progress:nil
           success:^(NSURLSessionTask *task, id responseObject) {
@@ -904,8 +898,7 @@
     NSArray *keys = [question allKeys];
     
     for (NSString *key in keys) {
-        [params setObject:question[key]
-                   forKey:[NSString stringWithFormat:@"question[%@]", key]];
+        [params setObject:question[key] forKey:[NSString stringWithFormat:@"question[%@]", key]];
     }
     
     [self debugLog:urlStr params:params];
@@ -947,8 +940,7 @@
     NSArray *keys = [properties allKeys];
     
     for (NSString *key in keys) {
-        [params setObject:properties[key]
-                   forKey:[NSString stringWithFormat:@"question[%@]", key]];
+        [params setObject:properties[key] forKey:[NSString stringWithFormat:@"question[%@]", key]];
     }
     
     [self debugLog:urlStr params:params];
@@ -1018,9 +1010,7 @@
             NSArray *propertyKeys = [properties allKeys];
             
             for (NSString *propertyKey in propertyKeys) {
-                [params setObject:properties[propertyKey]
-                           forKey:[NSString stringWithFormat:@"%@[%@]", formKey,
-                                   propertyKey]];
+                [params setObject:properties[propertyKey] forKey:[NSString stringWithFormat:@"%@[%@]", formKey, propertyKey]];
             }
         } else {
             NSMutableDictionary *formItem = form[formKey];
@@ -1031,10 +1021,9 @@
                 NSMutableDictionary *fi = formItem[formItemKey];
                 NSArray *fiKeys = [fi allKeys];
                 
-                for (NSString *fiKey in fiKeys)
-                    [params setObject:fi[fiKey]
-                               forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey,
-                                       formItemKey, fiKey]];
+                for (NSString *fiKey in fiKeys) {
+                    [params setObject:fi[fiKey] forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey, formItemKey, fiKey]];
+                }
             }
         }
     }
@@ -1128,23 +1117,23 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if ([action length]) {
-        [params setObject:action forKey:@"action"];
+         params[@"action"] = action;
     }
     
     if ([date length]) {
-        [params setObject:date forKey:@"date"];
+        params[@"date"] = date;
     }
     
     if ([sortBy length]) {
-        [params setObject:sortBy forKey:@"sortBy"];
+        params[@"sortBy"] = sortBy;
     }
     
     if ([startDate length]) {
-        [params setObject:startDate forKey:@"startDate"];
+        params[@"startDate"] = startDate;
     }
     
     if ([endDate length]) {
-        [params setObject:endDate forKey:@"endDate"];
+        params[@"endDate"] = endDate;
     }
     
     return params;
@@ -1157,11 +1146,11 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if (offset != 0) {
-        [params setObject:@(offset) forKey:@"offset"];
+        params[@"offset"] = @(offset);
     }
     
     if (limit != 0) {
-        [params setObject:@(limit) forKey:@"limit"];
+        params[@"limit"] = @(limit);
     }
     
     if (filter) {
@@ -1193,11 +1182,11 @@
         }
         
         filterStr = [filterStr stringByAppendingString:@"%7D"];
-        [params setObject:filterStr forKey:@"filter"];
+        params[@"filter"] = filterStr;
     }
     
     if ([orderBy length]) {
-        [params setObject:orderBy forKey:@"orderby"];
+        params[@"orderyBy"] = orderBy;
     }
     
     return params;
