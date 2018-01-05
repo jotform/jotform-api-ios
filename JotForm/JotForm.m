@@ -56,9 +56,17 @@
     manager = [AFHTTPSessionManager manager];
 }
 
-- (void)debugLog:(NSString *)urlStr params:(NSDictionary *)params {
+- (void)debugLog:(NSString *)urlStr params:(id)params {
     if (debugMode) {
-        NSLog(@"urlstr = %@ \n paramstr = %@", urlStr, [params description]);
+        NSString *paramsStr = @"";
+        
+        if ([params isKindOfClass:[NSString class]]) {
+            paramsStr = params;
+        } else if ([params isKindOfClass:[NSDictionary class]]) {
+           paramsStr = [params description];
+        }
+        
+        NSLog(@"urlstr = %@ \n paramstr = %@", urlStr,paramsStr);
     }
 }
 
@@ -924,10 +932,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/questions?apiKey=%@", baseUrl,
                         apiVersion,formID, apiKey];
     
-    NSData *data = [questions dataUsingEncoding:NSUTF8StringEncoding];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    [self debugLog:urlStr params:json];
+    [self debugLog:urlStr params:questions];
     
     [manager PUT:urlStr parameters:questions
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -997,10 +1002,7 @@
                         onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/form/%lld/properties?apiKey=%@", baseUrl, apiVersion,formID, apiKey];
     
-    NSData *data = [properties dataUsingEncoding:NSUTF8StringEncoding];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    [self debugLog:urlStr params:json];
+    [self debugLog:urlStr params:properties];
     
     [manager PUT:urlStr parameters:properties
          success:^(NSURLSessionTask *task, id responseObject) {
