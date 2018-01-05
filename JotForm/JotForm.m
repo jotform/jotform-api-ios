@@ -9,18 +9,13 @@
 #import "JotForm.h"
 #import "AFHTTPSessionManager.h"
 
-
 #define BASE_URL                     @"https://api.jotform.com"
 #define BASE_URL_EU                  @"https://eu-api.jotform.com"
-#define SUBMIT_REPORT_URL            @"https://submit.jotform.com"
-#define SUBMIT_SUGGESTION_URL        @"https://submit.jotform.me"
 
 @interface JotForm () {
     AFHTTPSessionManager *manager;
     NSString *apiKey;
     NSString *baseUrl;
-    NSString *submitReportUrl;
-    NSString *submitSuggestionUrl;
     BOOL debugMode;
 }
 
@@ -32,7 +27,7 @@
     if (self = [super init]) {
         apiKey = @"";
         baseUrl = BASE_URL;
-        [self initData];
+        manager = [AFHTTPSessionManager manager];
     }
     return self;
 }
@@ -42,15 +37,9 @@
         apiKey = apikey;
         baseUrl = (euApi) ? BASE_URL_EU : BASE_URL;
         debugMode = debugmode;
-        [self initData];
+        manager = [AFHTTPSessionManager manager];
     }
     return self;
-}
-
-- (void)initData{
-    submitReportUrl = SUBMIT_REPORT_URL;
-    submitSuggestionUrl = SUBMIT_SUGGESTION_URL;
-    manager = [AFHTTPSessionManager manager];
 }
 
 - (void)debugLog:(NSString *)urlStr params:(id)params {
@@ -86,48 +75,6 @@
              failureBlock(error);
          }];
 }
-
-- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock {
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/submit/%lld/", submitReportUrl,formID];
-    
-    [self debugLog:urlStr params:reportParams];
-    
-    [manager POST:urlStr
-       parameters:reportParams
-         progress:nil
-          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
-          }
-          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
-          }];
-}
-
-- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
-{
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/submit/%lld/", submitSuggestionUrl,formID];
-    
-    [self debugLog:urlStr params:suggestionParams];
-    
-    [manager POST:urlStr
-       parameters:suggestionParams
-         progress:nil
-          success:^(NSURLSessionTask *task, id responseObject) {
-              successBlock(responseObject);
-          }
-          failure:^(NSURLSessionTask *operation, NSError *error) {
-              failureBlock(error);
-          }];
-}
-
 - (void)login:(NSMutableDictionary *)userinfo
     onSuccess:(void (^)(id))successBlock
     onFailure:(void (^)(NSError *))failureBlock {
