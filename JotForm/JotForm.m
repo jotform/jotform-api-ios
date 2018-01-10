@@ -23,15 +23,6 @@
 
 @implementation JotForm
 
-- (id)init {
-    if (self = [super init]) {
-        apiKey = @"";
-        baseUrl = BASE_URL;
-        manager = [AFHTTPSessionManager manager];
-    }
-    return self;
-}
-
 - (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
     if (self = [super init]) {
         apiKey = apikey;
@@ -59,11 +50,11 @@
 - (void)executeGetEUapi:(NSString *)path
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
     
     [self debugLog:urlStr params:nil];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [manager GET:urlStr
       parameters:nil
@@ -741,11 +732,11 @@
 - (void)checkEUserver:(NSString *)_apiKey
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     NSString *urlStr = [[NSString stringWithFormat:@"%@/user/settings/euOnly?apiKey=%@", baseUrl,_apiKey] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     [self debugLog:urlStr params:nil];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [manager GET:urlStr
       parameters:nil
@@ -991,10 +982,9 @@
           onSuccess:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
+    [self debugLog:urlStr params:form];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [self debugLog:urlStr params:form];
     
     [manager PUT:urlStr parameters:form
          success:^(NSURLSessionTask *task, id responseObject) {
