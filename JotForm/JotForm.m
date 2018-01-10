@@ -51,7 +51,6 @@
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
-    
     [self debugLog:urlStr params:nil];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -66,6 +65,45 @@
              failureBlock(error);
          }];
 }
+
+- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock {
+    NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.com/submit/%lld/",formID];
+     [self debugLog:urlStr params:reportParams];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:urlStr
+       parameters:reportParams
+         progress:nil
+          success:^(NSURLSessionTask *task, id responseObject) {
+              successBlock(responseObject);
+          }
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              failureBlock(error);
+          }];
+}
+
+- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock {
+    NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.me/submit/%lld/",formID];
+    [self debugLog:urlStr params:suggestionParams];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:urlStr
+       parameters:suggestionParams
+         progress:nil
+          success:^(NSURLSessionTask *task, id responseObject) {
+              successBlock(responseObject);
+          }
+          failure:^(NSURLSessionTask *operation, NSError *error) {
+              failureBlock(error);
+          }];
+}
+
 - (void)login:(NSMutableDictionary *)userinfo
     onSuccess:(void (^)(id))successBlock
     onFailure:(void (^)(NSError *))failureBlock {

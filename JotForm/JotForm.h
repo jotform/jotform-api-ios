@@ -561,4 +561,20 @@
 - (void)getSystemTime:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock;
 
+/**
+ * Sends out a report to Jotform.
+ */
+
+- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
+           onSuccess:(void (^)(id))successBlock
+           onFailure:(void (^)(NSError *))failureBlock;
+
+/**
+ * Sends out a suggestion to Jotform.
+ */
+
+- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
+               onSuccess:(void (^)(id))successBlock
+               onFailure:(void (^)(NSError *))failureBlock;
+
 @end
