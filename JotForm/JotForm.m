@@ -40,10 +40,14 @@
         if ([params isKindOfClass:[NSString class]]) {
             paramsStr = params;
         } else if ([params isKindOfClass:[NSDictionary class]]) {
-           paramsStr = [params description];
+            paramsStr = [params description];
         }
         
-        NSLog(@"urlstr = %@ \n paramstr = %@", urlStr,paramsStr);
+        NSLog(@"urlstr = %@", urlStr);
+        
+        if ([paramsStr length] > 0) {
+            NSLog(@"paramstr = %@",paramsStr);
+        }
     }
 }
 
