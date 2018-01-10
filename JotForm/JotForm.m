@@ -53,8 +53,6 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
     [self debugLog:urlStr params:nil];
     
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     [manager GET:urlStr
       parameters:nil
         progress:nil
@@ -774,8 +772,6 @@
     
     [self debugLog:urlStr params:nil];
     
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     [manager GET:urlStr
       parameters:nil
         progress:nil
@@ -1021,8 +1017,6 @@
           onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
     [self debugLog:urlStr params:form];
-    
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     [manager PUT:urlStr parameters:form
          success:^(NSURLSessionTask *task, id responseObject) {
