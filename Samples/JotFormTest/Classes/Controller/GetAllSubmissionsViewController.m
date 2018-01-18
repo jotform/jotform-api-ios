@@ -59,31 +59,27 @@
     self.navigationItem.rightBarButtonItem = self.getBarButtonItem;
 }
 
-- (void) initData
-{
-    SharedData *sharedData = [SharedData sharedData];
-    
-    orderbyList = [sharedData getFormOrderbyList];
+- (void)initData {
+    orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
-- (void) loadForms
-{
+- (void)loadForms {
     [SVProgressHUD showWithStatus:@"Loading submissions..."];
-    
-    SharedData *sharedData = [SharedData sharedData];
     
     NSInteger offset = 0;
     NSInteger limit = 0;
     
-    if (self.offsetTextField.text.length > 0)
+    if (self.offsetTextField.text.length > 0) {
         offset = [self.offsetTextField.text integerValue];
+    }
     
-    if (self.limitTextField.text.length > 0)
+    if (self.limitTextField.text.length > 0) {
         limit = [self.limitTextField.text integerValue];
+    }
     
-    NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+   NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
-   [sharedData.apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
+   [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
        [SVProgressHUD dismiss];
        
        if (result) {
@@ -99,8 +95,7 @@
     }];
 }
 
-- (void) startDataListViewController : (NSArray *) datalist
-{
+- (void)startDataListViewController:(NSArray *)datalist {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
      [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
@@ -110,7 +105,7 @@
 
 #pragma mark IBAction
 
-- (IBAction) getSubmissionsButtonClicked : (id) sender {
+- (IBAction)getSubmissionsButtonClicked:(id)sender {
     [self loadForms];
 }
 
@@ -121,7 +116,6 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    
     return [orderbyList count];
 }
 

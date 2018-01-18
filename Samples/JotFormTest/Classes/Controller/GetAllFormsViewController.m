@@ -14,6 +14,7 @@
 
 @interface GetAllFormsViewController () {
            NSArray *orderbyList;
+           SharedData *sharedData;
 }
 
 @property (nonatomic,weak) IBOutlet UITextField *offsetTextField;
@@ -52,24 +53,20 @@
 
 #pragma mark - user definition method
 
-- (void) initUI
+- (void)initUI
 {
     self.title = @"Get all forms";
     self.navigationItem.rightBarButtonItem = self.getBarButtonItem;
 }
 
-- (void) initData
+- (void)initData
 {
-    SharedData *sharedData = [SharedData sharedData];
-    
-    orderbyList = [sharedData getFormOrderbyList];
+    orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
-- (void) loadForms
+- (void)loadForms
 {
     [SVProgressHUD showWithStatus:@"Loading forms..."];
-    
-    SharedData *sharedData = [SharedData sharedData];
     
     NSInteger offset = 0;
     NSInteger limit = 0;
@@ -84,7 +81,7 @@
     
     NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
+    [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
        
         [SVProgressHUD dismiss];
         
@@ -102,7 +99,7 @@
     }];
 }
 
-- (void) startDataListViewController : (NSArray *) datalist
+- (void)startDataListViewController : (NSArray *) datalist
 {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
 
@@ -124,14 +121,13 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    
     return [orderbyList count];
 }
 
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-   NSString *rowStr = [orderbyList objectAtIndex:row];
+    NSString *rowStr = [orderbyList objectAtIndex:row];
     
     return rowStr;
 }

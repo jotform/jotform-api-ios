@@ -23,31 +23,26 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - User definition method
 
-- (void) createForms
-{
-    SharedData *sharedData = [SharedData sharedData];
-   
-    NSError *error;
+- (void)createForms {
+    NSError *error = nil;
     NSData *objectData = [@"{\"questions\":[{\"type\":\"control_head\"}]}" dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
                                                            error:&error];
   
-    [sharedData.apiClient createForms:json onSuccess:^(id result){
+    [[SharedData sharedData].apiClient createForms:json onSuccess:^(id result){
    
     } onFailure:^(NSError *error) {
 
@@ -56,8 +51,7 @@
 
 #pragma mark - IBAction
 
-- (IBAction) createFormsViewClicked:(id) sender
-{
+- (IBAction)createFormsViewClicked:(id)sender {
     [self createForms];
 }
 

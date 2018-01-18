@@ -11,7 +11,6 @@
 
 @interface RegisterUserViewController : UIViewController
 
-
-- (IBAction) registerButtonClicked : (id) sender;
+- (IBAction)registerButtonClicked:(id)sender;
 
 @end

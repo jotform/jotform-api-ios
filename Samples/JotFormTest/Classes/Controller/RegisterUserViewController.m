@@ -29,24 +29,21 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Register user";
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - User definition method
 
-- (void) registerUser
-{
+- (void)registerUser {
     if (self.usernameTextField.text.length == 0) {
         [self.usernameTextField becomeFirstResponder];
         return;
@@ -64,14 +61,12 @@
     
     [SVProgressHUD showWithStatus:@"Registering user..."];
     
-    SharedData *sharedData = [SharedData sharedData];
-    
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     [userInfo setObject:self.usernameTextField.text forKey:@"username"];
     [userInfo setObject:self.passwordTextField.text forKey:@"password"];
     [userInfo setObject:self.emailTextField.text forKey:@"email"];
     
-    [sharedData.apiClient registerUser:userInfo onSuccess:^(id result) {
+    [[SharedData sharedData].apiClient registerUser:userInfo onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -116,8 +111,7 @@
 
 #pragma mark - IBAction
 
-- (IBAction) registerButtonClicked : (id) sender
-{
+- (IBAction)registerButtonClicked:(id)sender {
     [self registerUser];
 }
 

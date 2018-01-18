@@ -36,8 +36,7 @@
 
 #pragma mark - User definition method
 
-- (void) createFormQuestion
-{
+- (void)createFormQuestion {
     if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController
                                         alertControllerWithTitle:@"JotFormAPISample"
@@ -64,13 +63,10 @@
     [question setObject:@"1" forKey:@"order"];
     [question setObject:@"New Name of Question" forKey:@"1"];
     
-    
-    SharedData *sharedData = [SharedData sharedData];
-    
-    [sharedData.apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
+    [[SharedData sharedData].apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
-        if ( result != nil ) {
+        if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206 ) {
@@ -93,10 +89,10 @@
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
         
-        if ( error != nil ) {
+        if (error) {
             NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 401 ) {
+            if (responseCode == 401) {
                 NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
                
                 UIAlertController *alertView = [UIAlertController
@@ -120,8 +116,7 @@
 
 #pragma mark - IBAction
 
-- (IBAction) createQuestionButtonClicked : (id) sender
-{
+- (IBAction) createQuestionButtonClicked:(id)sender {
     [self createFormQuestion];
 }
 

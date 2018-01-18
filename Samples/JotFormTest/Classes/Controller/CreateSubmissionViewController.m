@@ -27,40 +27,34 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Create submission";
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - User definition method
 
-- (void) createSubmission
-{
+- (void)createSubmission {
     [SVProgressHUD showWithStatus:@"Creating submissions..."];
-    
-    SharedData *sharedData = [SharedData sharedData];
     
     NSMutableDictionary *submission = [[NSMutableDictionary alloc] init];
     [submission setObject:@"XXX" forKey:@"1"];
     [submission setObject:@"This is a test for creating submission." forKey:@"2"];
     
-    
-    [sharedData.apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
+    [[SharedData sharedData].apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
+            if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"
                                                 message:@"You created submission successfully"
@@ -86,8 +80,7 @@
 
 #pragma mark - IBAction
 
-- (IBAction) createSubmissionButtonClicked : (id) sender
-{
+- (IBAction)createSubmissionButtonClicked:(id)sender {
     [self createSubmission];
 }
 
