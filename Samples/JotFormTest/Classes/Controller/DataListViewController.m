@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,12 +44,7 @@
 - (void)setFormList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
-    if (!self.dataList) {
-        self.dataList = [[NSMutableArray alloc] init];
-    }
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataArray];
+    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
     [self.listTableView reloadData];
     
     self.title = @"Form list";
@@ -57,25 +53,16 @@
 - (void)setSubmissionList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
-    if (!self.dataList) {
-        self.dataList = [[NSMutableArray alloc] init];
-    }
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataArray];
+    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
     [self.listTableView reloadData];
     
     self.title = @"Submission list";
 }
 
-- (void)setReportList:(NSArray *)dataarray type:(DataListType)type {
+- (void)setReportList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
-    if (!self.dataList)
-        self.dataList = [[NSMutableArray alloc] init];
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataarray];
+    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
     [self.listTableView reloadData];
     
     self.title = @"Report list";
@@ -110,13 +97,10 @@
     
     id object = [self.dataList objectAtIndex:indexPath.row];
     
-    if (listType == DataListTypeFormList) {
+    if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
         cell.textLabel.text = [object objectForKey:@"title"];
         cell.detailTextLabel.text = [object objectForKey:@"id"];
     } else if (listType == DataListTypeSubmissionList) {
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
-    } else if (listType == DataListTypeReportList) {
-        cell.textLabel.text = [object objectForKey:@"title"];
         cell.detailTextLabel.text = [object objectForKey:@"id"];
     }
     

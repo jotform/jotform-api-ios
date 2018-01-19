@@ -13,7 +13,6 @@
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 
-
 @end
 
 @implementation LoadSettingsViewController

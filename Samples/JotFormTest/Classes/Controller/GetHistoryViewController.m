@@ -21,8 +21,9 @@
     [super viewDidLoad];
     
     [[SharedData sharedData].apiClient getHistory:^(id result) {
-      self.textView.text = [NSString stringWithFormat:@"%@",result];
-   
+     
+        self.textView.text = [NSString stringWithFormat:@"%@",result];
+  
     } onFailure:^(NSError *error) {
         
     }];

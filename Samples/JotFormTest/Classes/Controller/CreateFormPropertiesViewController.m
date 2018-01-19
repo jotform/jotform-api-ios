@@ -28,8 +28,7 @@
 
 #pragma mark - IBAction
 
-- (IBAction) createFormPropertiesClicked : (id) sender
-{
+- (IBAction)createFormPropertiesClicked:(id)sender {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     [userInfo setObject:@"properties[formWidth]" forKey:@"350"];
     

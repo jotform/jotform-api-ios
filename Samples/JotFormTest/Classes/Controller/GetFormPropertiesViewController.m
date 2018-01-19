@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[SharedData sharedData].apiClient getFormProperties:FORM_ID onSuccess:^(id result) {
-        
+      
         self.textView.text = [NSString stringWithFormat:@"%@",result];
    
     } onFailure:^(NSError *error) {

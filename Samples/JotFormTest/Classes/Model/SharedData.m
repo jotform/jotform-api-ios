@@ -12,12 +12,10 @@ static SharedData *g_sharedInfo = nil;
 
 @implementation SharedData
 
-- (id) init {
-    
-	if ( self = [super init] ) {
+- (id)init {
+	if (self = [super init] ) {
 		[self initSharedData];
 	}
-    
 	return self;
 }
 
@@ -32,20 +30,17 @@ static SharedData *g_sharedInfo = nil;
     return sharedData;
 }
 
-- (void) initSharedData
-{
+- (void)initSharedData {
     NSString *sampleStr = @"Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load settings,Get history,Get form properties,Create form properties,Create Forms,Create Form Questions";
     
     self.sampleStrList = (NSMutableArray *)[sampleStr componentsSeparatedByString:@","];
 }
 
-- (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi
-{
+- (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi {
     self.apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO euApi:euApi];
 }
 
-- (NSArray *) getFormOrderbyList
-{
+- (NSArray *)getFormOrderbyList {
     NSString *orderbyStr = @"id,username,title,status,created_at,updated_at,new,count,slug";
     NSArray *orderbyList = [orderbyStr componentsSeparatedByString:@","];
     
