@@ -11,8 +11,6 @@
 
 @interface DataListViewController : UIViewController
 
-- (void) setFormList : (NSArray *) dataarray type : (DataListType) type;
-- (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type;
-- (void) setReportList : (NSArray *) dataarray type : (DataListType) type;
+- (void)setList:(NSArray *)dataArray type:(DataListType)type;
 
 @end

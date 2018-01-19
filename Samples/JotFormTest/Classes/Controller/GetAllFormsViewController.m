@@ -14,6 +14,7 @@
 
 @interface GetAllFormsViewController () {
            NSArray *orderbyList;
+           SharedData *sharedData;
 }
 
 @property (nonatomic,weak) IBOutlet UITextField *offsetTextField;
@@ -35,8 +36,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -44,32 +44,19 @@
     [self initUI];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
-- (void) initUI
-{
+- (void)initUI {
     self.title = @"Get all forms";
     self.navigationItem.rightBarButtonItem = self.getBarButtonItem;
 }
 
-- (void) initData
-{
-    SharedData *sharedData = [SharedData sharedData];
-    
-    orderbyList = [sharedData getFormOrderbyList];
+- (void)initData {
+    orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
-- (void) loadForms
-{
+- (void)loadForms {
     [SVProgressHUD showWithStatus:@"Loading forms..."];
-    
-    SharedData *sharedData = [SharedData sharedData];
     
     NSInteger offset = 0;
     NSInteger limit = 0;
@@ -84,7 +71,7 @@
     
     NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     
-    [sharedData.apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
+    [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
        
         [SVProgressHUD dismiss];
         
@@ -102,19 +89,18 @@
     }];
 }
 
-- (void) startDataListViewController : (NSArray *) datalist
-{
+- (void)startDataListViewController:(NSArray *)datalist {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
 
     [self.navigationController pushViewController:dataListVc animated:YES];
     
-    [dataListVc setFormList:datalist type:DataListTypeFormList];
+    [dataListVc setList:datalist type:DataListTypeFormList];
 }
 
 #pragma mark IBAction
 
-- (IBAction)getFormsButtonClicked : (id) sender {
-       [self loadForms];
+- (IBAction)getFormsButtonClicked:(id)sender {
+            [self loadForms];
 }
 
 #pragma mark UIPickerViewDataSource
@@ -124,14 +110,13 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    
     return [orderbyList count];
 }
 
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-   NSString *rowStr = [orderbyList objectAtIndex:row];
+    NSString *rowStr = [orderbyList objectAtIndex:row];
     
     return rowStr;
 }

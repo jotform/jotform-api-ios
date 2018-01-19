@@ -19,8 +19,7 @@
 
 @implementation GetFormReportsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -28,36 +27,25 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Get form reports";
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - User definition emthod
 
-- (void) startDataListViewController : (NSArray *) reportList
-{
+- (void) startDataListViewController:(NSArray *)reportList {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-    [dataListVc setReportList:reportList type:DataListTypeFormList];
+    [dataListVc setList:reportList type:DataListTypeFormList];
     
     [self.navigationController pushViewController:dataListVc animated:YES];
 }
 
 
-- (IBAction) getFormReportsButtonClicked : (id) sender
-{
-    SharedData *sharedData = [SharedData sharedData];
-    
+- (IBAction)getFormReportsButtonClicked:(id)sender {
     if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController
                                         alertControllerWithTitle:@"JotFormAPISample"
@@ -76,7 +64,7 @@
     } else {
     [SVProgressHUD showWithStatus:@"Loading reports..."];
         
-    [sharedData.apiClient getFormReports:FORM_ID onSuccess:^(id result) {
+    [[SharedData sharedData].apiClient getFormReports:FORM_ID onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {

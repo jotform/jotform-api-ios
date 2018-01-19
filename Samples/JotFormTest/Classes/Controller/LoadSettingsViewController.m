@@ -13,7 +13,6 @@
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 
-
 @end
 
 @implementation LoadSettingsViewController
@@ -21,21 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    SharedData *sharedData = [SharedData sharedData];
-    
-    [sharedData.apiClient getSettings:^(id result) {
+    [[SharedData sharedData].apiClient getSettings:^(id result) {
         
         self.textView.text = [NSString stringWithFormat:@"%@",result];
         
     } onFailure:^(NSError *error) {
         
     }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

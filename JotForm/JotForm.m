@@ -72,9 +72,8 @@
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.com/submit/%lld/",formID];
-     [self debugLog:urlStr params:reportParams];
     
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self debugLog:urlStr params:reportParams];
     
     [manager POST:urlStr
        parameters:reportParams
@@ -91,9 +90,8 @@
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.me/submit/%lld/",formID];
+   
     [self debugLog:urlStr params:suggestionParams];
-    
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     [manager POST:urlStr
        parameters:suggestionParams

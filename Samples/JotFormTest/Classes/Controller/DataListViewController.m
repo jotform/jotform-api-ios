@@ -21,8 +21,7 @@
 
 @implementation DataListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -30,86 +29,53 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - user definition method
 
-- (void) setFormList : (NSArray *) dataarray type : (DataListType) type
-{
+- (void)setList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
-    if (self.dataList == nil )
-        self.dataList = [[NSMutableArray alloc] init];
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataarray];
+    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
     [self.listTableView reloadData];
+    
+    switch (listType) {
+        case DataListTypeFormList:
+            self.title = @"Form list";
+            break;
+        case DataListTypeSubmissionList:
+            self.title = @"Submission list";
+            break;
+        default:
+            self.title = @"Report list";
+            break;
+    }
     
     self.title = @"Form list";
 }
 
-- (void) setSubmissionList : (NSArray *) dataarray type : (DataListType) type
-{
-    listType = type;
-    
-    if (!self.dataList)
-        self.dataList = [[NSMutableArray alloc] init];
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataarray];
-    [self.listTableView reloadData];
-    
-    self.title = @"Submission list";
-}
-
-- (void) setReportList : (NSArray *) dataarray type : (DataListType) type
-{
-    listType = type;
-    
-    if (!self.dataList)
-        self.dataList = [[NSMutableArray alloc] init];
-    
-    [self.dataList removeAllObjects];
-    [self.dataList addObjectsFromArray:dataarray];
-    [self.listTableView reloadData];
-    
-    self.title = @"Report list";
-}
-
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.1f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1f;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell"];
     
     if (!cell) {
@@ -119,15 +85,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     id object = [self.dataList objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [object objectForKey:@"id"];
     
-    if (listType == DataListTypeFormList) {
+    if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
         cell.textLabel.text = [object objectForKey:@"title"];
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
-    } else if (listType == DataListTypeSubmissionList) {
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
-    } else if (listType == DataListTypeReportList) {
-        cell.textLabel.text = [object objectForKey:@"title"];
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
     }
     
     cell.textLabel.textColor = [UIColor darkGrayColor];
@@ -136,13 +97,12 @@
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0f;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -33,34 +33,25 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    apiClient = [[JotForm alloc] init];
+    // Do any additional setup after loading the view from its nib.
+    apiClient = [[JotForm alloc]initWithApiKey:@"" debugMode:NO euApi:NO];
     self.title = @"Get App Key";
     
     [self showAlertView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
-- (void) showSampleListViewController
-{
+- (void)showSampleListViewController {
     SampleListViewController *sampleListVc = [[SampleListViewController alloc] initWithNibName:@"SampleListViewController" bundle:nil];
     
     [self.navigationController pushViewController:sampleListVc animated:YES];
 }
 
-- (void) showAlertView
-{
+- (void)showAlertView {
     UIAlertController *alertView = [UIAlertController
                                     alertControllerWithTitle:@"JotFormAPISample"
                                     message:@"Do you have an API key?"
@@ -83,9 +74,7 @@
                                                              [alertViewCancel addAction:cancelButton];
                                                              [self presentViewController:alertViewCancel animated:YES completion:nil];
                                                          } else {
-                                                             
-                                                             SharedData *sharedData = [SharedData sharedData];
-                                                             [sharedData initAPIClient:API_KEY euApi:EU_API];
+                                                             [[SharedData sharedData] initAPIClient:API_KEY euApi:EU_API];
                                                              
                                                              [self showSampleListViewController];
                                                          }
@@ -106,24 +95,12 @@
 
 #pragma mark - IBAction
 
-- (IBAction) getAppKeyButtonClicked : (id) sender
-{
+- (IBAction)getAppKeyButtonClicked:(id)sender {
     // Remove cookies to avoid EU API issue.
-    NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies]) {
+    for (NSHTTPCookie *cookie in [storage cookies]) {
         [storage deleteCookie:cookie];
     }
-    
-    NSString *username = self.usernameTextField.text;
-    
-    if ( [username isEqualToString:@""] )
-        [self.usernameTextField becomeFirstResponder];
-    
-    NSString *password = self.passwordTextField.text;
-    
-    if ([password isEqualToString:@""])
-        [self.passwordTextField becomeFirstResponder];
     
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
@@ -131,8 +108,8 @@
     [SVProgressHUD showWithStatus:@"Getting app key..."];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:username forKey:@"username"];
-    [userInfo setObject:password forKey:@"password"];
+    [userInfo setObject:self.usernameTextField.text forKey:@"username"];
+    [userInfo setObject:self.passwordTextField.text forKey:@"password"];
     [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
     
@@ -151,15 +128,15 @@
 }
 
 - (void)checkEuServer:(NSString *)appKey {
-    [apiClient checkEUserver:^(id result) {
+    [apiClient checkEUserver:appKey onSuccess:^(id result) {
         BOOL isEuServer = [result[@"content"][@"euOnly"]boolValue];
         
         [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
         
         [self showSampleListViewController];
         [SVProgressHUD dismiss];
-    }  onFailure:^(NSError *error) {
-        [SVProgressHUD dismiss];
+    } onFailure:^(NSError *error) {
+         [SVProgressHUD dismiss];
     }];
 }
 
