@@ -98,7 +98,7 @@
 - (void)startDataListViewController:(NSArray *)datalist {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-     [dataListVc setSubmissionList:datalist type:DataListTypeSubmissionList];
+     [dataListVc setList:datalist type:DataListTypeSubmissionList];
     
     [self.navigationController pushViewController:dataListVc animated:YES];
 }

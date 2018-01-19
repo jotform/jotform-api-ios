@@ -105,7 +105,7 @@
 
     [self.navigationController pushViewController:dataListVc animated:YES];
     
-    [dataListVc setFormList:datalist type:DataListTypeFormList];
+    [dataListVc setList:datalist type:DataListTypeFormList];
 }
 
 #pragma mark IBAction

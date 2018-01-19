@@ -41,31 +41,25 @@
 
 #pragma mark - user definition method
 
-- (void)setFormList:(NSArray *)dataArray type:(DataListType)type {
+- (void)setList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
     self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
     [self.listTableView reloadData];
+    
+    switch (listType) {
+        case DataListTypeFormList:
+            self.title = @"Form list";
+            break;
+        case DataListTypeSubmissionList:
+            self.title = @"Submission list";
+            break;
+        default:
+            self.title = @"Report list";
+            break;
+    }
     
     self.title = @"Form list";
-}
-
-- (void)setSubmissionList:(NSArray *)dataArray type:(DataListType)type {
-    listType = type;
-    
-    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
-    [self.listTableView reloadData];
-    
-    self.title = @"Submission list";
-}
-
-- (void)setReportList:(NSArray *)dataArray type:(DataListType)type {
-    listType = type;
-    
-    self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
-    [self.listTableView reloadData];
-    
-    self.title = @"Report list";
 }
 
 #pragma mark - UITableViewDataSource

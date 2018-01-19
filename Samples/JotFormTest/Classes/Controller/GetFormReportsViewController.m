@@ -44,7 +44,7 @@
 - (void) startDataListViewController:(NSArray *)reportList {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-    [dataListVc setReportList:reportList type:DataListTypeFormList];
+    [dataListVc setList:reportList type:DataListTypeFormList];
     
     [self.navigationController pushViewController:dataListVc animated:YES];
 }
