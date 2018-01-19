@@ -36,8 +36,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -45,27 +44,18 @@
     [self initUI];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
-- (void)initUI
-{
+- (void)initUI {
     self.title = @"Get all forms";
     self.navigationItem.rightBarButtonItem = self.getBarButtonItem;
 }
 
-- (void)initData
-{
+- (void)initData {
     orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
-- (void)loadForms
-{
+- (void)loadForms {
     [SVProgressHUD showWithStatus:@"Loading forms..."];
     
     NSInteger offset = 0;
@@ -99,8 +89,7 @@
     }];
 }
 
-- (void)startDataListViewController : (NSArray *) datalist
-{
+- (void)startDataListViewController:(NSArray *)datalist {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
 
     [self.navigationController pushViewController:dataListVc animated:YES];
@@ -110,8 +99,8 @@
 
 #pragma mark IBAction
 
-- (IBAction)getFormsButtonClicked : (id) sender {
-       [self loadForms];
+- (IBAction)getFormsButtonClicked:(id)sender {
+            [self loadForms];
 }
 
 #pragma mark UIPickerViewDataSource

@@ -34,11 +34,6 @@
     self.title = @"Get form reports";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - User definition emthod
 
 - (void) startDataListViewController:(NSArray *)reportList {

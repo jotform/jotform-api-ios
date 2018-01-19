@@ -34,11 +34,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
 - (void)setList:(NSArray *)dataArray type:(DataListType)type {
@@ -90,12 +85,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     id object = [self.dataList objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [object objectForKey:@"id"];
     
     if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
         cell.textLabel.text = [object objectForKey:@"title"];
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
-    } else if (listType == DataListTypeSubmissionList) {
-        cell.detailTextLabel.text = [object objectForKey:@"id"];
     }
     
     cell.textLabel.textColor = [UIColor darkGrayColor];

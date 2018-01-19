@@ -25,24 +25,16 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Create report";
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - User definition method
 
-- (void) createReport
-{
+- (void)createReport {
     // check if FORM_ID is specified
     if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" preferredStyle:UIAlertControllerStyleAlert];

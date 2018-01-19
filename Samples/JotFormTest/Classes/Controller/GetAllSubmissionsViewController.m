@@ -44,16 +44,9 @@
     [self initUI];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
-- (void) initUI
-{
+- (void) initUI {
     self.title = @"Get all submissions";
     
     self.navigationItem.rightBarButtonItem = self.getBarButtonItem;

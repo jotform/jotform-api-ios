@@ -43,11 +43,6 @@
     [self showAlertView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - user definition method
 
 - (void)showSampleListViewController {

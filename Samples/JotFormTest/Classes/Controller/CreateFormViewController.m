@@ -17,8 +17,7 @@
 
 @implementation CreateFormViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,18 +25,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Create form";
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - IBAction
@@ -77,7 +69,7 @@
         if (result) {
             NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
             
-            if ( responseCode == 200 || responseCode == 206 ) {
+            if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
                                              alertControllerWithTitle:@"JotFormAPISample"
                                              message:@"You created form successfully"
@@ -117,8 +109,6 @@
                 
                 [alertView addAction:cancelButton];
                 [self presentViewController:alertView animated:YES completion:nil];
-                
-                return;
             }
         }
     }];
