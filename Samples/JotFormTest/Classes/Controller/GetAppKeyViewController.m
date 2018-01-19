@@ -101,16 +101,10 @@
 #pragma mark - IBAction
 
 - (IBAction)getAppKeyButtonClicked:(id)sender {
-    NSString *username = self.usernameTextField.text;
-    
-    if ([username isEqualToString:@""]) {
-        [self.usernameTextField becomeFirstResponder];
-    }
-    
-    NSString *password = self.passwordTextField.text;
-    
-    if ([password isEqualToString:@""]) {
-        [self.passwordTextField becomeFirstResponder];
+    // Remove cookies to avoid EU API issue.
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
     }
     
     [self.usernameTextField resignFirstResponder];
@@ -119,8 +113,8 @@
     [SVProgressHUD showWithStatus:@"Getting app key..."];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:username forKey:@"username"];
-    [userInfo setObject:password forKey:@"password"];
+    [userInfo setObject:self.usernameTextField.text forKey:@"username"];
+    [userInfo setObject:self.passwordTextField.text forKey:@"password"];
     [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
     [userInfo setObject:@"full" forKey:@"access"];
     
