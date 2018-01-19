@@ -21,13 +21,15 @@ static SharedData *g_sharedInfo = nil;
 	return self;
 }
 
-+ (SharedData *) sharedData {
++ (SharedData *)sharedData {
+    static SharedData *sharedData = nil;
+  
+    static dispatch_once_t onceToken; // onceToken = 0
+    dispatch_once(&onceToken, ^{
+        sharedData = [[SharedData alloc] init];
+    });
     
-	if (g_sharedInfo == nil) {
-		g_sharedInfo = [[SharedData alloc] init];
-	}
-    
-	return g_sharedInfo;
+    return sharedData;
 }
 
 - (void) initSharedData

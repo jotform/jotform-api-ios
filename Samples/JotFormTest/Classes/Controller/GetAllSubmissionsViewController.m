@@ -90,7 +90,7 @@
                [self startDataListViewController:formsArray];
            }
        }
-    }onFailure:^(id response) {
+    } onFailure:^(id response) {
         [SVProgressHUD dismiss];
     }];
 }
