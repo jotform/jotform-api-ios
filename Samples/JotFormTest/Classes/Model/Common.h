@@ -9,11 +9,11 @@
 #define API_KEY @""
 #define EU_API  NO
 
-typedef enum {
+typedef NS_ENUM(NSInteger, DataListType) {
     DataListTypeFormList = 0,
     DataListTypeSubmissionList,
     DataListTypeReportList
-} DataListType;
+};
 
 
 #define FORM_ID                 0
