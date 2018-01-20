@@ -43,6 +43,12 @@
     [self showAlertView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    self.usernameTextField.text = @"";
+    self.passwordTextField.text = @"";
+}
+
 #pragma mark - user definition method
 
 - (void)showSampleListViewController {
