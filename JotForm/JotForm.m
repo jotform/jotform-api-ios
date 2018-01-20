@@ -23,7 +23,7 @@
 
 @implementation JotForm
 
-- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
     if (self = [super init]) {
         apiKey = apikey;
         baseUrl = (euApi) ? BASE_URL_EU : BASE_URL;
