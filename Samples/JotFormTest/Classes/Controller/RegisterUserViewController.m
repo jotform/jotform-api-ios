@@ -20,7 +20,7 @@
 
 @implementation RegisterUserViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -56,15 +56,15 @@
     [SVProgressHUD showWithStatus:@"Registering user..."];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:self.usernameTextField.text forKey:@"username"];
-    [userInfo setObject:self.passwordTextField.text forKey:@"password"];
-    [userInfo setObject:self.emailTextField.text forKey:@"email"];
+    userInfo[@"username"] = self.usernameTextField.text;
+    userInfo[@"password"] = self.passwordTextField.text;
+    userInfo[@"email"] = self.emailTextField.text;
     
     [[SharedData sharedData].apiClient registerUser:userInfo onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
@@ -84,7 +84,7 @@
             } else {
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"
-                                                message:[result objectForKey:@"message"]
+                                                message:result[@"message"]
                                                 preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction *cancelButton = [UIAlertAction

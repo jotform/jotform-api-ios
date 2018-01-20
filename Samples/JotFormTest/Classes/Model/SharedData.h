@@ -17,6 +17,6 @@
 + (SharedData *)sharedData;
 - (void)initSharedData;
 - (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi;
-- (NSArray *)getFormOrderbyList;
+@property (NS_NONATOMIC_IOSONLY, getter=getFormOrderbyList, readonly, copy) NSArray *formOrderbyList;
 
 @end

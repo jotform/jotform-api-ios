@@ -25,7 +25,7 @@
 
 - (IBAction)createFormPropertiesClicked:(id)sender {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:@"properties[formWidth]" forKey:@"350"];
+    userInfo[@"350"] = @"properties[formWidth]";
     
     [[SharedData sharedData].apiClient setFormProperties:FORM_ID formProperties:userInfo onSuccess:^(id result) {
      

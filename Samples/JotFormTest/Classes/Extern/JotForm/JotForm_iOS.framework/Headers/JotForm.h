@@ -16,7 +16,7 @@
 
 @interface JotForm : NSObject
 
-- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
 
 /**
  * Login user with given credentials.

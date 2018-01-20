@@ -18,7 +18,7 @@
 
 @implementation CreateSubmissionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -40,14 +40,14 @@
     [SVProgressHUD showWithStatus:@"Creating submissions..."];
     
     NSMutableDictionary *submission = [[NSMutableDictionary alloc] init];
-    [submission setObject:@"XXX" forKey:@"1"];
-    [submission setObject:@"This is a test for creating submission." forKey:@"2"];
+    submission[@"1"] = @"XXX";
+    submission[@"2"] = @"This is a test for creating submission.";
     
     [[SharedData sharedData].apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
