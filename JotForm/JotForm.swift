@@ -37,8 +37,8 @@ class JotForm {
         
         manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
             successBlock(responseObject as AnyObject)
-        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error?) -> Void in
-            failureBlock(error!)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
         })
     }
 }
