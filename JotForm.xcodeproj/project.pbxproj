@@ -37,6 +37,8 @@
 		939C64ACCEC7D8441F7009B9 /* libPods-JotForm_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */; };
 		A64817151E5FD9E5007714BA /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A64817191E5FDE17007714BA /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
+		A65B0B6420152C55008ED28F /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
+		A65B0B6620152C5C008ED28F /* JotForm-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */; };
 		A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67F05D01E5BD7C7002E9B11 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
 		A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,6 +54,8 @@
 		918648BC704A1606FD49691F /* Pods-JotForm_Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.release.xcconfig"; sourceTree = "<group>"; };
 		9E5267298538AF028D1239B4 /* Pods-JotForm_WatchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_WatchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A64817081E5FD273007714BA /* JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65B0B6320152C54008ED28F /* JotForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JotForm.swift; sourceTree = "<group>"; };
+		A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JotForm-Bridging-Header.h"; sourceTree = "<group>"; };
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B81E5BD781002E9B11 /* JotForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		A67F05B71E5BD781002E9B11 /* JotForm */ = {
 			isa = PBXGroup;
 			children = (
+				A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */,
+				A65B0B6320152C54008ED28F /* JotForm.swift */,
 				A67F05B81E5BD781002E9B11 /* JotForm.h */,
 				A67F05CF1E5BD7C7002E9B11 /* JotForm.m */,
 				A67F05B91E5BD781002E9B11 /* Info.plist */,
@@ -158,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */,
+				A65B0B6620152C5C008ED28F /* JotForm-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +259,7 @@
 					};
 					A67F05B41E5BD781002E9B11 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 					};
 					A6B279021E5F7C0100703A88 = {
@@ -451,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67F05D01E5BD7C7002E9B11 /* JotForm.m in Sources */,
+				A65B0B6420152C55008ED28F /* JotForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Watch";
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -537,7 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Watch";
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -600,6 +609,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/JotForm/JotForm-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -653,6 +663,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/JotForm/JotForm-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -664,10 +675,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 474B6B3698DF3E798E972AEC /* Pods-JotForm_iOS.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -681,10 +692,12 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -692,10 +705,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA3249136EE8DAE6E962D2D9 /* Pods-JotForm_iOS.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -709,10 +722,11 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jotform.JotForm;
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -736,7 +750,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Mac";
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -764,7 +778,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jotform.JotForm-Mac";
-				PRODUCT_MODULE_NAME = "";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
