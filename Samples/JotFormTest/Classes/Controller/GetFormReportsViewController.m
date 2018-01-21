@@ -19,7 +19,7 @@
 
 @implementation GetFormReportsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -68,10 +68,10 @@
         [SVProgressHUD dismiss];
         
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206) {
-                NSArray *reportsArray = [result objectForKey:@"content"];
+                NSArray *reportsArray = result[@"content"];
                 [self startDataListViewController:reportsArray];
             }   
         }

@@ -13,7 +13,7 @@
 
 @implementation CreateQuestionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -50,16 +50,16 @@
     
     NSMutableDictionary *question = [[NSMutableDictionary alloc] init];
     
-    [question setObject:@"control_textbox" forKey:@"type"];
-    [question setObject:@"New Text" forKey:@"text"];
-    [question setObject:@"1" forKey:@"order"];
-    [question setObject:@"New Name of Question" forKey:@"1"];
+    question[@"type"] = @"control_textbox";
+    question[@"text"] = @"New Text";
+    question[@"order"] = @"1";
+    question[@"1"] = @"New Name of Question";
     
     [[SharedData sharedData].apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206 ) {
                 UIAlertController *alertView = [UIAlertController
@@ -82,10 +82,10 @@
         [SVProgressHUD dismiss];
         
         if (error) {
-            NSInteger responseCode = [[error objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [error[@"responseCode"] integerValue];
             
             if (responseCode == 401) {
-                NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", [error objectForKey:@"message"]];
+                NSString *errMsg = [NSString stringWithFormat:@"%@\nPlease check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API key for 'Full Access'", error[@"message"]];
                
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"

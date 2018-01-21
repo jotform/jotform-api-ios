@@ -30,7 +30,7 @@
 
 @implementation SampleListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -60,7 +60,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[SharedData sharedData].sampleStrList count];
+    return ([SharedData sharedData].sampleStrList).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -70,7 +70,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SampleCell"];
     }
     
-    NSString *sampleStr = [[SharedData sharedData].sampleStrList objectAtIndex:indexPath.row];
+    NSString *sampleStr = ([SharedData sharedData].sampleStrList)[indexPath.row];
     
     cell.textLabel.text = sampleStr;
     cell.textLabel.textColor = [UIColor darkGrayColor];

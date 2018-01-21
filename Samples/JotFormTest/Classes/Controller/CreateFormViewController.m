@@ -17,7 +17,7 @@
 
 @implementation CreateFormViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -39,35 +39,35 @@
     
     // create form using JotformAPI client
     NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-    [properties setObject:@"Test Form" forKey:@"title"];
+    properties[@"title"] = @"Test Form";
     
     NSMutableDictionary *questions = [[NSMutableDictionary alloc] init];
     
     NSMutableDictionary *questionItem = [[NSMutableDictionary alloc] init];
-    [questionItem setObject:@"control_textbox" forKey:@"type"];
-    [questionItem setObject:@"Name" forKey:@"text"];
-    [questionItem setObject:@"1" forKey:@"order"];
-    [questionItem setObject:@"textboxName" forKey:@"1"];
+    questionItem[@"type"] = @"control_textbox";
+    questionItem[@"text"] = @"Name";
+    questionItem[@"order"] = @"1";
+    questionItem[@"1"] = @"textboxName";
 
-    [questions setObject:questionItem forKey:@"1"];
+    questions[@"1"] = questionItem;
 
     questionItem = [[NSMutableDictionary alloc] init];
-    [questionItem setObject:@"control_textarea" forKey:@"type"];
-    [questionItem setObject:@"Message" forKey:@"text"];
-    [questionItem setObject:@"2" forKey:@"order"];
-    [questionItem setObject:@"textboxMessage" forKey:@"name"];
+    questionItem[@"type"] = @"control_textarea";
+    questionItem[@"text"] = @"Message";
+    questionItem[@"order"] = @"2";
+    questionItem[@"name"] = @"textboxMessage";
     
-    [questions setObject:questionItem forKey:@"2"];
+    questions[@"2"] = questionItem;
     
     NSMutableDictionary *form = [[NSMutableDictionary alloc] init];
-    [form setObject:properties forKey:@"properties"];
-    [form setObject:questions forKey:@"questions"];
+    form[@"properties"] = properties;
+    form[@"questions"] = questions;
     
     [[SharedData sharedData].apiClient createForm:form onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206) {
                 UIAlertController *alertView = [UIAlertController
@@ -90,10 +90,10 @@
         [SVProgressHUD dismiss];
         
         if (error) {
-            NSInteger responseCode = [[error objectForKey:@"response"] integerValue];
+            NSInteger responseCode = [error[@"response"] integerValue];
             
             if (responseCode == 401) {
-                NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", [error objectForKey:@"message"]];
+                NSString *errMsg = [NSString stringWithFormat:@"%@\n Please check if your API Key's permission is 'Read Access' or 'Full Access'. You can create form with API Key for 'Full Access'", error[@"message"]];
                 
                 UIAlertController *alertView = [UIAlertController
                                                 alertControllerWithTitle:@"JotFormAPISample"

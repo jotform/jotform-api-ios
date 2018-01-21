@@ -24,7 +24,7 @@
 
 @implementation GetAppKeyViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -41,6 +41,12 @@
     self.title = @"Get App Key";
     
     [self showAlertView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    self.usernameTextField.text = @"";
+    self.passwordTextField.text = @"";
 }
 
 #pragma mark - user definition method
@@ -98,7 +104,7 @@
 - (IBAction)getAppKeyButtonClicked:(id)sender {
     // Remove cookies to avoid EU API issue.
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *cookie in [storage cookies]) {
+    for (NSHTTPCookie *cookie in storage.cookies) {
         [storage deleteCookie:cookie];
     }
     
@@ -108,17 +114,17 @@
     [SVProgressHUD showWithStatus:@"Getting app key..."];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setObject:self.usernameTextField.text forKey:@"username"];
-    [userInfo setObject:self.passwordTextField.text forKey:@"password"];
-    [userInfo setObject:@"JotFormAPISample" forKey:@"appName"];
-    [userInfo setObject:@"full" forKey:@"access"];
+    userInfo[@"username"] = self.usernameTextField.text;
+    userInfo[@"password"] = self.passwordTextField.text;
+    userInfo[@"appName"] = @"JotFormAPISample";
+    userInfo[@"access"] = @"full";
     
     [apiClient login:userInfo onSuccess:^(id result) {
         if (result) {
-            NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
             
             if (responseCode == 200 || responseCode == 206 ) {
-                NSString *appKey = [[result objectForKey:@"content"]objectForKey:@"appKey"];
+                NSString *appKey = result[@"content"][@"appKey"];
                 [self checkEuServer:appKey];
             }
         }

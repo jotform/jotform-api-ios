@@ -12,11 +12,11 @@ static SharedData *g_sharedInfo = nil;
 
 @implementation SharedData
 
-- (id)init {
-	if (self = [super init] ) {
-		[self initSharedData];
-	}
-	return self;
+- (instancetype)init {
+    if (self = [super init] ) {
+        [self initSharedData];
+    }
+    return self;
 }
 
 + (SharedData *)sharedData {

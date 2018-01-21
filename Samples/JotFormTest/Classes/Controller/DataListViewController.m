@@ -21,7 +21,7 @@
 
 @implementation DataListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -72,7 +72,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataList count];
+    return (self.dataList).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,11 +84,11 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    id object = [self.dataList objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [object objectForKey:@"id"];
+    id object = (self.dataList)[indexPath.row];
+    cell.detailTextLabel.text = object[@"id"];
     
     if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
-        cell.textLabel.text = [object objectForKey:@"title"];
+        cell.textLabel.text = object[@"title"];
     }
     
     cell.textLabel.textColor = [UIColor darkGrayColor];

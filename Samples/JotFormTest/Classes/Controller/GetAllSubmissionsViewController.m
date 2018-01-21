@@ -26,7 +26,7 @@
 
 @implementation GetAllSubmissionsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -63,23 +63,23 @@
     NSInteger limit = 0;
     
     if (self.offsetTextField.text.length > 0) {
-        offset = [self.offsetTextField.text integerValue];
+        offset = (self.offsetTextField.text).integerValue;
     }
     
     if (self.limitTextField.text.length > 0) {
-        limit = [self.limitTextField.text integerValue];
+        limit = (self.limitTextField.text).integerValue;
     }
     
-   NSString *orderby = [orderbyList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+   NSString *orderby = orderbyList[[self.pickerView selectedRowInComponent:0]];
     
    [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
        [SVProgressHUD dismiss];
        
        if (result) {
-           NSInteger responseCode = [[result objectForKey:@"responseCode"] integerValue];
+           NSInteger responseCode = [result[@"responseCode"] integerValue];
            
            if (responseCode == 200 || responseCode == 206) {
-               NSArray *formsArray = [result objectForKey:@"content"];
+               NSArray *formsArray = result[@"content"];
                [self startDataListViewController:formsArray];
            }
        }
@@ -109,14 +109,14 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [orderbyList count];
+    return orderbyList.count;
 }
 
 #pragma mark UIPickerView delegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    NSString *rowStr = [orderbyList objectAtIndex:row];
+    NSString *rowStr = orderbyList[row];
     
     return rowStr;
 }

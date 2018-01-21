@@ -23,7 +23,7 @@
 
 @implementation JotForm
 
-- (id)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
     if (self = [super init]) {
         apiKey = apikey;
         baseUrl = (euApi) ? BASE_URL_EU : BASE_URL;
@@ -45,7 +45,7 @@
         
         NSLog(@"urlstr = %@", urlStr);
         
-        if ([paramsStr length] > 0) {
+        if (paramsStr.length > 0) {
             NSLog(@"paramstr = %@",paramsStr);
         }
     }
@@ -72,8 +72,9 @@
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.com/submit/%lld/",formID];
+     [self debugLog:urlStr params:reportParams];
     
-    [self debugLog:urlStr params:reportParams];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     [manager POST:urlStr
        parameters:reportParams
@@ -90,8 +91,9 @@
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.me/submit/%lld/",formID];
-   
     [self debugLog:urlStr params:suggestionParams];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     [manager POST:urlStr
        parameters:suggestionParams
@@ -211,7 +213,7 @@
        onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = [params allKeys];
+    NSArray *keys = params.allKeys;
     
     for (NSString *key in keys) {
         [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
@@ -261,7 +263,7 @@
     NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     
     NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = [params allKeys];
+    NSArray *keys = params.allKeys;
     
     for (NSString *key in keys) {
         [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
@@ -562,7 +564,7 @@
                     onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSArray *keys = [submission allKeys];
+    NSArray *keys = submission.allKeys;
     
     NSString *subkey = @"";
     
@@ -632,7 +634,7 @@
                  onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if ([webhookURL length]) {
+    if (webhookURL.length) {
         params[@"webhookURL"] = webhookURL;
     }
     
@@ -815,8 +817,8 @@
         params[@"submission[1][first]"] = submissionName;
     }
     
-    params[@"submission[new]"] = [@(new) stringValue];
-    params[@"submission[flag]"] = [@(flag) stringValue];
+    params[@"submission[new]"] = (@(new)).stringValue;
+    params[@"submission[flag]"] = (@(flag)).stringValue;
     
     [self debugLog:urlStr params:params];
     
@@ -869,10 +871,10 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSArray *keys = [question allKeys];
+    NSArray *keys = question.allKeys;
     
     for (NSString *key in keys) {
-        [params setObject:question[key] forKey:[NSString stringWithFormat:@"question[%@]", key]];
+        params[[NSString stringWithFormat:@"question[%@]", key]] = question[key];
     }
     
     [self debugLog:urlStr params:params];
@@ -911,10 +913,10 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSArray *keys = [properties allKeys];
+    NSArray *keys = properties.allKeys;
     
     for (NSString *key in keys) {
-        [params setObject:properties[key] forKey:[NSString stringWithFormat:@"question[%@]", key]];
+        params[[NSString stringWithFormat:@"question[%@]", key]] = properties[key];
     }
     
     [self debugLog:urlStr params:params];
@@ -936,10 +938,10 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSArray *keys = [properties allKeys];
+    NSArray *keys = properties.allKeys;
     
     for (NSString *key in keys) {
-        [params setObject:properties[key] forKey:[NSString stringWithFormat:@"properties[%@]", key]];
+        params[[NSString stringWithFormat:@"properties[%@]", key]] = properties[key];
     }
     
     [self debugLog:urlStr params:params];
@@ -975,28 +977,28 @@
          onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSArray *formKeys = [form allKeys];
+    NSArray *formKeys = form.allKeys;
     
     for (NSString *formKey in formKeys) {
         if ([formKey isEqualToString:@"properties"]) {
             NSMutableDictionary *properties = form[formKey];
             
-            NSArray *propertyKeys = [properties allKeys];
+            NSArray *propertyKeys = properties.allKeys;
             
             for (NSString *propertyKey in propertyKeys) {
-                [params setObject:properties[propertyKey] forKey:[NSString stringWithFormat:@"%@[%@]", formKey, propertyKey]];
+                params[[NSString stringWithFormat:@"%@[%@]", formKey, propertyKey]] = properties[propertyKey];
             }
         } else {
             NSMutableDictionary *formItem = form[formKey];
             
-            NSArray *formItemKeys = [formItem allKeys];
+            NSArray *formItemKeys = formItem.allKeys;
             
             for (NSString *formItemKey in formItemKeys) {
                 NSMutableDictionary *fi = formItem[formItemKey];
-                NSArray *fiKeys = [fi allKeys];
+                NSArray *fiKeys = fi.allKeys;
                 
                 for (NSString *fiKey in fiKeys) {
-                    [params setObject:fi[fiKey] forKey:[NSString stringWithFormat:@"%@[%@][%@]", formKey, formItemKey, fiKey]];
+                    params[[NSString stringWithFormat:@"%@[%@][%@]", formKey, formItemKey, fiKey]] = fi[fiKey];
                 }
             }
         }
@@ -1087,23 +1089,23 @@
                                     endDate:(NSString *)endDate {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    if ([action length]) {
+    if (action.length) {
          params[@"action"] = action;
     }
     
-    if ([date length]) {
+    if (date.length) {
         params[@"date"] = date;
     }
     
-    if ([sortBy length]) {
+    if (sortBy.length) {
         params[@"sortBy"] = sortBy;
     }
     
-    if ([startDate length]) {
+    if (startDate.length) {
         params[@"startDate"] = startDate;
     }
     
-    if ([endDate length]) {
+    if (endDate.length) {
         params[@"endDate"] = endDate;
     }
     
@@ -1127,7 +1129,7 @@
     if (filter) {
         NSString *filterStr = @"%7B";
         NSInteger count = 0;
-        NSArray *keys = [filter allKeys];
+        NSArray *keys = filter.allKeys;
         NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
         
         for (NSString *key in keys) {
@@ -1146,7 +1148,7 @@
                 
                 count++;
                 
-                if (count < [filter count]) {
+                if (count < filter.count) {
                     filterStr = [filterStr stringByAppendingString:@"%2C"];
                 }
             }
@@ -1156,7 +1158,7 @@
         params[@"filter"] = filterStr;
     }
     
-    if ([orderBy length]) {
+    if (orderBy.length) {
         params[@"orderyBy"] = orderBy;
     }
     
