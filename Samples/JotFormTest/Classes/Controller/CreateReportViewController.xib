@@ -20,9 +20,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLQ-bR-eUn">
-                    <rect key="frame" x="90" y="256" width="140" height="38"/>
+                    <rect key="frame" x="90" y="221" width="140" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="38" id="qT0-qN-wTf"/>
+                        <constraint firstAttribute="height" constant="38" id="fof-Wg-F4Q"/>
                     </constraints>
                     <state key="normal" title="Create report">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -34,9 +34,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="90" id="42b-5c-Jk3"/>
-                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="top" secondItem="1" secondAttribute="top" constant="256" id="BXu-yn-oxu"/>
-                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="Cfd-gk-L4f"/>
+                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="A1F-TX-2Ix"/>
+                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="90" id="Oed-b4-za3"/>
+                <constraint firstItem="ZLQ-bR-eUn" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="eNB-7D-8y5"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="34" y="150"/>
