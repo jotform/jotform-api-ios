@@ -88,6 +88,98 @@ class JotForm {
             failureBlock(error as Error)
         })
     }
+    
+    func registerUser(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/register?apiKey=\(apiKey)"
+        debugLog(urlStr, params: userinfo)
+       
+          manager?.post(urlStr, parameters: userinfo, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getUser(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getForms(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+         manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    
+    
+    func createConditions(_ offset: Int, limit: Int, filter: Dictionary<String, Any>, orderBy: String) -> [AnyHashable: Any] {
+        var params = [AnyHashable: Any]()
+        
+        if offset != 0 {
+            params["offset"] = offset
+        }
+        if limit != 0 {
+            params["limit"] = limit
+        }
+        if  (filter.isEmpty) {
+            var filterStr = "%7B"
+            var count: Int = 0
+            let keys : Array = Array(filter.keys)
+            let set = CharacterSet.urlHostAllowed
+            
+            for key: String in keys {
+                if let filterArray: [Any] = filter[key] as? [Any] {
+                    filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+                
+                    for value: String in filterArray as! [String]{
+                        filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                        if filterArray.last as? String != value {
+                            filterStr = filterStr + ("%2C")
+                        }
+                    }
+                    filterStr = filterStr + ("%5D")
+                } else {
+                    let filterString = filter[key] as! String
+                    
+                    filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: filterString.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                    count += 1
+                    if count < (filter.count) {
+                        filterStr = filterStr + ("%2C")
+                    }
+                }
+            }
+            filterStr = filterStr + ("%7D")
+            params["filter"] = filterStr
+        }
+        if (orderBy.count) != 0 {
+            params["orderyBy"] = orderBy
+        }
+        return params
+    }
+
 
 }
 
