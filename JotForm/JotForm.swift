@@ -134,6 +134,31 @@ class JotForm {
     }
     
     
+    func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
+        var params = [AnyHashable: Any]()
+       
+        if action.count != 0 {
+           params["action"] = action
+        }
+       
+        if date.count != 0 {
+           params["date"] = date
+        }
+       
+        if sortBy.count != 0 {
+           params["sortBy"] = sortBy
+        }
+        
+        if startDate.count != 0 {
+           params["startDate"] = startDate
+        }
+        
+        if endDate.count != 0 {
+           params["endDate"] = endDate
+        }
+        
+        return params
+    }
     
     func createConditions(_ offset: Int, limit: Int, filter: Dictionary<String, Any>, orderBy: String) -> [AnyHashable: Any] {
         var params = [AnyHashable: Any]()
@@ -141,9 +166,11 @@ class JotForm {
         if offset != 0 {
             params["offset"] = offset
         }
+        
         if limit != 0 {
             params["limit"] = limit
         }
+        
         if  (filter.isEmpty) {
             var filterStr = "%7B"
             var count: Int = 0
