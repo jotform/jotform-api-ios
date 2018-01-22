@@ -209,6 +209,87 @@ class JotForm {
         })
     }
     
+    func getHistory(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getHistory(_ action: String, date: String, sortBy: String, startDate: String, endDate: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
+        let params = createHistoryQuery(action, date: date, sortBy: sortBy, startDate: startDate, endDate: endDate)
+        debugLog(urlStr, params: params)
+        
+        manager?.get(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFormQuestions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        params["qid_enabled"] = "true"
+        debugLog(urlStr, params: params)
+        
+        manager?.get(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
+        let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+        debugLog(urlStr, params: params)
+      
+        manager?.get(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
     
     
     func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
@@ -248,7 +329,7 @@ class JotForm {
         return params
     }
     
-    func createConditions(_ offset: Int, limit: Int, filter: Dictionary<String, Any>, orderBy: String) -> [AnyHashable: Any] {
+    func createConditions(_ offset: Int, limit: Int, filter: [AnyHashable: Any], orderBy: String) -> [AnyHashable: Any] {
         var params = [AnyHashable: Any]()
         
         if offset != 0 {
@@ -265,7 +346,7 @@ class JotForm {
             let keys : Array = Array(filter.keys)
             let set = CharacterSet.urlHostAllowed
             
-            for key: String in keys {
+            for key: String in keys as! [String] {
                 if let filterArray: [Any] = filter[key] as? [Any] {
                     filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
                 
