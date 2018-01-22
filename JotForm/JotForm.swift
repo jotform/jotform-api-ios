@@ -133,6 +133,94 @@ class JotForm {
         })
     }
     
+    func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/subusers?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFolders(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/users/folders?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFolder(_ folderID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/folder/\(folderID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func getReports(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/reports/apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func deleteReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/reports/\(reportID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.delete(urlStr, parameters: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getSettings(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func updateSettings(_ settings: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
+        debugLog(urlStr, params: settings)
+        
+        manager?.post(urlStr, parameters: settings, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    
+    
+    func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/report/\(reportID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
     
     func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
         var params = [AnyHashable: Any]()
