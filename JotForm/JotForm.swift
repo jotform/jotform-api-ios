@@ -290,6 +290,41 @@ class JotForm {
         })
     }
     
+    func getFormReports(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        var params = [AnyHashable: Any]()
+        let keys : Array = Array(submission.keys)
+        var subkey = ""
+          for key: String in keys as! [String] {
+            if ((key as NSString).range(of: "_")).location != NSNotFound {
+                subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
+            }
+            else {
+                subkey = "submission[\(key)]"
+            }
+            if (submission[key] != nil) {
+                params[subkey] = submission[key]
+            }
+        }
+        let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
+        debugLog(urlStr, params: params)
+      
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
     
     
     func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
