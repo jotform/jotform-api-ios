@@ -303,9 +303,10 @@ class JotForm {
     
     func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
-        let keys : Array = Array(submission.keys)
-        var subkey = ""
-          for key: String in keys as! [String] {
+        
+        if let keys = Array(submission.keys) as? [String] {
+          var subkey = ""
+          for key: String in keys {
             if ((key as NSString).range(of: "_")).location != NSNotFound {
                 subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
             }
@@ -315,6 +316,7 @@ class JotForm {
             if (submission[key] != nil) {
                 params[subkey] = submission[key]
             }
+          }
         }
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: params)
@@ -506,10 +508,13 @@ class JotForm {
     func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
-        let keys : Array = Array(question.keys)
-        for key: String in keys as! [String] {
-            params["question[\(key)]"] = question[key]
+       
+        if let keys = Array(question.keys) as? [String] {
+            for key: String in keys {
+                params["question[\(key)]"] = question[key]
+            }
         }
+        
         debugLog(urlStr, params: params)
        
         manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
@@ -551,10 +556,11 @@ class JotForm {
     func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
-        let keys: Array = Array(properties.keys)
-       
-        for key: String in keys as! [String] {
-            params["question[\(key)]"] = properties[key]
+        
+        if let keys = Array(properties.keys) as? [String] {
+            for key: String in keys {
+                params["question[\(key)]"] = properties[key]
+            }
         }
         
         debugLog(urlStr, params: params)
@@ -579,26 +585,28 @@ class JotForm {
     
     func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
-        let formKeys: Array = Array(form.keys)
-      
-        for formKey: String in formKeys as! [String] {
-            if (formKey == "properties") {
-                var properties = form[formKey] as? [AnyHashable: Any]
-                let propertyKeys: Array = Array(properties!.keys)
-                
-                for propertyKey: String in propertyKeys as! [String] {
-                    params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
-                }
-            }
-            else {
-                var formItem = form[formKey] as? [AnyHashable: Any]
-                let formItemKeys: Array = Array(formItem!.keys)
-                for formItemKey: String in formItemKeys as! [String] {
-                    var fi = formItem![formItemKey] as? [AnyHashable: Any]
-                    let fiKeys: Array = Array(fi!.keys)
+       
+        if let formKeys: Array = Array(form.keys) as? [String] {
+            for formKey: String in formKeys {
+                if (formKey == "properties") {
+                    var properties = form[formKey] as? [AnyHashable: Any]
+                    let propertyKeys: Array = Array(properties!.keys)
                     
-                    for fiKey: String in fiKeys as! [String] {
-                        params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
+                    for propertyKey: String in propertyKeys as! [String] {
+                        params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
+                    }
+                }
+                else {
+                    var formItem = form[formKey] as? [AnyHashable: Any]
+                    let formItemKeys: Array = Array(formItem!.keys)
+                    for formItemKey: String in formItemKeys as! [String] {
+                        var fi = formItem![formItemKey] as? [AnyHashable: Any]
+                        
+                        if let fiKeys: Array = Array(fi!.keys) as? [String] {
+                            for fiKey: String in fiKeys {
+                                params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
+                            }
+                        }
                     }
                 }
             }
@@ -698,27 +706,28 @@ class JotForm {
         if  (filter.isEmpty) {
             var filterStr = "%7B"
             var count: Int = 0
-            let keys : Array = Array(filter.keys)
             let set = CharacterSet.urlHostAllowed
             
-            for key: String in keys as! [String] {
-                if let filterArray: [Any] = filter[key] as? [Any] {
-                    filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
-                
-                    for value: String in filterArray as! [String]{
-                        filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                        if filterArray.last as? String != value {
+            if let keys = Array(filter.keys) as? [String] {
+                for key: String in keys{
+                    if let filterArray: [Any] = filter[key] as? [Any] {
+                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+                        
+                        for value: String in filterArray as! [String]{
+                            filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                            if filterArray.last as? String != value {
+                                filterStr = filterStr + ("%2C")
+                            }
+                        }
+                        filterStr = filterStr + ("%5D")
+                    } else {
+                        let filterString = filter[key] as! String
+                        
+                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: filterString.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                        count += 1
+                        if count < (filter.count) {
                             filterStr = filterStr + ("%2C")
                         }
-                    }
-                    filterStr = filterStr + ("%5D")
-                } else {
-                    let filterString = filter[key] as! String
-                    
-                    filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: filterString.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                    count += 1
-                    if count < (filter.count) {
-                        filterStr = filterStr + ("%2C")
                     }
                 }
             }
