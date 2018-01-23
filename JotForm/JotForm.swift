@@ -703,19 +703,19 @@ class JotForm {
             params["limit"] = limit
         }
         
-        if  (filter.isEmpty) {
+        if (filter.isEmpty) {
             var filterStr = "%7B"
             var count: Int = 0
             let set = CharacterSet.urlHostAllowed
             
             if let keys = Array(filter.keys) as? [String] {
                 for key: String in keys{
-                    if let filterArray: [Any] = filter[key] as? [Any] {
+                    if let filterArray = filter[key] as? [String] {
                         filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
                         
-                        for value: String in filterArray as! [String]{
+                        for value: String in filterArray {
                             filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                            if filterArray.last as? String != value {
+                            if filterArray.last != value {
                                 filterStr = filterStr + ("%2C")
                             }
                         }
