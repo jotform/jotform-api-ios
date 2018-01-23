@@ -35,14 +35,8 @@
 		2D11D531A37C685302F48296 /* libPods-JotForm_WatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */; };
 		9141A6F0F7D6AC21C21D45E5 /* libPods-JotForm_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */; };
 		939C64ACCEC7D8441F7009B9 /* libPods-JotForm_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */; };
-		A64817151E5FD9E5007714BA /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A64817191E5FDE17007714BA /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
 		A65B0B6420152C55008ED28F /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
 		A65B0B6620152C5C008ED28F /* JotForm-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */; };
-		A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A67F05D01E5BD7C7002E9B11 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
-		A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6B2791B1E5F7C8100703A88 /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,9 +51,7 @@
 		A65B0B6320152C54008ED28F /* JotForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JotForm.swift; sourceTree = "<group>"; };
 		A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JotForm-Bridging-Header.h"; sourceTree = "<group>"; };
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A67F05B81E5BD781002E9B11 /* JotForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A67F05CF1E5BD7C7002E9B11 /* JotForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotForm.m; sourceTree = "<group>"; };
 		A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_WatchOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3249136EE8DAE6E962D2D9 /* Pods-JotForm_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,8 +120,6 @@
 			children = (
 				A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */,
 				A65B0B6320152C54008ED28F /* JotForm.swift */,
-				A67F05B81E5BD781002E9B11 /* JotForm.h */,
-				A67F05CF1E5BD7C7002E9B11 /* JotForm.m */,
 				A67F05B91E5BD781002E9B11 /* Info.plist */,
 			);
 			path = JotForm;
@@ -155,7 +145,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A64817151E5FD9E5007714BA /* JotForm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +152,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */,
 				A65B0B6620152C5C008ED28F /* JotForm-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +160,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B2791A1E5F7C7E00703A88 /* JotForm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +437,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A64817191E5FDE17007714BA /* JotForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +444,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A67F05D01E5BD7C7002E9B11 /* JotForm.m in Sources */,
 				A65B0B6420152C55008ED28F /* JotForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +452,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B2791B1E5F7C8100703A88 /* JotForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

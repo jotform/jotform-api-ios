@@ -445,14 +445,15 @@ class JotForm {
     }
     
     func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        let urlStr: String? = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        debugLog(urlStr!, params: nil)
-        
-        manager?.get(urlStr!, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
-            successBlock(responseObject as AnyObject)
-        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
-            failureBlock(error as Error)
-        })
+        if let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+            debugLog(urlStr, params: nil)
+            
+            manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+                successBlock(responseObject as AnyObject)
+            }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+                failureBlock(error as Error)
+            })
+        }
     }
     
     func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
