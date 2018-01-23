@@ -326,11 +326,331 @@ class JotForm {
         })
     }
     
+    func getFormFiles(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/files?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getFormWebhooks(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        var params = [AnyHashable: Any]()
+      
+        if (webhookURL.count != 0) {
+            params["webhookURL"] = webhookURL
+        }
+        
+        let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
+        debugLog(urlStr, params: params)
+        
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func deleteWebhook(_ formID: Int64, webhookId webhookID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/forms/\(formID)/webhooks/\(webhookID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.delete(urlStr, parameters: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
     
     func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/report/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        params["id"] = formID
+        if title != "" {
+            params["title"] = title
+        }
+        if list_type != "" {
+            params["list_type"] = list_type
+        }
+        if fields != "" {
+            params["fields"] = fields
+        }
+        debugLog(urlStr, params: params)
+        
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func getFormProperties(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func getFormProperty(_ formID: Int64, propertyKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties/\(propertyKey)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr: String? = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        debugLog(urlStr!, params: nil)
+        
+        manager?.get(urlStr!, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.delete(urlStr, parameters: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        if submissionName != "" {
+            params["submission[1][first]"] = submissionName
+        }
+        params["submission[new]"] = "\(new)"
+        params["submission[flag]"] = "\(flag)"
+        debugLog(urlStr, params: params)
+        
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func cloneForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/clone?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.post(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func deleteFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.delete(urlStr, parameters: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        let keys : Array = Array(question.keys)
+        for key: String in keys as! [String] {
+            params["question[\(key)]"] = question[key]
+        }
+        debugLog(urlStr, params: params)
+       
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createFormQuestions(_ formID: Int64, questions: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
+        debugLog(urlStr, params: questions)
+      
+        manager?.put(urlStr, parameters: questions, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        let keys: Array = Array(properties.keys)
+       
+        for key: String in keys as! [String] {
+            params["question[\(key)]"] = properties[key]
+        }
+            
+        debugLog(urlStr, params: params)
+       
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+        var params = [AnyHashable: Any]()
+        let keys: Array = Array(properties.keys)
+       
+        for key: String in keys as! [String] {
+            params["question[\(key)]"] = properties[key]
+        }
+        
+        debugLog(urlStr, params: params)
+        
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func setMultipleFormProperties(_ formID: Int64, formProperties properties: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+        debugLog(urlStr, params: properties)
+      
+        manager?.put(urlStr, parameters: properties, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        var params = [AnyHashable: Any]()
+        let formKeys: Array = Array(form.keys)
+      
+        for formKey: String in formKeys as! [String] {
+            if (formKey == "properties") {
+                var properties = form[formKey] as? [AnyHashable: Any]
+                let propertyKeys: Array = Array(properties!.keys)
+                
+                for propertyKey: String in propertyKeys as! [String] {
+                    params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
+                }
+            }
+            else {
+                var formItem = form[formKey] as? [AnyHashable: Any]
+                let formItemKeys: Array = Array(formItem!.keys)
+                for formItemKey: String in formItemKeys as! [String] {
+                    var fi = formItem![formItemKey] as? [AnyHashable: Any]
+                    let fiKeys: Array = Array(fi!.keys)
+                    
+                    for fiKey: String in fiKeys as! [String] {
+                        params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
+                    }
+                }
+            }
+        }
+        
+        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+        debugLog(urlStr, params: params)
+      
+        manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func createForms(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+        debugLog(urlStr, params: form)
+        
+        manager?.put(urlStr, parameters: form, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+
+    func deleteForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/forms/\(formID)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+      
+        manager?.delete(urlStr, parameters: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getSystemPlan(_ planType: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/system/plan/\(planType)"
+        debugLog(urlStr, params: nil)
+       
+        manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
+            successBlock(responseObject as AnyObject)
+        }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
+            failureBlock(error as Error)
+        })
+    }
+    
+    func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/system/time"
+        debugLog(urlStr, params: nil)
+     
         manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
             successBlock(responseObject as AnyObject)
         }, failure: {(_ operation: URLSessionDataTask?, _ error: Error) -> Void in
