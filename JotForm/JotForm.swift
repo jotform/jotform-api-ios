@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AFNetworking
 
 class JotForm {
     private var manager: AFHTTPSessionManager?
