@@ -15,6 +15,16 @@ public class JotForm {
     private var baseUrl = ""
     private var debugMode = false
     
+    let BASE_URL = "https://api.jotform.com"
+    let BASE_URL_EU = "https://eu-api.jotform.com"
+    
+   public init(apiKey apikey: String, debugMode debugmode: Bool, euApi: Bool) {
+        apiKey = apikey
+        baseUrl = euApi ? BASE_URL_EU : BASE_URL
+        debugMode = debugmode
+        manager = AFHTTPSessionManager()
+    }
+    
     func debugLog(_ urlStr: String, params: Any?) {
         if debugMode {
             var paramsStr = ""
