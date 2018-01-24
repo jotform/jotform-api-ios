@@ -9,7 +9,7 @@
 import Foundation
 import AFNetworking
 
-class JotForm {
+public class JotForm {
     private var manager: AFHTTPSessionManager?
     private var apiKey = ""
     private var baseUrl = ""
@@ -32,7 +32,7 @@ class JotForm {
         }
     }
 
-    func executeGetEUapi(path: String, onSuccess successBlock:@escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+   public func executeGetEUapi(path: String, onSuccess successBlock:@escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/\(path)"
         debugLog(urlStr, params: nil)
         
@@ -43,7 +43,7 @@ class JotForm {
         })
     }
     
-    func createReport(_ formID: Int64, reportParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createReport(_ formID: Int64, reportParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "https://submit.jotform.com/submit/\(formID)/"
         debugLog(urlStr, params: reportParams)
      
@@ -56,7 +56,7 @@ class JotForm {
         })
     }
     
-    func createSuggestion(_ formID: Int64, suggestionParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createSuggestion(_ formID: Int64, suggestionParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "https://submit.jotform.me/submit/\(formID)/"
         debugLog(urlStr, params: suggestionParams)
        
@@ -69,7 +69,7 @@ class JotForm {
         })
     }
     
-    func login(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func login(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/login"
         debugLog(urlStr, params: userinfo)
        
@@ -80,7 +80,7 @@ class JotForm {
         })
     }
     
-    func logout(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func logout(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/logout?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
         manager?.post(urlStr, parameters: userinfo, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
@@ -90,7 +90,7 @@ class JotForm {
         })
     }
     
-    func registerUser(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func registerUser(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/register?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
        
@@ -101,7 +101,7 @@ class JotForm {
         })
     }
     
-    func getUser(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getUser(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
@@ -112,7 +112,7 @@ class JotForm {
         })
     }
     
-    func getForms(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getForms(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -123,7 +123,7 @@ class JotForm {
         })
     }
     
-    func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -134,7 +134,7 @@ class JotForm {
         })
     }
     
-    func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/subusers?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -145,7 +145,7 @@ class JotForm {
         })
     }
     
-    func getFolders(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFolders(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/users/folders?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -156,7 +156,7 @@ class JotForm {
         })
     }
     
-    func getFolder(_ folderID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFolder(_ folderID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/folder/\(folderID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         manager?.get(urlStr, parameters: nil, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
@@ -166,7 +166,7 @@ class JotForm {
         })
     }
 
-    func getReports(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getReports(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/reports/apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -177,7 +177,7 @@ class JotForm {
         })
     }
     
-    func deleteReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func deleteReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/reports/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -188,7 +188,7 @@ class JotForm {
         })
     }
     
-    func getSettings(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSettings(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
@@ -199,7 +199,7 @@ class JotForm {
         })
     }
     
-    func updateSettings(_ settings: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func updateSettings(_ settings: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: settings)
         
@@ -210,7 +210,7 @@ class JotForm {
         })
     }
     
-    func getHistory(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getHistory(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -221,7 +221,7 @@ class JotForm {
         })
     }
     
-    func getHistory(_ action: String, date: String, sortBy: String, startDate: String, endDate: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getHistory(_ action: String, date: String, sortBy: String, startDate: String, endDate: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
         let params = createHistoryQuery(action, date: date, sortBy: sortBy, startDate: startDate, endDate: endDate)
         debugLog(urlStr, params: params)
@@ -233,7 +233,7 @@ class JotForm {
         })
     }
     
-    func getForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
@@ -244,7 +244,7 @@ class JotForm {
         })
     }
     
-    func getFormQuestions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormQuestions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -255,7 +255,7 @@ class JotForm {
         })
     }
     
-    func getFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
@@ -266,7 +266,7 @@ class JotForm {
         })
     }
     
-    func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         params["qid_enabled"] = "true"
@@ -279,7 +279,7 @@ class JotForm {
         })
     }
 
-    func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
@@ -291,7 +291,7 @@ class JotForm {
         })
     }
     
-    func getFormReports(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormReports(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
@@ -302,7 +302,7 @@ class JotForm {
         })
     }
     
-    func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
         
         if let keys = Array(submission.keys) as? [String] {
@@ -329,7 +329,7 @@ class JotForm {
         })
     }
     
-    func getFormFiles(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormFiles(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/files?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -340,7 +340,7 @@ class JotForm {
         })
     }
     
-    func getFormWebhooks(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormWebhooks(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -351,7 +351,7 @@ class JotForm {
         })
     }
     
-    func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
       
         if (webhookURL.count != 0) {
@@ -368,7 +368,7 @@ class JotForm {
         })
     }
     
-    func deleteWebhook(_ formID: Int64, webhookId webhookID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func deleteWebhook(_ formID: Int64, webhookId webhookID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/forms/\(formID)/webhooks/\(webhookID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -379,7 +379,7 @@ class JotForm {
         })
     }
     
-    func getSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -390,7 +390,7 @@ class JotForm {
         })
     }
     
-    func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/report/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -401,7 +401,7 @@ class JotForm {
         })
     }
     
-    func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         params["id"] = formID
@@ -423,7 +423,7 @@ class JotForm {
         })
     }
 
-    func getFormProperties(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormProperties(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -434,7 +434,7 @@ class JotForm {
         })
     }
 
-    func getFormProperty(_ formID: Int64, propertyKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormProperty(_ formID: Int64, propertyKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties/\(propertyKey)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -445,7 +445,7 @@ class JotForm {
         })
     }
     
-    func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         if let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
             debugLog(urlStr, params: nil)
             
@@ -457,7 +457,7 @@ class JotForm {
         }
     }
     
-    func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -468,7 +468,7 @@ class JotForm {
         })
     }
     
-    func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         if submissionName != "" {
@@ -485,7 +485,7 @@ class JotForm {
         })
     }
     
-    func cloneForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func cloneForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/clone?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -496,7 +496,7 @@ class JotForm {
         })
     }
     
-    func deleteFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func deleteFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
        
@@ -507,7 +507,7 @@ class JotForm {
         })
     }
     
-    func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
        
@@ -526,7 +526,7 @@ class JotForm {
         })
     }
     
-    func createFormQuestions(_ formID: Int64, questions: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createFormQuestions(_ formID: Int64, questions: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         debugLog(urlStr, params: questions)
       
@@ -537,7 +537,7 @@ class JotForm {
         })
     }
     
-    func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         let keys: Array = Array(properties.keys)
@@ -555,7 +555,7 @@ class JotForm {
         })
     }
     
-    func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         
@@ -574,7 +574,7 @@ class JotForm {
         })
     }
 
-    func setMultipleFormProperties(_ formID: Int64, formProperties properties: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func setMultipleFormProperties(_ formID: Int64, formProperties properties: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         debugLog(urlStr, params: properties)
       
@@ -585,7 +585,7 @@ class JotForm {
         })
     }
     
-    func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
        
         if let formKeys: Array = Array(form.keys) as? [String] {
@@ -624,7 +624,7 @@ class JotForm {
         })
     }
 
-    func createForms(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func createForms(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         debugLog(urlStr, params: form)
         
@@ -635,7 +635,7 @@ class JotForm {
         })
     }
 
-    func deleteForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func deleteForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/forms/\(formID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
       
@@ -646,7 +646,7 @@ class JotForm {
         })
     }
     
-    func getSystemPlan(_ planType: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSystemPlan(_ planType: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/system/plan/\(planType)"
         debugLog(urlStr, params: nil)
        
@@ -657,7 +657,7 @@ class JotForm {
         })
     }
     
-    func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/system/time"
         debugLog(urlStr, params: nil)
      
@@ -668,7 +668,7 @@ class JotForm {
         })
     }
     
-    func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
+    private func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
         var params = [AnyHashable: Any]()
        
         if action.count != 0 {
@@ -694,7 +694,7 @@ class JotForm {
         return params
     }
     
-    func createConditions(_ offset: Int, limit: Int, filter: [AnyHashable: Any], orderBy: String) -> [AnyHashable: Any] {
+    private func createConditions(_ offset: Int, limit: Int, filter: [AnyHashable: Any], orderBy: String) -> [AnyHashable: Any] {
         var params = [AnyHashable: Any]()
         
         if offset != 0 {
