@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface RegisterUserViewController : UIViewController
 

@@ -9,7 +9,7 @@
 #import "CreateFormViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface CreateFormViewController ()
 

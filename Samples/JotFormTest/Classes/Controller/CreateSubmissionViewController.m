@@ -10,7 +10,7 @@
 #import "SVProgressHUD.h"
 #import "SharedData.h"
 #import "Common.h"
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface CreateSubmissionViewController ()
 

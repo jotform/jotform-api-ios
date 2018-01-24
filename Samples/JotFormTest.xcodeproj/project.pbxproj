@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BF601779FDF70065788B /* UIKit.framework */; };
 		3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BF621779FDF70065788B /* Foundation.framework */; };
-		3CD6BF651779FDF70065788B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BF641779FDF70065788B /* CoreGraphics.framework */; };
 		3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CD6BF691779FDF70065788B /* InfoPlist.strings */; };
 		3CD6BF6D1779FDF70065788B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6BF6C1779FDF70065788B /* main.m */; };
 		3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6BF701779FDF70065788B /* JotFormTestAppDelegate.m */; };
@@ -30,8 +29,9 @@
 		A62BE28F1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE28D1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib */; };
 		A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */; };
 		A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */; };
-		A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A67475EE2011542900E43826 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67475ED2011542900E43826 /* Launch.xib */; };
+		A678E87D2019236400914969 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
+		A678E880201924F900914969 /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678E87F201924F900914969 /* Swift.swift */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
 		A6F93F1D1D304B4A005EE644 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0C1D304B4A005EE644 /* AFSecurityPolicy.m */; };
@@ -63,7 +63,6 @@
 		C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF7A1879A76700FCFAEA /* SharedData.m */; };
 		C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF7E1879ADE400FCFAEA /* SVProgressHUD.bundle */; };
 		C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF801879ADE400FCFAEA /* SVProgressHUD.m */; };
-		C3B2AF841879AE0B00FCFAEA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B2AF831879AE0B00FCFAEA /* QuartzCore.framework */; };
 		C3B2AF881879AF5F00FCFAEA /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */; };
 		C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF871879AF5F00FCFAEA /* SampleListViewController.xib */; };
 		C3B2AF8D1879BBF200FCFAEA /* GetAllFormsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF8B1879BBF200FCFAEA /* GetAllFormsViewController.m */; };
@@ -106,6 +105,8 @@
 		A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateFormPropertiesViewController.m; sourceTree = "<group>"; };
 		A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFormPropertiesViewController.xib; sourceTree = "<group>"; };
 		A67475ED2011542900E43826 /* Launch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
+		A678E87E201924F800914969 /* JotFormTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotFormTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		A678E87F201924F900914969 /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
 		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
@@ -175,16 +176,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A639202A1E67689800D570B9 /* JotForm_iOS.framework in Frameworks */,
 				604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */,
-				C3B2AF841879AE0B00FCFAEA /* QuartzCore.framework in Frameworks */,
+				A678E87D2019236400914969 /* JotForm_iOS.framework in Frameworks */,
 				3CD6BFB8177A04310065788B /* libz.dylib in Frameworks */,
 				3CD6BFB6177A03F80065788B /* SystemConfiguration.framework in Frameworks */,
 				3CD6BFB4177A03EE0065788B /* MobileCoreServices.framework in Frameworks */,
 				3CD6BFB2177A03E80065788B /* CFNetwork.framework in Frameworks */,
 				3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */,
 				3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */,
-				3CD6BF651779FDF70065788B /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +310,8 @@
 				A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */,
 				A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */,
 				A67475ED2011542900E43826 /* Launch.xib */,
+				A678E87F201924F900914969 /* Swift.swift */,
+				A678E87E201924F800914969 /* JotFormTest-Bridging-Header.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -449,8 +450,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = JotFormTest;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = wang;
+				TargetAttributes = {
+					3CD6BF5C1779FDF70065788B = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 3CD6BF581779FDF70065788B /* Build configuration list for PBXProject "JotFormTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -523,6 +529,7 @@
 				C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */,
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				A6F93F201D304B4A005EE644 /* AFURLSessionManager.m in Sources */,
+				A678E880201924F900914969 /* Swift.swift in Sources */,
 				A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */,
 				C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */,
 				C3541DE0187A86CA00FE19DB /* DataListViewController.m in Sources */,
@@ -555,6 +562,7 @@
 		3CD6BF781779FDF70065788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -583,6 +591,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/Samples/JotFormTest/JotFormTest-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -595,14 +605,18 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRIP_SWIFT_SYMBOLS = NO;
 			};
 			name = Debug;
 		};
 		3CD6BF791779FDF70065788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -628,6 +642,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/Samples/JotFormTest/JotFormTest-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -635,8 +651,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -644,6 +665,8 @@
 		3CD6BF7B1779FDF70065788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
@@ -652,13 +675,15 @@
 				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
 				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
-					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JotFormTest/Classes/Controller/JotFormTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -666,6 +691,8 @@
 		3CD6BF7C1779FDF70065788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -675,13 +702,14 @@
 				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
 				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/JotFormTest/Classes/Extern/JotForm\"",
-					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JotFormTest/Classes/Controller/JotFormTest-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

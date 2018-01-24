@@ -10,7 +10,7 @@
 #import "DataListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface GetAllSubmissionsViewController () {
            NSArray *orderbyList;
@@ -72,7 +72,7 @@
     
    NSString *orderby = orderbyList[[self.pickerView selectedRowInComponent:0]];
     
-   [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
+  /* [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
        [SVProgressHUD dismiss];
        
        if (result) {
@@ -85,7 +85,7 @@
        }
     } onFailure:^(id response) {
         [SVProgressHUD dismiss];
-    }];
+    }]; */
 }
 
 - (void)startDataListViewController:(NSArray *)datalist {

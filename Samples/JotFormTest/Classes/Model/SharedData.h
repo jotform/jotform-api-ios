@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface SharedData : NSObject
 

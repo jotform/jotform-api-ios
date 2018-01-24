@@ -10,7 +10,7 @@
 #import "SampleListViewController.h"
 #import "SharedData.h"
 #import "SVProgressHUD.h"
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 #import "Common.h"
 
 @interface GetAppKeyViewController () {

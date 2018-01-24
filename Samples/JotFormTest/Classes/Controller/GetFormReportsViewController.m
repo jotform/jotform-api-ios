@@ -10,7 +10,7 @@
 #import "DataListViewController.h"
 #import "SVProgressHUD.h"
 #import "SharedData.h"
-#import <JotForm_iOS/JotForm.h>
+#import <JotForm_iOS/JotForm_iOS-Swift.h>
 #import "Common.h"
 
 @interface GetFormReportsViewController ()

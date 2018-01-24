@@ -9,7 +9,7 @@
 import Foundation
 import AFNetworking
 
-public class JotForm {
+public class JotForm: NSObject {
     private var manager: AFHTTPSessionManager?
     private var apiKey = ""
     private var baseUrl = ""
