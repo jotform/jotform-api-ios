@@ -69,7 +69,6 @@
 		9E5267298538AF028D1239B4 /* Pods-JotForm_WatchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_WatchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A64817081E5FD273007714BA /* JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65B0B6320152C54008ED28F /* JotForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JotForm.swift; sourceTree = "<group>"; };
-		A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JotForm-Bridging-Header.h"; sourceTree = "<group>"; };
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +137,6 @@
 		A67F05B71E5BD781002E9B11 /* JotForm */ = {
 			isa = PBXGroup;
 			children = (
-				A65B0B6520152C5C008ED28F /* JotForm-Bridging-Header.h */,
 				A65B0B6320152C54008ED28F /* JotForm.swift */,
 				A67F05B91E5BD781002E9B11 /* Info.plist */,
 			);
