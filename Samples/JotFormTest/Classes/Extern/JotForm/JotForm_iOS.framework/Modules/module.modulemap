@@ -1,0 +1,10 @@
+framework module JotForm_iOS {
+    umbrella header "JotForm.h"
+    header "JotForm_iOS-Swift.h"
+    requires objc
+}
+
+module JotForm_iOS.Swift {
+    header "JotForm_iOS-Swift.h"
+    requires objc
+}

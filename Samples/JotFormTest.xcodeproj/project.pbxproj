@@ -23,6 +23,7 @@
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
 		A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */; };
 		A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */; };
+		A62BCA6D201A868200F8A59A /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
 		A62BE2891F4B81BA00A68DA1 /* GetHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */; };
 		A62BE28A1F4B81BA00A68DA1 /* GetHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */; };
 		A62BE28E1F4B85B700A68DA1 /* GetFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE28C1F4B85B700A68DA1 /* GetFormPropertiesViewController.m */; };
@@ -30,7 +31,6 @@
 		A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */; };
 		A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */; };
 		A67475EE2011542900E43826 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67475ED2011542900E43826 /* Launch.xib */; };
-		A678E87D2019236400914969 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */; };
 		A678E880201924F900914969 /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678E87F201924F900914969 /* Swift.swift */; };
 		A6F93F1B1D304B4A005EE644 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */; };
 		A6F93F1C1D304B4A005EE644 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */; };
@@ -95,6 +95,7 @@
 		A61E08271F4B5C0D00330B48 /* LoadSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadSettingsViewController.h; sourceTree = "<group>"; };
 		A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadSettingsViewController.m; sourceTree = "<group>"; };
 		A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadSettingsViewController.xib; sourceTree = "<group>"; };
+		A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A62BE2861F4B81BA00A68DA1 /* GetHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetHistoryViewController.h; sourceTree = "<group>"; };
 		A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetHistoryViewController.m; sourceTree = "<group>"; };
 		A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetHistoryViewController.xib; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		A67475ED2011542900E43826 /* Launch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
 		A678E87E201924F800914969 /* JotFormTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotFormTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		A678E87F201924F900914969 /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
-		A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JotForm_iOS.framework; sourceTree = "<group>"; };
 		A6F93F0A1D304B4A005EE644 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		A6F93F0B1D304B4A005EE644 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		A6F93F0C1D304B4A005EE644 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
@@ -177,10 +177,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				604B75EC19F6E23A00B873D4 /* Security.framework in Frameworks */,
-				A678E87D2019236400914969 /* JotForm_iOS.framework in Frameworks */,
 				3CD6BFB8177A04310065788B /* libz.dylib in Frameworks */,
 				3CD6BFB6177A03F80065788B /* SystemConfiguration.framework in Frameworks */,
 				3CD6BFB4177A03EE0065788B /* MobileCoreServices.framework in Frameworks */,
+				A62BCA6D201A868200F8A59A /* JotForm_iOS.framework in Frameworks */,
 				3CD6BFB2177A03E80065788B /* CFNetwork.framework in Frameworks */,
 				3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */,
 				3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */,
@@ -329,7 +329,7 @@
 		A6F93F061D304B4A005EE644 /* JotForm */ = {
 			isa = PBXGroup;
 			children = (
-				A6D733CC1E6652EA00359510 /* JotForm_iOS.framework */,
+				A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */,
 				A6F93F071D304B4A005EE644 /* ExternalLib */,
 			);
 			path = JotForm;
