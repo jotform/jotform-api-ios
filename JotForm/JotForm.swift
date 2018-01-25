@@ -414,7 +414,9 @@ public class JotForm: NSObject {
     public func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
+        
         params["id"] = formID
+        
         if title != "" {
             params["title"] = title
         }
@@ -424,6 +426,7 @@ public class JotForm: NSObject {
         if fields != "" {
             params["fields"] = fields
         }
+        
         debugLog(urlStr, params: params)
         
         manager?.post(urlStr, parameters: params, progress: nil, success: {(_ task: URLSessionTask, _ responseObject: Any) -> Void in
@@ -722,23 +725,23 @@ public class JotForm: NSObject {
             
             if let keys = Array(filter.keys) as? [String] {
                 for key: String in keys{
-                    if let filterArray = filter[key] as? [String] {
+                    if let array = filter[key] as? [String] {
                         filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
                         
-                        for value: String in filterArray {
+                        for value: String in array {
                             filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                            if filterArray.last != value {
+                            if array.last != value {
                                 filterStr = filterStr + ("%2C")
                             }
                         }
                         filterStr = filterStr + ("%5D")
                     } else {
-                        let filterString = filter[key] as! String
-                        
-                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: filterString.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                        count += 1
-                        if count < (filter.count) {
-                            filterStr = filterStr + ("%2C")
+                        if let string = filter[key] as? String {
+                            filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                            count += 1
+                            if count < (filter.count) {
+                                filterStr = filterStr + ("%2C")
+                            }
                         }
                     }
                 }
@@ -751,8 +754,6 @@ public class JotForm: NSObject {
         }
         return params
     }
-
-
 }
 
 
