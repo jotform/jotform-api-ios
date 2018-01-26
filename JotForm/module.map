@@ -1,4 +1,4 @@
-framework module JotForm_iOS {
+ framework module JotForm_iOS {
     umbrella header "JotForm.h"
     requires objc
 }
@@ -7,3 +7,9 @@ framework module JotForm_iOS {
     umbrella header "JotForm.h"
     requires objc
 } */
+
+/*framework module JotForm_WatchOS {
+    umbrella header "JotForm.h"
+    requires objc
+} */
+
