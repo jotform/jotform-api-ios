@@ -1,15 +1,15 @@
  framework module JotForm_iOS {
-    umbrella header "JotForm.h"
+    header "JotForm.h"
     requires objc
 }
 
-/* framework module JotForm_Mac {
-    umbrella header "JotForm.h"
+ framework module JotForm_Mac {
+    header "JotForm.h"
     requires objc
-} */
+} 
 
-/*framework module JotForm_WatchOS {
-    umbrella header "JotForm.h"
+framework module JotForm_WatchOS {
+    header "JotForm.h"
     requires objc
-} */
+} 
 
