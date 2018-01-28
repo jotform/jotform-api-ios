@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD7DA4A5C24AE52ECDFE00C5CB495519"
-               BuildableName = "libPods-JotForm_iOS.a"
+               BlueprintIdentifier = "68B41BD396EBEDD040714F9280CAECE8"
+               BuildableName = "Pods_JotForm_iOS.framework"
                BlueprintName = "Pods-JotForm_iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD7DA4A5C24AE52ECDFE00C5CB495519"
-            BuildableName = "libPods-JotForm_iOS.a"
+            BlueprintIdentifier = "68B41BD396EBEDD040714F9280CAECE8"
+            BuildableName = "Pods_JotForm_iOS.framework"
             BlueprintName = "Pods-JotForm_iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

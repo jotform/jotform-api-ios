@@ -29,23 +29,12 @@
 			name = JotFormWatchUniversal;
 			productName = JotFormWatchUniversal;
 		};
-		A6CAEB56201830C10039ED82 /* AFNetworkModuleMap */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = A6CAEB59201830C20039ED82 /* Build configuration list for PBXAggregateTarget "AFNetworkModuleMap" */;
-			buildPhases = (
-				A6CAEB5A201830C80039ED82 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = AFNetworkModuleMap;
-			productName = AFNetworkModculeMap;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2D11D531A37C685302F48296 /* libPods-JotForm_WatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */; };
-		9141A6F0F7D6AC21C21D45E5 /* libPods-JotForm_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */; };
-		939C64ACCEC7D8441F7009B9 /* libPods-JotForm_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */; };
+		0C00996BDF9F11E780890156 /* Pods_JotForm_WatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40783249CFB938E71C3AFC4C /* Pods_JotForm_WatchOS.framework */; };
+		40A38A65F1258A548766C66E /* Pods_JotForm_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA03300981BD0013E005379 /* Pods_JotForm_Mac.framework */; };
+		9833B714D8AD5FF44515A2EE /* Pods_JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5975F39A65235A5C4AF2A061 /* Pods_JotForm_iOS.framework */; };
 		A61C2C36201A953700F69033 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A62BCA6A201A85FC00F8A59A /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A61C2C37201A953A00F69033 /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
 		A61C2C38201A954000F69033 /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
@@ -54,36 +43,13 @@
 		A65B0B6420152C55008ED28F /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A61C2C30201A951500F69033 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67F05AC1E5BD781002E9B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6CAEB56201830C10039ED82;
-			remoteInfo = AFNetworkModuleMap;
-		};
-		A61C2C32201A951B00F69033 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67F05AC1E5BD781002E9B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6CAEB56201830C10039ED82;
-			remoteInfo = AFNetworkModuleMap;
-		};
-		A6CAEB5B201830DB0039ED82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67F05AC1E5BD781002E9B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6CAEB56201830C10039ED82;
-			remoteInfo = AFNetworkModculeMap;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F944815899813F5DD8643C /* Pods-JotForm_Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		3BA03300981BD0013E005379 /* Pods_JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40783249CFB938E71C3AFC4C /* Pods_JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		474B6B3698DF3E798E972AEC /* Pods-JotForm_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		5975F39A65235A5C4AF2A061 /* Pods_JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A006D5931E46F0563FEAC73 /* Pods-JotForm_WatchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_WatchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.release.xcconfig"; sourceTree = "<group>"; };
-		75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		918648BC704A1606FD49691F /* Pods-JotForm_Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.release.xcconfig"; sourceTree = "<group>"; };
 		9E5267298538AF028D1239B4 /* Pods-JotForm_WatchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_WatchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A62BCA6A201A85FC00F8A59A /* JotForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
@@ -92,7 +58,6 @@
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_WatchOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3249136EE8DAE6E962D2D9 /* Pods-JotForm_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D11D531A37C685302F48296 /* libPods-JotForm_WatchOS.a in Frameworks */,
+				0C00996BDF9F11E780890156 /* Pods_JotForm_WatchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				939C64ACCEC7D8441F7009B9 /* libPods-JotForm_iOS.a in Frameworks */,
+				9833B714D8AD5FF44515A2EE /* Pods_JotForm_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9141A6F0F7D6AC21C21D45E5 /* libPods-JotForm_Mac.a in Frameworks */,
+				40A38A65F1258A548766C66E /* Pods_JotForm_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,9 +92,9 @@
 		4E06AAC4A79338CFB3C71199 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */,
-				ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */,
-				1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */,
+				3BA03300981BD0013E005379 /* Pods_JotForm_Mac.framework */,
+				40783249CFB938E71C3AFC4C /* Pods_JotForm_WatchOS.framework */,
+				5975F39A65235A5C4AF2A061 /* Pods_JotForm_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,7 +186,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A61C2C33201A951B00F69033 /* PBXTargetDependency */,
 			);
 			name = JotForm_WatchOS;
 			productName = JotForm_Watch;
@@ -242,7 +206,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A6CAEB5C201830DB0039ED82 /* PBXTargetDependency */,
 			);
 			name = JotForm_iOS;
 			productName = JotForm;
@@ -263,7 +226,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A61C2C31201A951500F69033 /* PBXTargetDependency */,
 			);
 			name = JotForm_Mac;
 			productName = JotForm_Mac;
@@ -301,10 +263,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
-					A6CAEB56201830C10039ED82 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = A67F05AF1E5BD781002E9B11 /* Build configuration list for PBXProject "JotForm" */;
@@ -324,7 +282,6 @@
 				A6B279021E5F7C0100703A88 /* JotForm_Mac */,
 				A64817071E5FD273007714BA /* JotForm_WatchOS */,
 				A6BB21D91E60E44600623493 /* JotFormWatchUniversal */,
-				A6CAEB56201830C10039ED82 /* AFNetworkModuleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -461,19 +418,6 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 1. Build Device and Simulator versions on watchOS\nxcodebuild OTHER_CFLAGS=\"-fembed-bitcode\" -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_WatchOS\"  -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch Series 2 - 42mm' clean build\nxcodebuild OTHER_CFLAGS=\"-fembed-bitcode\" -workspace \"${PROJECT_NAME}.xcworkspace\" -scheme \"${PROJECT_NAME}_WatchOS\" -sdk watchos clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_WatchOS.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/watchOS\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\" \"${BUILD_DIR}/${CONFIGURATION}-watchsimulator/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\" \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}_WatchOS.framework/${PROJECT_NAME}_WatchOS\"\n\n# Step 4. Convenience step to copy the framework to the project's directory\nmkdir -p \"${TMPDIR}/${PROJECT_NAME}_WatchOS/Frameworks/watchOS\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/watchOS/${PROJECT_NAME}_WatchOS.framework\" \"${TMPDIR}/${PROJECT_NAME}_WatchOS/Frameworks/watchOS\"\n\n\n# Step 6. Create .tar.gz file for posting on the binary repository\ncd \"${TMPDIR}\"\n\n# We nest the framework inside a Frameworks folder so that it unarchives correctly\ntar -zcf \"${PROJECT_NAME}_WatchOS.framework.tar.gz\" \"${PROJECT_NAME}_WatchOS/Frameworks/\"\nmv \"${PROJECT_NAME}_WatchOS.framework.tar.gz\" \"${PROJECT_DIR}/\"\n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
 		};
-		A6CAEB5A201830C80039ED82 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This if-statement means we'll only run the main script if the AFNetworkModuleMap directory doesn't exist\n# Because otherwise the rest of the script causes a full recompile for anything where AFNetworkModule is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger the rest of the script to run\nif [ -d \"${BUILT_PRODUCTS_DIR}/AFNetworkModuleMap\" ]; then\necho \"${BUILT_PRODUCTS_DIR}/AFNetworkModuleMap directory already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\n\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/AFNetworkModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/AFNetworkModuleMap/module.modulemap\"\nmodule AFNetworking [system]  {\n    header \"${SRCROOT}/Pods/AFNetworking/AFNetworking/AFHTTPSessionManager.h\"\n    export *\n}\nEOF";
-		};
 		DFA5FB318AD77D64D6735563 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,24 +464,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A61C2C31201A951500F69033 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6CAEB56201830C10039ED82 /* AFNetworkModuleMap */;
-			targetProxy = A61C2C30201A951500F69033 /* PBXContainerItemProxy */;
-		};
-		A61C2C33201A951B00F69033 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6CAEB56201830C10039ED82 /* AFNetworkModuleMap */;
-			targetProxy = A61C2C32201A951B00F69033 /* PBXContainerItemProxy */;
-		};
-		A6CAEB5C201830DB0039ED82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6CAEB56201830C10039ED82 /* AFNetworkModuleMap */;
-			targetProxy = A6CAEB5B201830DB0039ED82 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A6288DE91E5CE34E007EB753 /* Debug */ = {
@@ -899,24 +825,6 @@
 			};
 			name = Release;
 		};
-		A6CAEB57201830C10039ED82 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx watchsimulator watchos";
-			};
-			name = Debug;
-		};
-		A6CAEB58201830C10039ED82 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx watchsimulator watchos";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -970,15 +878,6 @@
 			buildConfigurations = (
 				A6BB21DB1E60E44600623493 /* Debug */,
 				A6BB21DC1E60E44600623493 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A6CAEB59201830C20039ED82 /* Build configuration list for PBXAggregateTarget "AFNetworkModuleMap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6CAEB57201830C10039ED82 /* Debug */,
-				A6CAEB58201830C10039ED82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

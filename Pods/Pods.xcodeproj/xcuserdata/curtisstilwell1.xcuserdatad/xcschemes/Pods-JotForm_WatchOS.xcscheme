@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "710D829B2004D1BA2ED7A3858024A0C7"
-               BuildableName = "libPods-JotForm_WatchOS.a"
+               BlueprintIdentifier = "8076C95DD57252C9A7A5E6E957F1FF7A"
+               BuildableName = "Pods_JotForm_WatchOS.framework"
                BlueprintName = "Pods-JotForm_WatchOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "710D829B2004D1BA2ED7A3858024A0C7"
-            BuildableName = "libPods-JotForm_WatchOS.a"
+            BlueprintIdentifier = "8076C95DD57252C9A7A5E6E957F1FF7A"
+            BuildableName = "Pods_JotForm_WatchOS.framework"
             BlueprintName = "Pods-JotForm_WatchOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
