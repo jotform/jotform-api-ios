@@ -111,18 +111,18 @@
 		0F98E90902B76C93480659758452CBF9 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		1124F4752A1B9EE66E0CBE20CA8339E6 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		1CEBA76CA0893ABF636BDE94FBE0F6DA /* Alamofire-watchOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Alamofire-watchOS-dummy.m"; path = "../Alamofire-watchOS/Alamofire-watchOS-dummy.m"; sourceTree = "<group>"; };
-		1D904F16B64A67F21EF35F8C5554DBA6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = "Alamofire-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D904F16B64A67F21EF35F8C5554DBA6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8CCB3DD0CA6785FF52064AE150564A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Alamofire-watchOS/Info.plist"; sourceTree = "<group>"; };
 		22DA934195D8E653C69DD92C42726AB6 /* Pods-JotForm_Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JotForm_Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		25E9D5A847D0FEA6D4AA03DCA4E618D7 /* Pods-JotForm_WatchOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JotForm_WatchOS-umbrella.h"; sourceTree = "<group>"; };
 		2F1F70AAAEA43A8FAACBBD588B135CEA /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		302ECCEB1D0D428D4D005B03933BA152 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = "Alamofire-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		302ECCEB1D0D428D4D005B03933BA152 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		316620C4D7AD2D4C0625CE86E49CB45C /* Pods-JotForm_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JotForm_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		3A9FCD8536E160FDE9BD7F99F6A9AF2D /* Alamofire-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Alamofire-macOS.xcconfig"; path = "../Alamofire-macOS/Alamofire-macOS.xcconfig"; sourceTree = "<group>"; };
 		3AF6DEFC33A4DB5D9A2BB7963E1F5FB0 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		3CA9E1BBDD372CAF5C3591BDF669FBA0 /* Alamofire-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-macOS-prefix.pch"; path = "../Alamofire-macOS/Alamofire-macOS-prefix.pch"; sourceTree = "<group>"; };
 		3D5194D57CCEC3C21D84F9F05C37377D /* Pods-JotForm_Mac-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JotForm_Mac-acknowledgements.plist"; sourceTree = "<group>"; };
-		453B20DC86F43D550842844BDECC3F66 /* Pods-JotForm_Mac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-JotForm_Mac.modulemap"; sourceTree = "<group>"; };
+		453B20DC86F43D550842844BDECC3F66 /* Pods-JotForm_Mac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-JotForm_Mac.modulemap"; sourceTree = "<group>"; };
 		46B4568C98C2C20DA354D950175979A0 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		48AD0B328187DDABD71104BB75947907 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		4A0A69AB189322C4C971B0C5F46E32E5 /* Alamofire-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-macOS-umbrella.h"; path = "../Alamofire-macOS/Alamofire-macOS-umbrella.h"; sourceTree = "<group>"; };
@@ -130,27 +130,27 @@
 		615F8FD0A7B545A7CEF125A512EC1D2A /* Pods-JotForm_WatchOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JotForm_WatchOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		623AEFAF9734E1161B9F1D1232FDDA3A /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		62E2E287B89B326AA69805234FAECF8F /* Alamofire-watchOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-watchOS-umbrella.h"; path = "../Alamofire-watchOS/Alamofire-watchOS-umbrella.h"; sourceTree = "<group>"; };
-		688F523CEACCDCC093023A568A181791 /* Alamofire-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Alamofire-macOS.modulemap"; path = "../Alamofire-macOS/Alamofire-macOS.modulemap"; sourceTree = "<group>"; };
+		688F523CEACCDCC093023A568A181791 /* Alamofire-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Alamofire-macOS.modulemap"; path = "../Alamofire-macOS/Alamofire-macOS.modulemap"; sourceTree = "<group>"; };
 		68C9D36AE42FD34386A1972653827CFD /* Pods-JotForm_iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JotForm_iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6D9AAC2D5683199CDECFED719A1EBF5B /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		78FE2D5A9B1A01DDF3E41E7FF57F673F /* Alamofire-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Alamofire-iOS.modulemap"; sourceTree = "<group>"; };
+		78FE2D5A9B1A01DDF3E41E7FF57F673F /* Alamofire-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Alamofire-iOS.modulemap"; sourceTree = "<group>"; };
 		7954F41FFD974CA29171C1BD8DAAE940 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		7B35968BAAE089D1C8EB79A55BAEB899 /* Pods-JotForm_WatchOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JotForm_WatchOS-resources.sh"; sourceTree = "<group>"; };
 		7BF7A8F8A1BDB3A41ACAD51DC3A9A4CE /* Pods-JotForm_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JotForm_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		803D8E1924C0B081144D4808DFC98BB3 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		80619D0883FD30E28CAE86ED9FBFE484 /* Pods_JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JotForm_WatchOS.framework; path = "Pods-JotForm_WatchOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80619D0883FD30E28CAE86ED9FBFE484 /* Pods_JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8291C5D0FFC132B3DF773653039808F0 /* Pods-JotForm_Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JotForm_Mac.release.xcconfig"; sourceTree = "<group>"; };
-		890EB2E53F169BA53208629108F75732 /* Pods_JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JotForm_iOS.framework; path = "Pods-JotForm_iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		890EB2E53F169BA53208629108F75732 /* Pods_JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4A9868866B982C00809588B2C148D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8E06FBC500026F3A22A7DA680AE47AD2 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		8FB3FC07F5F3B5E5657C36F4304EA9C5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Alamofire-macOS/Info.plist"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9574C6B443BDF4F094D116F5D727AE4E /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		96C07BFBC48792472B2FB07851D50293 /* Alamofire-watchOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Alamofire-watchOS.xcconfig"; path = "../Alamofire-watchOS/Alamofire-watchOS.xcconfig"; sourceTree = "<group>"; };
 		97C7A252250A1AEA57EFFECC0B4BF97B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99816C2BE55DC36D947B136DC13E9E90 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = "Alamofire-watchOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99816C2BE55DC36D947B136DC13E9E90 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A61C1817156F1BD2BDF0EE35AF4BF1F /* Pods-JotForm_WatchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JotForm_WatchOS.debug.xcconfig"; sourceTree = "<group>"; };
-		9B6BD167945F67852423891E90FE54D0 /* Alamofire-watchOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Alamofire-watchOS.modulemap"; path = "../Alamofire-watchOS/Alamofire-watchOS.modulemap"; sourceTree = "<group>"; };
+		9B6BD167945F67852423891E90FE54D0 /* Alamofire-watchOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Alamofire-watchOS.modulemap"; path = "../Alamofire-watchOS/Alamofire-watchOS.modulemap"; sourceTree = "<group>"; };
 		9B9221D8E3337BF74118E4718BE4B66C /* Pods-JotForm_Mac-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JotForm_Mac-resources.sh"; sourceTree = "<group>"; };
 		A0AED0AEBA9A9DB6BE2F383D794F8159 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		A3A4314188D7F6F250E51399C5929E86 /* Pods-JotForm_Mac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JotForm_Mac-dummy.m"; sourceTree = "<group>"; };
@@ -162,17 +162,17 @@
 		C383E5E5DD4CAEA6F5E09BF0A6CF5764 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C55AB5E9A721C76199AA68954190A6C8 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		C580257441375615EE889A69E261A248 /* Pods-JotForm_iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JotForm_iOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		C659198DCF8DE021B1001453F9F974E6 /* Pods-JotForm_iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-JotForm_iOS.modulemap"; sourceTree = "<group>"; };
+		C659198DCF8DE021B1001453F9F974E6 /* Pods-JotForm_iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-JotForm_iOS.modulemap"; sourceTree = "<group>"; };
 		CB85771D688B2225E477C9516FB561B9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D096305A283258E90D83B9C9F956F5CE /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		D2BBBE79C13088AB75CE28B2A6CE4C9D /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		D80C591E8F94A92E2A8D645242CE633B /* Pods-JotForm_Mac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JotForm_Mac-umbrella.h"; sourceTree = "<group>"; };
-		DA3DE37545F7B53A83B8921F9946D42C /* Pods-JotForm_WatchOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-JotForm_WatchOS.modulemap"; sourceTree = "<group>"; };
+		DA3DE37545F7B53A83B8921F9946D42C /* Pods-JotForm_WatchOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-JotForm_WatchOS.modulemap"; sourceTree = "<group>"; };
 		DA75FEC1E27D44BD269DA9129E0EB7F0 /* Pods-JotForm_Mac-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JotForm_Mac-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DAC2273AE837CBA9DA768045282D35F6 /* Alamofire-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-iOS-prefix.pch"; sourceTree = "<group>"; };
 		DC755B3A40021AA84CC2AB0903EE9A6B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE6E6CA51A42EFE8C3F5568367CE7968 /* Alamofire-watchOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-watchOS-prefix.pch"; path = "../Alamofire-watchOS/Alamofire-watchOS-prefix.pch"; sourceTree = "<group>"; };
-		E66C732721F1D260CBB03624BBCCDA68 /* Pods_JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JotForm_Mac.framework; path = "Pods-JotForm_Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E66C732721F1D260CBB03624BBCCDA68 /* Pods_JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AAB713003A6A00F204748E892AF2AF /* Pods-JotForm_iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JotForm_iOS-resources.sh"; sourceTree = "<group>"; };
 		FCB953D142077B9C4457FB09E39AFC22 /* Pods-JotForm_WatchOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JotForm_WatchOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -404,7 +404,6 @@
 				D2BBBE79C13088AB75CE28B2A6CE4C9D /* Validation.swift */,
 				23593606C30A3F61BEA131FDE6238204 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -741,6 +740,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire-watchOS/Alamofire-watchOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -837,6 +837,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Alamofire-macOS/Alamofire-macOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -867,6 +868,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -901,6 +903,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -936,6 +939,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire-iOS/Alamofire-iOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -969,6 +973,7 @@
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1001,6 +1006,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire-watchOS/Alamofire-watchOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1034,6 +1040,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1070,6 +1077,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Alamofire-macOS/Alamofire-macOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1102,6 +1110,7 @@
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1135,6 +1144,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1227,6 +1237,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire-iOS/Alamofire-iOS.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
