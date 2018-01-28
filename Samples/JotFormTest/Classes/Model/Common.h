@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Interlogy, LLC. All rights reserved.
 //
 
-#define API_KEY @""
+#define API_KEY ""
 #define EU_API  NO
 
 typedef NS_ENUM(NSInteger, DataListType) {
