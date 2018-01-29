@@ -71,8 +71,10 @@
     
     NSString *orderby = orderbyList[[self.pickerView selectedRowInComponent:0]];
     
-   /* [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result){
-       
+    NSDictionary *filter = [[NSDictionary alloc]init];
+    
+    [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:filter onSuccess:^(id result){
+        
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -86,7 +88,7 @@
   
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
-    }]; */
+    }];
 }
 
 - (void)startDataListViewController:(NSArray *)datalist {

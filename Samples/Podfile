@@ -1,0 +1,7 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target :JotFormTest do
+       use_frameworks!
+       platform :ios, '9.0'
+       pod 'Alamofire', '~> 4.5'
+end

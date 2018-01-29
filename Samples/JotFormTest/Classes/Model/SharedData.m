@@ -37,7 +37,7 @@ static SharedData *g_sharedInfo = nil;
 }
 
 - (void)initAPIClient:(NSString *)apiKey euApi:(BOOL)euApi {
-    self.apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:NO euApi:euApi];
+    self.apiClient = [[JotForm alloc] initWithApiKey:apiKey debugMode:YES euApi:euApi];
 }
 
 - (NSArray *)getFormOrderbyList {

@@ -196,6 +196,7 @@ SWIFT_CLASS("_TtC11JotForm_iOS7JotForm")
 - (void)registerUser:(NSDictionary<NSString *, id> * _Nonnull)userinfo onSuccess:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
 - (void)getUser:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
 - (void)getForms:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
+- (void)getForms:(NSInteger)offset limit:(NSInteger)limit orderBy:(NSString * _Nonnull)orderBy filter:(NSDictionary<NSString *, id> * _Nonnull)filter onSuccess:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
 - (void)getSubmissions:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
 - (void)getSubmissions:(NSInteger)offset limit:(NSInteger)limit orderBy:(NSString * _Nonnull)orderBy filter:(NSDictionary<NSString *, id> * _Nonnull)filter onSuccess:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;
 - (void)getSubusers:(void (^ _Nonnull)(id _Nonnull))successBlock onFailure:(void (^ _Nonnull)(NSError * _Nonnull))failureBlock;

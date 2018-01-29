@@ -167,6 +167,23 @@ public class JotForm: NSObject {
         }
     }
     
+    public func getForms(_ offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+        let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+        debugLog(urlStr, params: params)
+        
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
+            }
+        }
+    }
+    
     public func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)

@@ -1,0 +1,6 @@
+framework module Pods_JotFormTest {
+  umbrella header "Pods-JotFormTest-umbrella.h"
+
+  export *
+  module * { export * }
+}
