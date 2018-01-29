@@ -212,21 +212,13 @@
        onSuccess:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
-    NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = params.allKeys;
     
-    for (NSString *key in keys) {
-        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
-    }
-    
-    NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@&%@", baseUrl,apiKey,paramstr];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr
-      parameters:nil
+      parameters:params
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
