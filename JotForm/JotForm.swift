@@ -183,6 +183,25 @@ public class JotForm: NSObject {
         }
     }
     
+    public func getSubmissions(_ offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        
+        let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
+        let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+
+        debugLog(urlStr, params: nil)
+        
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
+            }
+        }
+    }
+    
     public func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/subusers?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
@@ -316,7 +335,7 @@ public class JotForm: NSObject {
         let params = createHistoryQuery(action, date: date, sortBy: sortBy, startDate: startDate, endDate: endDate)
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)

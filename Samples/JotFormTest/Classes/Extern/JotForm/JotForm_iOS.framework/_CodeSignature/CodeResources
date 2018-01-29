@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/JotForm_iOS-Swift.h</key>
 		<data>
-		H/fCg7HnBFDuqcOZ1KUdYTSbXSM=
+		1iZh0hkFbXJA+We6O5YvuX66brQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftmodule</key>
 		<data>
-		yhj+EUL+Chf4LG7knZcd7QdAeLQ=
+		5swsdyNHEAorOQCA+inNDzkhsHw=
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		2o+dNFibafsFS0qrnIEkW9chhH8=
+		RCTugauoyGFnLtG/3PeGbZM+9GM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -54,11 +54,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			H/fCg7HnBFDuqcOZ1KUdYTSbXSM=
+			1iZh0hkFbXJA+We6O5YvuX66brQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			hg3Klwk54M3g8+jHXfdhGX0/tcEv/fk7Bb+snE6pbvA=
+			3KppoTX9tiUzzbE0tyMFZ/BpFxDvnONM5iHoY0jj5/I=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftdoc</key>
@@ -76,11 +76,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yhj+EUL+Chf4LG7knZcd7QdAeLQ=
+			5swsdyNHEAorOQCA+inNDzkhsHw=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZU9KO1BE3zcxW60Sgzj2bzoRyheTvgjv3tCF3nGMwfw=
+			AXCEbAv+lVJnZ7MlIhVOHit9tA9I8L4APgU/tx8NUOA=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
@@ -98,11 +98,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2o+dNFibafsFS0qrnIEkW9chhH8=
+			RCTugauoyGFnLtG/3PeGbZM+9GM=
 			</data>
 			<key>hash2</key>
 			<data>
-			a00t6DGPId4W+7laCuykKbUg73ICXM0oEqzZG14cmy8=
+			8dOsyGcTmJe2Gp87VXxtncLA8Qkq/GHQlytSzZ4Ve0Q=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
