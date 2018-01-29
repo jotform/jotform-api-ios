@@ -215,7 +215,7 @@
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
     
-    [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:params];
     
     [manager GET:urlStr
       parameters:params
@@ -254,20 +254,12 @@
 {
     NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     
-    NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = params.allKeys;
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@",baseUrl,apiKey];
     
-    for (NSString *key in keys) {
-        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
-    }
-    
-    NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@&%@",baseUrl,apiKey,paramstr];
-    
-    [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:params];
     
     [manager GET:urlStr
-      parameters:nil
+      parameters:params
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
