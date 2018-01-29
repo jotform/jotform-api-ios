@@ -16,7 +16,7 @@ public class JotForm: NSObject {
     let BASE_URL = "https://api.jotform.com"
     let BASE_URL_EU = "https://eu-api.jotform.com"
     
-   public init(apiKey apikey: String, debugMode debugmode: Bool, euApi: Bool) {
+    public init(apiKey apikey: String, debugMode debugmode: Bool, euApi: Bool) {
         apiKey = apikey
         baseUrl = euApi ? BASE_URL_EU : BASE_URL
         debugMode = debugmode
@@ -25,7 +25,7 @@ public class JotForm: NSObject {
     func debugLog(_ urlStr: String, params: Any?) {
         if debugMode {
             var paramsStr = ""
-          
+            
             if (params is String) {
                 paramsStr = params as? String ?? ""
             } else if (params is [AnyHashable: Any]) {
@@ -38,482 +38,462 @@ public class JotForm: NSObject {
             }
         }
     }
-
-    public func executeGetEUapi(path: String, onSuccess successBlock:@escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    
+    public func executeGetEUapi(path: String, onSuccess successBlock:@escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/\(path)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func createReport(_ formID: Int64, reportParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func createReport(_ formID: Int64, reportParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id : AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "https://submit.jotform.com/submit/\(formID)/"
         debugLog(urlStr, params: reportParams)
-     
-        Alamofire.request(urlStr, method: .post, parameters: reportParams as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .post, parameters: reportParams as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func createSuggestion(_ formID: Int64, suggestionParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func createSuggestion(_ formID: Int64, suggestionParams: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "https://submit.jotform.me/submit/\(formID)/"
         debugLog(urlStr, params: suggestionParams)
         
-        Alamofire.request(urlStr, method: .post, parameters: suggestionParams as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: suggestionParams as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func login(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func login(_ userinfo: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/login"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func logout(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func logout(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/logout?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func registerUser(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func registerUser(_ userinfo: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/register?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getUser(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getUser(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getForms(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getForms(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getSubmissions(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getSubusers(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/subusers?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFolders(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFolders(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/users/folders?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFolder(_ folderID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFolder(_ folderID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/folder/\(folderID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func getReports(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/user/reports/apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func deleteReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getReports(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/user/reports/apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
+            }
+        }
+    }
+    
+    public func deleteReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/reports/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getSettings(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getSettings(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func updateSettings(_ settings: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func updateSettings(_ settings: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: settings)
         
-        Alamofire.request(urlStr, method: .post, parameters: settings as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: settings as? Dictionary, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getHistory(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getHistory(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getHistory(_ action: String, date: String, sortBy: String, startDate: String, endDate: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getHistory(_ action: String, date: String, sortBy: String, startDate: String, endDate: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
         let params = createHistoryQuery(action, date: date, sortBy: sortBy, startDate: startDate, endDate: endDate)
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormQuestions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormQuestions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         params["qid_enabled"] = "true"
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
-
-    public func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    
+    public func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormReports(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormReports(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func createFormSubmissions(_ formID: Int64, submission: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
         
         if let keys = Array(submission.keys) as? [String] {
-          var subkey = ""
-          for key: String in keys {
-            if ((key as NSString).range(of: "_")).location != NSNotFound {
-                subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
+            var subkey = ""
+            for key: String in keys {
+                if ((key as NSString).range(of: "_")).location != NSNotFound {
+                    subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
+                }
+                else {
+                    subkey = "submission[\(key)]"
+                }
+                if (submission[key] != nil) {
+                    params[subkey] = submission[key]
+                }
             }
-            else {
-                subkey = "submission[\(key)]"
-            }
-            if (submission[key] != nil) {
-                params[subkey] = submission[key]
-            }
-          }
         }
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: params)
-      
-        Alamofire.request(urlStr, method: .post, parameters:params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .post, parameters:params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormFiles(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormFiles(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/files?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getFormWebhooks(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormWebhooks(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [AnyHashable: Any]()
-      
+        
         if (webhookURL.count != 0) {
             params["webhookURL"] = webhookURL
         }
@@ -521,70 +501,67 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func deleteWebhook(_ formID: Int64, webhookId webhookID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func deleteWebhook(_ formID: Int64, webhookId webhookID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/forms/\(formID)/webhooks/\(webhookID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getReport(_ reportID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/report/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         var params = [AnyHashable: Any]()
         
@@ -602,432 +579,422 @@ public class JotForm: NSObject {
         
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
+            case .success(let data):
+                successBlock(data as AnyObject)
                 break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func getFormProperties(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func getFormProperty(_ formID: Int64, propertyKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/properties/\(propertyKey)?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-      
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
+            case .failure(let error):
+                failureBlock(error as Error)
                 break
             }
         }
     }
     
-    public func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
+    public func getFormProperties(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
+            }
+        }
+    }
+    
+    public func getFormProperty(_ formID: Int64, propertyKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+        let urlStr = "\(baseUrl)/form/\(formID)/properties/\(propertyKey)?apiKey=\(apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
+            }
+        }
+    }
+    
+    public func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         if let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
             debugLog(urlStr, params: nil)
             
-            Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
                 switch(response.result) {
-                case .success(_):
-                    successBlock(response as AnyObject)
+                case .success(let data):
+                    successBlock(data as AnyObject)
                     break
-                    
-                case .failure(_):
-                    failureBlock(response as AnyObject)
+                case .failure(let error):
+                    failureBlock(error as Error)
                     break
                 }
             }
         }
     }
-    
-    public func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
-        var params = [AnyHashable: Any]()
-        if submissionName != "" {
-            params["submission[1][first]"] = submissionName
-        }
-        params["submission[new]"] = "\(new)"
-        params["submission[flag]"] = "\(flag)"
-        debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func cloneForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/clone?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-        
-        Alamofire.request(urlStr, method: .post, parameters:nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func deleteFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
-        var params = [AnyHashable: Any]()
-       
-        if let keys = Array(question.keys) as? [String] {
-            for key: String in keys {
-                params["question[\(key)]"] = question[key]
-            }
-        }
-        
-        debugLog(urlStr, params: params)
-       
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func createFormQuestions(_ formID: Int64, questions: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
-        debugLog(urlStr, params: questions)
-        
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
-        var params = [AnyHashable: Any]()
-        let keys: Array = Array(properties.keys)
-       
-        for key: String in keys as! [String] {
-            params["question[\(key)]"] = properties[key]
-        }
+        public func deleteSubmission(_ sid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
+            debugLog(urlStr, params: nil)
             
-        debugLog(urlStr, params: params)
-        
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
+            Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
             }
         }
-    }
-    
-    public func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
-        var params = [AnyHashable: Any]()
         
-        if let keys = Array(properties.keys) as? [String] {
-            for key: String in keys {
+        public func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
+            var params = [AnyHashable: Any]()
+            if submissionName != "" {
+                params["submission[1][first]"] = submissionName
+            }
+            params["submission[new]"] = "\(new)"
+            params["submission[flag]"] = "\(flag)"
+            debugLog(urlStr, params: params)
+            
+            Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func cloneForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/clone?apiKey=\(apiKey)"
+            debugLog(urlStr, params: nil)
+            
+            Alamofire.request(urlStr, method: .post, parameters:nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func deleteFormQuestion(_ formID: Int64, questionID qid: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
+            debugLog(urlStr, params: nil)
+            
+            Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func createFormQuestion(_ formID: Int64, question: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
+            var params = [AnyHashable: Any]()
+            
+            if let keys = Array(question.keys) as? [String] {
+                for key: String in keys {
+                    params["question[\(key)]"] = question[key]
+                }
+            }
+            
+            debugLog(urlStr, params: params)
+            
+            Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func createFormQuestions(_ formID: Int64, questions: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
+            debugLog(urlStr, params: questions)
+            
+            Alamofire.request(urlStr, method: .put, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
+            var params = [AnyHashable: Any]()
+            let keys: Array = Array(properties.keys)
+            
+            for key: String in keys as! [String] {
                 params["question[\(key)]"] = properties[key]
             }
-        }
-        
-        debugLog(urlStr, params: params)
-        
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func setMultipleFormProperties(_ formID: Int64, formProperties properties: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
-        debugLog(urlStr, params: properties)
-        
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        var params = [AnyHashable: Any]()
-       
-        if let formKeys: Array = Array(form.keys) as? [String] {
-            for formKey: String in formKeys {
-                if (formKey == "properties") {
-                    var properties = form[formKey] as? [AnyHashable: Any]
-                    let propertyKeys: Array = Array(properties!.keys)
-                    
-                    for propertyKey: String in propertyKeys as! [String] {
-                        params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
-                    }
-                }
-                else {
-                    var formItem = form[formKey] as? [AnyHashable: Any]
-                    let formItemKeys: Array = Array(formItem!.keys)
-                    for formItemKey: String in formItemKeys as! [String] {
-                        var fi = formItem![formItemKey] as? [AnyHashable: Any]
-                        
-                        if let fiKeys: Array = Array(fi!.keys) as? [String] {
-                            for fiKey: String in fiKeys {
-                                params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
-        debugLog(urlStr, params: params)
-      
-        
-        Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func createForms(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
-        debugLog(urlStr, params: form)
-        
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-
-    public func deleteForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/forms/\(formID)?apiKey=\(apiKey)"
-        debugLog(urlStr, params: nil)
-        
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func getSystemPlan(_ planType: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/system/plan/\(planType)"
-        debugLog(urlStr, params: nil)
-       
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    public func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: AnyObject) -> Void) {
-        let urlStr = "\(baseUrl)/system/time"
-        debugLog(urlStr, params: nil)
-     
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                successBlock(response as AnyObject)
-                break
-                
-            case .failure(_):
-                failureBlock(response as AnyObject)
-                break
-            }
-        }
-    }
-    
-    private func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
-        var params = [AnyHashable: Any]()
-       
-        if action.count != 0 {
-           params["action"] = action
-        }
-       
-        if date.count != 0 {
-           params["date"] = date
-        }
-       
-        if sortBy.count != 0 {
-           params["sortBy"] = sortBy
-        }
-        
-        if startDate.count != 0 {
-           params["startDate"] = startDate
-        }
-        
-        if endDate.count != 0 {
-           params["endDate"] = endDate
-        }
-        
-        return params
-    }
-    
-    private func createConditions(_ offset: Int, limit: Int, filter: [AnyHashable: Any], orderBy: String) -> [AnyHashable: Any] {
-        var params = [AnyHashable: Any]()
-        
-        if offset != 0 {
-            params["offset"] = offset
-        }
-        
-        if limit != 0 {
-            params["limit"] = limit
-        }
-        
-        if (filter.isEmpty) {
-            var filterStr = "%7B"
-            var count: Int = 0
-            let set = CharacterSet.urlHostAllowed
             
-            if let keys = Array(filter.keys) as? [String] {
-                for key: String in keys{
-                    if let array = filter[key] as? [String] {
-                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+            debugLog(urlStr, params: params)
+            
+            Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func setFormProperties(_ formID: Int64, formProperties properties: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+            var params = [AnyHashable: Any]()
+            
+            if let keys = Array(properties.keys) as? [String] {
+                for key: String in keys {
+                    params["question[\(key)]"] = properties[key]
+                }
+            }
+            
+            debugLog(urlStr, params: params)
+            
+            Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func setMultipleFormProperties(_ formID: Int64, formProperties properties: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
+            debugLog(urlStr, params: properties)
+            
+            Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func createForm(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            var params = [AnyHashable: Any]()
+            
+            if let formKeys: Array = Array(form.keys) as? [String] {
+                for formKey: String in formKeys {
+                    if (formKey == "properties") {
+                        var properties = form[formKey] as? [AnyHashable: Any]
+                        let propertyKeys: Array = Array(properties!.keys)
                         
-                        for value: String in array {
-                            filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                            if array.last != value {
-                                filterStr = filterStr + ("%2C")
-                            }
+                        for propertyKey: String in propertyKeys as! [String] {
+                            params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
                         }
-                        filterStr = filterStr + ("%5D")
-                    } else {
-                        if let string = filter[key] as? String {
-                            filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                            count += 1
-                            if count < (filter.count) {
-                                filterStr = filterStr + ("%2C")
+                    }
+                    else {
+                        var formItem = form[formKey] as? [AnyHashable: Any]
+                        let formItemKeys: Array = Array(formItem!.keys)
+                        for formItemKey: String in formItemKeys as! [String] {
+                            var fi = formItem![formItemKey] as? [AnyHashable: Any]
+                            
+                            if let fiKeys: Array = Array(fi!.keys) as? [String] {
+                                for fiKey: String in fiKeys {
+                                    params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
+                                }
                             }
                         }
                     }
                 }
             }
-            filterStr = filterStr + ("%7D")
-            params["filter"] = filterStr
+            
+            let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+            debugLog(urlStr, params: params)
+            
+            
+            Alamofire.request(urlStr, method: .post, parameters: params as? Dictionary, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
         }
-        if (orderBy.count) != 0 {
-            params["orderyBy"] = orderBy
+        
+        public func createForms(_ form: [AnyHashable: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
+            debugLog(urlStr, params: form)
+            
+            Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
         }
-        return params
-    }
-}
+        
+        public func deleteForm(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/forms/\(formID)?apiKey=\(apiKey)"
+            debugLog(urlStr, params: nil)
+            
+            Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func getSystemPlan(_ planType: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/system/plan/\(planType)"
+            debugLog(urlStr, params: nil)
+            
+            Alamofire.request(urlStr, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        public func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+            let urlStr = "\(baseUrl)/system/time"
+            debugLog(urlStr, params: nil)
+            
+            Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    successBlock(data as AnyObject)
+                    break
+                case .failure(let error):
+                    failureBlock(error as Error)
+                    break
+                }
+            }
+        }
+        
+        private func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [AnyHashable: Any] {
+            var params = [AnyHashable: Any]()
+            
+            if action.count != 0 {
+                params["action"] = action
+            }
+            
+            if date.count != 0 {
+                params["date"] = date
+            }
+            
+            if sortBy.count != 0 {
+                params["sortBy"] = sortBy
+            }
+            
+            if startDate.count != 0 {
+                params["startDate"] = startDate
+            }
+            
+            if endDate.count != 0 {
+                params["endDate"] = endDate
+            }
+            
+            return params
+        }
+        
+        private func createConditions(_ offset: Int, limit: Int, filter: [AnyHashable: Any], orderBy: String) -> [AnyHashable: Any] {
+            var params = [AnyHashable: Any]()
+            
+            if offset != 0 {
+                params["offset"] = offset
+            }
+            
+            if limit != 0 {
+                params["limit"] = limit
+            }
+            
+            if (filter.isEmpty) {
+                var filterStr = "%7B"
+                var count: Int = 0
+                let set = CharacterSet.urlHostAllowed
+                
+                if let keys = Array(filter.keys) as? [String] {
+                    for key: String in keys{
+                        if let array = filter[key] as? [String] {
+                            filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+                            
+                            for value: String in array {
+                                filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                                if array.last != value {
+                                    filterStr = filterStr + ("%2C")
+                                }
+                            }
+                            filterStr = filterStr + ("%5D")
+                        } else {
+                            if let string = filter[key] as? String {
+                                filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                                count += 1
+                                if count < (filter.count) {
+                                    filterStr = filterStr + ("%2C")
+                                }
+                            }
+                        }
+                    }
+                }
+                filterStr = filterStr + ("%7D")
+                params["filter"] = filterStr
+            }
+            if (orderBy.count) != 0 {
+                params["orderyBy"] = orderBy
+            }
+            return params
+        }
+     }
 
 

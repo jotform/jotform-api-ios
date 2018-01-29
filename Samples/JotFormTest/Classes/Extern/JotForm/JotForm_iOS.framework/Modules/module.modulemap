@@ -1,8 +1,18 @@
-framework module JotForm_iOS {
-    umbrella header "JotForm.h"
-    header "JotForm_iOS-Swift.h"
+ framework module JotForm_iOS {
+    header "JotForm.h"
     requires objc
 }
+
+ framework module JotForm_Mac {
+    header "JotForm.h"
+    requires objc
+} 
+
+framework module JotForm_WatchOS {
+    header "JotForm.h"
+    requires objc
+} 
+
 
 module JotForm_iOS.Swift {
     header "JotForm_iOS-Swift.h"

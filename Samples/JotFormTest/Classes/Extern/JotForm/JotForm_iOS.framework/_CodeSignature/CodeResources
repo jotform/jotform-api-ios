@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/JotForm_iOS-Swift.h</key>
 		<data>
-		C1t9fUVZ78LMghneyRGoGanPpKQ=
+		H/fCg7HnBFDuqcOZ1KUdYTSbXSM=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftmodule</key>
 		<data>
-		ICi6Algpdyx1Ip3hKDTMUfTs/c8=
+		yhj+EUL+Chf4LG7knZcd7QdAeLQ=
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		3awiWf2aeAu5WNuyzodLv6etYbA=
+		2o+dNFibafsFS0qrnIEkW9chhH8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		gQiF1JsF43sUEO6DWJl4BNFxFPE=
+		7uz+2t+3SkJqhLQ/p9SeUeW77Pg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -54,11 +54,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			C1t9fUVZ78LMghneyRGoGanPpKQ=
+			H/fCg7HnBFDuqcOZ1KUdYTSbXSM=
 			</data>
 			<key>hash2</key>
 			<data>
-			qynRNGVbGI8/DqSUwJ/POTFchtk8/yEZgztBfXfkhx0=
+			hg3Klwk54M3g8+jHXfdhGX0/tcEv/fk7Bb+snE6pbvA=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftdoc</key>
@@ -76,11 +76,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ICi6Algpdyx1Ip3hKDTMUfTs/c8=
+			yhj+EUL+Chf4LG7knZcd7QdAeLQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lo26XO/GRGYYOly1xd+CdK27+Ks3wkDKteFZVqJyRzM=
+			ZU9KO1BE3zcxW60Sgzj2bzoRyheTvgjv3tCF3nGMwfw=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
@@ -98,22 +98,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3awiWf2aeAu5WNuyzodLv6etYbA=
+			2o+dNFibafsFS0qrnIEkW9chhH8=
 			</data>
 			<key>hash2</key>
 			<data>
-			fQ0rKj9lALUNH5j16ITdkEWhE2yPnpH8afvp3HwLWs8=
+			a00t6DGPId4W+7laCuykKbUg73ICXM0oEqzZG14cmy8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gQiF1JsF43sUEO6DWJl4BNFxFPE=
+			7uz+2t+3SkJqhLQ/p9SeUeW77Pg=
 			</data>
 			<key>hash2</key>
 			<data>
-			2F36ygeye1C74AKN5tfJg82Jjjb0whwoMx0hYLlfITQ=
+			ec/rfFzumntFyCvkMv4hT3+BzjXr5AeKSldgFd5iTqo=
 			</data>
 		</dict>
 	</dict>
