@@ -201,7 +201,6 @@ public class JotForm: NSObject {
     }
     
     public func getSubmissions(_ offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
 
@@ -658,18 +657,17 @@ public class JotForm: NSObject {
     }
     
     public func checkEUserver(_ _apiKey: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        if let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-            debugLog(urlStr, params: nil)
-            
-            Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
-                switch(response.result) {
-                case .success(let data):
-                    successBlock(data as AnyObject)
-                    break
-                case .failure(let error):
-                    failureBlock(error as Error)
-                    break
-                }
+        let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)"
+        debugLog(urlStr, params: nil)
+        
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                successBlock(data as AnyObject)
+                break
+            case .failure(let error):
+                failureBlock(error as Error)
+                break
             }
         }
     }
@@ -693,11 +691,14 @@ public class JotForm: NSObject {
     public func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         var params = [String: Any]()
+       
         if submissionName != "" {
             params["submission[1][first]"] = submissionName
         }
+       
         params["submission[new]"] = "\(new)"
         params["submission[flag]"] = "\(flag)"
+       
         debugLog(urlStr, params: params)
         
         Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
@@ -868,8 +869,7 @@ public class JotForm: NSObject {
             }
             
             let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
-            debugLog(urlStr, params: params)
-            
+            debugLog(urlStr, params:params)
             
             Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
                 switch(response.result) {
@@ -886,7 +886,7 @@ public class JotForm: NSObject {
     
     public func createForms(_ form: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
-        debugLog(urlStr, params: form)
+        debugLog(urlStr, params:form)
         
         Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
@@ -934,7 +934,7 @@ public class JotForm: NSObject {
     
     public func getSystemTime(_ successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/system/time"
-        debugLog(urlStr, params: nil)
+        debugLog(urlStr, params:nil)
         
         Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
             switch(response.result) {
