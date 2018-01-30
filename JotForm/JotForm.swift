@@ -26,15 +26,15 @@ public class JotForm: NSObject {
         if debugMode {
             var paramsStr = ""
             
-            if (params is String) {
+            if params is String {
                 paramsStr = params as? String ?? ""
-            } else if (params is [String: Any]) {
+            } else if params is [String: Any] {
                 paramsStr = (params as AnyObject).description
             }
             
             print("urlstr = \(urlStr)")
             
-            if (paramsStr.count) > 0 {
+            if  paramsStr.count > 0 {
                 print("paramstr = \(paramsStr)")
             }
         }
@@ -467,12 +467,12 @@ public class JotForm: NSObject {
         var params: [String: Any] = [:]
         var subkey = ""
         for key: String in submission.keys {
-            if ((key as NSString).range(of: "_")).location != NSNotFound {
+            if (key as NSString).range(of: "_").location != NSNotFound {
                 subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
             } else {
                 subkey = "submission[\(key)]"
             }
-            if (submission[key] != nil) {
+            if  submission[key] != nil {
                 params[subkey] = submission[key]
             }
         }
@@ -527,7 +527,7 @@ public class JotForm: NSObject {
     public func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params: [String: Any] = [:]
         
-        if (webhookURL.count != 0) {
+        if  webhookURL.count != 0 {
             params["webhookURL"] = webhookURL
         }
         
@@ -848,7 +848,7 @@ public class JotForm: NSObject {
         var params: [String: Any] = [:]
         
         for formKey in form.keys {
-            if (formKey == "properties") {
+            if formKey == "properties" {
                 var properties = form[formKey] as? [String: Any]
                 let propertyKeys = Array(properties!.keys)
                 
@@ -985,7 +985,7 @@ public class JotForm: NSObject {
             params["limit"] = limit
         }
         
-        if (filter.isEmpty) {
+        if  filter.isEmpty {
             var filterStr = "%7B"
             var count = 0
             let set = CharacterSet.urlHostAllowed
@@ -1015,7 +1015,7 @@ public class JotForm: NSObject {
             filterStr = filterStr + ("%7D")
             params["filter"] = filterStr
         }
-        if (orderBy.count) != 0 {
+        if  orderBy.count != 0 {
             params["orderyBy"] = orderBy
         }
         return params
