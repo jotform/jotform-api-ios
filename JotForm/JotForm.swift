@@ -414,7 +414,7 @@ public class JotForm: NSObject {
     
     public func getFormSubmissions(_ formID: Int64, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         params["qid_enabled"] = "true"
         debugLog(urlStr, params: params)
         
@@ -464,7 +464,7 @@ public class JotForm: NSObject {
     }
     
     public func createFormSubmissions(_ formID: Int64, submission: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         var subkey = ""
         for key: String in submission.keys {
             if ((key as NSString).range(of: "_")).location != NSNotFound {
@@ -525,7 +525,7 @@ public class JotForm: NSObject {
     }
     
     public func createFormWebhooks(_ formID: Int64, hookUrl webhookURL: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         if (webhookURL.count != 0) {
             params["webhookURL"] = webhookURL
@@ -596,7 +596,7 @@ public class JotForm: NSObject {
     
     public func createReport(_ formID: Int64, title: String, list_type: String, fields: String, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         params["id"] = formID
         
@@ -690,7 +690,7 @@ public class JotForm: NSObject {
     
     public func editSubmission(_ sid: Int64, name submissionName: String, new: Int, flag: Int, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
        
         if submissionName != "" {
             params["submission[1][first]"] = submissionName
@@ -747,7 +747,7 @@ public class JotForm: NSObject {
     
     public func createFormQuestion(_ formID: Int64, question: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         for key: String in question.keys {
             params["question[\(key)]"] = question[key]
@@ -785,7 +785,7 @@ public class JotForm: NSObject {
     
     public func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         let keys = Array(properties.keys)
         
         for key: String in keys {
@@ -808,7 +808,7 @@ public class JotForm: NSObject {
     
     public func setFormProperties(_ formID: Int64, formProperties properties: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         for key: String in properties.keys {
             params["question[\(key)]"] = properties[key]
@@ -845,7 +845,7 @@ public class JotForm: NSObject {
     }
     
     public func createForm(_ form: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         for formKey in form.keys {
             if (formKey == "properties") {
@@ -949,7 +949,7 @@ public class JotForm: NSObject {
     }
     
     private func createHistoryQuery(_ action: String, date: String, sortBy: String, startDate: String, endDate: String) -> [String: Any] {
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         if action.count != 0 {
             params["action"] = action
@@ -975,7 +975,7 @@ public class JotForm: NSObject {
     }
     
     private func createConditions(_ offset: Int, limit: Int, filter: [String: Any], orderBy: String) -> [String: Any] {
-        var params = [String: Any]()
+        var params: [String: Any] = [:]
         
         if offset != 0 {
             params["offset"] = offset
