@@ -41,6 +41,7 @@
 		A61C2C39201A954300F69033 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A62BCA6A201A85FC00F8A59A /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A62BCA6B201A85FC00F8A59A /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A62BCA6A201A85FC00F8A59A /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A65B0B6420152C55008ED28F /* JotForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B0B6320152C54008ED28F /* JotForm.swift */; };
+		A68F7D9D2020E9B2008E7AA4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A68F7D9C2020E9B2008E7AA4 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		A671E699201E583D008DBDCB /* JotForm_iOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JotForm_iOS copy-Info.plist"; path = "/Users/curtisstilwell1/Documents/jotform-api-ios/JotForm_iOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B91E5BD781002E9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68F7D9C2020E9B2008E7AA4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A6B279031E5F7C0100703A88 /* JotForm_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3249136EE8DAE6E962D2D9 /* Pods-JotForm_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_iOS/Pods-JotForm_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 		A67F05AB1E5BD781002E9B11 = {
 			isa = PBXGroup;
 			children = (
+				A68F7D9B2020E97F008E7AA4 /* Git */,
 				A67F05B71E5BD781002E9B11 /* JotForm */,
 				A67F05B61E5BD781002E9B11 /* Products */,
 				AA280E23DCA0C9C8AFF7FFC6 /* Pods */,
@@ -129,6 +132,14 @@
 				A67F05B91E5BD781002E9B11 /* Info.plist */,
 			);
 			path = JotForm;
+			sourceTree = "<group>";
+		};
+		A68F7D9B2020E97F008E7AA4 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				A68F7D9C2020E9B2008E7AA4 /* .gitignore */,
+			);
+			path = Git;
 			sourceTree = "<group>";
 		};
 		AA280E23DCA0C9C8AFF7FFC6 /* Pods */ = {
@@ -300,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68F7D9D2020E9B2008E7AA4 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
