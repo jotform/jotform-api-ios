@@ -33,6 +33,7 @@ public class JotForm: NSObject {
             }
             
             print("urlstr = \(urlStr)")
+            
             if (paramsStr.count) > 0 {
                 print("paramstr = \(paramsStr)")
             }
@@ -468,8 +469,7 @@ public class JotForm: NSObject {
         for key: String in submission.keys {
             if ((key as NSString).range(of: "_")).location != NSNotFound {
                 subkey = "submission[\(String(describing: (key as NSString).substring(to: ((key as NSString).range(of: "_")).location)))][\(String(describing: (key as NSString).substring(to: (((key as NSString).range(of: "_")).location + 1))))]"
-            }
-            else {
+            } else {
                 subkey = "submission[\(key)]"
             }
             if (submission[key] != nil) {
@@ -786,7 +786,7 @@ public class JotForm: NSObject {
     public func editFormQuestion(_ formID: Int64, questionID qid: Int64, questionProperties properties: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         var params = [String: Any]()
-        let keys: Array = Array(properties.keys)
+        let keys = Array(properties.keys)
         
         for key: String in keys {
             params["question[\(key)]"] = properties[key]
@@ -847,21 +847,21 @@ public class JotForm: NSObject {
     public func createForm(_ form: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         var params = [String: Any]()
         
-        for formKey: String in form.keys {
+        for formKey in form.keys {
             if (formKey == "properties") {
                 var properties = form[formKey] as? [String: Any]
-                let propertyKeys: Array = Array(properties!.keys)
+                let propertyKeys = Array(properties!.keys)
                 
-                for propertyKey: String in propertyKeys {
+                for propertyKey in propertyKeys {
                     params["\(formKey)[\(propertyKey)]"] = properties?[propertyKey]
                 }
             } else {
                 var formItem = form[formKey] as? [String: Any]
-                let formItemKeys: Array = Array(formItem!.keys)
-                for formItemKey: String in formItemKeys {
+                let formItemKeys = Array(formItem!.keys)
+                for formItemKey in formItemKeys {
                     var fi = formItem![formItemKey] as? [String: Any]
                     
-                    for fiKey: String in fi!.keys {
+                    for fiKey in fi!.keys {
                         params["\(formKey)[\(formItemKey)][\(fiKey)]"] = fi?[fiKey]
                         
                     }
@@ -987,7 +987,7 @@ public class JotForm: NSObject {
         
         if (filter.isEmpty) {
             var filterStr = "%7B"
-            var count: Int = 0
+            var count = 0
             let set = CharacterSet.urlHostAllowed
             
             for key: String in filter.keys {
