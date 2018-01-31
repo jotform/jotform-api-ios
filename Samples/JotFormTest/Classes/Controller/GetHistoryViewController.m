@@ -7,7 +7,7 @@
 //
 
 #import "GetHistoryViewController.h"
-#import "SharedData.h"
+//#import "SharedData.h"
 
 @interface GetHistoryViewController ()
 
@@ -20,13 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[SharedData sharedData].apiClient getHistory:^(id result) {
+  /*  [[SharedData sharedData].apiClient getHistory:^(id result) {
      
         self.textView.text = [NSString stringWithFormat:@"%@",result];
   
     } onFailure:^(NSError *error) {
         
-    }];
+    }]; */
 }
 
 @end

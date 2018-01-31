@@ -6,6 +6,7 @@
 //  Copyright 2013 A Tasty Pixel. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 @interface UIScrollView (TPKeyboardAvoidingAdditions)

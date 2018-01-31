@@ -8,10 +8,8 @@
 
 #import "GetAppKeyViewController.h"
 #import "SampleListViewController.h"
-#import "SharedData.h"
 #import "SVProgressHUD.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
-#import "Common.h"
 
 @interface GetAppKeyViewController () {
     JotForm *apiClient;
@@ -58,12 +56,12 @@
 }
 
 - (void)showAlertView {
-    UIAlertController *alertView = [UIAlertController
+   /* UIAlertController *alertView = [UIAlertController
                                     alertControllerWithTitle:@"JotFormAPISample"
                                     message:@"Do you have an API key?"
                                     preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"Yes"
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"Yes"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action){
                                                          if ([API_KEY isEqualToString:@""]) {
@@ -87,7 +85,7 @@
                                                          
                                                      }];
     
-    UIAlertAction *yesButton = [UIAlertAction
+    UIAlertAction *noButton = [UIAlertAction
                                 actionWithTitle:@"No"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action){
@@ -96,7 +94,7 @@
     
     [alertView addAction:yesButton];
     [alertView addAction:noButton];
-    [self presentViewController:alertView animated:YES completion:nil];
+    [self presentViewController:alertView animated:YES completion:nil]; */
 }
 
 #pragma mark - IBAction
@@ -137,7 +135,7 @@
     [apiClient checkEUserver:appKey onSuccess:^(id result) {
         BOOL isEuServer = [result[@"content"][@"euOnly"]boolValue];
         
-        [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
+      //  [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
         
         [self showSampleListViewController];
         [SVProgressHUD dismiss];

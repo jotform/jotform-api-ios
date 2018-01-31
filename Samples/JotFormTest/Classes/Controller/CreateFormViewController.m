@@ -7,7 +7,7 @@
 //
 
 #import "CreateFormViewController.h"
-#import "SharedData.h"
+//#import "SharedData.h"
 #import "SVProgressHUD.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
 
@@ -63,7 +63,7 @@
     form[@"properties"] = properties;
     form[@"questions"] = questions;
     
-    [[SharedData sharedData].apiClient createForm:form onSuccess:^(id result) {
+    /* [[SharedData sharedData].apiClient createForm:form onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -111,7 +111,7 @@
                 [self presentViewController:alertView animated:YES completion:nil];
             }
         }
-    }];
+    }]; */
 }
 
 @end

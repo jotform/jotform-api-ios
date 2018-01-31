@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CreateFormsViewController.h"
-#import "Common.h"
-#import "SharedData.h"
 #import "SVProgressHUD.h"
 
 @implementation CreateFormsViewController
@@ -36,11 +34,11 @@
                                                          options:NSJSONReadingMutableContainers
                                                            error:&error];
   
-    [[SharedData sharedData].apiClient createForms:json onSuccess:^(id result){
+   /* [[SharedData sharedData].apiClient createForms:json onSuccess:^(id result){
    
     } onFailure:^(NSError *error) {
 
-    }];
+    }]; */
 }
 
 #pragma mark - IBAction

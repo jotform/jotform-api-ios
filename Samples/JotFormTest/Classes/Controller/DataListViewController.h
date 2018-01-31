@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Common.h"
+//#import "Common.h"
 
 @interface DataListViewController : UIViewController
 
-- (void)setList:(NSArray *)dataArray type:(DataListType)type;
+//- (void)setList:(NSArray *)dataArray type:(DataListType)type;
 
 @end

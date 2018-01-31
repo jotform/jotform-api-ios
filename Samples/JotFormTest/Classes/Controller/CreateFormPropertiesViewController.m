@@ -7,8 +7,6 @@
 //
 
 #import "CreateFormPropertiesViewController.h"
-#import "Common.h"
-#import "SharedData.h"
 
 @interface CreateFormPropertiesViewController ()
 
@@ -27,11 +25,11 @@
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     userInfo[@"350"] = @"properties[formWidth]";
     
-    [[SharedData sharedData].apiClient setFormProperties:FORM_ID formProperties:userInfo onSuccess:^(id result) {
+   /* [[SharedData sharedData].apiClient setFormProperties:FORM_ID formProperties:userInfo onSuccess:^(id result) {
      
     } onFailure:^(NSError *error) {
         
-    }];
+    }]; */
 }
 
 @end

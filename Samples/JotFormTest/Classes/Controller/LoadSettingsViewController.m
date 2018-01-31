@@ -7,7 +7,6 @@
 //
 
 #import "LoadSettingsViewController.h"
-#import "SharedData.h"
 
 @interface LoadSettingsViewController ()
 
@@ -20,13 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[SharedData sharedData].apiClient getSettings:^(id result) {
+    /* [[SharedData sharedData].apiClient getSettings:^(id result) {
         
         self.textView.text = [NSString stringWithFormat:@"%@",result];
         
     } onFailure:^(NSError *error) {
         
-    }];
+    }]; */
 }
 
 @end

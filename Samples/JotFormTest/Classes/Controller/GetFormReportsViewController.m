@@ -9,9 +9,7 @@
 #import "GetFormReportsViewController.h"
 #import "DataListViewController.h"
 #import "SVProgressHUD.h"
-#import "SharedData.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
-#import "Common.h"
 
 @interface GetFormReportsViewController ()
 
@@ -39,14 +37,14 @@
 - (void) startDataListViewController:(NSArray *)reportList {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-    [dataListVc setList:reportList type:DataListTypeFormList];
+   // [dataListVc setList:reportList type:DataListTypeFormList];
     
     [self.navigationController pushViewController:dataListVc animated:YES];
 }
 
 
 - (IBAction)getFormReportsButtonClicked:(id)sender {
-    if (FORM_ID == 0) {
+  /*  if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController
                                         alertControllerWithTitle:@"JotFormAPISample"
                                         message:@"Please put Form's id in line 19, Common.h"
@@ -78,7 +76,7 @@
     } onFailure:^(id error) {
           [SVProgressHUD dismiss];
      }];
-   }
+   } */
 }
 
 @end

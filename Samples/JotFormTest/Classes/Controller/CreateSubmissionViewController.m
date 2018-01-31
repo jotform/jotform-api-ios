@@ -8,8 +8,7 @@
 
 #import "CreateSubmissionViewController.h"
 #import "SVProgressHUD.h"
-#import "SharedData.h"
-#import "Common.h"
+//#import "SharedData.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface CreateSubmissionViewController ()
@@ -43,7 +42,7 @@
     submission[@"1"] = @"XXX";
     submission[@"2"] = @"This is a test for creating submission.";
     
-    [[SharedData sharedData].apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
+   /* [[SharedData sharedData].apiClient createFormSubmissions:FORM_ID submission:submission onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -70,7 +69,7 @@
         }
       } onFailure:^(id error) {
    
-      }];
+      }]; */
 }
 
 #pragma mark - IBAction

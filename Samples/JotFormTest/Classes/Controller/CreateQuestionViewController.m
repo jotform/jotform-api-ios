@@ -7,8 +7,6 @@
 //
 
 #import "CreateQuestionViewController.h"
-#import "Common.h"
-#import "SharedData.h"
 #import "SVProgressHUD.h"
 
 @implementation CreateQuestionViewController
@@ -29,7 +27,7 @@
 #pragma mark - User definition method
 
 - (void)createFormQuestion {
-    if (FORM_ID == 0) {
+  /*  if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController
                                         alertControllerWithTitle:@"JotFormAPISample"
                                         message:@"Please put Form's id in line 23"
@@ -46,7 +44,7 @@
         [self presentViewController:alertView animated:YES completion:nil];
 
         return;
-    }
+    } */
     
     NSMutableDictionary *question = [[NSMutableDictionary alloc] init];
     
@@ -55,7 +53,7 @@
     question[@"order"] = @"1";
     question[@"1"] = @"New Name of Question";
     
-    [[SharedData sharedData].apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
+   /* [[SharedData sharedData].apiClient createFormQuestion:FORM_ID question:question onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -103,7 +101,7 @@
                 [self presentViewController:alertView animated:YES completion:nil];
             }
         }
-    }];
+    }]; */
 }
 
 #pragma mark - IBAction

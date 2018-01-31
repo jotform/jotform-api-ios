@@ -8,7 +8,6 @@
 
 #import "GetAllSubmissionsViewController.h"
 #import "DataListViewController.h"
-#import "SharedData.h"
 #import "SVProgressHUD.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
 
@@ -53,11 +52,11 @@
 }
 
 - (void)initData {
-    orderbyList = [[SharedData sharedData] getFormOrderbyList];
+  //  orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
 - (void)loadForms {
-    [SVProgressHUD showWithStatus:@"Loading submissions..."];
+   // [SVProgressHUD showWithStatus:@"Loading submissions..."];
     
     NSInteger offset = 0;
     NSInteger limit = 0;
@@ -74,7 +73,7 @@
     
    NSDictionary *filter = [[NSDictionary alloc]init];
     
-   [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:filter onSuccess:^(id result) {
+ /*  [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:filter onSuccess:^(id result) {
        
        [SVProgressHUD dismiss];
        
@@ -88,13 +87,13 @@
        }
     } onFailure:^(id response) {
         [SVProgressHUD dismiss];
-    }];
+    }];*/
 }
 
 - (void)startDataListViewController:(NSArray *)datalist {
     DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
-     [dataListVc setList:datalist type:DataListTypeSubmissionList];
+     //[dataListVc setList:datalist type:DataListTypeSubmissionList];
     
     [self.navigationController pushViewController:dataListVc animated:YES];
 }

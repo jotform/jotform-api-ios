@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BF601779FDF70065788B /* UIKit.framework */; };
 		3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BF621779FDF70065788B /* Foundation.framework */; };
-		3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CD6BF691779FDF70065788B /* InfoPlist.strings */; };
-		3CD6BF6D1779FDF70065788B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6BF6C1779FDF70065788B /* main.m */; };
-		3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD6BF701779FDF70065788B /* JotFormTestAppDelegate.m */; };
 		3CD6BFB2177A03E80065788B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BFB1177A03E80065788B /* CFNetwork.framework */; };
 		3CD6BFB4177A03EE0065788B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BFB3177A03ED0065788B /* MobileCoreServices.framework */; };
 		3CD6BFB6177A03F80065788B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6BFB5177A03F80065788B /* SystemConfiguration.framework */; };
@@ -31,7 +28,11 @@
 		A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */; };
 		A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */; };
 		A67475EE2011542900E43826 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67475ED2011542900E43826 /* Launch.xib */; };
-		A678E880201924F900914969 /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678E87F201924F900914969 /* Swift.swift */; };
+		A6CDD63A20224BF800EC3643 /* GetAppKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD63920224BF800EC3643 /* GetAppKeyViewController.swift */; };
+		A6CDD63C2022532000EC3643 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD63B2022532000EC3643 /* Common.swift */; };
+		A6CDD63F20225ED600EC3643 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD63E20225ED600EC3643 /* SharedData.swift */; };
+		A6CDD67B202273C400EC3643 /* JotFormTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */; };
+		A6CDD67F202276A200EC3643 /* JotFormTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */; };
 		A6D49EDF20223A78009966A5 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
@@ -53,9 +54,7 @@
 		C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */; };
 		C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C81C187C620700AD6A6C /* CreateReportViewController.m */; };
 		C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C81D187C620700AD6A6C /* CreateReportViewController.xib */; };
-		C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */; };
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
-		C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF7A1879A76700FCFAEA /* SharedData.m */; };
 		C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF7E1879ADE400FCFAEA /* SVProgressHUD.bundle */; };
 		C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF801879ADE400FCFAEA /* SVProgressHUD.m */; };
 		C3B2AF881879AF5F00FCFAEA /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */; };
@@ -69,13 +68,6 @@
 		3CD6BF601779FDF70065788B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3CD6BF621779FDF70065788B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CD6BF641779FDF70065788B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3CD6BF681779FDF70065788B /* JotFormTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JotFormTest-Info.plist"; sourceTree = "<group>"; };
-		3CD6BF6A1779FDF70065788B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3CD6BF6C1779FDF70065788B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3CD6BF6E1779FDF70065788B /* JotFormTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotFormTest-Prefix.pch"; sourceTree = "<group>"; };
-		3CD6BF6F1779FDF70065788B /* JotFormTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotFormTestAppDelegate.h; sourceTree = "<group>"; };
-		3CD6BF701779FDF70065788B /* JotFormTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotFormTestAppDelegate.m; sourceTree = "<group>"; };
-		3CD6BFAB1779FE7A0065788B /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		3CD6BFB1177A03E80065788B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3CD6BFB3177A03ED0065788B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3CD6BFB5177A03F80065788B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -102,8 +94,11 @@
 		A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateFormPropertiesViewController.m; sourceTree = "<group>"; };
 		A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFormPropertiesViewController.xib; sourceTree = "<group>"; };
 		A67475ED2011542900E43826 /* Launch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
-		A678E87E201924F800914969 /* JotFormTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JotFormTest-Bridging-Header.h"; sourceTree = "<group>"; };
-		A678E87F201924F900914969 /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
+		A6CDD63920224BF800EC3643 /* GetAppKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppKeyViewController.swift; sourceTree = "<group>"; };
+		A6CDD63B2022532000EC3643 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		A6CDD63E20225ED600EC3643 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JotFormTestAppDelegate.swift; sourceTree = "<group>"; };
+		A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JotFormTest-Info.plist"; sourceTree = "<group>"; };
 		B0394BA1567EBAAF178EF682 /* Pods_JotFormTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotFormTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3541DD1187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
@@ -137,11 +132,7 @@
 		C395C81B187C620700AD6A6C /* CreateReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReportViewController.h; sourceTree = "<group>"; };
 		C395C81C187C620700AD6A6C /* CreateReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReportViewController.m; sourceTree = "<group>"; };
 		C395C81D187C620700AD6A6C /* CreateReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateReportViewController.xib; sourceTree = "<group>"; };
-		C3B2AF701879A4DB00FCFAEA /* GetAppKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAppKeyViewController.h; sourceTree = "<group>"; };
-		C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppKeyViewController.m; sourceTree = "<group>"; };
 		C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAppKeyViewController.xib; sourceTree = "<group>"; };
-		C3B2AF791879A76700FCFAEA /* SharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
-		C3B2AF7A1879A76700FCFAEA /* SharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedData.m; sourceTree = "<group>"; };
 		C3B2AF7D1879ADE400FCFAEA /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		C3B2AF7E1879ADE400FCFAEA /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C3B2AF7F1879ADE400FCFAEA /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -224,27 +215,15 @@
 			isa = PBXGroup;
 			children = (
 				3CD6BF7D1779FE460065788B /* Classes */,
-				3CD6BF6F1779FDF70065788B /* JotFormTestAppDelegate.h */,
-				3CD6BF701779FDF70065788B /* JotFormTestAppDelegate.m */,
-				3CD6BF671779FDF70065788B /* Supporting Files */,
 			);
 			path = JotFormTest;
-			sourceTree = "<group>";
-		};
-		3CD6BF671779FDF70065788B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3CD6BF681779FDF70065788B /* JotFormTest-Info.plist */,
-				3CD6BF691779FDF70065788B /* InfoPlist.strings */,
-				3CD6BF6C1779FDF70065788B /* main.m */,
-				3CD6BF6E1779FDF70065788B /* JotFormTest-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3CD6BF7D1779FE460065788B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */,
+				A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */,
 				C69709A9178D50B600858450 /* Extern */,
 				3CD6BF7E1779FE460065788B /* Controller */,
 				3CD6BF9B1779FE460065788B /* Model */,
@@ -255,8 +234,7 @@
 		3CD6BF7E1779FE460065788B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C3B2AF701879A4DB00FCFAEA /* GetAppKeyViewController.h */,
-				C3B2AF711879A4DB00FCFAEA /* GetAppKeyViewController.m */,
+				A6CDD63920224BF800EC3643 /* GetAppKeyViewController.swift */,
 				C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */,
 				C3B2AF851879AF5F00FCFAEA /* SampleListViewController.h */,
 				C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */,
@@ -307,8 +285,6 @@
 				A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */,
 				A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */,
 				A67475ED2011542900E43826 /* Launch.xib */,
-				A678E87F201924F900914969 /* Swift.swift */,
-				A678E87E201924F800914969 /* JotFormTest-Bridging-Header.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,9 +292,8 @@
 		3CD6BF9B1779FE460065788B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3CD6BFAB1779FE7A0065788B /* Common.h */,
-				C3B2AF791879A76700FCFAEA /* SharedData.h */,
-				C3B2AF7A1879A76700FCFAEA /* SharedData.m */,
+				A6CDD63E20225ED600EC3643 /* SharedData.swift */,
+				A6CDD63B2022532000EC3643 /* Common.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,11 +404,11 @@
 			files = (
 				C3541DE1187A86CA00FE19DB /* DataListViewController.xib in Resources */,
 				C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */,
+				A6CDD67F202276A200EC3643 /* JotFormTest-Info.plist in Resources */,
 				C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */,
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
 				A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */,
 				A62BE28F1F4B85B700A68DA1 /* GetFormPropertiesViewController.xib in Resources */,
-				3CD6BF6B1779FDF70065788B /* InfoPlist.strings in Resources */,
 				C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */,
 				604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */,
 				C3541DE6187AF52600FE19DB /* GetAllSubmissionsViewController.xib in Resources */,
@@ -512,29 +487,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62BE2891F4B81BA00A68DA1 /* GetHistoryViewController.m in Sources */,
-				3CD6BF6D1779FDF70065788B /* main.m in Sources */,
 				C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */,
 				C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */,
-				3CD6BF711779FDF70065788B /* JotFormTestAppDelegate.m in Sources */,
 				C3541DEB187B10C100FE19DB /* CreateFormViewController.m in Sources */,
+				A6CDD67B202273C400EC3643 /* JotFormTestAppDelegate.swift in Sources */,
 				A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */,
 				C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */,
-				C3B2AF731879A4DB00FCFAEA /* GetAppKeyViewController.m in Sources */,
+				A6CDD63F20225ED600EC3643 /* SharedData.swift in Sources */,
+				A6CDD63A20224BF800EC3643 /* GetAppKeyViewController.swift in Sources */,
 				604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */,
 				C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */,
 				C35EA490187D9DB7009DEB74 /* CreateQuestionViewController.m in Sources */,
+				A6CDD63C2022532000EC3643 /* Common.swift in Sources */,
 				C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				604B759919F6DFCA00B873D4 /* CreateFormsViewController.m in Sources */,
 				C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */,
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				A678E880201924F900914969 /* Swift.swift in Sources */,
 				A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */,
 				C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */,
 				C3541DE0187A86CA00FE19DB /* DataListViewController.m in Sources */,
 				C3541DE5187AF52600FE19DB /* GetAllSubmissionsViewController.m in Sources */,
 				C395C814187C06AA00AD6A6C /* GetFormReportsViewController.m in Sources */,
 				C3B2AF8D1879BBF200FCFAEA /* GetAllFormsViewController.m in Sources */,
-				C3B2AF7B1879A76700FCFAEA /* SharedData.m in Sources */,
 				A62BE28E1F4B85B700A68DA1 /* GetFormPropertiesViewController.m in Sources */,
 				C3B2AF881879AF5F00FCFAEA /* SampleListViewController.m in Sources */,
 			);
@@ -542,22 +516,11 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		3CD6BF691779FDF70065788B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3CD6BF6A1779FDF70065788B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3CD6BF781779FDF70065788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -587,7 +550,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/Samples/JotFormTest/JotFormTest-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -605,13 +568,14 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
 		3CD6BF791779FDF70065788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -638,7 +602,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/curtisstilwell1/Documents/jotform-api-ios/Samples/JotFormTest/JotFormTest-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -652,6 +616,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -668,8 +633,8 @@
 					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
-				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "$(SRCROOT)/JotFormTest/Classes/JotFormTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -677,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "JotFormTest/Classes/Controller/JotFormTest-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
@@ -693,8 +658,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
-				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "$(SRCROOT)/JotFormTest/Classes/JotFormTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -702,7 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "JotFormTest/Classes/Controller/JotFormTest-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};

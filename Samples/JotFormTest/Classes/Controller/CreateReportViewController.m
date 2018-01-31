@@ -8,8 +8,8 @@
 
 #import "CreateReportViewController.h"
 #import "SVProgressHUD.h"
-#import "Common.h"
-#import "SharedData.h"
+//#import "Common.h"
+//#import "SharedData.h"
 
 @interface CreateReportViewController ()
 
@@ -36,7 +36,7 @@
 
 - (void)createReport {
     // check if FORM_ID is specified
-    if (FORM_ID == 0) {
+   /* if (FORM_ID == 0) {
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"JotFormAPISample" message:@"Please put Form's id in line 22, Common.h" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelButton = [UIAlertAction
@@ -49,9 +49,9 @@
         [alertView addAction:cancelButton];
         [self presentViewController:alertView animated:YES completion:nil];
         return;
-    }
+    } */
     
-    [SVProgressHUD showWithStatus:@"Creating report..."];
+  /*  [SVProgressHUD showWithStatus:@"Creating report..."];
     
     [[SharedData sharedData].apiClient createReport:FORM_ID title:@"Test Report" list_type:@"csv" fields:@"date" onSuccess:^(id result) {
         [SVProgressHUD dismiss];
@@ -102,7 +102,7 @@
             }
         }
 
-    }];
+    }]; */
 }
 
 #pragma mark - IBAction

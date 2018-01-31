@@ -7,7 +7,6 @@
 //
 
 #import "RegisterUserViewController.h"
-#import "SharedData.h"
 #import "SVProgressHUD.h"
 
 @interface RegisterUserViewController ()
@@ -60,7 +59,7 @@
     userInfo[@"password"] = self.passwordTextField.text;
     userInfo[@"email"] = self.emailTextField.text;
     
-    [[SharedData sharedData].apiClient registerUser:userInfo onSuccess:^(id result) {
+    /* [[SharedData sharedData].apiClient registerUser:userInfo onSuccess:^(id result) {
         [SVProgressHUD dismiss];
         
         if (result) {
@@ -100,7 +99,7 @@
         }
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
-    }];
+    }]; */
 }
 
 #pragma mark - IBAction

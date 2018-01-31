@@ -8,13 +8,13 @@
 
 #import "GetAllFormsViewController.h"
 #import "DataListViewController.h"
-#import "SharedData.h"
+//#import "SharedData.h"
 #import "SVProgressHUD.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
 
 @interface GetAllFormsViewController () {
            NSArray *orderbyList;
-           SharedData *sharedData;
+          // SharedData *sharedData;
 }
 
 @property (nonatomic,weak) IBOutlet UITextField *offsetTextField;
@@ -52,7 +52,7 @@
 }
 
 - (void)initData {
-    orderbyList = [[SharedData sharedData] getFormOrderbyList];
+   // orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
 - (void)loadForms {
@@ -73,7 +73,7 @@
     
     NSDictionary *filter = [[NSDictionary alloc]init];
     
-    [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:filter onSuccess:^(id result){
+    /* [[SharedData sharedData].apiClient getForms:offset limit:limit orderBy:orderby filter:filter onSuccess:^(id result){
         
         [SVProgressHUD dismiss];
         
@@ -88,7 +88,7 @@
   
     } onFailure:^(id error) {
         [SVProgressHUD dismiss];
-    }];
+    }]; */
 }
 
 - (void)startDataListViewController:(NSArray *)datalist {
@@ -96,7 +96,7 @@
 
     [self.navigationController pushViewController:dataListVc animated:YES];
     
-    [dataListVc setList:datalist type:DataListTypeFormList];
+    //[dataListVc setList:datalist type:DataListTypeFormList];
 }
 
 #pragma mark IBAction

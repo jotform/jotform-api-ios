@@ -21,7 +21,6 @@
 #import "GetHistoryViewController.h"
 #import "GetFormPropertiesViewController.h"
 #import "CreateFormPropertiesViewController.h"
-#import "SharedData.h"
 
 
 @interface SampleListViewController ()
@@ -59,9 +58,9 @@
     return 0.1f;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+/* - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return ([SharedData sharedData].sampleStrList).count;
-}
+} */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell"];
@@ -70,9 +69,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SampleCell"];
     }
     
-    NSString *sampleStr = ([SharedData sharedData].sampleStrList)[indexPath.row];
+  //  NSString *sampleStr = ([SharedData sharedData].sampleStrList)[indexPath.row];
     
-    cell.textLabel.text = sampleStr;
+    //cell.textLabel.text = sampleStr;
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 

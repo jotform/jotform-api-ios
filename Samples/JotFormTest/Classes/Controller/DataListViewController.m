@@ -7,11 +7,11 @@
 //
 
 #import "DataListViewController.h"
-#import "SharedData.h"
-#import "Common.h"
+//#import "SharedData.h"
+//#import "Common.h"
 
 @interface DataListViewController () {
-           DataListType listType;
+          // DataListType listType;
 }
 
 @property (nonatomic,weak) IBOutlet UITableView *listTableView;
@@ -36,7 +36,7 @@
 
 #pragma mark - user definition method
 
-- (void)setList:(NSArray *)dataArray type:(DataListType)type {
+/* - (void)setList:(NSArray *)dataArray type:(DataListType)type {
     listType = type;
     
     self.dataList = [[NSMutableArray alloc] initWithArray:dataArray];
@@ -55,7 +55,7 @@
     }
     
     self.title = @"Form list";
-}
+} */
 
 #pragma mark - UITableViewDataSource
 
@@ -87,9 +87,9 @@
     id object = (self.dataList)[indexPath.row];
     cell.detailTextLabel.text = object[@"id"];
     
-    if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
+  /*  if (listType == DataListTypeFormList || listType == DataListTypeReportList) {
         cell.textLabel.text = object[@"title"];
-    }
+    } */
     
     cell.textLabel.textColor = [UIColor darkGrayColor];
     

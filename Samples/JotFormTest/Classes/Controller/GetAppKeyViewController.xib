@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetAppKeyViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetAppKeyViewController" customModule="JotFormTest" customModuleProvider="target">
             <connections>
                 <outlet property="passwordTextField" destination="pvJ-Qb-MVW" id="gNH-Md-4Gb"/>
                 <outlet property="usernameTextField" destination="8eq-8V-hSI" id="LDn-dw-Gni"/>
