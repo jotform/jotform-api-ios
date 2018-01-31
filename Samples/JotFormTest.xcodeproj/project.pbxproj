@@ -24,7 +24,6 @@
 		604B75F619F6E59800B873D4 /* CreateFormQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604B75F419F6E59800B873D4 /* CreateFormQuestionsViewController.xib */; };
 		A61E082A1F4B5C0D00330B48 /* LoadSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61E08281F4B5C0D00330B48 /* LoadSettingsViewController.m */; };
 		A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61E08291F4B5C0D00330B48 /* LoadSettingsViewController.xib */; };
-		A62BCA6D201A868200F8A59A /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
 		A62BE2891F4B81BA00A68DA1 /* GetHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE2871F4B81BA00A68DA1 /* GetHistoryViewController.m */; };
 		A62BE28A1F4B81BA00A68DA1 /* GetHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2881F4B81BA00A68DA1 /* GetHistoryViewController.xib */; };
 		A62BE28E1F4B85B700A68DA1 /* GetFormPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62BE28C1F4B85B700A68DA1 /* GetFormPropertiesViewController.m */; };
@@ -33,6 +32,7 @@
 		A62BE2941F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */; };
 		A67475EE2011542900E43826 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67475ED2011542900E43826 /* Launch.xib */; };
 		A678E880201924F900914969 /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678E87F201924F900914969 /* Swift.swift */; };
+		A6D49EDF20223A78009966A5 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
 		C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD6187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m */; };
@@ -165,10 +165,10 @@
 				3CD6BFB8177A04310065788B /* libz.dylib in Frameworks */,
 				3CD6BFB6177A03F80065788B /* SystemConfiguration.framework in Frameworks */,
 				3CD6BFB4177A03EE0065788B /* MobileCoreServices.framework in Frameworks */,
-				A62BCA6D201A868200F8A59A /* JotForm_iOS.framework in Frameworks */,
 				3CD6BFB2177A03E80065788B /* CFNetwork.framework in Frameworks */,
 				3CD6BF611779FDF70065788B /* UIKit.framework in Frameworks */,
 				3CD6BF631779FDF70065788B /* Foundation.framework in Frameworks */,
+				A6D49EDF20223A78009966A5 /* JotForm_iOS.framework in Frameworks */,
 				4D38EDA521D523998EEA64ED /* Pods_JotFormTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,7 +557,7 @@
 		3CD6BF781779FDF70065788B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -611,7 +611,7 @@
 		3CD6BF791779FDF70065788B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -661,7 +661,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFD381F7C4DFC957C10B5A6F /* Pods-JotFormTest.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,13 +688,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D5790738BF1EED95796421 /* Pods-JotFormTest.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/JotFormTest/Classes/Extern/JotForm",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JotFormTest/JotFormTest-Prefix.pch";
 				INFOPLIST_FILE = "JotFormTest/JotFormTest-Info.plist";
