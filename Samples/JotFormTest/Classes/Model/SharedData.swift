@@ -10,21 +10,26 @@ import Foundation
 import JotForm_iOS
 
 class SharedData {
+    var apiClient: JotForm?
+    var sampleStrList = [String]()
     
-    public let sharedData = SharedData()
-    public var sampleStrList = [String]()
-    public var apiClient: JotForm?
     
     init() {
         initSharedData()
     }
+    
+    static let sharedData: SharedData = {
+        let instance = SharedData()
+        
+        return instance
+    }()
     
     func initSharedData() {
         let sampleStr = "Get all forms,Get all submissions,Get all reports,Create form,Create submission,Create report,Register user,Create question,Load settings,Get history,Get form properties,Create form properties,Create Forms,Create Form Questions"
         sampleStrList = (sampleStr.components(separatedBy: ","))
     }
     
-    func initAPIClient(_ apiKey: String, euApi: Bool) {
+    public func initAPIClient(_ apiKey: String, euApi: Bool) {
         apiClient = JotForm(apiKey: apiKey, debugMode: true, euApi: euApi)
     }
     

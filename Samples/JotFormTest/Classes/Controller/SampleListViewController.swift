@@ -27,7 +27,7 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11 //SharedData().sampleStrList.count
+        return SharedData().sampleStrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,8 +35,8 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "SampleCell")
         }
-      //  let sampleStr: String = SharedData().sampleStrList[indexPath.row] as! String
-       // cell?.textLabel?.text = sampleStr
+        let sampleStr: String = SharedData().sampleStrList[indexPath.row]
+        cell?.textLabel?.text = sampleStr
         cell?.textLabel?.textColor = UIColor.darkGray
         cell?.selectionStyle = .blue
         return cell!

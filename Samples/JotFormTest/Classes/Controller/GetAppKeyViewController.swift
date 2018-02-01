@@ -96,9 +96,10 @@ class GetAppKeyViewController: UIViewController {
         apiClient?.checkEUserver(appKey, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
          
-           // let content = result["content"] as AnyObject
-           // let isEuServer = content["euOnly"] as! Bool
-           // SharedData().initAPIClient(appKey, euApi: isEuServer)
+            let content = result["content"] as AnyObject
+            let isEuServer = content["euOnly"] as! Bool
+    
+            SharedData.sharedData.initAPIClient(appKey, euApi: isEuServer)
             
             self.showSampleListViewController()
         }, onFailure: {(_ error: Error?) -> Void in
