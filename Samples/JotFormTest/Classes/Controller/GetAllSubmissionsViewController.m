@@ -7,7 +7,6 @@
 //
 
 #import "GetAllSubmissionsViewController.h"
-#import "DataListViewController.h"
 #import "SVProgressHUD.h"
 #import <JotForm_iOS/JotForm_iOS-Swift.h>
 
@@ -91,11 +90,11 @@
 }
 
 - (void)startDataListViewController:(NSArray *)datalist {
-    DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
+   /* DataListViewController *dataListVc = [[DataListViewController alloc] initWithNibName:@"DataListViewController" bundle:nil];
     
      //[dataListVc setList:datalist type:DataListTypeSubmissionList];
     
-    [self.navigationController pushViewController:dataListVc animated:YES];
+    [self.navigationController pushViewController:dataListVc animated:YES]; */
 }
 
 #pragma mark IBAction
