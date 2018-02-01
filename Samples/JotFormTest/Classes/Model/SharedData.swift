@@ -9,12 +9,12 @@
 import Foundation
 import JotForm_iOS
 
-var sampleStrList = [Any]()
-var apiClient: JotForm?
-
-let sharedData = SharedData()
-
 class SharedData {
+    
+    public let sharedData = SharedData()
+    public var sampleStrList = [String]()
+    public var apiClient: JotForm?
+    
     init() {
         initSharedData()
     }

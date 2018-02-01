@@ -10,7 +10,6 @@ import UIKit
 import Foundation
 import JotForm_iOS
 
-
 class GetAppKeyViewController: UIViewController {
     var apiClient: JotForm?
     
@@ -33,8 +32,8 @@ class GetAppKeyViewController: UIViewController {
     }
     
     func showSampleListViewController() {
-       /* let sampleListVc = SampleListViewController(nibName: "SampleListViewController", bundle: nil)
-        navigationController?.pushViewController(sampleListVc as? UIViewController ?? UIViewController(), animated: true) */
+         let sampleListVc = SampleListViewController(nibName: "SampleListViewController", bundle: nil)
+        navigationController?.pushViewController(sampleListVc, animated: true)
     }
     
     func showAlertView() {
@@ -72,7 +71,8 @@ class GetAppKeyViewController: UIViewController {
         usernameTextField?.resignFirstResponder()
         passwordTextField?.resignFirstResponder()
         
-      //  SVProgressHUD.show(withStatus: "Getting app key...")
+        SVProgressHUD.show(withStatus: "Getting app key...")
+        
         var userInfo = [String: Any]()
         userInfo["username"] = usernameTextField?.text
         userInfo["password"] = passwordTextField?.text
@@ -80,6 +80,7 @@ class GetAppKeyViewController: UIViewController {
         userInfo["access"] = "full"
 
         apiClient?.login(userInfo, onSuccess: {(_ result: AnyObject) -> Void in
+            
             let responseCode: Int = result["responseCode"]  as! Int
             if responseCode == 200 || responseCode == 206 {
                 let content = result["content"] as AnyObject
@@ -87,18 +88,21 @@ class GetAppKeyViewController: UIViewController {
                 self.checkEuServer(appKey)
             }
         }, onFailure: {(_ error: Any) -> Void in
-            // SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
         })
     }
     
     func checkEuServer(_ appKey: String) {
         apiClient?.checkEUserver(appKey, onSuccess: {(_ result: AnyObject) -> Void in
-           // var isEuServer: Bool = result["content"]["euOnly"] != 0
-            //  [[SharedData sharedData] initAPIClient:appKey euApi:isEuServer];
-           // self.showSampleListViewController()
-           // SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
+         
+           // let content = result["content"] as AnyObject
+           // let isEuServer = content["euOnly"] as! Bool
+           // SharedData().initAPIClient(appKey, euApi: isEuServer)
+            
+            self.showSampleListViewController()
         }, onFailure: {(_ error: Error?) -> Void in
-           // SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
         })
     }
 }

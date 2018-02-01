@@ -34,6 +34,7 @@
 		A6CDD67B202273C400EC3643 /* JotFormTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */; };
 		A6CDD67F202276A200EC3643 /* JotFormTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */; };
 		A6D49EDF20223A78009966A5 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
+		A6EFEC0D2022A8B200CD33EF /* SampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFEC0C2022A8B200CD33EF /* SampleListViewController.swift */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
 		C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD6187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m */; };
@@ -57,7 +58,6 @@
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
 		C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF7E1879ADE400FCFAEA /* SVProgressHUD.bundle */; };
 		C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF801879ADE400FCFAEA /* SVProgressHUD.m */; };
-		C3B2AF881879AF5F00FCFAEA /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */; };
 		C3B2AF891879AF5F00FCFAEA /* SampleListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF871879AF5F00FCFAEA /* SampleListViewController.xib */; };
 		C3B2AF8D1879BBF200FCFAEA /* GetAllFormsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2AF8B1879BBF200FCFAEA /* GetAllFormsViewController.m */; };
 		C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF8C1879BBF200FCFAEA /* GetAllFormsViewController.xib */; };
@@ -99,6 +99,8 @@
 		A6CDD63E20225ED600EC3643 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JotFormTestAppDelegate.swift; sourceTree = "<group>"; };
 		A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JotFormTest-Info.plist"; sourceTree = "<group>"; };
+		A6CDD680202280DE00EC3643 /* JotFormBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotFormBridgingHeader.h; sourceTree = "<group>"; };
+		A6EFEC0C2022A8B200CD33EF /* SampleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleListViewController.swift; sourceTree = "<group>"; };
 		B0394BA1567EBAAF178EF682 /* Pods_JotFormTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotFormTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3541DD1187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
@@ -138,8 +140,6 @@
 		C3B2AF7F1879ADE400FCFAEA /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		C3B2AF801879ADE400FCFAEA /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C3B2AF831879AE0B00FCFAEA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C3B2AF851879AF5F00FCFAEA /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
-		C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		C3B2AF871879AF5F00FCFAEA /* SampleListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleListViewController.xib; sourceTree = "<group>"; };
 		C3B2AF8A1879BBF200FCFAEA /* GetAllFormsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllFormsViewController.h; sourceTree = "<group>"; };
 		C3B2AF8B1879BBF200FCFAEA /* GetAllFormsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllFormsViewController.m; sourceTree = "<group>"; };
@@ -236,8 +236,7 @@
 			children = (
 				A6CDD63920224BF800EC3643 /* GetAppKeyViewController.swift */,
 				C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */,
-				C3B2AF851879AF5F00FCFAEA /* SampleListViewController.h */,
-				C3B2AF861879AF5F00FCFAEA /* SampleListViewController.m */,
+				A6EFEC0C2022A8B200CD33EF /* SampleListViewController.swift */,
 				C3B2AF871879AF5F00FCFAEA /* SampleListViewController.xib */,
 				C3B2AF8A1879BBF200FCFAEA /* GetAllFormsViewController.h */,
 				C3B2AF8B1879BBF200FCFAEA /* GetAllFormsViewController.m */,
@@ -285,6 +284,7 @@
 				A62BE2911F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m */,
 				A62BE2921F4BA8B200A68DA1 /* CreateFormPropertiesViewController.xib */,
 				A67475ED2011542900E43826 /* Launch.xib */,
+				A6CDD680202280DE00EC3643 /* JotFormBridgingHeader.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -494,6 +494,7 @@
 				A62BE2931F4BA8B200A68DA1 /* CreateFormPropertiesViewController.m in Sources */,
 				C395C819187C3C3900AD6A6C /* CreateSubmissionViewController.m in Sources */,
 				A6CDD63F20225ED600EC3643 /* SharedData.swift in Sources */,
+				A6EFEC0D2022A8B200CD33EF /* SampleListViewController.swift in Sources */,
 				A6CDD63A20224BF800EC3643 /* GetAppKeyViewController.swift in Sources */,
 				604B75F519F6E59800B873D4 /* CreateFormQuestionsViewController.m in Sources */,
 				C3B2AF821879ADE400FCFAEA /* SVProgressHUD.m in Sources */,
@@ -510,7 +511,6 @@
 				C395C814187C06AA00AD6A6C /* GetFormReportsViewController.m in Sources */,
 				C3B2AF8D1879BBF200FCFAEA /* GetAllFormsViewController.m in Sources */,
 				A62BE28E1F4B85B700A68DA1 /* GetFormPropertiesViewController.m in Sources */,
-				C3B2AF881879AF5F00FCFAEA /* SampleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +568,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/JotFormTest/Classes/Controller/JotFormBridgingHeader.h   ";
 			};
 			name = Debug;
 		};
@@ -616,7 +616,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/JotFormTest/Classes/Controller/JotFormBridgingHeader.h   ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -642,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/JotFormTest/Classes/Controller/JotFormBridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
@@ -667,7 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.companyname.appname;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_SWIFT_SYMBOLS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/JotFormTest/Classes/Controller/JotFormBridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
