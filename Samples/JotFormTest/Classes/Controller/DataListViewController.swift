@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class DataListViewController: UIViewController {
     
     @IBOutlet weak var listTableView: UITableView!

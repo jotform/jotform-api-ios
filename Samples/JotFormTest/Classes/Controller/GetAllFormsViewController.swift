@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-class GetAllFormsViewController: UIViewController {
+class GetAllFormsViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSource {
     var orderbyList = [Any]()
     var sharedData: SharedData?
     
@@ -55,8 +54,8 @@ class GetAllFormsViewController: UIViewController {
             SVProgressHUD.dismiss()
             let responseCode = Int((result["responseCode"] as? String)!)
             if responseCode == 200 || responseCode == 206 {
-                let formsArray = result["content"] as? [Any]
-                //self.startDataListViewController(formsArray)
+                let formsArray = result["content"] as? [AnyObject]
+                self.startDataListViewController(formsArray!)
             }
             
         }, onFailure: {(_ error: Any) -> Void in
@@ -67,6 +66,23 @@ class GetAllFormsViewController: UIViewController {
     func startDataListViewController(_ datalist: [Any]) {
         let dataListVc = DataListViewController(nibName: "DataListViewController", bundle: nil)
         navigationController?.pushViewController(dataListVc, animated: true)
-      //  dataListVc.setList(datalist, type:DataListType.formList)
+        dataListVc.setList(datalist as [AnyObject], type:DataListType.formList)
+    }
+    
+    @IBAction func getFormsButtonClicked(_ sender: Any) {
+        loadForms()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return orderbyList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let rowStr: String = orderbyList[row] as! String
+        return rowStr
     }
 }
