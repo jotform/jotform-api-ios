@@ -51,6 +51,58 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
             let getAllFormsVc = GetAllFormsViewController(nibName: "GetAllFormsViewController", bundle: nil)
             
             navigationController?.pushViewController(getAllFormsVc, animated: true)
+        } else if indexPath.row == 1 {
+            let getAllSubmissionsVc = GetAllSubmissionsViewController(nibName: "GetAllSubmissionsViewController", bundle: nil)
+            
+            navigationController?.pushViewController(getAllSubmissionsVc, animated: true)
+        } else if indexPath.row == 2 {
+            let getFormReportsVc = GetFormReportsViewController(nibName: "GetFormReportsViewController", bundle: nil)
+            
+            navigationController?.pushViewController(getFormReportsVc, animated: true)
+        } else if indexPath.row == 3 {
+            let createFormVc = CreateFormViewController(nibName: "CreateFormViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createFormVc, animated: true)
+        } else if indexPath.row == 4 {
+            let createSubmissionVc = CreateSubmissionViewController(nibName: "CreateSubmissionViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createSubmissionVc, animated: true)
+        } else if indexPath.row == 5 {
+            let createReportVc = CreateReportViewController(nibName: "CreateReportViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createReportVc, animated: true)
+        } else if indexPath.row == 6 {
+            let registerUserVc = RegisterUserViewController(nibName: "RegisterUserViewController", bundle: nil)
+            
+            navigationController?.pushViewController(registerUserVc, animated: true)
+        } else if indexPath.row == 7 {
+            let createQuestionVc = CreateQuestionViewController(nibName: "CreateQuestionViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createQuestionVc, animated: true)
+        } else if indexPath.row == 8 {
+            let loadSettingsVC = LoadSettingsViewController(nibName: "LoadSettingsViewController", bundle: nil)
+            
+            navigationController?.pushViewController(loadSettingsVC, animated: true)
+        } else if indexPath.row == 9 {
+            let getHistoryVC = GetHistoryViewController(nibName: "GetHistoryViewController", bundle: nil)
+            
+            navigationController?.pushViewController(getHistoryVC, animated: true)
+        } else if indexPath.row == 10 {
+            let getFormPropertiesVC = GetFormPropertiesViewController(nibName: "GetFormPropertiesViewController", bundle: nil)
+            
+            navigationController?.pushViewController(getFormPropertiesVC, animated: true)
+        } else if indexPath.row == 11 {
+            let createFormPropertiesVC = CreateFormPropertiesViewController(nibName: "CreateFormPropertiesViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createFormPropertiesVC, animated: true)
+        } else if indexPath.row == 12 {
+            let createFormsVC  = CreateFormsViewController(nibName: "CreateFormsViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createFormsVC, animated: true)
+        } else if indexPath.row == 13 {
+            let createFormQuestionsVC = CreateFormQuestionsViewController(nibName: "CreateFormQuestionsViewController", bundle: nil)
+            
+            navigationController?.pushViewController(createFormQuestionsVC, animated: true)
         }
     }
 }
