@@ -63,9 +63,10 @@ class GetAppKeyViewController: UIViewController {
     }
     
     @IBAction func getAppKeyButtonClicked(_ sender: Any) {
-        let storage = HTTPCookieStorage.shared
-        for cookie: HTTPCookie in (storage.cookies)! {
-            storage.deleteCookie(cookie)
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
         }
         
         usernameTextField?.resignFirstResponder()
