@@ -44,7 +44,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/\(path)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -60,7 +60,7 @@ public class JotForm: NSObject {
         let urlStr = "https://submit.jotform.com/submit/\(formID)/"
         debugLog(urlStr, params: reportParams)
         
-        Alamofire.request(urlStr, method: .post, parameters: reportParams, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: reportParams, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -76,7 +76,7 @@ public class JotForm: NSObject {
         let urlStr = "https://submit.jotform.me/submit/\(formID)/"
         debugLog(urlStr, params: suggestionParams)
         
-        Alamofire.request(urlStr, method: .post, parameters: suggestionParams, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: suggestionParams, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -92,7 +92,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/login"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding: URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -108,7 +108,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/logout?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -124,7 +124,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/register?apiKey=\(apiKey)"
         debugLog(urlStr, params: userinfo)
         
-        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: userinfo, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -140,7 +140,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -156,7 +156,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -173,7 +173,7 @@ public class JotForm: NSObject {
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -189,7 +189,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -207,7 +207,7 @@ public class JotForm: NSObject {
 
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -223,7 +223,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/subusers?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -239,7 +239,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/users/folders?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -255,7 +255,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/folder/\(folderID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -271,7 +271,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/reports/apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -287,7 +287,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/reports/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -303,7 +303,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -319,7 +319,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/settings?apiKey=\(apiKey)"
         debugLog(urlStr, params: settings)
         
-        Alamofire.request(urlStr, method: .post, parameters:settings, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters:settings, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -335,7 +335,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/history?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -352,7 +352,7 @@ public class JotForm: NSObject {
         let params = createHistoryQuery(action, date: date, sortBy: sortBy, startDate: startDate, endDate: endDate)
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -368,7 +368,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -384,7 +384,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -400,7 +400,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -418,7 +418,7 @@ public class JotForm: NSObject {
         params["qid_enabled"] = "true"
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -435,7 +435,7 @@ public class JotForm: NSObject {
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -451,7 +451,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/reports?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -480,7 +480,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters:params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters:params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -496,7 +496,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/files?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -512,7 +512,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -534,7 +534,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/webhooks?apiKey=\(apiKey)"
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -550,7 +550,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/forms/\(formID)/webhooks/\(webhookID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -566,7 +566,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -582,7 +582,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/report/\(reportID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -612,7 +612,7 @@ public class JotForm: NSObject {
         
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -628,7 +628,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody , headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -644,7 +644,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/properties/\(propertyKey)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -660,7 +660,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/settings/euOnly?apiKey=\(_apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -676,7 +676,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/submission/\(sid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -701,7 +701,7 @@ public class JotForm: NSObject {
        
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -717,7 +717,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/clone?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .post, parameters:nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters:nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -733,7 +733,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/question/\(qid)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding: URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -755,7 +755,7 @@ public class JotForm: NSObject {
         
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -771,7 +771,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/questions?apiKey=\(apiKey)"
         debugLog(urlStr, params: questions)
         
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .put, parameters: nil, encoding: URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -794,7 +794,7 @@ public class JotForm: NSObject {
         
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -816,7 +816,7 @@ public class JotForm: NSObject {
         
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -832,7 +832,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/form/\(formID)/properties?apiKey=\(apiKey)"
         debugLog(urlStr, params: properties)
         
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -871,7 +871,7 @@ public class JotForm: NSObject {
             let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
             debugLog(urlStr, params:params)
             
-            Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+            Alamofire.request(urlStr, method: .post, parameters: params, encoding:URLEncoding.default).responseJSON { response in
                 switch(response.result) {
                 case .success(let data):
                     successBlock(data as AnyObject)
@@ -888,7 +888,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         debugLog(urlStr, params:form)
         
-        Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .put, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -904,7 +904,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/forms/\(formID)?apiKey=\(apiKey)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .delete, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -920,7 +920,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/system/plan/\(planType)"
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding: URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -936,7 +936,7 @@ public class JotForm: NSObject {
         let urlStr = "\(baseUrl)/system/time"
         debugLog(urlStr, params:nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.httpBody, headers: nil).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
