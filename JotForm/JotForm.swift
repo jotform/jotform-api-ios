@@ -168,7 +168,7 @@ public class JotForm: NSObject {
         }
     }
     
-    public func getForms(_ offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getForms(_ offset: Int, limit: Int, orderBy: String, filter: [String: AnyObject]?, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
@@ -201,7 +201,7 @@ public class JotForm: NSObject {
         }
     }
     
-    public func getSubmissions(_ offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getSubmissions(_ offset: Int, limit: Int, orderBy: String, filter: [String: AnyObject]?, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
 
@@ -430,7 +430,7 @@ public class JotForm: NSObject {
         }
     }
     
-    public func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [String: Any], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
+    public func getFormSubmissions(_ formID: Int64, offset: Int, limit: Int, orderBy: String, filter: [String: AnyObject], onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
         let urlStr = "\(baseUrl)/form/\(formID)/submissions?apiKey=\(apiKey)"
         let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
         debugLog(urlStr, params: params)
@@ -974,7 +974,7 @@ public class JotForm: NSObject {
         return params
     }
     
-    private func createConditions(_ offset: Int, limit: Int, filter: [String: Any], orderBy: String) -> [String: Any] {
+    private func createConditions(_ offset: Int, limit: Int, filter: [String: AnyObject]?, orderBy: String) -> [String: Any] {
         var params: [String: Any] = [:]
         
         if offset != 0 {
@@ -985,35 +985,37 @@ public class JotForm: NSObject {
             params["limit"] = limit
         }
         
-        if  filter.isEmpty {
-            var filterStr = "%7B"
-            var count = 0
-            let set = CharacterSet.urlHostAllowed
-            
-            for key: String in filter.keys {
-                if let array = filter[key] as? [String] {
-                    filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
-                    
-                    for value: String in array {
-                        filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                        if array.last != value {
-                            filterStr = filterStr + ("%2C")
+        if let filter = filter as [String: AnyObject]? {
+            if filter.isEmpty {
+                var filterStr = "%7B"
+                var count = 0
+                let set = CharacterSet.urlHostAllowed
+                
+                for key: String in filter.keys {
+                    if let array = filter[key] as? [String] {
+                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+                        
+                        for value: String in array {
+                            filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                            if array.last != value {
+                                filterStr = filterStr + ("%2C")
+                            }
                         }
-                    }
-                    filterStr = filterStr + ("%5D")
-                } else {
-                    if let string = filter[key] as? String {
-                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
-                        count += 1
-                        if count < (filter.count) {
-                            filterStr = filterStr + ("%2C")
+                        filterStr = filterStr + ("%5D")
+                    } else {
+                        if let string = filter[key] as? String {
+                            filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                            count += 1
+                            if count < (filter.count) {
+                                filterStr = filterStr + ("%2C")
+                            }
                         }
                     }
                 }
+                
+                filterStr = filterStr + ("%7D")
+                params["filter"] = filterStr
             }
-            
-            filterStr = filterStr + ("%7D")
-            params["filter"] = filterStr
         }
         if  orderBy.count != 0 {
             params["orderyBy"] = orderBy

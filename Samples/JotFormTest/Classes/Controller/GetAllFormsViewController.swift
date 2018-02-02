@@ -50,7 +50,7 @@ class GetAllFormsViewController: UIViewController ,UIPickerViewDelegate, UIPicke
         
         let orderby: String = orderbyList[pickerView.selectedRow(inComponent: 0)] as! String
         
-        SharedData.sharedData.apiClient?.getForms(offset, limit: limit, orderBy: orderby, filter:[:], onSuccess: {(_ result: AnyObject) -> Void in
+        SharedData.sharedData.apiClient?.getForms(offset, limit: limit, orderBy: orderby, filter:nil, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
              let responseCode = result["responseCode"] as? Int
            

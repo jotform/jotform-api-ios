@@ -4,13 +4,17 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.gitignore</key>
+		<data>
+		sJbysrAQ1kXoAS/MEA0vIwFj8Ak=
+		</data>
 		<key>Headers/JotForm.h</key>
 		<data>
 		O4S7bKMordRXutn5v7kArUgyQFE=
 		</data>
 		<key>Headers/JotForm_iOS-Swift.h</key>
 		<data>
-		ZY7WuI76yS9ykKsEzpFmDCFoQw4=
+		R2T40Lg/etExTa7+Lk7mCQ1GERM=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -22,7 +26,7 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftmodule</key>
 		<data>
-		fLkZxVHPnjFRIbgj5vkV+CSl6/8=
+		TA+2qxjcjqf8Xvaa2bbzcywXdg8=
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -30,7 +34,7 @@
 		</data>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Fwgd24VD1MoDVQeH4xhdNVSTnA8=
+		voX3BiMtCa45WzlB4U1yFdgU8PQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,6 +43,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>.gitignore</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sJbysrAQ1kXoAS/MEA0vIwFj8Ak=
+			</data>
+			<key>hash2</key>
+			<data>
+			UavjSKACBIpB4Vf8+jaXsMvRza/EL3Hq9Q3EaNGdoVs=
+			</data>
+		</dict>
 		<key>Headers/JotForm.h</key>
 		<dict>
 			<key>hash</key>
@@ -54,11 +69,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZY7WuI76yS9ykKsEzpFmDCFoQw4=
+			R2T40Lg/etExTa7+Lk7mCQ1GERM=
 			</data>
 			<key>hash2</key>
 			<data>
-			tbXPV9X9rWXQ9SbtH6V1+FSbWi4c6HQqBh95MbGajVc=
+			EGiMpMAv5WTCA8RKnSyDJ2SzwN4CZUzKMGDjVmwgvhY=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/i386.swiftdoc</key>
@@ -76,11 +91,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fLkZxVHPnjFRIbgj5vkV+CSl6/8=
+			TA+2qxjcjqf8Xvaa2bbzcywXdg8=
 			</data>
 			<key>hash2</key>
 			<data>
-			qo3XZDayrRbdaV8St3W1xVhDLpxGjjPcaz2NLnfAKnY=
+			PNHu9qX1pI/2afRNuDoDK0noKWarwXqufEV0e6uc3XA=
 			</data>
 		</dict>
 		<key>Modules/JotForm_iOS.swiftmodule/x86_64.swiftdoc</key>
@@ -98,11 +113,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Fwgd24VD1MoDVQeH4xhdNVSTnA8=
+			voX3BiMtCa45WzlB4U1yFdgU8PQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			BNjMbSk8ZUrzdxlJJjBgwDKb+I8WPx40n/rQQOT5USY=
+			zgMsavyB0P5H62CW+yIXx0Ol9NZMUV331GlFhBUyDNs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
