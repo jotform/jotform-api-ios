@@ -53,8 +53,6 @@
             self.title = @"Report list";
             break;
     }
-    
-    self.title = @"Form list";
 }
 
 #pragma mark - UITableViewDataSource

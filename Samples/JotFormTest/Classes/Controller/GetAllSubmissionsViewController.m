@@ -56,7 +56,7 @@
     orderbyList = [[SharedData sharedData] getFormOrderbyList];
 }
 
-- (void)loadForms {
+- (void)loadSubmissions {
     [SVProgressHUD showWithStatus:@"Loading submissions..."];
     
     NSInteger offset = 0;
@@ -99,7 +99,7 @@
 #pragma mark IBAction
 
 - (IBAction)getSubmissionsButtonClicked:(id)sender {
-    [self loadForms];
+    [self loadSubmissions];
 }
 
 #pragma mark UIPickerViewDataSource
