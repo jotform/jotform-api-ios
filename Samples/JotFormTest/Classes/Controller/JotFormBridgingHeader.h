@@ -6,7 +6,6 @@
 //  Copyright © 2018 wang. All rights reserved.
 //
 
-#import "GetAllSubmissionsViewController.h"
 #import "GetFormReportsViewController.h"
 #import "CreateFormViewController.h"
 #import "CreateSubmissionViewController.h"

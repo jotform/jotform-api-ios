@@ -8,9 +8,9 @@
 
 import Foundation
 
-class DataListViewController: UIViewController {
+class DataListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var listTableView: UITableView?
     var listType = DataListType(rawValue: 0)
     var dataList = [AnyHashable]()
     
@@ -18,7 +18,7 @@ class DataListViewController: UIViewController {
     public func setList(_ dataArray:[AnyObject], type: DataListType) {
         listType = type
         dataList = dataArray as! [AnyHashable]
-        listTableView.reloadData()
+        listTableView?.reloadData()
         
         switch listType {
         case .formList?:
