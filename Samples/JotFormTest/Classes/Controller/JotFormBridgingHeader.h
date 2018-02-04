@@ -6,7 +6,6 @@
 //  Copyright © 2018 wang. All rights reserved.
 //
 
-#import "RegisterUserViewController.h"
 #import "CreateQuestionViewController.h"
 #import "CreateFormQuestionsViewController.h"
 
