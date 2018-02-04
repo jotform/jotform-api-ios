@@ -54,7 +54,7 @@ class GetAllSubmissionsViewController: UIViewController, UIPickerViewDelegate, U
                  let formsArray = result["content"] as? [AnyObject]
                  self.startDataListViewController(formsArray!)
             }
-        }, onFailure: {(_ response: Any) -> Void in
+        }, onFailure: {(_ error: Any) -> Void in
             SVProgressHUD.dismiss()
         })
     }

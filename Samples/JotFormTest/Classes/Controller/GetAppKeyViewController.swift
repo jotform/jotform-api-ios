@@ -81,12 +81,13 @@ class GetAppKeyViewController: UIViewController {
         userInfo["access"] = "full"
 
         apiClient?.login(userInfo, onSuccess: {(_ result: AnyObject) -> Void in
-            
             let responseCode: Int = result["responseCode"]  as! Int
             if responseCode == 200 || responseCode == 206 {
                 let content = result["content"] as AnyObject
                 let appKey = content["appKey"] as! String
                 self.checkEuServer(appKey)
+            } else {
+                 SVProgressHUD.dismiss()
             }
         }, onFailure: {(_ error: Any) -> Void in
             SVProgressHUD.dismiss()
