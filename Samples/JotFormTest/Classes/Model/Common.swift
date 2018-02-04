@@ -16,4 +16,4 @@ enum DataListType : Int {
     case reportList
 }
 
-public let FORM_ID = 0
+public let FORM_ID: Int64 = 0
