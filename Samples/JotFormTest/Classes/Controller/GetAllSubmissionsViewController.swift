@@ -45,8 +45,9 @@ class GetAllSubmissionsViewController: UIViewController, UIPickerViewDelegate, U
         }
         
         let orderby: String = orderbyList[pickerView.selectedRow(inComponent: 0)] as! String
+        let filter = ["new" : "1"] as [String : AnyObject]
         
-        SharedData.sharedData.apiClient?.getSubmissions(offset, limit: limit, orderBy: orderby, filter: [:], onSuccess: {(_ result: AnyObject) -> Void in
+        SharedData.sharedData.apiClient?.getSubmissions(offset, limit: limit, orderBy: orderby, filter: filter, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
             let responseCode = result["responseCode"] as? Int
             

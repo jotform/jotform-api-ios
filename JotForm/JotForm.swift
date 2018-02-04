@@ -169,11 +169,20 @@ public class JotForm: NSObject {
     }
     
     public func getForms(_ offset: Int, limit: Int, orderBy: String, filter: [String: AnyObject]?, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)"
-        let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+        var params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+        var paramarray = [String]()
+        let keys = params.keys
+        for key: String in keys {
+            if let paramString = params[key] {
+               paramarray.append("\(key)=\(paramString)")
+            }
+        }
+        let paramstr: String = paramarray.joined(separator: "&")
+        let urlStr = "\(baseUrl)/user/forms?apiKey=\(apiKey)&\(paramstr)"
+        
         debugLog(urlStr, params: params)
         
-        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.default).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -202,12 +211,20 @@ public class JotForm: NSObject {
     }
     
     public func getSubmissions(_ offset: Int, limit: Int, orderBy: String, filter: [String: AnyObject]?, onSuccess successBlock: @escaping (_ id: AnyObject) -> Void, onFailure failureBlock: @escaping (_: Error) -> Void) {
-        let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)"
-        let params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
-
+        var params = createConditions(offset, limit: limit, filter: filter, orderBy: orderBy)
+        var paramarray = [String]()
+        let keys = params.keys
+        for key: String in keys {
+            if let paramString = params[key] {
+                   paramarray.append("\(key)=\(paramString)")
+            }
+        }
+        let paramstr: String = paramarray.joined(separator: "&")
+        let urlStr = "\(baseUrl)/user/submissions?apiKey=\(apiKey)&\(paramstr)"
+        
         debugLog(urlStr, params: nil)
         
-        Alamofire.request(urlStr, method: .get, parameters: params, encoding:URLEncoding.default).responseJSON { response in
+        Alamofire.request(urlStr, method: .get, parameters: nil, encoding:URLEncoding.default).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 successBlock(data as AnyObject)
@@ -986,31 +1003,28 @@ public class JotForm: NSObject {
         }
         
         if let filter = filter as [String: AnyObject]? {
-            if filter.isEmpty {
                 var filterStr = "%7B"
                 var count = 0
-                let set = CharacterSet.urlHostAllowed
-                
+            
                 for key: String in filter.keys {
                     if let array = filter[key] as? [String] {
                         filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
                         
                         for value: String in array {
-                            filterStr = filterStr + ("%%22\(String(describing: value.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                            filterStr = filterStr + ("%%22\(value)%%22")
                             if array.last != value {
                                 filterStr = filterStr + ("%2C")
                             }
                         }
                         filterStr = filterStr + ("%5D")
                     } else {
-                        if let string = filter[key] as? String {
-                            filterStr = filterStr + ("%%22\(key)%%22%%3A%%22\(String(describing: string.addingPercentEncoding(withAllowedCharacters: `set`)))%%22")
+                        if let string = filter[key] {
+                           filterStr = filterStr + ("%22\(key)%22%3A%22\(string)%22")
                             count += 1
                             if count < (filter.count) {
                                 filterStr = filterStr + ("%2C")
                             }
                         }
-                    }
                 }
                 
                 filterStr = filterStr + ("%7D")
