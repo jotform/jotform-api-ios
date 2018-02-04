@@ -40,6 +40,7 @@
 		A6E5A34B2027B56C0075AE13 /* GetFormPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A34A2027B56C0075AE13 /* GetFormPropertiesViewController.swift */; };
 		A6E5A34D2027B7910075AE13 /* CreateFormPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A34C2027B7910075AE13 /* CreateFormPropertiesViewController.swift */; };
 		A6E5A34F2027BACA0075AE13 /* CreateFormsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A34E2027BACA0075AE13 /* CreateFormsViewController.swift */; };
+		A6E5A3512027BDBD0075AE13 /* CreateReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A3502027BDBD0075AE13 /* CreateReportViewController.swift */; };
 		A6EFEC0D2022A8B200CD33EF /* SampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFEC0C2022A8B200CD33EF /* SampleListViewController.swift */; };
 		C3541DD9187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD2187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.m */; };
 		C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3541DD4187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m */; };
@@ -54,7 +55,6 @@
 		C35EA491187D9DB7009DEB74 /* CreateQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EA48F187D9DB7009DEB74 /* CreateQuestionViewController.xib */; };
 		C395C815187C06AA00AD6A6C /* GetFormReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */; };
 		C395C81A187C3C3900AD6A6C /* CreateSubmissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */; };
-		C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395C81C187C620700AD6A6C /* CreateReportViewController.m */; };
 		C395C81F187C620700AD6A6C /* CreateReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C395C81D187C620700AD6A6C /* CreateReportViewController.xib */; };
 		C3B2AF741879A4DB00FCFAEA /* GetAppKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */; };
 		C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3B2AF7E1879ADE400FCFAEA /* SVProgressHUD.bundle */; };
@@ -101,6 +101,7 @@
 		A6E5A34A2027B56C0075AE13 /* GetFormPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormPropertiesViewController.swift; sourceTree = "<group>"; };
 		A6E5A34C2027B7910075AE13 /* CreateFormPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormPropertiesViewController.swift; sourceTree = "<group>"; };
 		A6E5A34E2027BACA0075AE13 /* CreateFormsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormsViewController.swift; sourceTree = "<group>"; };
+		A6E5A3502027BDBD0075AE13 /* CreateReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportViewController.swift; sourceTree = "<group>"; };
 		A6EFEC0C2022A8B200CD33EF /* SampleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleListViewController.swift; sourceTree = "<group>"; };
 		B0394BA1567EBAAF178EF682 /* Pods_JotFormTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JotFormTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3541DD1187A5AC200FE19DB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
@@ -122,8 +123,6 @@
 		C35EA48F187D9DB7009DEB74 /* CreateQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuestionViewController.xib; sourceTree = "<group>"; };
 		C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFormReportsViewController.xib; sourceTree = "<group>"; };
 		C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSubmissionViewController.xib; sourceTree = "<group>"; };
-		C395C81B187C620700AD6A6C /* CreateReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReportViewController.h; sourceTree = "<group>"; };
-		C395C81C187C620700AD6A6C /* CreateReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReportViewController.m; sourceTree = "<group>"; };
 		C395C81D187C620700AD6A6C /* CreateReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateReportViewController.xib; sourceTree = "<group>"; };
 		C3B2AF721879A4DB00FCFAEA /* GetAppKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetAppKeyViewController.xib; sourceTree = "<group>"; };
 		C3B2AF7D1879ADE400FCFAEA /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -239,8 +238,7 @@
 				C395C813187C06AA00AD6A6C /* GetFormReportsViewController.xib */,
 				A6E5A3482027AFB30075AE13 /* CreateSubmissionViewController.swift */,
 				C395C818187C3C3900AD6A6C /* CreateSubmissionViewController.xib */,
-				C395C81B187C620700AD6A6C /* CreateReportViewController.h */,
-				C395C81C187C620700AD6A6C /* CreateReportViewController.m */,
+				A6E5A3502027BDBD0075AE13 /* CreateReportViewController.swift */,
 				C395C81D187C620700AD6A6C /* CreateReportViewController.xib */,
 				C35EA488187D5831009DEB74 /* RegisterUserViewController.h */,
 				C35EA489187D5831009DEB74 /* RegisterUserViewController.m */,
@@ -464,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E5A3512027BDBD0075AE13 /* CreateReportViewController.swift in Sources */,
 				C3541DDB187A5AC200FE19DB /* TPKeyboardAvoidingTableView.m in Sources */,
 				C3541DDA187A5AC200FE19DB /* TPKeyboardAvoidingScrollView.m in Sources */,
 				A6CDD67B202273C400EC3643 /* JotFormTestAppDelegate.swift in Sources */,
@@ -488,7 +487,6 @@
 				C35EA48B187D5831009DEB74 /* RegisterUserViewController.m in Sources */,
 				A6E5A33B2023A1D20075AE13 /* GetAllFormsViewController.swift in Sources */,
 				C3541DDC187A5AC200FE19DB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				C395C81E187C620700AD6A6C /* CreateReportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
