@@ -10,7 +10,6 @@
 #import "CreateReportViewController.h"
 #import "RegisterUserViewController.h"
 #import "CreateQuestionViewController.h"
-#import "LoadSettingsViewController.h"
 #import "GetHistoryViewController.h"
 #import "GetFormPropertiesViewController.h"
 #import "CreateFormsViewController.h"
