@@ -18,7 +18,7 @@
  * Return logged in user's settings and the appkey.
  */
 
-- (void)login:(NSMutableDictionary *)userinfo
+- (void)login:(NSDictionary *)userinfo
     onSuccess:(void (^)(id))successBlock
     onFailure:(void (^)(NSError *))failureBlock;
 
@@ -38,7 +38,7 @@
  * Create a new user.
  */
 
-- (void)registerUser:(NSMutableDictionary *)userinfo
+- (void)registerUser:(NSDictionary *)userinfo
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock;
 
@@ -82,7 +82,7 @@
 - (void)getForms:(NSInteger)offset
            limit:(NSInteger)limit
          orderBy:(NSString *)orderBy
-          filter:(NSMutableDictionary *)filter
+          filter:(NSDictionary *)filter
        onSuccess:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock;
 
@@ -108,7 +108,7 @@
 - (void)getSubmissions:(NSInteger)offset
                  limit:(NSInteger)limit
                orderBy:(NSString *)orderBy
-                filter:(NSMutableDictionary *)filter
+                filter:(NSDictionary *)filter
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock;
 
@@ -163,7 +163,7 @@
  * Update user's settings like time zone and language.
  */
 
-- (void)updateSettings:(NSMutableDictionary *)settings
+- (void)updateSettings:(NSDictionary *)settings
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock;
 
@@ -256,7 +256,7 @@
                     offset:(NSInteger)offset
                      limit:(NSInteger)limit
                    orderBy:(NSString *)orderBy
-                    filter:(NSMutableDictionary *)filter
+                    filter:(NSDictionary *)filter
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock;
 
@@ -280,7 +280,7 @@
  */
 
 - (void)createFormSubmissions:(long long)formID
-                   submission:(NSMutableDictionary *)submission
+                   submission:(NSDictionary *)submission
                     onSuccess:(void (^)(id))successBlock
                     onFailure:(void (^)(NSError *))failureBlock;
 
@@ -453,7 +453,7 @@
  */
 
 - (void)createFormQuestion:(long long)formID
-                  question:(NSMutableDictionary *)question
+                  question:(NSDictionary *)question
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock;
 
@@ -479,7 +479,7 @@
 
 - (void)editFormQuestion:(long long)formID
               questionID:(long long)qid
-      questionProperties:(NSMutableDictionary *)questionProperties
+      questionProperties:(NSDictionary *)questionProperties
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock;
 
@@ -491,7 +491,7 @@
  */
 
 - (void)setFormProperties:(long long)formID
-           formProperties:(NSMutableDictionary *)formProperties
+           formProperties:(NSDictionary *)formProperties
                 onSuccess:(void (^)(id))successBlock
                 onFailure:(void (^)(NSError *))failureBlock;
 
@@ -514,7 +514,7 @@
  * Create new form.
  */
 
-- (void)createForm:(NSMutableDictionary *)form
+- (void)createForm:(NSDictionary *)form
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock;
 
@@ -559,7 +559,7 @@
  * Sends out a report to Jotform.
  */
 
-- (void)createReport:(long long)formID reportParams:(NSMutableDictionary *)reportParams
+- (void)createReport:(long long)formID reportParams:(NSDictionary *)reportParams
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock;
 
@@ -567,7 +567,7 @@
  * Sends out a suggestion to Jotform.
  */
 
-- (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
+- (void)createSuggestion:(long long)formID suggestionParams:(NSDictionary *)suggestionParams
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock;
 

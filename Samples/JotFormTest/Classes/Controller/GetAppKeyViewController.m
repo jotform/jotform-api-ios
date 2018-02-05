@@ -63,7 +63,7 @@
                                     message:@"Do you have an API key?"
                                     preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"Yes"
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"Yes"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action){
                                                          if ([API_KEY isEqualToString:@""]) {
@@ -87,7 +87,7 @@
                                                          
                                                      }];
     
-    UIAlertAction *yesButton = [UIAlertAction
+    UIAlertAction *noButton = [UIAlertAction
                                 actionWithTitle:@"No"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action){

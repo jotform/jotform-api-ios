@@ -70,19 +70,19 @@
         limit = (self.limitTextField.text).integerValue;
     }
     
-   NSString *orderby = orderbyList[[self.pickerView selectedRowInComponent:0]];
+    NSString *orderby = orderbyList[[self.pickerView selectedRowInComponent:0]];
     
-   [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
-       [SVProgressHUD dismiss];
-       
-       if (result) {
-           NSInteger responseCode = [result[@"responseCode"] integerValue];
-           
-           if (responseCode == 200 || responseCode == 206) {
-               NSArray *formsArray = result[@"content"];
-               [self startDataListViewController:formsArray];
-           }
-       }
+    [[SharedData sharedData].apiClient getSubmissions:offset limit:limit orderBy:orderby filter:nil onSuccess:^(id result) {
+        [SVProgressHUD dismiss];
+        
+        if (result) {
+            NSInteger responseCode = [result[@"responseCode"] integerValue];
+            
+            if (responseCode == 200 || responseCode == 206) {
+                NSArray *formsArray = result[@"content"];
+                [self startDataListViewController:formsArray];
+            }
+        }
     } onFailure:^(id response) {
         [SVProgressHUD dismiss];
     }];
