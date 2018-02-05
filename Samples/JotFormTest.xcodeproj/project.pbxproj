@@ -26,7 +26,6 @@
 		A6CDD63C2022532000EC3643 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD63B2022532000EC3643 /* Common.swift */; };
 		A6CDD63F20225ED600EC3643 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD63E20225ED600EC3643 /* SharedData.swift */; };
 		A6CDD67B202273C400EC3643 /* JotFormTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDD67A202273C400EC3643 /* JotFormTestAppDelegate.swift */; };
-		A6CDD67F202276A200EC3643 /* JotFormTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6CDD67E202276A200EC3643 /* JotFormTest-Info.plist */; };
 		A6D49EDF20223A78009966A5 /* JotForm_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62BCA6C201A868100F8A59A /* JotForm_iOS.framework */; };
 		A6E5A33B2023A1D20075AE13 /* GetAllFormsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A33A2023A1D20075AE13 /* GetAllFormsViewController.swift */; };
 		A6E5A33D2023AEEB0075AE13 /* DataListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5A33C2023AEEB0075AE13 /* DataListViewController.swift */; };
@@ -374,7 +373,6 @@
 			files = (
 				C3541DE1187A86CA00FE19DB /* DataListViewController.xib in Resources */,
 				C3B2AF8E1879BBF200FCFAEA /* GetAllFormsViewController.xib in Resources */,
-				A6CDD67F202276A200EC3643 /* JotFormTest-Info.plist in Resources */,
 				C35EA48C187D5831009DEB74 /* RegisterUserViewController.xib in Resources */,
 				C3B2AF811879ADE400FCFAEA /* SVProgressHUD.bundle in Resources */,
 				A61E082B1F4B5C0D00330B48 /* LoadSettingsViewController.xib in Resources */,
