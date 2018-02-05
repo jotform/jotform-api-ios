@@ -35,6 +35,7 @@
 		2D11D531A37C685302F48296 /* libPods-JotForm_WatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED70D93FD51859CB27BBFE62 /* libPods-JotForm_WatchOS.a */; };
 		9141A6F0F7D6AC21C21D45E5 /* libPods-JotForm_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */; };
 		939C64ACCEC7D8441F7009B9 /* libPods-JotForm_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6693010F59A61547A6C1A0 /* libPods-JotForm_iOS.a */; };
+		A63E4CBD2021147400A97A65 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A63E4CBC2021147400A97A65 /* .gitignore */; };
 		A64817151E5FD9E5007714BA /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A64817191E5FDE17007714BA /* JotForm.m in Sources */ = {isa = PBXBuildFile; fileRef = A67F05CF1E5BD7C7002E9B11 /* JotForm.m */; };
 		A67F05C61E5BD782002E9B11 /* JotForm.h in Headers */ = {isa = PBXBuildFile; fileRef = A67F05B81E5BD781002E9B11 /* JotForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +52,7 @@
 		75006E9E152B2858A1094235 /* libPods-JotForm_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JotForm_Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		918648BC704A1606FD49691F /* Pods-JotForm_Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_Mac/Pods-JotForm_Mac.release.xcconfig"; sourceTree = "<group>"; };
 		9E5267298538AF028D1239B4 /* Pods-JotForm_WatchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JotForm_WatchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JotForm_WatchOS/Pods-JotForm_WatchOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A63E4CBC2021147400A97A65 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A64817081E5FD273007714BA /* JotForm_WatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_WatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B51E5BD781002E9B11 /* JotForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JotForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67F05B81E5BD781002E9B11 /* JotForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotForm.h; sourceTree = "<group>"; };
@@ -99,9 +101,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A63E4CBB2021144500A97A65 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				A63E4CBC2021147400A97A65 /* .gitignore */,
+			);
+			path = Git;
+			sourceTree = "<group>";
+		};
 		A67F05AB1E5BD781002E9B11 = {
 			isa = PBXGroup;
 			children = (
+				A63E4CBB2021144500A97A65 /* Git */,
 				A67F05B71E5BD781002E9B11 /* JotForm */,
 				A67F05B61E5BD781002E9B11 /* Products */,
 				AA280E23DCA0C9C8AFF7FFC6 /* Pods */,
@@ -238,7 +249,7 @@
 		A67F05AC1E5BD781002E9B11 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Interlogy, LLC";
 				TargetAttributes = {
 					A6288DE71E5CE34E007EB753 = {
@@ -297,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63E4CBD2021147400A97A65 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +610,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

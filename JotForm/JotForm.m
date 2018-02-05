@@ -256,7 +256,7 @@
 - (void)getSubmissions:(NSInteger)offset
                  limit:(NSInteger)limit
                orderBy:(NSString *)orderBy
-                filter:(NSMutableDictionary *)filter
+                filter:(NSDictionary *)filter
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock
 {
@@ -387,7 +387,7 @@
          }];
 }
 
-- (void)updateSettings:(NSMutableDictionary *)settings
+- (void)updateSettings:(NSDictionary *)settings
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", baseUrl,apiKey];
@@ -524,7 +524,7 @@
                     offset:(NSInteger)offset
                      limit:(NSInteger)limit
                    orderBy:(NSString *)orderBy
-                    filter:(NSMutableDictionary *)filter
+                    filter:(NSDictionary *)filter
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID, apiKey];
@@ -559,7 +559,7 @@
 }
 
 - (void)createFormSubmissions:(long long)formID
-                   submission:(NSMutableDictionary *)submission
+                   submission:(NSDictionary *)submission
                     onSuccess:(void (^)(id))successBlock
                     onFailure:(void (^)(NSError *))failureBlock {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
@@ -864,7 +864,7 @@
 }
 
 - (void)createFormQuestion:(long long)formID
-                  question:(NSMutableDictionary *)question
+                  question:(NSDictionary *)question
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID,apiKey];
@@ -906,7 +906,7 @@
 
 - (void)editFormQuestion:(long long)formID
               questionID:(long long)qid
-      questionProperties:(NSMutableDictionary *)properties
+      questionProperties:(NSDictionary *)properties
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@", baseUrl,formID,qid,apiKey];
@@ -931,7 +931,7 @@
 }
 
 - (void)setFormProperties:(long long)formID
-           formProperties:(NSMutableDictionary *)properties
+           formProperties:(NSDictionary *)properties
                 onSuccess:(void (^)(id))successBlock
                 onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@", baseUrl,formID,apiKey];
@@ -1114,7 +1114,7 @@
 
 - (NSMutableDictionary *)createConditions:(NSInteger)offset
                                     limit:(NSInteger)limit
-                                   filter:(NSMutableDictionary *)filter
+                                   filter:(NSDictionary *)filter
                                   orderBy:(NSString *)orderBy {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     

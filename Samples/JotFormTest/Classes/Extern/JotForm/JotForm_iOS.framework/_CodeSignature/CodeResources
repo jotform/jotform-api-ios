@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.gitignore</key>
+		<data>
+		/MmfGUaSLAX03yqtOKduklMX0ic=
+		</data>
 		<key>Headers/JotForm.h</key>
 		<data>
-		n3qqBMfm4UGDVxmOOjMbMKc/NOw=
+		pC7ZuqKgEcxZWzTjzZCLaLvDMGM=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -15,15 +19,26 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>.gitignore</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/MmfGUaSLAX03yqtOKduklMX0ic=
+			</data>
+			<key>hash2</key>
+			<data>
+			fV/jHlSt47XPyVgReLFosbAIT2MC3wr7CI3xcccgbsM=
+			</data>
+		</dict>
 		<key>Headers/JotForm.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n3qqBMfm4UGDVxmOOjMbMKc/NOw=
+			pC7ZuqKgEcxZWzTjzZCLaLvDMGM=
 			</data>
 			<key>hash2</key>
 			<data>
-			w4KYQ/VbKx+eAWd1s/PDRW0SgnsDcYuPsCrbJtlDFvU=
+			tt216cVo83pNXXlYAbgwkKZJ2wYfC8J70dSIkSJu6Y8=
 			</data>
 		</dict>
 	</dict>
