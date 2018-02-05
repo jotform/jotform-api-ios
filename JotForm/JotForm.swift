@@ -1008,10 +1008,10 @@ public class JotForm: NSObject {
             
                 for key: String in filter.keys {
                     if let array = filter[key] as? [String] {
-                        filterStr = filterStr + ("%%22\(key)%%22%%3A%%5B")
+                        filterStr = filterStr + ("%22\(key)%22%3A%5B")
                         
                         for value: String in array {
-                            filterStr = filterStr + ("%%22\(value)%%22")
+                            filterStr = filterStr + ("%22\(value)%22")
                             if array.last != value {
                                 filterStr = filterStr + ("%2C")
                             }
