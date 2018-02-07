@@ -39,25 +39,30 @@ class GetAllFormsViewController: UIViewController ,UIPickerViewDelegate, UIPicke
         
         var offset: Int = 0
         var limit: Int = 0
+        var order = ""
        
-        if offsetTextField.text!.count > 0 {
-            offset = Int(offsetTextField.text!)!
-        }
-       
-        if limitTextField.text!.count > 0 {
-            limit = Int(limitTextField.text!)!
+        if let offSetTextString = offsetTextField.text, let count = Int(offSetTextString) {
+            offset = count
         }
         
-        let orderby: String = orderbyList[pickerView.selectedRow(inComponent: 0)] as! String
+        if let limitTextString =  limitTextField.text, let count = Int(limitTextString) {
+            limit = count
+        }
+        
+        if let orderString = orderbyList[pickerView.selectedRow(inComponent: 0)] as? String {
+            order = orderString
+        }
+        
         let filter = ["status" : "ENABLED"] as [String : AnyObject]
         
-        SharedData.sharedData.apiClient?.getForms(offset, limit: limit, orderBy: orderby, filter:filter, onSuccess: {(_ result: AnyObject) -> Void in
+        SharedData.sharedData.apiClient?.getForms(offset, limit: limit, orderBy: order, filter:filter, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
              let responseCode = result["responseCode"] as? Int
            
             if responseCode == 200 || responseCode == 206 {
-                let formsArray = result["content"] as? [AnyObject]
-                self.startDataListViewController(formsArray!)
+                if let formsArray = result["content"] as? [AnyObject] {
+                    self.startDataListViewController(formsArray)
+                }
             }
             
         }, onFailure: {(_ error: Any) -> Void in
@@ -84,7 +89,13 @@ class GetAllFormsViewController: UIViewController ,UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let rowStr: String = orderbyList[row] as! String
-        return rowStr
+     
+        var rowString = ""
+        
+        if let string = orderbyList[row] as? String {
+           rowString = string
+        }
+        
+        return rowString
     }
 }

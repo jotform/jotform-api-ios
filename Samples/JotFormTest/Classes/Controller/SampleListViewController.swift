@@ -31,8 +31,10 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell",
-                                                 for: indexPath)
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
         
         let sampleStr: String = SharedData().sampleStrList[indexPath.row]
         cell.textLabel?.text = sampleStr
