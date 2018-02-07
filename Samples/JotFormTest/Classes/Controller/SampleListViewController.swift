@@ -31,15 +31,14 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "SampleCell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "SampleCell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell",
+                                                 for: indexPath)
+        
         let sampleStr: String = SharedData().sampleStrList[indexPath.row]
-        cell?.textLabel?.text = sampleStr
-        cell?.textLabel?.textColor = UIColor.darkGray
-        cell?.selectionStyle = .blue
-        return cell!
+        cell.textLabel?.text = sampleStr
+        cell.textLabel?.textColor = UIColor.darkGray
+        cell.selectionStyle = .blue
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
