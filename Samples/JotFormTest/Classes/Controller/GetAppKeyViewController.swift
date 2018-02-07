@@ -79,15 +79,18 @@ class GetAppKeyViewController: UIViewController {
         userInfo["password"] = passwordTextField?.text
         userInfo["appName"] = "JotFormAPISample"
         userInfo["access"] = "full"
-
+        
         apiClient?.login(userInfo, onSuccess: {(_ result: AnyObject) -> Void in
-            let responseCode: Int = result["responseCode"]  as! Int
-            if responseCode == 200 || responseCode == 206 {
-                let content = result["content"] as AnyObject
-                let appKey = content["appKey"] as! String
-                self.checkEuServer(appKey)
-            } else {
-                 SVProgressHUD.dismiss()
+            if let responseCode = result["responseCode"]  as? Int {
+                if responseCode == 200 || responseCode == 206 {
+                    let content = result["content"] as AnyObject
+                    
+                    if let appKey = content["appKey"] as? String {
+                        self.checkEuServer(appKey)
+                    }
+                } else {
+                    SVProgressHUD.dismiss()
+                }
             }
         }, onFailure: {(_ error: Any) -> Void in
             SVProgressHUD.dismiss()
@@ -97,15 +100,16 @@ class GetAppKeyViewController: UIViewController {
     func checkEuServer(_ appKey: String) {
         apiClient?.checkEUserver(appKey, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
-         
             let content = result["content"] as AnyObject
             
-            let isEuServer: Bool
+            var isEuServer = false
             
             if let string = content["euOnly"] as? String {
                 isEuServer = (Int(string) ?? 0) != 0
             } else {
-                isEuServer = content["euOnly"] as! Bool
+                if let boolValue = content["euOnly"] as? Bool {
+                    isEuServer = boolValue
+                }
             }
             
             SharedData.sharedData.initAPIClient(appKey, euApi:isEuServer)
