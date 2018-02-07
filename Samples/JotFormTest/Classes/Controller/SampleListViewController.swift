@@ -9,9 +9,14 @@
 import Foundation
 
 class SampleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         // Do any additional setup after loading the view from its nib.
         title = "API sample list"
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,9 +36,6 @@ class SampleListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
         
         let sampleStr: String = SharedData().sampleStrList[indexPath.row]

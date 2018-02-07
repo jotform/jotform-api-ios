@@ -33,26 +33,31 @@ class GetAllSubmissionsViewController: UIViewController, UIPickerViewDelegate, U
     
     func loadSubmissions() {
         SVProgressHUD.show(withStatus: "Loading submissions...")
+        
         var offset: Int = 0
         var limit: Int = 0
+        var order = ""
       
-        if offsetTextField.text!.count > 0 {
-            offset = Int(offsetTextField.text!)!
+        if let offSetTextString = offsetTextField.text, let count = Int(offSetTextString) {
+            offset = count
         }
         
-        if limitTextField.text!.count > 0 {
-            limit = Int(limitTextField.text!)!
+        if let limitTextString =  limitTextField.text, let count = Int(limitTextString) {
+            limit = count
         }
         
-        let orderby: String = orderbyList[pickerView.selectedRow(inComponent: 0)] as! String
+        if let orderString = orderbyList[pickerView.selectedRow(inComponent: 0)] as? String {
+            order = orderString
+        }
         
-        SharedData.sharedData.apiClient?.getSubmissions(offset, limit: limit, orderBy: orderby, filter:nil, onSuccess: {(_ result: AnyObject) -> Void in
+        SharedData.sharedData.apiClient?.getSubmissions(offset, limit: limit, orderBy: order, filter:nil, onSuccess: {(_ result: AnyObject) -> Void in
+            
             SVProgressHUD.dismiss()
             let responseCode = result["responseCode"] as? Int
             
             if responseCode == 200 || responseCode == 206 {
-                 let formsArray = result["content"] as? [AnyObject]
-                 self.startDataListViewController(formsArray!)
+                 let submissionArray = result["content"] as? [AnyObject]
+                 self.startDataListViewController(submissionArray!)
             }
         }, onFailure: {(_ error: Any) -> Void in
             SVProgressHUD.dismiss()
@@ -62,7 +67,7 @@ class GetAllSubmissionsViewController: UIViewController, UIPickerViewDelegate, U
     func startDataListViewController(_ datalist: [Any]) {
         let dataListVc = DataListViewController(nibName: "DataListViewController", bundle: nil)
         navigationController?.pushViewController(dataListVc, animated: true)
-        dataListVc.setList(datalist as [AnyObject], type:DataListType.formList)
+        dataListVc.setList(datalist as [AnyObject], type:DataListType.submissionList)
     }
     
     @IBAction func getSubmissionsButtonClicked(_ sender: Any) {

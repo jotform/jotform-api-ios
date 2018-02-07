@@ -11,13 +11,17 @@ import Foundation
 class DataListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var listTableView: UITableView?
+   
     var listType = DataListType(rawValue: 0)
     var dataList = [AnyHashable]()
     
-    
     public func setList(_ dataArray:[AnyObject], type: DataListType) {
         listType = type
-        dataList = dataArray as! [AnyHashable]
+        
+        if let array = dataArray as? [AnyHashable] {
+            dataList = array
+        }
+        
         listTableView?.reloadData()
         
         switch listType {
@@ -47,21 +51,24 @@ class DataListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "SampleCell")
         
-        if !(cell != nil) {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SampleCell")
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SampleCell")
+        
+        cell.selectionStyle = .none
+       
+        if let object = dataList[indexPath.row] as? [AnyHashable : Any] {
+            
+            if let idString =  object["id"] as? String {
+               cell.detailTextLabel?.text = idString
+            }
+            
+            if listType == DataListType.formList || listType == DataListType.reportList {
+                cell.textLabel?.text = object["title"] as? String
+            }
         }
         
-        cell?.selectionStyle = .none
-        var object = dataList[indexPath.row] as? [AnyHashable : Any]
-        cell?.detailTextLabel?.text = object!["id"] as? String
-        
-        if listType == DataListType.formList || listType == DataListType.reportList {
-            cell?.textLabel?.text = object!["title"] as? String
-        }
-        cell?.textLabel?.textColor = UIColor.darkGray
+        cell.textLabel?.textColor = UIColor.darkGray
 
-        return cell!
+        return cell
     }
 }
