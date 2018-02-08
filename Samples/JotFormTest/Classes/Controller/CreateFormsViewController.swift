@@ -9,6 +9,12 @@
 import Foundation
 
 class CreateFormsViewController: UIViewController {
+    override func viewDidLoad() {
+        // Do any additional setup after loading the view from its nib.
+        title = "Create Forms"
+        
+    }
+    
     func createForms() {
         let objectData: Data? = "{\"questions\":[{\"type\":\"control_head\"}]}".data(using: .utf8)
         if let json = (try? JSONSerialization.jsonObject(with: objectData ?? Data(), options: .mutableContainers)) as? [String: Any] {

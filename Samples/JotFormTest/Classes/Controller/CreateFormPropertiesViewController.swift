@@ -9,15 +9,21 @@
 import Foundation
 
 class CreateFormPropertiesViewController: UIViewController {
-    
+
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view from its nib.
-        SharedData.sharedData.apiClient?.getFormProperties(FORM_ID, onSuccess: {(_ result: Any) -> Void in
-            self.textView.text = "\(result)"
+        title = "Create Form Properties"
+       
+    }
+    
+    @IBAction func createFormPropertiesClicked(_ sender: Any) {
+        var userInfo = [String: Any]()
+        userInfo["350"] = "properties[formWidth]"
+        
+        SharedData.sharedData.apiClient?.setFormProperties(FORM_ID, formProperties: userInfo, onSuccess: {(_ result: Any) -> Void in
         }, onFailure: {(_ error: Error?) -> Void in
         })
     }
-    
 }

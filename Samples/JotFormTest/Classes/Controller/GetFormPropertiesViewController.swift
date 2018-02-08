@@ -13,6 +13,11 @@ class GetFormPropertiesViewController: UIViewController {
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view from its nib.
+        title = "Get Form Properties"
+        getFormProperties()
+    }
+    
+    func getFormProperties() {
         SharedData.sharedData.apiClient?.getFormProperties(FORM_ID, onSuccess: {(_ result: Any) -> Void in
             self.textView.text = "\(result)"
         }, onFailure: {(_ error: Error?) -> Void in

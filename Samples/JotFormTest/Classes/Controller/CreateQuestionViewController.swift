@@ -9,6 +9,10 @@
 import Foundation
 
 class CreateQuestionViewController: UIViewController {
+    override func viewDidLoad() {
+        // Do any additional setup after loading the view from its nib.
+        title = "Create Questions"
+    }
     
     func createFormQuestion() {
         if FORM_ID == 0 {
