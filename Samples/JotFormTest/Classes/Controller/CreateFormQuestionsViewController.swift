@@ -15,13 +15,14 @@ class CreateFormQuestionsViewController: UIViewController {
         SharedData.sharedData.apiClient?.createFormQuestions(FORM_ID, questions: jsonString, onSuccess: {(_ result: AnyObject) -> Void in
             SVProgressHUD.dismiss()
             
-            let responseCode: Int = result["responseCode"]  as! Int
-            if responseCode == 200 || responseCode == 206 {
-                let alertView = UIAlertController(title: "JotFormAPISample", message: "You created question successfully.", preferredStyle: .alert)
-                let cancelButton = UIAlertAction(title: "Ok", style: .default, handler: {(_ action: UIAlertAction) -> Void in
-                })
-                alertView.addAction(cancelButton)
-                self.present(alertView, animated: true, completion: nil)
+            if let responseCode: Int = result["responseCode"]  as? Int {
+                if responseCode == 200 || responseCode == 206 {
+                    let alertView = UIAlertController(title: "JotFormAPISample", message: "You created question successfully.", preferredStyle: .alert)
+                    let cancelButton = UIAlertAction(title: "Ok", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+                    })
+                    alertView.addAction(cancelButton)
+                    self.present(alertView, animated: true, completion: nil)
+                }
             }
             
         }, onFailure: {(_ error: Any) -> Void in

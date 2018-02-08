@@ -30,11 +30,12 @@ class GetFormReportsViewController: UIViewController {
         } else {
             SVProgressHUD.show(withStatus: "Loading reports...")
             SharedData.sharedData.apiClient?.getFormReports(FORM_ID, onSuccess: {(_ result: AnyObject) -> Void in
-                let responseCode: Int = result["responseCode"]  as! Int
-                
-               if (responseCode == 200 || responseCode == 206) {
-                    let reportsArray = result["content"] as? [String]
-                    self.startDataListViewController(reportsArray!)
+                if let responseCode: Int = result["responseCode"]  as? Int {
+                    if (responseCode == 200 || responseCode == 206) {
+                        if let reportsArray = result["content"] as? [String] {
+                            self.startDataListViewController(reportsArray)
+                        }
+                    }
                 }
                   SVProgressHUD.dismiss()
             }, onFailure: {(_ error: Any) -> Void in

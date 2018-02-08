@@ -20,17 +20,17 @@ class RegisterUserViewController: UIViewController {
     }
     
     func registerUser() {
-        if usernameTextField.text!.count == 0 {
+        if  usernameTextField.text?.count == 0 {
             usernameTextField.becomeFirstResponder()
             return
         }
        
-        if passwordTextField.text!.count == 0 {
+        if passwordTextField.text?.count == 0 {
             passwordTextField.becomeFirstResponder()
             return
         }
         
-        if emailTextField.text!.count == 0 {
+        if emailTextField.text?.count == 0 {
            emailTextField.becomeFirstResponder()
            return
         }

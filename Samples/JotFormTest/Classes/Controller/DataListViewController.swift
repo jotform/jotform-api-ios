@@ -57,7 +57,6 @@ class DataListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.selectionStyle = .none
        
         if let object = dataList[indexPath.row] as? [AnyHashable : Any] {
-            
             if let idString =  object["id"] as? String {
                cell.detailTextLabel?.text = idString
             }
