@@ -10,7 +10,16 @@
 
 @interface JotForm : NSObject
 
-- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi;
+typedef NS_ENUM(NSInteger, BaseUrlType) {
+    DefaultBaseUrl,
+    EUBaseUrl,
+    HipaaBaseUrl
+};
+
+@property (nonatomic, copy) NSString *baseUrl;
+
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode baseUrlType:(BaseUrlType)baseUrlType;
+
 
 /**
  * Login user with given credentials.
@@ -23,14 +32,21 @@
     onFailure:(void (^)(NSError *))failureBlock;
 
 /**
- * Returns whether or not an account is on the EU server.
+ * Returns whether or not an account is EU account.
  * @param apiKey is the account's api key.
  */
 
-- (void)checkEUserver:(NSString *)apiKey
-            onSuccess:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
+- (void)isAccountEU:(NSString *)apiKey
+          onSuccess:(void (^)(id))successBlock
+          onFailure:(void (^)(NSError *))failureBlock;
 
+
+/**
+ * Returns an account's settings.
+ */
+
+- (void)getAccountSettings:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Register with username, password and email.
@@ -272,7 +288,7 @@
 
 /**
  * Add a Submissions to the Form.
- * @param formID is the number you see on a form URL. You can get formIDs when you 
+ * @param formID is the number you see on a form URL. You can get formIDs when you
  * call /user/forms.
  * @param submission containing a dictionary with question IDs. You should get a
  * list of question IDs from form/{id}/questions and send the submission data with qid
@@ -419,9 +435,9 @@
 - (void)editSubmission:(long long)sid
                   name:(NSString *)submissionName
                    new:(NSInteger) new
-                  flag:(NSInteger)flag
-                  onSuccess:(void (^)(id))successBlock
-                  onFailure:(void (^)(NSError *))failureBlock;
+flag:(NSInteger)flag
+onSuccess:(void (^)(id))successBlock
+onFailure:(void (^)(NSError *))failureBlock;
 
 /**
  * Clone a single form.
@@ -572,3 +588,4 @@
                onFailure:(void (^)(NSError *))failureBlock;
 
 @end
+

@@ -9,13 +9,9 @@
 #import "JotForm.h"
 #import "AFHTTPSessionManager.h"
 
-#define BASE_URL                     @"https://api.jotform.com"
-#define BASE_URL_EU                  @"https://eu-api.jotform.com"
-
 @interface JotForm () {
     AFHTTPSessionManager *manager;
     NSString *apiKey;
-    NSString *baseUrl;
     BOOL debugMode;
 }
 
@@ -23,10 +19,24 @@
 
 @implementation JotForm
 
-- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode euApi:(BOOL)euApi {
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode baseUrlType:(BaseUrlType)baseUrlType {
     if (self = [super init]) {
         apiKey = apikey;
-        baseUrl = (euApi) ? BASE_URL_EU : BASE_URL;
+        
+        switch(baseUrlType) {
+            case DefaultBaseUrl:
+                self.baseUrl = @"https://api.jotform.com";
+                break;
+            case EUBaseUrl:
+                self.baseUrl = @"https://eu-api.jotform.com";
+                break;
+            case HipaaBaseUrl:
+                self.baseUrl = @"https://hipaa-api.jotform.com";
+                break;
+            default:
+                [NSException raise:NSGenericException format:@"Unexpected BaseUrlType."];
+        }
+        
         debugMode = debugmode;
         manager = [AFHTTPSessionManager manager];
     }
@@ -54,7 +64,7 @@
 - (void)executeGetEUapi:(NSString *)path
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", baseUrl, path];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", self.baseUrl, path];
     [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr
@@ -72,7 +82,7 @@
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
     NSString *urlStr = [NSString stringWithFormat:@"https://submit.jotform.com/submit/%lld/",formID];
-     [self debugLog:urlStr params:reportParams];
+    [self debugLog:urlStr params:reportParams];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -109,7 +119,7 @@
 - (void)login:(NSMutableDictionary *)userinfo
     onSuccess:(void (^)(id))successBlock
     onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/login", baseUrl];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/login", self.baseUrl];
     
     [self debugLog:urlStr params:userinfo];
     
@@ -119,13 +129,13 @@
           }
           failure:^(NSURLSessionTask *operation, NSError *error) {
               failureBlock(error);
-        }];
+          }];
 }
 
 - (void)logout:(NSMutableDictionary *)userinfo
      onSuccess:(void (^)(id))successBlock
      onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/logout?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/logout?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:userinfo];
     
@@ -141,7 +151,7 @@
 - (void)registerUser:(NSMutableDictionary *)userinfo
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/register?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/register?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:userinfo];
     
@@ -156,7 +166,7 @@
 
 - (void)getUser:(void (^)(id))successBlock
       onFailure:(void (^)(NSError *))failureBlock  {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -173,7 +183,7 @@
 
 - (void)getUsage:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/usage?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/usage?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -190,7 +200,7 @@
 
 - (void)getForms:(void (^)(id))successBlock
        onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -221,7 +231,7 @@
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@&%@", baseUrl,apiKey,paramstr];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@&%@", self.baseUrl,apiKey,paramstr];
     
     [self debugLog:urlStr params:nil];
     
@@ -238,7 +248,7 @@
 
 - (void)getSubmissions:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -270,7 +280,7 @@
     }
     
     NSString *paramstr = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@&%@",baseUrl,apiKey,paramstr];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/submissions?apiKey=%@&%@",self.baseUrl,apiKey,paramstr];
     
     [self debugLog:urlStr params:nil];
     
@@ -287,7 +297,7 @@
 
 - (void)getSubusers:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock  {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/subusers?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/subusers?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -304,7 +314,7 @@
 
 - (void)getFolders:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/users/folders?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/users/folders?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -322,7 +332,7 @@
 - (void)getFolder:(long long)folderID
         onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/folder/%lld?apiKey=%@", baseUrl,folderID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/folder/%lld?apiKey=%@", self.baseUrl,folderID, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -339,7 +349,7 @@
 
 - (void)getReports:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/reports/apiKey=%@", baseUrl, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/reports/apiKey=%@", self.baseUrl, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -357,9 +367,9 @@
 - (void)deleteReport:(long long)reportID
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/reports/%lld?apiKey=%@", baseUrl,reportID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/reports/%lld?apiKey=%@", self.baseUrl,reportID, apiKey];
     
-   [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:nil];
     
     [manager DELETE:urlStr parameters:nil
             success:^(NSURLSessionTask *task, id responseObject) {
@@ -372,7 +382,7 @@
 
 - (void)getSettings:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -390,7 +400,7 @@
 - (void)updateSettings:(NSDictionary *)settings
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:settings];
     
@@ -405,9 +415,9 @@
 
 - (void)getHistory:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/history?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/history?apiKey=%@", self.baseUrl,apiKey];
     
-   [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr
       parameters:nil
@@ -428,9 +438,9 @@
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
     
-     NSString *urlStr = [NSString stringWithFormat:@"%@/user/history?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/history?apiKey=%@", self.baseUrl,apiKey];
     
-     NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
+    NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
     
     [self debugLog:urlStr params:params];
     
@@ -449,7 +459,7 @@
 - (void)getForm:(long long)formID
       onSuccess:(void (^)(id))successBlock
       onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld?apiKey=%@", self.baseUrl,formID, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -468,7 +478,7 @@
 - (void)getFormQuestions:(long long)formID
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -486,7 +496,7 @@
 - (void)getFormQuestion:(long long)formID questionID:(long long)qid
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@", baseUrl,formID,qid, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@", self.baseUrl,formID,qid, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -504,7 +514,7 @@
 - (void)getFormSubmissions:(long long)formID
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", self.baseUrl,formID,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"qid_enabled"] = @"true";
@@ -527,7 +537,7 @@
                     filter:(NSDictionary *)filter
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", self.baseUrl,formID, apiKey];
     
     NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     
@@ -545,7 +555,7 @@
 - (void)getFormReports:(long long)formID
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/reports?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/reports?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -584,7 +594,7 @@
         }
     }
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:params];
     
@@ -600,7 +610,7 @@
 - (void)getFormFiles:(long long)formID
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/files?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/files?apiKey=%@", self.baseUrl,formID, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -616,9 +626,9 @@
 - (void)getFormWebhooks:(long long)formID
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-  NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", self.baseUrl,formID,apiKey];
     
-   [self debugLog:urlStr params:nil];
+    [self debugLog:urlStr params:nil];
     
     [manager GET:urlStr parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -638,7 +648,7 @@
         params[@"webhookURL"] = webhookURL;
     }
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/webhooks?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:params];
     
@@ -654,8 +664,8 @@
 - (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld/webhooks/%lld?apiKey=%@", baseUrl,formID,webhookID,apiKey];
-  
+    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld/webhooks/%lld?apiKey=%@", self.baseUrl,formID,webhookID,apiKey];
+    
     [self debugLog:urlStr params:nil];
     
     [manager DELETE:urlStr parameters:nil
@@ -670,7 +680,7 @@
 - (void)getSubmission:(long long)sid
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", baseUrl,sid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", self.baseUrl,sid,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -685,7 +695,7 @@
 
 - (void)getReport:(long long)reportID onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/report/%lld?apiKey=%@",baseUrl,reportID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/report/%lld?apiKey=%@",self.baseUrl,reportID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -704,7 +714,7 @@
               fields:(NSString *)fields
            onSuccess:(void (^)(id))successBlock
            onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/reports?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/reports?apiKey=%@", self.baseUrl,formID,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -721,7 +731,7 @@
     if (fields) {
         params[@"fields"] = fields;
     }
-
+    
     [self debugLog:urlStr params:params];
     
     [manager POST:urlStr parameters:params progress:nil
@@ -736,7 +746,7 @@
 - (void)getFormProperties:(long long)formID
                 onSuccess:(void (^)(id))successBlock
                 onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@",baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@",self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -754,7 +764,7 @@
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
               onSuccess:(void (^)(id))successBlock
               onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/%@?apiKey=%@",baseUrl,formID,propertyKey,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties/%@?apiKey=%@",self.baseUrl,formID,propertyKey,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -769,10 +779,10 @@
          }];
 }
 
-- (void)checkEUserver:(NSString *)_apiKey
-            onSuccess:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [[NSString stringWithFormat:@"%@/user/settings/euOnly?apiKey=%@", baseUrl,_apiKey] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+- (void)isAccountEU:(NSString *)_apiKey
+          onSuccess:(void (^)(id))successBlock
+          onFailure:(void (^)(NSError *))failureBlock {
+    NSString *urlStr = [[NSString stringWithFormat:@"%@/user/settings/euOnly?apiKey=%@", self.baseUrl,_apiKey] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     [self debugLog:urlStr params:nil];
     
@@ -790,7 +800,7 @@
 - (void)deleteSubmission:(long long)sid
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", baseUrl,sid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", self.baseUrl,sid,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -809,7 +819,7 @@
                   flag:(NSInteger)flag
              onSuccess:(void (^)(id))successBlock
              onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", baseUrl,sid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/submission/%lld?apiKey=%@", self.baseUrl,sid,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -817,8 +827,8 @@
         params[@"submission[1][first]"] = submissionName;
     }
     
-    params[@"submission[new]"] = (@(new)).stringValue;
-    params[@"submission[flag]"] = (@(flag)).stringValue;
+    params[@"submission[new]"] = [@(new) stringValue];
+    params[@"submission[flag]"] = [@(flag) stringValue];
     
     [self debugLog:urlStr params:params];
     
@@ -834,7 +844,7 @@
 - (void)cloneForm:(long long)formID
         onSuccess:(void (^)(id))successBlock
         onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/clone?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/clone?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -850,7 +860,7 @@
 - (void)deleteFormQuestion:(long long)formID questionID:(long long)qid
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@",baseUrl,formID,qid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@",self.baseUrl,formID,qid,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -867,7 +877,7 @@
                   question:(NSDictionary *)question
                  onSuccess:(void (^)(id))successBlock
                  onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", self.baseUrl,formID,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -891,7 +901,7 @@
 - (void)createFormQuestions:(long long)formID questions:(NSString *)questions
                   onSuccess:(void (^)(id))successBlock
                   onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions?apiKey=%@", self.baseUrl,formID, apiKey];
     
     [self debugLog:urlStr params:questions];
     
@@ -909,7 +919,7 @@
       questionProperties:(NSDictionary *)properties
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@", baseUrl,formID,qid,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld?apiKey=%@", self.baseUrl,formID,qid,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -934,7 +944,7 @@
            formProperties:(NSDictionary *)properties
                 onSuccess:(void (^)(id))successBlock
                 onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@", self.baseUrl,formID,apiKey];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
@@ -959,7 +969,7 @@
                    formProperties:(NSString *)properties
                         onSuccess:(void (^)(id))successBlock
                         onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@", baseUrl,formID,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/properties?apiKey=%@", self.baseUrl,formID,apiKey];
     
     [self debugLog:urlStr params:properties];
     
@@ -1003,7 +1013,7 @@
             }
         }
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:params];
     
@@ -1019,7 +1029,7 @@
 - (void)createForms:(NSDictionary *)form
           onSuccess:(void (^)(id))successBlock
           onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", baseUrl,apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms?apiKey=%@", self.baseUrl,apiKey];
     [self debugLog:urlStr params:form];
     
     [manager PUT:urlStr parameters:form
@@ -1034,7 +1044,7 @@
 - (void)deleteForm:(long long)formID
          onSuccess:(void (^)(id))successBlock
          onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld?apiKey=%@", baseUrl,formID, apiKey];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld?apiKey=%@", self.baseUrl,formID, apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -1050,7 +1060,7 @@
 - (void)getSystemPlan:(NSString *)planType
             onSuccess:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/system/plan/%@", baseUrl,planType];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/system/plan/%@", self.baseUrl,planType];
     
     [self debugLog:urlStr params:nil];
     
@@ -1067,7 +1077,24 @@
 
 - (void)getSystemTime:(void (^)(id))successBlock
             onFailure:(void (^)(NSError *))failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/system/time", baseUrl];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/system/time", self.baseUrl];
+    
+    [self debugLog:urlStr params:nil];
+    
+    [manager GET:urlStr
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
+             successBlock(responseObject);
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             failureBlock(error);
+         }];
+}
+
+- (void)getAccountSettings:(void (^)(id))successBlock
+                 onFailure:(void (^)(NSError *))failureBlock {
+    NSString *urlStr = [NSString stringWithFormat:@"%@/user/settings?apiKey=%@", self.baseUrl,apiKey];
     
     [self debugLog:urlStr params:nil];
     
@@ -1090,7 +1117,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     if (action.length) {
-         params[@"action"] = action;
+        params[@"action"] = action;
     }
     
     if (date.length) {
@@ -1139,10 +1166,10 @@
                     filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22", [value stringByAddingPercentEncodingWithAllowedCharacters:set]]];
                     
                     if ([filter[key] lastObject] != value) {
-                         filterStr = [filterStr stringByAppendingString:@"%2C"];
+                        filterStr = [filterStr stringByAppendingString:@"%2C"];
                     }
                 }
-                 filterStr = [filterStr stringByAppendingString:@"%5D"];
+                filterStr = [filterStr stringByAppendingString:@"%5D"];
             } else {
                 filterStr = [filterStr stringByAppendingString:[NSString stringWithFormat:@"%%22%@%%22%%3A%%22%@%%22",key,[filter[key]stringByAddingPercentEncodingWithAllowedCharacters:set]]];
                 
