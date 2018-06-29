@@ -11,9 +11,9 @@
 @interface JotForm : NSObject
 
 typedef NS_ENUM(NSInteger, BaseUrlType) {
-    DefaultBaseUrl,
+    USBaseUrl,
     EUBaseUrl,
-    HipaaBaseUrl
+    HIPAABaseUrl
 };
 
 @property (nonatomic, copy) NSString *baseUrl;

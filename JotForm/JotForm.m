@@ -24,13 +24,13 @@
         apiKey = apikey;
         
         switch(baseUrlType) {
-            case DefaultBaseUrl:
+            case USBaseUrl:
                 self.baseUrl = @"https://api.jotform.com";
                 break;
             case EUBaseUrl:
                 self.baseUrl = @"https://eu-api.jotform.com";
                 break;
-            case HipaaBaseUrl:
+            case HIPAABaseUrl:
                 self.baseUrl = @"https://hipaa-api.jotform.com";
                 break;
             default:
