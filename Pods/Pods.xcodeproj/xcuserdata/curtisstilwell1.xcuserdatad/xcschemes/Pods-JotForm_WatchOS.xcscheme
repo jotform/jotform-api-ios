@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "710D829B2004D1BA2ED7A3858024A0C7"
+               BlueprintIdentifier = "1D7474FB6809E8E4759AB716381F891E"
                BuildableName = "libPods-JotForm_WatchOS.a"
                BlueprintName = "Pods-JotForm_WatchOS"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "710D829B2004D1BA2ED7A3858024A0C7"
+            BlueprintIdentifier = "1D7474FB6809E8E4759AB716381F891E"
             BuildableName = "libPods-JotForm_WatchOS.a"
             BlueprintName = "Pods-JotForm_WatchOS"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DF8BD294D2B1FEEB609E0292480223C7"
+               BlueprintIdentifier = "93257EBE20B620AED6F532503D1EC9D7"
                BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
                BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DF8BD294D2B1FEEB609E0292480223C7"
+            BlueprintIdentifier = "93257EBE20B620AED6F532503D1EC9D7"
             BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
             BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
             ReferencedContainer = "container:Pods.xcodeproj">
