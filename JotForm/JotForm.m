@@ -1192,4 +1192,10 @@
     return params;
 }
 
+- (void)cancelAllTasks {
+    for (NSURLSessionTask *task in manager.tasks) {
+        [task cancel];
+    }
+}
+
 @end

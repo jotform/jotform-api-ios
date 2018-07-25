@@ -587,5 +587,12 @@ onFailure:(void (^)(NSError *))failureBlock;
                onSuccess:(void (^)(id))successBlock
                onFailure:(void (^)(NSError *))failureBlock;
 
+
+/**
+ * Cancels all NSURLSessionTask requests.
+ */
+
+- (void)cancelAllTasks;
+
 @end
 
