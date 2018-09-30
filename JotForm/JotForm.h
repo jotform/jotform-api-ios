@@ -32,16 +32,6 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
     onFailure:(void (^)(NSError *))failureBlock;
 
 /**
- * Returns whether or not an account is EU account.
- * @param apiKey is the account's api key.
- */
-
-- (void)isAccountEU:(NSString *)apiKey
-          onSuccess:(void (^)(id))successBlock
-          onFailure:(void (^)(NSError *))failureBlock;
-
-
-/**
  * Returns an account's settings.
  */
 
