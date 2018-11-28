@@ -160,7 +160,7 @@
     }
     
     NSString *paramstring = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl,paramstring];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl, paramstring];
     [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -192,17 +192,8 @@
 - (void)deleteReport:(long long)reportID
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/reports/%lld", self.baseUrl,reportID];
-    
-    [self debugLog:urlString params:nil];
-    
-    [manager DELETE:urlString parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/reports/%lld", self.baseUrl, reportID];
+    [self deleteRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSettings:(SuccessCompletionBlock)successBlock
@@ -251,7 +242,7 @@
 - (void)getForm:(long long)formID
       onSuccess:(SuccessCompletionBlock)successBlock
       onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld", self.baseUrl, formID];
     [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -343,7 +334,7 @@
         }
     }
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl,formID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
     [self postRequestWithURLString:urlStr parameters:params onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -357,7 +348,7 @@
 - (void)getFormWebhooks:(long long)formID
               onSuccess:(SuccessCompletionBlock)successBlock
               onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/webhooks", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/webhooks", self.baseUrl, formID];
     [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -377,17 +368,8 @@
 - (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID
             onSuccess:(SuccessCompletionBlock)successBlock
             onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld/webhooks/%lld", self.baseUrl,formID,webhookID];
-    
-    [self debugLog:urlStr params:nil];
-    
-    [manager DELETE:urlStr parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/forms/%lld/webhooks/%lld", self.baseUrl, formID, webhookID];
+    [self deleteRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSubmission:(long long)sid
@@ -433,31 +415,22 @@
 - (void)getFormProperties:(long long)formID
                 onSuccess:(SuccessCompletionBlock)successBlock
                 onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties",self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl, formID];
     [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
               onSuccess:(SuccessCompletionBlock)successBlock
               onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties/%@",self.baseUrl,formID,propertyKey];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties/%@", self.baseUrl, formID, propertyKey];
     [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)deleteSubmission:(long long)sid
                onSuccess:(SuccessCompletionBlock)successBlock
                onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl,sid];
-    
-    [self debugLog:urlString params:nil];
-    
-    [manager DELETE:urlString parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl, sid];
+    [self deleteRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)editSubmission:(long long)sid
@@ -467,7 +440,6 @@
              onSuccess:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl,sid];
-    
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     if (submissionName) {
@@ -490,24 +462,15 @@
 - (void)deleteFormQuestion:(long long)formID questionID:(long long)qid
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/question/%lld",self.baseUrl,formID,qid];
-    
-    [self debugLog:urlStr params:nil];
-    
-    [manager DELETE:urlStr parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/question/%lld", self.baseUrl, formID, qid];
+    [self deleteRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createFormQuestion:(long long)formID
                   question:(NSDictionary *)question
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/questions", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/questions", self.baseUrl, formID];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = question.allKeys;
@@ -639,17 +602,8 @@
 - (void)deleteForm:(long long)formID
          onSuccess:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/forms/%lld", self.baseUrl,formID];
-    
-    [self debugLog:urlStr params:nil];
-    
-    [manager DELETE:urlStr parameters:nil
-            success:^(NSURLSessionTask *task, id responseObject) {
-                successBlock(responseObject);
-            }
-            failure:^(NSURLSessionTask *operation, NSError *error) {
-                failureBlock(error);
-            }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/forms/%lld", self.baseUrl, formID];
+    [self deleteRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSystemPlan:(NSString *)planType
@@ -687,7 +641,6 @@
          }];
 }
 
-
 - (void)postRequestWithURLString:(NSString *)urlString
                       parameters:(id)parameters
                       onSuccess:(SuccessCompletionBlock)successBlock
@@ -703,6 +656,21 @@
           failure:^(NSURLSessionTask *operation, NSError *error) {
               failureBlock(error);
           }];
+}
+
+- (void)deleteRequestWithURLString:(NSString *)urlString
+                      parameters:(id)parameters
+                       onSuccess:(SuccessCompletionBlock)successBlock
+                       onFailure:(FailureCompletionBlock)failureBlock {
+    [self debugLog:urlString params:parameters];
+   
+    [manager DELETE:urlString parameters:parameters
+            success:^(NSURLSessionTask *task, id responseObject) {
+                successBlock(responseObject);
+            }
+            failure:^(NSURLSessionTask *operation, NSError *error) {
+                failureBlock(error);
+            }];
 }
 
 - (NSMutableDictionary *)createHistoryQuery:(NSString *)action
