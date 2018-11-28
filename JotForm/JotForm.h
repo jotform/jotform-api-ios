@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^_Nullable SuccessCompletionBlock)(id responseObject);
+typedef void (^_Nullable FailureCompletionBlock)(NSError *error);
+
 @interface JotForm : NSObject
 
 typedef NS_ENUM(NSInteger, BaseUrlType) {
@@ -20,23 +25,21 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 
 - (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode baseUrlType:(BaseUrlType)baseUrlType;
 
-
 /**
  * Login user with given credentials.
  * @param userinfo username, password, application name and access type of user
  * Return logged in user's settings and the appkey.
  */
 
-- (void)login:(NSDictionary *)userinfo
-    onSuccess:(void (^)(id))successBlock
-    onFailure:(void (^)(NSError *))failureBlock;
+- (void)login:(NSDictionary *)userinfo onSuccess:(SuccessCompletionBlock)successBlock
+    onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Returns an account's settings.
  */
 
-- (void)getAccountSettings:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+- (void)getAccountSettings:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Register with username, password and email.
@@ -44,17 +47,16 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * Create a new user.
  */
 
-- (void)registerUser:(NSDictionary *)userinfo
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock;
+- (void)registerUser:(NSDictionary *)userinfo onSuccess:(SuccessCompletionBlock)successBlock
+           onFailure:(FailureCompletionBlock) failureBlock;
 
 /**
  * Get user's account details for this JotForm user.
  * Return user account type, avatar URL, name, email, website URL and account limits.
  */
 
-- (void)getUser:(void (^)(id))successBlock
-      onFailure:(void (^)(NSError *))failureBlock;
+- (void)getUser:(SuccessCompletionBlock)successBlock
+      onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Monthly User Usage.
@@ -62,8 +64,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * payment form submissions and upload space used by user.
  */
 
-- (void)getUsage:(void (^)(id))successBlock
-       onFailure:(void (^)(NSError *))failureBlock;
+- (void)getUsage:(SuccessCompletionBlock)successBlock
+       onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Forms.
@@ -71,8 +73,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * when it was created, number of new and total submissions.
  */
 
-- (void)getForms:(void (^)(id))successBlock
-       onFailure:(void (^)(NSError *))failureBlock;
+- (void)getForms:(SuccessCompletionBlock)successBlock
+       onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Forms.
@@ -89,8 +91,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
            limit:(NSInteger)limit
          orderBy:(NSString *)orderBy
           filter:(NSDictionary *)filter
-       onSuccess:(void (^)(id))successBlock
-       onFailure:(void (^)(NSError *))failureBlock;
+       onSuccess:(SuccessCompletionBlock)successBlock
+       onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Submissions.
@@ -98,8 +100,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * The answers array has the submission data. Created_at is the date of the submission.
  */
 
-- (void)getSubmissions:(void (^)(id))successBlock
-             onFailure:(void (^)(NSError *))failureBlock;
+- (void)getSubmissions:(SuccessCompletionBlock)successBlock
+             onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Submissions.
@@ -115,8 +117,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
                  limit:(NSInteger)limit
                orderBy:(NSString *)orderBy
                 filter:(NSDictionary *)filter
-             onSuccess:(void (^)(id))successBlock
-             onFailure:(void (^)(NSError *))failureBlock;
+             onSuccess:(SuccessCompletionBlock)successBlock
+             onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Sub-User Account List.
@@ -124,8 +126,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * and form folders with access privileges.
  */
 
-- (void)getSubusers:(void (^)(id))successBlock
-          onFailure:(void (^)(NSError *))failureBlock;
+- (void)getSubusers:(SuccessCompletionBlock)successBlock
+          onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Folders.
@@ -133,8 +135,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * the folder for shared folders.
  */
 
-- (void)getFolders:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+- (void)getFolders:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Folder Details.
@@ -143,8 +145,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFolder:(long long)folderID
-        onSuccess:(void (^)(id))successBlock
-        onFailure:(void (^)(NSError *))failureBlock;
+        onSuccess:(SuccessCompletionBlock)successBlock
+        onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Reports.
@@ -152,16 +154,16 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * ie. Excel, CSV, printable charts, embeddable HTML tables.
  */
 
-- (void)getReports:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+- (void)getReports:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get User Settings.
  * Return user's time zone and language.
  */
 
-- (void)getSettings:(void (^)(id))successBlock
-          onFailure:(void (^)(NSError *))failureBlock;
+- (void)getSettings:(SuccessCompletionBlock)successBlock
+          onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Update User Settings.
@@ -170,8 +172,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)updateSettings:(NSDictionary *)settings
-             onSuccess:(void (^)(id))successBlock
-             onFailure:(void (^)(NSError *))failureBlock;
+             onSuccess:(SuccessCompletionBlock)successBlock
+             onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get History.
@@ -179,8 +181,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * account logins and other operations.
  */
 
-- (void)getHistory:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+- (void)getHistory:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get History.
@@ -201,8 +203,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
             sortBy:(NSString *)sortBy
          startDate:(NSString *)startDate
            endDate:(NSString *)endDate
-         onSuccess:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+         onSuccess:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Form Details.
@@ -211,8 +213,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getForm:(long long)formID
-      onSuccess:(void (^)(id))successBlock
-      onFailure:(void (^)(NSError *))failureBlock;
+      onSuccess:(SuccessCompletionBlock)successBlock
+      onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Form Questions.
@@ -221,8 +223,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormQuestions:(long long)formID
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
+               onSuccess:(SuccessCompletionBlock)successBlock
+               onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get details about a question.
@@ -233,8 +235,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormQuestion:(long long)formID questionID:(long long)qid
-              onSuccess:(void (^)(id))successBlock
-              onFailure:(void (^)(NSError *))failureBlock;
+              onSuccess:(SuccessCompletionBlock)successBlock
+              onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Form Submissions.
@@ -244,8 +246,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormSubmissions:(long long)formID
-                 onSuccess:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+                 onSuccess:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * List of a form submissions.
@@ -263,8 +265,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
                      limit:(NSInteger)limit
                    orderBy:(NSString *)orderBy
                     filter:(NSDictionary *)filter
-                 onSuccess:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+                 onSuccess:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get form reports.
@@ -273,8 +275,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormReports:(long long)formID
-             onSuccess:(void (^)(id))successBlock
-             onFailure:(void (^)(NSError *))failureBlock;
+             onSuccess:(SuccessCompletionBlock)successBlock
+             onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Add a Submissions to the Form.
@@ -287,8 +289,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 
 - (void)createFormSubmissions:(long long)formID
                    submission:(NSDictionary *)submission
-                    onSuccess:(void (^)(id))successBlock
-                    onFailure:(void (^)(NSError *))failureBlock;
+                    onSuccess:(SuccessCompletionBlock)successBlock
+                    onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Form Uploads.
@@ -298,8 +300,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormFiles:(long long)formID
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock;
+           onSuccess:(SuccessCompletionBlock)successBlock
+           onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * List of Webhooks for a Form.
@@ -308,8 +310,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormWebhooks:(long long)formID
-              onSuccess:(void (^)(id))successBlock
-              onFailure:(void (^)(NSError *))failureBlock;
+              onSuccess:(SuccessCompletionBlock)successBlock
+              onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Add a new webhook.
@@ -320,8 +322,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL
-                 onSuccess:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+                 onSuccess:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Delete a webhook of a specific form.
@@ -332,8 +334,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID
-            onSuccess:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
+            onSuccess:(SuccessCompletionBlock)successBlock
+            onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get submission data
@@ -342,8 +344,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getSubmission:(long long)sid
-            onSuccess:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
+            onSuccess:(SuccessCompletionBlock)successBlock
+            onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get report details
@@ -352,8 +354,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getReport:(long long)reportID
-        onSuccess:(void (^)(id))successBlock
-        onFailure:(void (^)(NSError *))failureBlock;
+        onSuccess:(SuccessCompletionBlock)successBlock
+        onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Delete report details
@@ -362,8 +364,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)deleteReport:(long long)reportID
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock;
+           onSuccess:(SuccessCompletionBlock)successBlock
+           onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  
@@ -380,8 +382,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
                title:(NSString *)title
            list_type:(NSString *)list_type
               fields:(NSString *)fields
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock;
+           onSuccess:(SuccessCompletionBlock)successBlock
+           onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get Form Properties.
@@ -390,8 +392,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormProperties:(long long)formID
-                onSuccess:(void (^)(id))successBlock
-                onFailure:(void (^)(NSError *))failureBlock;
+                onSuccess:(SuccessCompletionBlock)successBlock
+                onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get a Form Property.
@@ -402,8 +404,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
-              onSuccess:(void (^)(id))successBlock
-              onFailure:(void (^)(NSError *))failureBlock;
+              onSuccess:(SuccessCompletionBlock)successBlock
+              onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Delete Submission Data.
@@ -412,8 +414,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)deleteSubmission:(long long)sid
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
+               onSuccess:(SuccessCompletionBlock)successBlock
+               onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Edit a single submission.
@@ -423,11 +425,11 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)editSubmission:(long long)sid
-                  name:(NSString *)submissionName
-                   new:(NSInteger) new
-flag:(NSInteger)flag
-onSuccess:(void (^)(id))successBlock
-onFailure:(void (^)(NSError *))failureBlock;
+                name:(NSString *)submissionName
+                new:(NSInteger)new
+                flag:(NSInteger)flag
+            onSuccess:(SuccessCompletionBlock)successBlock
+            onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Clone a single form.
@@ -436,8 +438,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)cloneForm:(long long)formID
-        onSuccess:(void (^)(id))successBlock
-        onFailure:(void (^)(NSError *))failureBlock;
+        onSuccess:(SuccessCompletionBlock)successBlock
+        onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Delete a single form question.
@@ -448,8 +450,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)deleteFormQuestion:(long long)formID questionID:(long long)qid
-                 onSuccess:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+                 onSuccess:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Add new question to specified form.
@@ -460,8 +462,8 @@ onFailure:(void (^)(NSError *))failureBlock;
 
 - (void)createFormQuestion:(long long)formID
                   question:(NSDictionary *)question
-                 onSuccess:(void (^)(id))successBlock
-                 onFailure:(void (^)(NSError *))failureBlock;
+                 onSuccess:(SuccessCompletionBlock)successBlock
+                 onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Add new question to specified form.
@@ -471,8 +473,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)createFormQuestions:(long long)formID questions:(NSString *)questions
-                  onSuccess:(void (^)(id))successBlock
-                  onFailure:(void (^)(NSError *))failureBlock;
+                  onSuccess:(SuccessCompletionBlock)successBlock
+                  onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Edit a single question properties.
@@ -486,8 +488,8 @@ onFailure:(void (^)(NSError *))failureBlock;
 - (void)editFormQuestion:(long long)formID
               questionID:(long long)qid
       questionProperties:(NSDictionary *)questionProperties
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
+               onSuccess:(SuccessCompletionBlock)successBlock
+               onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Add or edit properties of a specific form
@@ -498,8 +500,8 @@ onFailure:(void (^)(NSError *))failureBlock;
 
 - (void)setFormProperties:(long long)formID
            formProperties:(NSDictionary *)formProperties
-                onSuccess:(void (^)(id))successBlock
-                onFailure:(void (^)(NSError *))failureBlock;
+                onSuccess:(SuccessCompletionBlock)successBlock
+                onFailure:(FailureCompletionBlock)failureBlock;
 
 
 /**
@@ -511,8 +513,8 @@ onFailure:(void (^)(NSError *))failureBlock;
 
 - (void)setMultipleFormProperties:(long long)formID
                    formProperties:(NSString *)formProperties
-                        onSuccess:(void (^)(id))successBlock
-                        onFailure:(void (^)(NSError *))failureBlock;
+                        onSuccess:(SuccessCompletionBlock)successBlock
+                        onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Create a new form
@@ -521,8 +523,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)createForm:(NSDictionary *)form
-         onSuccess:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+         onSuccess:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Create a new form
@@ -531,8 +533,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)createForms:(NSDictionary *)form
-          onSuccess:(void (^)(id))successBlock
-          onFailure:(void (^)(NSError *))failureBlock;
+          onSuccess:(SuccessCompletionBlock)successBlock
+          onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Delete a single form
@@ -541,8 +543,8 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)deleteForm:(long long)formID
-         onSuccess:(void (^)(id))successBlock
-         onFailure:(void (^)(NSError *))failureBlock;
+         onSuccess:(SuccessCompletionBlock)successBlock
+         onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get details of a plan
@@ -551,31 +553,31 @@ onFailure:(void (^)(NSError *))failureBlock;
  */
 
 - (void)getSystemPlan:(NSString *)plan
-            onSuccess:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
+            onSuccess:(SuccessCompletionBlock)successBlock
+            onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Get system time.
  */
 
-- (void)getSystemTime:(void (^)(id))successBlock
-            onFailure:(void (^)(NSError *))failureBlock;
+- (void)getSystemTime:(SuccessCompletionBlock)successBlock
+            onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Sends out a report to Jotform.
  */
 
 - (void)createReport:(long long)formID reportParams:(NSDictionary *)reportParams
-           onSuccess:(void (^)(id))successBlock
-           onFailure:(void (^)(NSError *))failureBlock;
+           onSuccess:(SuccessCompletionBlock)successBlock
+           onFailure:(FailureCompletionBlock)failureBlock;
 
 /**
  * Sends out a suggestion to Jotform.
  */
 
 - (void)createSuggestion:(long long)formID suggestionParams:(NSDictionary *)suggestionParams
-               onSuccess:(void (^)(id))successBlock
-               onFailure:(void (^)(NSError *))failureBlock;
+               onSuccess:(SuccessCompletionBlock)successBlock
+               onFailure:(FailureCompletionBlock)failureBlock;
 
 
 /**
@@ -586,3 +588,4 @@ onFailure:(void (^)(NSError *))failureBlock;
 
 @end
 
+NS_ASSUME_NONNULL_END
