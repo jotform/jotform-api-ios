@@ -39,7 +39,7 @@
         
         manager = [AFHTTPSessionManager manager];
      
-        if (apikey.length > 0) {
+        if (apikey.length) {
             [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apiKey"];
         }
     }
@@ -102,19 +102,19 @@
 - (void)getUser:(SuccessCompletionBlock)successBlock
       onFailure:(FailureCompletionBlock)failureBlock  {
     NSString *urlString = [NSString stringWithFormat:@"%@/user", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getUsage:(SuccessCompletionBlock)successBlock
        onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/usage", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getForms:(SuccessCompletionBlock)successBlock
        onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/forms", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getForms:(NSInteger)offset
@@ -134,13 +134,13 @@
     
     NSString *paramstring = [paramarray componentsJoinedByString:@"&"];
     NSString *urlString = [NSString stringWithFormat:@"%@/user/forms?%@", self.baseUrl, paramstring];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSubmissions:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSubmissions:(NSInteger)offset
@@ -161,32 +161,32 @@
     
     NSString *paramstring = [paramarray componentsJoinedByString:@"&"];
     NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl, paramstring];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSubusers:(SuccessCompletionBlock)successBlock
           onFailure:(FailureCompletionBlock)failureBlock  {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/subusers", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFolders:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/users/folders", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFolder:(long long)folderID
         onSuccess:(SuccessCompletionBlock)successBlock
         onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/folder/%lld", self.baseUrl, folderID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getReports:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/reports/", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)deleteReport:(long long)reportID
@@ -199,7 +199,7 @@
 - (void)getSettings:(SuccessCompletionBlock)successBlock
           onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/settings", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)updateSettings:(NSDictionary *)settings
@@ -212,7 +212,7 @@
 - (void)getHistory:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/history", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getHistory:(NSString *)action
@@ -223,60 +223,40 @@
          onSuccess:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/history", self.baseUrl];
-    NSMutableDictionary *params = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
-    
-    [self debugLog:urlString params:params];
-    
-    [manager GET:urlString
-      parameters:params
-        progress:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
-    
+    NSMutableDictionary *parameters = [self createHistoryQuery:action date:date sortBy:sortBy startDate:startDate endDate:endDate];
+    [self getRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getForm:(long long)formID
       onSuccess:(SuccessCompletionBlock)successBlock
       onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormQuestions:(long long)formID
                onSuccess:(SuccessCompletionBlock)successBlock
                onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/questions", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormQuestion:(long long)formID questionID:(long long)qid
               onSuccess:(SuccessCompletionBlock)successBlock
               onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/question/%lld", self.baseUrl, formID, qid];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormSubmissions:(long long)formID
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
+
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"qid_enabled"] = @"true";
     
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    params[@"qid_enabled"] = @"true";
-    
-    [self debugLog:urlString params:params];
-    
-    [manager GET:urlString parameters:params progress:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+    [self getRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormSubmissions:(long long)formID
@@ -286,26 +266,16 @@
                     filter:(NSDictionary *)filter
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
-    
-    NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
-    
-    [self debugLog:urlStr params:params];
-    
-    [manager GET:urlStr parameters:params progress:nil
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
+    NSMutableDictionary *parameters = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
+    [self getRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormReports:(long long)formID
              onSuccess:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/reports", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createFormSubmissions:(long long)formID
@@ -342,14 +312,14 @@
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/files", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormWebhooks:(long long)formID
               onSuccess:(SuccessCompletionBlock)successBlock
               onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/webhooks", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL
@@ -376,13 +346,13 @@
             onSuccess:(SuccessCompletionBlock)successBlock
             onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl, sid];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getReport:(long long)reportID onSuccess:(SuccessCompletionBlock)successBlock
         onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/report/%lld",self.baseUrl,reportID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createReport:(long long)formID
@@ -416,14 +386,14 @@
                 onSuccess:(SuccessCompletionBlock)successBlock
                 onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl, formID];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormProperty:(long long)formID propertyKey:(NSString *)propertyKey
               onSuccess:(SuccessCompletionBlock)successBlock
               onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties/%@", self.baseUrl, formID, propertyKey];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)deleteSubmission:(long long)sid
@@ -485,17 +455,8 @@
 - (void)createFormQuestions:(long long)formID questions:(NSString *)questions
                   onSuccess:(SuccessCompletionBlock)successBlock
                   onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/questions", self.baseUrl,formID];
-    
-    [self debugLog:urlStr params:questions];
-    
-    [manager PUT:urlStr parameters:questions
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/questions", self.baseUrl, formID];
+    [self putRequestWithURLString:urlString parameters:questions onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)editFormQuestion:(long long)formID
@@ -536,17 +497,8 @@
                    formProperties:(NSString *)properties
                         onSuccess:(SuccessCompletionBlock)successBlock
                         onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl,formID];
-    
-    [self debugLog:urlString params:properties];
-    
-    [manager PUT:urlString parameters:properties
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl, formID];
+    [self putRequestWithURLString:urlString parameters:properties onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createForm:(NSMutableDictionary *)form
@@ -587,16 +539,8 @@
 - (void)createForms:(NSDictionary *)form
           onSuccess:(SuccessCompletionBlock)successBlock
           onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/user/forms", self.baseUrl];
-    [self debugLog:urlStr params:form];
-    
-    [manager PUT:urlStr parameters:form
-         success:^(NSURLSessionTask *task, id responseObject) {
-             successBlock(responseObject);
-         }
-         failure:^(NSURLSessionTask *operation, NSError *error) {
-             failureBlock(error);
-         }];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/forms", self.baseUrl];
+    [self putRequestWithURLString:urlString parameters:form onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)deleteForm:(long long)formID
@@ -610,28 +554,29 @@
             onSuccess:(SuccessCompletionBlock)successBlock
             onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/system/plan/%@", self.baseUrl,planType];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getSystemTime:(SuccessCompletionBlock)successBlock
             onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/system/time", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getAccountSettings:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/user/settings", self.baseUrl];
-    [self getRequestWithURLString:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getRequestWithURLString:(NSString *)urlString
+                      parameters:(id)parameters
                       onSuccess:(SuccessCompletionBlock)successBlock
                       onFailure:(FailureCompletionBlock)failureBlock {
-    [self debugLog:urlString params:nil];
+    [self debugLog:urlString params:parameters];
                           
     [manager GET:urlString
-      parameters:nil
+      parameters:parameters
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              successBlock(responseObject);
@@ -671,6 +616,21 @@
             failure:^(NSURLSessionTask *operation, NSError *error) {
                 failureBlock(error);
             }];
+}
+
+- (void)putRequestWithURLString:(NSString *)urlString
+                        parameters:(id)parameters
+                         onSuccess:(SuccessCompletionBlock)successBlock
+                         onFailure:(FailureCompletionBlock)failureBlock {
+    [self debugLog:urlString params:parameters];
+    
+    [manager PUT:urlString parameters:parameters
+         success:^(NSURLSessionTask *task, id responseObject) {
+             successBlock(responseObject);
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error) {
+             failureBlock(error);
+         }];
 }
 
 - (NSMutableDictionary *)createHistoryQuery:(NSString *)action
