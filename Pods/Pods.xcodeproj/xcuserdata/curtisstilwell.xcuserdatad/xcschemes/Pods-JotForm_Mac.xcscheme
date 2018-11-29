@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93257EBE20B620AED6F532503D1EC9D7"
-               BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
-               BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
+               BlueprintIdentifier = "D8C4AD106048758DC512D1D6676499AF"
+               BuildableName = "libPods-JotForm_Mac.a"
+               BlueprintName = "Pods-JotForm_Mac"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93257EBE20B620AED6F532503D1EC9D7"
-            BuildableName = "libAFNetworking-NSURLSession-Security-Serialization.a"
-            BlueprintName = "AFNetworking-NSURLSession-Security-Serialization"
+            BlueprintIdentifier = "D8C4AD106048758DC512D1D6676499AF"
+            BuildableName = "libPods-JotForm_Mac.a"
+            BlueprintName = "Pods-JotForm_Mac"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C911FBE1F35572E88F7C38E256EB13D9"
-               BuildableName = "libAFNetworking-2b1e3ee3.a"
-               BlueprintName = "AFNetworking-2b1e3ee3"
+               BlueprintIdentifier = "2CA0671BE4696AE6F70A54375B9E8203"
+               BuildableName = "libPods-JotForm_iOS.a"
+               BlueprintName = "Pods-JotForm_iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C911FBE1F35572E88F7C38E256EB13D9"
-            BuildableName = "libAFNetworking-2b1e3ee3.a"
-            BlueprintName = "AFNetworking-2b1e3ee3"
+            BlueprintIdentifier = "2CA0671BE4696AE6F70A54375B9E8203"
+            BuildableName = "libPods-JotForm_iOS.a"
+            BlueprintName = "Pods-JotForm_iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
