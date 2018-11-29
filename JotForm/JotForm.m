@@ -36,11 +36,9 @@
         }
         
         debugModeEnabled = debugMode;
+       
         manager = [AFHTTPSessionManager manager];
-    
-        if (apikey.length) {
-            [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apiKey"];
-        }
+        [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apiKey"];
     }
     return self;
 }
