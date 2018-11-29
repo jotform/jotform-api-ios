@@ -11,14 +11,14 @@
 
 @interface JotForm () {
     AFHTTPSessionManager *manager;
-    BOOL debugMode;
+    BOOL debugModeEnabled;
 }
 
 @end
 
 @implementation JotForm
 
-- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode baseUrlType:(BaseUrlType)baseUrlType {
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugMode baseUrlType:(BaseUrlType)baseUrlType {
     if (self = [super init]) {
         
         switch(baseUrlType) {
@@ -35,10 +35,9 @@
                 [NSException raise:NSGenericException format:@"Unexpected BaseUrlType."];
         }
         
-        debugMode = debugmode;
-        
+        debugModeEnabled = debugMode;
         manager = [AFHTTPSessionManager manager];
-     
+    
         if (apikey.length) {
             [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apiKey"];
         }
@@ -46,20 +45,20 @@
     return self;
 }
 
-- (void)debugLog:(NSString *)urlStr params:(id)params {
-    if (debugMode) {
-        NSString *paramsStr = @"";
+- (void)debugLog:(NSString *)urlString parameters:(id)parameters {
+    if (debugModeEnabled) {
+        NSString *parameterString = @"";
         
-        if ([params isKindOfClass:[NSString class]]) {
-            paramsStr = params;
-        } else if ([params isKindOfClass:[NSDictionary class]]) {
-            paramsStr = [params description];
+        if ([parameters isKindOfClass:[NSString class]]) {
+            parameterString = parameters;
+        } else if ([parameters isKindOfClass:[NSDictionary class]]) {
+            parameterString = [parameters description];
         }
         
-        NSLog(@"urlstr = %@", urlStr);
+        NSLog(@"url string = %@", urlString);
         
-        if (paramsStr.length > 0) {
-            NSLog(@"paramstr = %@",paramsStr);
+        if (parameterString.length > 0) {
+            NSLog(@"parameter string = %@",parameterString);
         }
     }
 }
@@ -124,16 +123,16 @@
        onSuccess:(SuccessCompletionBlock)successBlock
        onFailure:(FailureCompletionBlock)failureBlock {
     
-    NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
-    NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = params.allKeys;
+    NSMutableDictionary *parameters = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
+    NSArray *keys = parameters.allKeys;
+    NSMutableArray *parameterArray = [[NSMutableArray alloc] init];
     
     for (NSString *key in keys) {
-        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
+        [parameterArray addObject:[NSString stringWithFormat:@"%@=%@", key, parameters[key]]];
     }
     
-    NSString *paramstring = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/forms?%@", self.baseUrl, paramstring];
+    NSString *parameterString = [parameterArray componentsJoinedByString:@"&"];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/forms?%@", self.baseUrl, parameterString];
     [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -150,17 +149,17 @@
              onSuccess:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock
 {
-    NSMutableDictionary *params = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
+    NSMutableDictionary *parameters = [self createConditions:offset limit:limit filter:filter orderBy:orderBy];
     
-    NSMutableArray *paramarray = [[NSMutableArray alloc] init];
-    NSArray *keys = params.allKeys;
+    NSMutableArray *parameterArray = [[NSMutableArray alloc] init];
+    NSArray *keys = parameters.allKeys;
     
     for (NSString *key in keys) {
-        [paramarray addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
+        [parameterArray addObject:[NSString stringWithFormat:@"%@=%@", key, parameters[key]]];
     }
     
-    NSString *paramstring = [paramarray componentsJoinedByString:@"&"];
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl, paramstring];
+    NSString *parameterString = [parameterArray componentsJoinedByString:@"&"];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl, parameterString];
     [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -282,7 +281,7 @@
                    submission:(NSDictionary *)submission
                     onSuccess:(SuccessCompletionBlock)successBlock
                     onFailure:(FailureCompletionBlock)failureBlock {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = submission.allKeys;
     
@@ -300,12 +299,12 @@
         }
         
         if (submission[key]) {
-            params[subkey] = submission[key];
+            parameters[subkey] = submission[key];
         }
     }
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
-    [self postRequestWithURLString:urlStr parameters:params onSuccess:successBlock onFailure:failureBlock];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
+    [self postRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormFiles:(long long)formID
@@ -325,14 +324,14 @@
 - (void)createFormWebhooks:(long long)formID hookUrl:(NSString *)webhookURL
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     if (webhookURL.length) {
-        params[@"webhookURL"] = webhookURL;
+        parameters[@"webhookURL"] = webhookURL;
     }
     
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/webhooks", self.baseUrl, formID];
-    [self postRequestWithURLString:urlString parameters:params onSuccess:successBlock onFailure:failureBlock];
+    [self postRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)deleteWebhook:(long long)formID webhookId:(long long)webhookID
@@ -489,7 +488,7 @@
         parameters[[NSString stringWithFormat:@"properties[%@]", key]] = properties[key];
     }
     
-    [self debugLog:urlString params:parameters];
+    [self debugLog:urlString parameters:parameters];
     [self postRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -573,7 +572,7 @@
                       parameters:(id)parameters
                       onSuccess:(SuccessCompletionBlock)successBlock
                       onFailure:(FailureCompletionBlock)failureBlock {
-    [self debugLog:urlString params:parameters];
+    [self debugLog:urlString parameters:parameters];
                           
     [manager GET:urlString
       parameters:parameters
@@ -588,10 +587,10 @@
 
 - (void)postRequestWithURLString:(NSString *)urlString
                       parameters:(id)parameters
-                      onSuccess:(SuccessCompletionBlock)successBlock
-                      onFailure:(FailureCompletionBlock)failureBlock {
-    [self debugLog:urlString params:parameters];
-                          
+                       onSuccess:(SuccessCompletionBlock)successBlock
+                       onFailure:(FailureCompletionBlock)failureBlock {
+    [self debugLog:urlString parameters:parameters];
+    
     [manager POST:urlString
        parameters:parameters
          progress:nil
@@ -604,11 +603,11 @@
 }
 
 - (void)deleteRequestWithURLString:(NSString *)urlString
-                      parameters:(id)parameters
-                       onSuccess:(SuccessCompletionBlock)successBlock
-                       onFailure:(FailureCompletionBlock)failureBlock {
-    [self debugLog:urlString params:parameters];
-   
+                        parameters:(id)parameters
+                         onSuccess:(SuccessCompletionBlock)successBlock
+                         onFailure:(FailureCompletionBlock)failureBlock {
+    [self debugLog:urlString parameters:parameters];
+    
     [manager DELETE:urlString parameters:parameters
             success:^(NSURLSessionTask *task, id responseObject) {
                 successBlock(responseObject);
@@ -619,10 +618,10 @@
 }
 
 - (void)putRequestWithURLString:(NSString *)urlString
-                        parameters:(id)parameters
-                         onSuccess:(SuccessCompletionBlock)successBlock
-                         onFailure:(FailureCompletionBlock)failureBlock {
-    [self debugLog:urlString params:parameters];
+                     parameters:(id)parameters
+                      onSuccess:(SuccessCompletionBlock)successBlock
+                      onFailure:(FailureCompletionBlock)failureBlock {
+    [self debugLog:urlString parameters:parameters];
     
     [manager PUT:urlString parameters:parameters
          success:^(NSURLSessionTask *task, id responseObject) {
@@ -638,43 +637,43 @@
                                      sortBy:(NSString *)sortBy
                                   startDate:(NSString *)startDate
                                     endDate:(NSString *)endDate {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     if (action.length) {
-        params[@"action"] = action;
+        parameters[@"action"] = action;
     }
     
     if (date.length) {
-        params[@"date"] = date;
+        parameters[@"date"] = date;
     }
     
     if (sortBy.length) {
-        params[@"sortBy"] = sortBy;
+        parameters[@"sortBy"] = sortBy;
     }
     
     if (startDate.length) {
-        params[@"startDate"] = startDate;
+        parameters[@"startDate"] = startDate;
     }
     
     if (endDate.length) {
-        params[@"endDate"] = endDate;
+        parameters[@"endDate"] = endDate;
     }
     
-    return params;
+    return parameters;
 }
 
 - (NSMutableDictionary *)createConditions:(NSInteger)offset
                                     limit:(NSInteger)limit
                                    filter:(NSDictionary *)filter
                                   orderBy:(NSString *)orderBy {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     if (offset != 0) {
-        params[@"offset"] = @(offset);
+        parameters[@"offset"] = @(offset);
     }
     
     if (limit != 0) {
-        params[@"limit"] = @(limit);
+        parameters[@"limit"] = @(limit);
     }
     
     if (filter) {
@@ -706,14 +705,14 @@
         }
         
         filterStr = [filterStr stringByAppendingString:@"%7D"];
-        params[@"filter"] = filterStr;
+        parameters[@"filter"] = filterStr;
     }
     
     if (orderBy.length) {
-        params[@"orderyBy"] = orderBy;
+       parameters[@"orderyBy"] = orderBy;
     }
     
-    return params;
+    return parameters;
 }
 
 - (void)cancelAllTasks {

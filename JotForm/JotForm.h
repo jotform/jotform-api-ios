@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 
 @property (nonatomic, copy) NSString *baseUrl;
 
-- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugmode baseUrlType:(BaseUrlType)baseUrlType;
+- (instancetype)initWithApiKey:(NSString *)apikey debugMode:(BOOL)debugMode baseUrlType:(BaseUrlType)baseUrlType;
 
 /**
  * Login user with given credentials.
