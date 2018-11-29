@@ -249,11 +249,7 @@
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/submissions", self.baseUrl, formID];
-
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"qid_enabled"] = @"true";
-    
-    [self getRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
+    [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)getFormSubmissions:(long long)formID
