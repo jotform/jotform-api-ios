@@ -546,7 +546,7 @@
 - (void)getSystemPlan:(NSString *)planType
             onSuccess:(SuccessCompletionBlock)successBlock
             onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/system/plan/%@", self.baseUrl,planType];
+    NSString *urlString = [NSString stringWithFormat:@"%@/system/plan/%@", self.baseUrl, planType];
     [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -563,11 +563,11 @@
 }
 
 - (void)getRequestWithURLString:(NSString *)urlString
-                      parameters:(id)parameters
+                     parameters:(id)parameters
                       onSuccess:(SuccessCompletionBlock)successBlock
                       onFailure:(FailureCompletionBlock)failureBlock {
     [self debugLog:urlString parameters:parameters];
-                          
+    
     [manager GET:urlString
       parameters:parameters
         progress:nil
@@ -703,7 +703,7 @@
     }
     
     if (orderBy.length) {
-       parameters[@"orderyBy"] = orderBy;
+        parameters[@"orderyBy"] = orderBy;
     }
     
     return parameters;
@@ -716,3 +716,4 @@
 }
 
 @end
+

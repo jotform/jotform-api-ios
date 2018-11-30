@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 - (void)getForms:(NSInteger)offset
            limit:(NSInteger)limit
          orderBy:(NSString *)orderBy
-          filter:(NSDictionary *)filter
+          filter:(NSDictionary * _Nullable)filter
        onSuccess:(SuccessCompletionBlock)successBlock
        onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 - (void)getSubmissions:(NSInteger)offset
                  limit:(NSInteger)limit
                orderBy:(NSString *)orderBy
-                filter:(NSDictionary *)filter
+                filter:(NSDictionary * _Nullable)filter
              onSuccess:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -201,8 +201,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 - (void)getHistory:(NSString *)action
               date:(NSString *)date
             sortBy:(NSString *)sortBy
-         startDate:(NSString *)startDate
-           endDate:(NSString *)endDate
+         startDate:(NSString * _Nullable)startDate
+           endDate:(NSString * _Nullable)endDate
          onSuccess:(SuccessCompletionBlock)successBlock
          onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -263,8 +263,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 - (void)getFormSubmissions:(long long)formID
                     offset:(NSInteger)offset
                      limit:(NSInteger)limit
-                   orderBy:(NSString *)orderBy
-                    filter:(NSDictionary *)filter
+                   orderBy:(NSString * _Nullable)orderBy
+                    filter:(NSDictionary * _Nullable)filter
                  onSuccess:(SuccessCompletionBlock)successBlock
                  onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -379,9 +379,9 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)createReport:(long long)formID
-               title:(NSString *)title
-           list_type:(NSString *)list_type
-              fields:(NSString *)fields
+               title:(NSString * _Nullable)title
+           list_type:(NSString * _Nullable)list_type
+              fields:(NSString * _Nullable)fields
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -425,7 +425,7 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  */
 
 - (void)editSubmission:(long long)sid
-                name:(NSString *)submissionName
+                name:(NSString * _Nullable)submissionName
                 new:(NSInteger)new
                 flag:(NSInteger)flag
             onSuccess:(SuccessCompletionBlock)successBlock
@@ -567,7 +567,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * Sends out a report to Jotform.
  */
 
-- (void)createReport:(long long)formID reportParams:(NSDictionary *)reportParams
+- (void)createReport:(long long)formID
+           reportParams:(NSDictionary *)reportParams
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock;
 
@@ -575,7 +576,8 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
  * Sends out a suggestion to Jotform.
  */
 
-- (void)createSuggestion:(long long)formID suggestionParams:(NSDictionary *)suggestionParams
+- (void)createSuggestion:(long long)formID
+               suggestionParams:(NSDictionary *)suggestionParams
                onSuccess:(SuccessCompletionBlock)successBlock
                onFailure:(FailureCompletionBlock)failureBlock;
 
