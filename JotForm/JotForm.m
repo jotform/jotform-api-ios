@@ -39,6 +39,9 @@
        
         manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apiKey"];
+        
+        [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        [manager.requestSerializer setValue:@"no-store" forHTTPHeaderField:@"Cache-Control"];
     }
     return self;
 }
