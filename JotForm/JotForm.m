@@ -45,18 +45,10 @@
 
 - (void)debugLog:(NSString *)urlString parameters:(id)parameters {
     if (debugModeEnabled) {
-        NSString *parameterString = @"";
+        NSLog(@"url string is = %@", urlString);
         
-        if ([parameters isKindOfClass:[NSString class]]) {
-            parameterString = parameters;
-        } else if ([parameters isKindOfClass:[NSDictionary class]]) {
-            parameterString = [parameters description];
-        }
-        
-        NSLog(@"url string = %@", urlString);
-        
-        if (parameterString.length > 0) {
-            NSLog(@"parameter string = %@",parameterString);
+        if (parameters) {
+            NSLog(@"parameters is = %@", parameters);
         }
     }
 }
@@ -65,14 +57,14 @@
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"https://submit.jotform.com/submit/%lld/", formID];
-    [self postRequestWithURLString:urlString parameters:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self postRequestWithURLString:urlString parameters:reportParams onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)createSuggestion:(long long)formID suggestionParams:(NSMutableDictionary *)suggestionParams
                onSuccess:(SuccessCompletionBlock)successBlock
                onFailure:(FailureCompletionBlock)failureBlock {
     NSString *urlString = [NSString stringWithFormat:@"https://submit.jotform.me/submit/%lld/", formID];
-    [self postRequestWithURLString:urlString parameters:urlString onSuccess:successBlock onFailure:failureBlock];
+    [self postRequestWithURLString:urlString parameters:suggestionParams onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)login:(NSMutableDictionary *)userinfo
@@ -563,7 +555,7 @@
 }
 
 - (void)getRequestWithURLString:(NSString *)urlString
-                     parameters:(id)parameters
+                      parameters:(id)parameters
                       onSuccess:(SuccessCompletionBlock)successBlock
                       onFailure:(FailureCompletionBlock)failureBlock {
     [self debugLog:urlString parameters:parameters];
