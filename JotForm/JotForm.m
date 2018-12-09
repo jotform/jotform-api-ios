@@ -698,7 +698,7 @@
     }
     
     if (orderBy.length) {
-        parameters[@"orderyBy"] = orderBy;
+        parameters[@"orderby"] = orderBy;
     }
     
     return parameters;
