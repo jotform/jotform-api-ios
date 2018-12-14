@@ -628,25 +628,11 @@
                                     endDate:(NSString *)endDate {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
-    if (action.length) {
-        parameters[@"action"] = action;
-    }
-    
-    if (date.length) {
-        parameters[@"date"] = date;
-    }
-    
-    if (sortBy.length) {
-        parameters[@"sortBy"] = sortBy;
-    }
-    
-    if (startDate.length) {
-        parameters[@"startDate"] = startDate;
-    }
-    
-    if (endDate.length) {
-        parameters[@"endDate"] = endDate;
-    }
+    [self updateDictionary:parameters withString:action withKey:@"action"];
+    [self updateDictionary:parameters withString:date withKey:@"date"];
+    [self updateDictionary:parameters withString:sortBy withKey:@"sortBy"];
+    [self updateDictionary:parameters withString:startDate withKey:@"startDate"];
+    [self updateDictionary:parameters withString:endDate withKey:@"endDate"];
     
     return parameters;
 }
@@ -697,11 +683,17 @@
         parameters[@"filter"] = filterStr;
     }
     
-    if (orderBy.length) {
-        parameters[@"orderby"] = orderBy;
-    }
+    [self updateDictionary:parameters withString:orderBy withKey:@"orderby"];
     
     return parameters;
+}
+
+- (void)updateDictionary:(NSMutableDictionary *)dictionary withString:(NSString *)string withKey:(NSString *)key {
+    if (!string.length) {
+        return;
+    }
+    
+    dictionary[key] = string;
 }
 
 - (void)cancelAllTasks {
