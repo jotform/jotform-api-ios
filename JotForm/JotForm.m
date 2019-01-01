@@ -152,7 +152,7 @@
     }
     
     NSString *parameterString = [parameterArray componentsJoinedByString:@"&"];
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@",self.baseUrl, parameterString];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/submissions?%@", self.baseUrl, parameterString];
     [self getRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -349,7 +349,7 @@
               fields:(NSString *)fields
            onSuccess:(SuccessCompletionBlock)successBlock
            onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/reports", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/reports", self.baseUrl, formID];
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
@@ -392,28 +392,17 @@
 }
 
 - (void)editSubmission:(long long)sid
-                  name:(NSString *)submissionName
-                   new:(NSInteger) new
-                  flag:(NSInteger)flag
+             parameters:(NSDictionary *)parameters
              onSuccess:(SuccessCompletionBlock)successBlock
              onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl,sid];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    
-    if (submissionName) {
-        parameters[@"submission[1][first]"] = submissionName;
-    }
-    
-    parameters[@"submission[new]"] = [@(new) stringValue];
-    parameters[@"submission[flag]"] = [@(flag) stringValue];
-    
+    NSString *urlString = [NSString stringWithFormat:@"%@/submission/%lld", self.baseUrl, sid];
     [self postRequestWithURLString:urlString parameters:parameters onSuccess:successBlock onFailure:failureBlock];
 }
 
 - (void)cloneForm:(long long)formID
         onSuccess:(SuccessCompletionBlock)successBlock
         onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/clone", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/clone", self.baseUrl, formID];
     [self postRequestWithURLString:urlString parameters:nil onSuccess:successBlock onFailure:failureBlock];
 }
 
@@ -452,7 +441,7 @@
       questionProperties:(NSDictionary *)properties
                onSuccess:(SuccessCompletionBlock)successBlock
                onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/question/%lld", self.baseUrl,formID,qid];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/question/%lld", self.baseUrl, formID, qid];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = properties.allKeys;
@@ -468,7 +457,7 @@
            formProperties:(NSDictionary *)properties
                 onSuccess:(SuccessCompletionBlock)successBlock
                 onFailure:(FailureCompletionBlock)failureBlock {
-    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl,formID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/form/%lld/properties", self.baseUrl, formID];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     NSArray *keys = properties.allKeys;

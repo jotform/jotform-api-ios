@@ -420,17 +420,14 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 /**
  * Edit a single submission.
  * @param sid is the submission ID. You can get the submission IDs when you call /form/{id}/submissions.
- * @param submissionName New submission data with question IDs.
+ * @param paramters used to edit submissions data.
  * Edit a submission.
  */
 
 - (void)editSubmission:(long long)sid
-                name:(NSString * _Nullable)submissionName
-                new:(NSInteger)new
-                flag:(NSInteger)flag
-            onSuccess:(SuccessCompletionBlock)successBlock
-            onFailure:(FailureCompletionBlock)failureBlock;
-
+            parameters:(NSDictionary *)parameters
+             onSuccess:(SuccessCompletionBlock)successBlock
+             onFailure:(FailureCompletionBlock)failureBlock;
 /**
  * Clone a single form.
  * @param formID is the number you see on a form URL. You can get formIDs when you call /user/forms.
