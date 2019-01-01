@@ -420,7 +420,7 @@ typedef NS_ENUM(NSInteger, BaseUrlType) {
 /**
  * Edit a single submission.
  * @param sid is the submission ID. You can get the submission IDs when you call /form/{id}/submissions.
- * @param paramters used to edit submissions data.
+ * @param parameters used to edit submissions data.
  * Edit a submission.
  */
 
